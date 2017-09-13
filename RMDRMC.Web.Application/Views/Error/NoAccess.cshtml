@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "NoAccess";
+    Layout = "~/Views/Shared/_NoAccessLayout.cshtml";
+}
+
+<div class="row">
+    <div class="errorWrapper clearfix" style="margin-top:160px;">
+        @*<div class="container">*@
+        @*<div style="width:50px; height:50px; border:7px solid #f89828;float:left; border-radius:25px;">
+            <p class="text-center" style="font-size:24px;">!</p>
+             </div>*@
+        <div class="col-md-4 col-lg-3 text-center errImgWrapper">
+            <div class="divNoAccessCircle">
+                <span>/</span>
+            </div>
+            <p class="noAccessMsg">NO ACCESS </p>
+            @*<img class="img-responsive errImg" src="C:\Personal\TestCode\alert.png" />*@
+
+        </div>
+
+        <div class="col-md-8 col-lg-9 errorMsg">
+            <p>The System reports that you do not have access to this application - which could be due to missing Authorizations or Roles. Please contact the System Administrator.</p>
+            <p></p>
+        </div>
+        @*</div>*@
+    </div>
+</div>
+

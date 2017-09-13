@@ -1,0 +1,50 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Something Went Wrong -  Ramya Printers";
+  
+}
+
+<div class="row">
+    <div class="errorWrapper clearfix">
+        
+        <div class="col-md-4 col-lg-3 text-center errImgWrapper">
+            <div class="divCircle">
+                <span>!</span>
+            </div>           
+
+        </div>
+
+        <div class="col-md-8 col-lg-9 errorMsg">
+            @{
+                if (Request.IsLocal)
+                {
+                    if (@Model != null && Model.Exception != null)
+                    {
+                        <h3>
+                            Exception was :@Model.Exception.Message
+                        </h3>
+                        <h4>
+                            Stack Trace : @Model.Exception.StackTrace
+                        </h4>
+                    }
+                    else
+                    {
+                        <h3> Exception was null</h3>
+                    }
+                }
+
+                else
+                {
+                    <h4>
+                        <p>An error has occurred in the application.  We regret the inconvenience, and if you could submit a Cherwell ticket, reporting what you were attempting to do when this happened, that will help us resolve the problem as quickly as possible.</p>
+                    </h4>
+                }
+            }            
+            <p style="margin-bottom:30px;">Nevertheless, you may continue to use the application.</p>
+            <p style="font-weight:normal; color:#464646;"><a href="/ZDES" style="">Go back to Home Page</a></p>
+
+        </div>
+       
+    </div>
+</div>

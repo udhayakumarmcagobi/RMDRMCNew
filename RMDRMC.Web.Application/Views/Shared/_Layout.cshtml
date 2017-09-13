@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <!-- View Responsiveness on mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>@ViewBag.Title - Ramya Printers</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    @Styles.Render("~/Content/css")
+
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+
+    <script src="~/Scripts/bootstrap.js"></script>
+
+    <script src="~/Scripts/jquery.treegrid.min.js"></script>
+    <script src="~/Scripts/alertify.js"></script>
+    <script src="~/Scripts/jquery.treegrid.bootstrap3.js"></script>
+    <link href="~/App_Themes/css/RMDRMCTheme.css" rel="stylesheet" />
+    <link href="~/App_Themes/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Scripts/jquery.treegrid.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <link href="~/Content/alertify.bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/alertify.core.css" rel="stylesheet" />
+    <link href="~/Content/alertify.default.css" rel="stylesheet" />
+    <link href="~/Content/Site.css?v0.1" rel="stylesheet" />
+    <script>
+        $(function () {
+
+            // Enable tooltips
+            $(".tooltip-enable").tooltip();
+
+            $(".datepicker").datepicker({
+                format: 'mm/dd/yyyy',
+                autoclose: true,
+                todayBtn: 'linked'
+            }).on("changeDate", function (e) {
+                $(this).datepicker('hide');
+            });
+
+            $("#ChangeToggle").click(function () {
+
+            });
+            //Menu Icon Change
+            $(".list-group-item").click(function () {
+                if ($(this).find("span").is(".dropdown")) {
+                    $(this).find("span").removeClass("dropdown").addClass("dropup");
+                }
+                else {
+                    $(this).find("span").removeClass("dropup").addClass("dropdown");
+                }
+            });
+            //Menu Hover
+            $('ul.nav li.dropdown').hover(function () {
+                if ($(window).width() > 768) {
+                    $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+                }
+            }, function () {
+                if ($(window).width() > 768) {
+                    $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+                }
+            });
+
+        });
+
+        $(document).ready(function () {
+            var WrapperPadding = function () {
+
+                var navHeight = $('nav').height();
+                //alert("nav Height: " + navHeight);
+                var userInfoHeight = $('div.divUserNameRolefixed').height();
+                //alert("User Info Height: " + userInfoHeight);
+                //alert("total height " + navHeight + "+" + userInfoHeight + "=")
+                //alert(navHeight + userInfoHeight);
+                var totalHeaderHeight = navHeight + userInfoHeight;
+
+
+                var footerHeight = $('footer').height();
+                //alert(" footer height: " + footerHeight);
+                $('div.wrapper').css({ 'padding-top': totalHeaderHeight, 'padding-bottom': footerHeight });
+
+                $('div.divUserNameRolefixed').css({ 'top': navHeight });
+            };
+
+            didResize = false;
+            WrapperPadding();
+            $(window).resize(function () {
+                didResize = true;
+            });
+            setInterval(function () {
+                if (didResize) {
+
+                    didResize = false;
+                    WrapperPadding();
+                }
+            }, 250);
+
+        });
+    </script>
+    @RenderSection("head", required: false)
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="navbar navbar-inverse navbar-fixed-top  header-nav">
+            <div class="container-fluid-nu">
+                <div class="navbar-header navHeaderMaxHeight">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand DIMNavbarBrand" href="@Url.Action("Index","Home", new { Area = "ZDES" })">
+                        <img src="~/App_Themes/images/timken-logo-orange-small.png" />
+                    </a>
+                </div>
+
+                <div class="nav navbar-right">
+                    <label id="labelheading">Ramya Printers - 2.0</label>
+                    <div class="buildInfo">
+                        <label>
+                            Version: @ViewContext.Controller.GetType().Assembly.GetName().Version ; Date: @File.GetCreationTime(ViewContext.Controller.GetType().Assembly.Location).ToShortDateString()
+                        </label>
+                    </div>
+                </div>
+
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li id="home-menu" class="active"><a href="@Url.Action("Index","Home", new { Area = "ZDES" })"><span>Home</span></a></li>
+
+                    </ul>
+                    @*<ul class="nav navbar-right">
+                            <li>
+                                <label id="labelheading">Finished Product Data Maintenance</label>
+                            </li>
+                        </ul>*@
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid divUserNameRolefixed" style="">
+            <div class="row">
+                <div class="userNameWrapper">
+                    <label class="lblUserName"><span class="glyphicon glyphicon-user" style="display:inline-block; margin-right:10px; color:white;"></span>@UserProfile.LoggedOnUser - @UserProfile.CurrentUserRoleDescription</label>
+                </div>
+            </div>
+        </div>
+
+        @if (ViewBag.Sidemenu == "Home")
+        {
+
+    <div class="Renderdiv">@RenderBody()</div>
+        }
+        else
+        {
+    <div class="body-content-nu container-fluid" id="body-content">
+
+
+            </div>
+        }
+
+        <footer class="navbar-orange navbar-fixed-bottom footer">
+            <div class="footerdiv">
+                <p class="footerParagraph">
+                    <font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="orange">
+                        IMPORTANT NOTICE
+                    </font>
+                </p>
+                <p class="footerParagraph">
+                    <font face="Verdana, Arial, Helvetica, sans-serif" class="footerstyle">
+                        THIS DATA AND THE IDEAS IN 	THE DATA AND PRINCIPLES REPRESENTED
+                        ARE THE PROPERTY OF THE TIMKEN COMPANY, NORTH CANTON, OHIO, AND ARE
+                        TO BE USED EXCLUSIVELY FOR ITS WORK AND FOR NO OTHER PURPOSE
+                        WHATSOEVER. THE DATA AND THE IDEAS AND PRINCIPLES IT REPRESENTS
+                        ARE CONFIDENTIAL AND MAY NOT BE DIVULGED TO ANYONE EXCEPT FOR
+                        THE PURPOSE FOR WHICH THE DATA IS PROVIDED. VIEWING BY
+                        UNAUTHORIZED PERSONS IS EXPRESSLY PROHIBITED.
+                    </font>
+                </p>
+                <p class="footerParagraph">
+                    <font face="Verdana, Arial, Helvetica, sans-serif" class="footerstyle">
+                        THIS DATA IS NOT TO BE COPIED OR REPRODUCED WITHOUT THE CONSENT
+                        OF THE TIMKEN COMPANY. ALL PRINTS AND COPIES THEREOF ARE TO
+                        BE RETURNED TO THE TIMKEN COMPANY.
+                    </font>
+                </p>
+            </div>
+        </footer>
+
+        @{
+            string hostName = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + HttpRuntime.AppDomainAppVirtualPath;
+        }
+        <input id="hostpath" type="hidden" value="@hostName" />
+        @if (!(ViewBag.sidemenu == "Error" || ViewBag.sidemenu == "NotFound"))
+        {
+    <div id="divUpdateProgressBar">
+        @Html.Partial("_LoadingImage")
+    </div>
+        }
+        <script src="~/CustomScripts/Common.js"></script>
+        @RenderSection("scripts", required: false)
+        <script type="text/javascript">
+
+            //var st = '@Session["ROLE"]';
+        </script>
+    </div>@*end of wrapper*@
+
+</body>
+</html>

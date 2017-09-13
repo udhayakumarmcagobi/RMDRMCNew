@@ -1,0 +1,88 @@
+﻿@using System.Web.Optimization
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <!-- View Responsiveness on mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>@ViewBag.Title - Finished Product Data Maintenance</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link href="~/App_Themes/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Site.css?v0.1" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="wrapper">
+    <header>
+        <div class="DIMLogo">
+            <a href="@Url.Action("Index", "Home")">
+                <img src="~/App_Themes/images/timken-logo-orange-small.png" />
+            </a>
+        </div>
+        <div class="DIMAppName">
+            <p><label>Finished Product Data Maintenance</label></p>
+        </div>
+    </header>
+    @*<nav class="navbar navbar-inverse navbar-fixed-top  header-nav">
+        <div class="container-fluid-nu">
+            <div class="navbar-header navHeaderMaxHeight">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand DIMNavbarBrand" href="@Url.Action("Index","Home")">
+                    <img src="~/App_Themes/images/timken-logo-orange-small.png" />
+                </a>
+            </div>
+            <div class="nav navbar-right">
+                <label id="labelheading">Finished Product Data Maintenance</label>
+            </div>
+
+        </div>
+    </nav>*@
+    <div class="container-fluid divUserNameRolefixed userNameWrapperNoAccess" style="">
+        <div class="row">
+            <div class="userNameWrapper">
+                <label class="lblUserName"><span class="glyphicon glyphicon-user" style="display:inline-block; margin-right:10px; color:white;"></span>@UserProfile.LoggedOnUser</label>@*- @UserProfile.CurrentUserRoleDescription*@
+            </div>
+        </div>
+    </div>
+
+
+    @*code added on Dec20 to include User Information*@
+    @*<div class="container-fluid containerUserNameNoAccess">
+            <div class="row">
+                <div class="userNameWrapperNoAccess">
+                    <label class="lblUserName"><span class="glyphicon glyphicon-user" style="display:inline-block; margin-right:10px;"></span>Kevin Stellmar - Product Administrator</label>
+                </div>
+            </div>
+        </div>*@
+    @*end of code added on Dec20 to include User Information*@
+
+
+
+
+    <div class="container-fluid body-content-nu">
+        @RenderBody()
+    </div>
+
+    <div style="clear:both"></div>
+
+    <footer class="navbar-orange navbar-fixed-bottom footer container-fluid" style="height:auto; padding:5px 0;">
+        <div class="col-md-12 col-lg-12 col-xs-12 text-center">
+            <label style="color:#fff!important">&copy; The Timken Company</label>
+        </div>
+    </footer>
+    @*<div class="navbar-orange FPDBHomeFooter" style="min-height:25px">
+            <div class="col-md-12 col-lg-12 col-xs-12 text-center">
+                <label style="color:#fff!important">&copy; The Timken Company</label>
+            </div>
+        </div>*@
+        </div>
+
+    <script src="~/CustomScripts/Common.js"></script>
+
+</body>
+</html>

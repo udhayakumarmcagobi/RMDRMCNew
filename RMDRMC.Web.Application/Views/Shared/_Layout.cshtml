@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -8,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     @Styles.Render("~/Content/css")
 
-    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="/Scripts/jquery-1.10.2.js"></script>
 
     <script src="~/Scripts/bootstrap.js"></script>
 
@@ -21,10 +22,10 @@
     <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" />
     <script src="~/Scripts/bootstrap-datepicker.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    <link href="~/Content/alertify.bootstrap.css" rel="stylesheet" />
+    <link href="/Content/alertify.bootstrap.css" rel="stylesheet" />
     <link href="~/Content/alertify.core.css" rel="stylesheet" />
     <link href="~/Content/alertify.default.css" rel="stylesheet" />
-    <link href="~/Content/Site.css?v0.1" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
     <script>
         $(function () {
 
@@ -98,6 +99,7 @@
 
         });
     </script>
+
     @RenderSection("head", required: false)
 </head>
 <body>
@@ -111,12 +113,15 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand DIMNavbarBrand" href="@Url.Action("Index","Home", new { Area = "ZDES" })">
-                        <img src="~/App_Themes/images/timken-logo-orange-small.png" />
+                        <img src="~/App_Themes/images/ramya-logo-orange-small.png" />
                     </a>
                 </div>
 
                 <div class="nav navbar-right">
-                    <label id="labelheading">Ramya Printers - 2.0</label>
+                    <label class="labelheading">
+                       
+                    </label>
+                    <label id="labelheading">Ramya Printers - 1.0</label>
                     <div class="buildInfo">
                         <label>
                             Version: @ViewContext.Controller.GetType().Assembly.GetName().Version ; Date: @File.GetCreationTime(ViewContext.Controller.GetType().Assembly.Location).ToShortDateString()
@@ -124,36 +129,116 @@
                     </div>
                 </div>
 
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav">
-                        <li id="home-menu" class="active"><a href="@Url.Action("Index","Home", new { Area = "ZDES" })"><span>Home</span></a></li>
+                @Html.Partial("_TopMenu")
 
-                    </ul>
-                    @*<ul class="nav navbar-right">
-                            <li>
-                                <label id="labelheading">Finished Product Data Maintenance</label>
-                            </li>
-                        </ul>*@
-                </div>
             </div>
         </nav>
         <div class="container-fluid divUserNameRolefixed" style="">
             <div class="row">
                 <div class="userNameWrapper">
-                    <label class="lblUserName"><span class="glyphicon glyphicon-user" style="display:inline-block; margin-right:10px; color:white;"></span>@UserProfile.LoggedOnUser - @UserProfile.CurrentUserRoleDescription</label>
+                    <label class="lblUserName">
+                        <span class="glyphicon glyphicon-user" style="display:inline-block; margin-right:10px; color:white;"></span>
+                        Udhay
+                        @*@UserProfile.LoggedOnUser - @UserProfile.CurrentUserRoleDescription*@
+                    </label>
                 </div>
             </div>
         </div>
 
         @if (ViewBag.Sidemenu == "Home")
         {
-
-    <div class="Renderdiv">@RenderBody()</div>
+            <div class="Renderdiv">@RenderBody()</div>
         }
         else
         {
-    <div class="body-content-nu container-fluid" id="body-content">
+            <div class="body-content-nu container-fluid" id="body-content">
+                <div class="row">
+                    @if (ViewBag.Sidemenu == "UserManagement")
+                {
+                        <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_UserManagementSideMenu")</div>
+                    }
+                    else if (ViewBag.Sidemenu == "Masters")
+                    {
+                        <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_MastersSideMenu")</div>
+                    }
+                    else if (ViewBag.Sidemenu == "VendorManagement")
+                    {
+                        <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_VendorManagementSideMenu")</div>
+                    }
+                    else if (ViewBag.Sidemenu == "POManagement")
+                    {
+                        <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_POManagementSideMenu")</div>
+                    }
+                    else if (ViewBag.Sidemenu == "InventoryManagement")
+                    {
+                        <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_InventoryManagementSideMenu")</div>
+                    }
+                    else if (ViewBag.Sidemenu == "JobManagement")
+                    {
+                        <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_JobManagementSideMenu")</div>
+                    }
+                    else if (ViewBag.Sidemenu == "InvoiceManagement")
+                    {
+                        <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_InvoiceManagementSideMenu")</div>
+                    }
+                    else if (ViewBag.Sidemenu == "Reports")
+                    {
+                        <div class="col-md-2">@Html.Partial("_ReportsSideMenu")</div>
+                    }
 
+                    @*@if (ViewBag.sidemenu == "StatusHistory" || ViewBag.FooterDisplayFlag == WebConstants.BOM)*@
+                    @if (ViewBag.sidemenu == "Error" || ViewBag.sidemenu == "NotFound")
+                    {
+                        <div class="col-md-12 col-xs-12 text-center">@RenderBody()</div>
+                    }
+                    else
+                    {
+                        <div class="col-md-10 col-xs-12 main-body-content">@RenderBody()</div>
+                    }
+
+                    <div class="modal fade" id="divValidatonMessageNewDesignItem" role="dialog" aria-hidden="true"
+                         data-backdrop="static" data-keyboard="false">
+                        <div class="modal-dialog dialog-style modal-lg" @*style="width:90%;left:4%;"*@>
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <label style="color:#fff;">Copy new Design Item status messages</label>
+                                    <!--Close button-->
+                                    <button type="button" class="close" data-dismiss="modal" onclick="ReloadDIM()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                </div>
+                                <div class="modal-body" style="overflow-y:auto;">
+                                    <div class="container-fluid">
+                                        <div class="row" id="divValidatonMessageDetailsNewDesignItem">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="divErrorMessage" role="dialog" aria-hidden="true"
+                         data-backdrop="static" data-keyboard="false">
+                        <div class="modal-dialog dialog-style modal-lg" @*style="width:90%;left:4%;"*@>
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <label style="color:#fff;">Error Message Details</label>
+                                    <!--Close button-->
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                </div>
+                                <div class="modal-body" style="overflow-y:auto;">
+                                    <div class="container-fluid">
+                                        <div class="row" id="divErrorMessageDetails">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
 
             </div>
         }
@@ -168,10 +253,10 @@
                 <p class="footerParagraph">
                     <font face="Verdana, Arial, Helvetica, sans-serif" class="footerstyle">
                         THIS DATA AND THE IDEAS IN 	THE DATA AND PRINCIPLES REPRESENTED
-                        ARE THE PROPERTY OF THE TIMKEN COMPANY, NORTH CANTON, OHIO, AND ARE
-                        TO BE USED EXCLUSIVELY FOR ITS WORK AND FOR NO OTHER PURPOSE
-                        WHATSOEVER. THE DATA AND THE IDEAS AND PRINCIPLES IT REPRESENTS
-                        ARE CONFIDENTIAL AND MAY NOT BE DIVULGED TO ANYONE EXCEPT FOR
+                        ARE THE PROPERTY OF THE RAMYA PRINTERS TO BE USED EXCLUSIVELY
+                        FOR ITS WORK AND FOR NO OTHER PURPOSE WHATSOEVER. THE DATA
+                        AND THE IDEAS AND PRINCIPLES IT REPRESENTS ARE CONFIDENTIAL
+                        AND MAY NOT BE DIVULGED TO ANYONE EXCEPT FOR
                         THE PURPOSE FOR WHICH THE DATA IS PROVIDED. VIEWING BY
                         UNAUTHORIZED PERSONS IS EXPRESSLY PROHIBITED.
                     </font>
@@ -179,8 +264,8 @@
                 <p class="footerParagraph">
                     <font face="Verdana, Arial, Helvetica, sans-serif" class="footerstyle">
                         THIS DATA IS NOT TO BE COPIED OR REPRODUCED WITHOUT THE CONSENT
-                        OF THE TIMKEN COMPANY. ALL PRINTS AND COPIES THEREOF ARE TO
-                        BE RETURNED TO THE TIMKEN COMPANY.
+                        OF THE RAMYA PRINTERS. ALL PRINTS AND COPIES THEREOF ARE TO
+                        BE RETURNED TO THE RAMYA PRINTERS.
                     </font>
                 </p>
             </div>
@@ -192,9 +277,9 @@
         <input id="hostpath" type="hidden" value="@hostName" />
         @if (!(ViewBag.sidemenu == "Error" || ViewBag.sidemenu == "NotFound"))
         {
-    <div id="divUpdateProgressBar">
-        @Html.Partial("_LoadingImage")
-    </div>
+            <div id="divUpdateProgressBar">
+                @Html.Partial("_LoadingImage")
+            </div>
         }
         <script src="~/CustomScripts/Common.js"></script>
         @RenderSection("scripts", required: false)

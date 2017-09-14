@@ -1,1 +1,2296 @@
-﻿
+﻿html {
+  position: relative;
+  /*min-height: 100%;*//*Jan6 code commented by Archana*/
+  /*height:100%;*/ /*Jan5 added by Archana for sticky footer*/
+  
+  }
+/*code added by Archana on Jan6 for sticky footer*/
+html,body{
+    height:100%;
+}
+
+.wrapper{
+    min-height:100%;
+    position:relative;
+}
+footer.footer{
+    position:absolute !important;
+    bottom:0 !important;
+    left:0 !important;
+    right:0 !important;
+}
+.body-content-nu{
+    padding-top:20px;
+}/*because wrapper cannot have additional padding of 20px; which brings the banner images down by 20px on home page*/
+/*end of code added by Archana on Jan6 for sticky footer*/
+
+/* Fix scrollbar overlap issue in ie*/
+body {
+    -ms-overflow-style: scrollbar;
+    /*min-height:100%;*/ /*Jan5 for sticky footer*/
+    /*position:relative;*//*Jan5 for sticky footer*/
+
+}
+/*Jan5 code added for sticky footer*/
+/*.wrapper{
+    position:relative;
+    min-height:100%;
+}*/
+/*Jan5 end of code added for sticky footer*/
+
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+select{
+    padding:0px;
+}
+
+input[type="text"],
+select
+ {
+   /*width:90%;*/
+}
+textarea {
+   max-width:880px;
+   font-family:Monaco, Menlo, Consolas, "Courier New", monospace;
+}
+
+.important:before {
+    content: "*";
+    color: red;
+}
+
+.ButtonWithImage,.ButtonWithoutImage {
+    background-image: url("../App_Themes/images/submit.gif");
+    background-repeat: no-repeat;
+    background-position: left;
+    outline: none;
+    font-weight: bold;
+    font-family: 'Segoe UI' !important;
+    color: #F89827;
+    background-color: white;
+    padding-left: 18px;
+    padding-top: 1px;
+    padding-bottom: 2px;
+    font-size: 11px;
+    border-top: 1px solid darkgray;
+    border-left: 1px solid darkgray;
+    border-right: 1px solid darkgray;
+    border-bottom: 1px solid darkgray;
+    border-width: 1px;
+    letter-spacing: 0pt;
+    text-align: left;
+   
+}
+/*Dec9 code added By Archana to style "Add new Design Item to end of BOM" button */
+.ButtonWithoutImage{
+    background-image:none;
+    padding-left:2px;
+    padding-bottom:3px;
+}
+button#AddBOMItem.ButtonWithoutImage>span{
+    display:block;
+    float:left;
+    color:#F89827;
+}
+button#AddBOMItem.ButtonWithoutImage>span.plusImage{
+    
+    
+    background-color:#ff8900;
+    display:inline-block;
+    height:13px;
+    line-height:12px;
+    margin-top:2px;
+
+    /*display:inline-block;*/
+    /*height:13px;*/
+    padding:0 3px;
+   
+    /*line-height:12px;*/
+    color:#fff;
+    margin-right:4px;
+    /*margin-top:1px;
+    vertical-align:top;*/
+    border-top-left-radius:2.75px;
+    border-bottom-right-radius:2.75px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+    font-weight:bold;
+    font-weight:bolder;
+    /*padding-bottom:2px;*/
+}
+/*Dec9 end of code added to style BOM button*/
+
+/*Focus Button -------Added by Divya*/
+/*Dec9 Below code modified by Archana to include focus effect for ButtonWithoutImage too*/
+ .ButtonWithImage:focus,.ButtonWithoutImage:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.row {
+    /*Commented by nairsa*/
+    /*padding-bottom: 2px;*/
+}
+
+div.col-md-6 {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+div.col-md-6.btnclass {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+label,div#myNavbar ul li a span{
+    font-family: Segoe UI;
+    font-size: 12px;
+    line-height: 15px;
+    color: #000000;
+    font-weight: normal;
+}
+div#myNavbar ul li a span{
+   margin-bottom:0px;
+}
+.table,tbody,select {
+    margin-bottom: 2px;
+    font-family: Segoe UI;
+   
+}
+h5{
+    font-family: Segoe UI;
+}
+.table-condensed > thead > tr > th, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > tbody > tr > td, .table-condensed > tfoot > tr > td {
+    padding: 5px;
+}
+
+.input-sm {
+    padding: 2px 1px;
+    height: 23px;
+    border: 1px solid #000000;
+    border-radius: 0px;
+}
+select.input-sm {
+    margin-bottom: 0px;
+    height: 23px;
+    font-size: 11px;
+    font-family: Segoe UI;
+}
+div.date {
+padding-top:0px;
+padding-bottom:0px;
+padding-left:0px;
+
+}
+div.date input.form-control {
+    border: 1px solid;
+    border-radius: 0px;
+    height:23px;
+}
+div.date span.input-group-addon
+{
+    border-radius: 0px;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+    border-top: 1px solid #000; 
+    padding:2px 7px;
+}  
+textarea.form-control {
+    border: 1px solid #000000;
+    border-radius: 0px;
+}
+/*.navbar-fixed-top {
+    z-index:9;
+}
+.navbar-fixed-bottom {
+    z-index:9;    
+}*/
+/*above code commented on Nov17 to let navbar have a higher z-index as assigned in bootstrap*/
+.rowsmargins{
+    margin-top:5px;
+}
+.header {
+    top: 0;
+    left: 0;
+    right: 0;
+    max-height:18%;
+    overflow-y:auto;
+    overflow-x:hidden;
+    
+}
+.main {
+    /*overflow: auto;*/
+    
+    /*bottom: 90px;*/
+    position: relative;
+    right:0;
+    left:0;
+    margin-left:0px;
+    /*updated by nairsa*/
+    margin-top: 20px;
+    /*Dec20 added by Archana*/
+    margin-top:45px;
+    /*Dec20 end of code added by Archana*/
+    
+}
+/*Dec20 code added by Archana*/
+.divUserNameRolefixed{
+    position:fixed; 
+    /*top:50px;*/ 
+    top:65px;
+    left:0;
+    right:0; 
+    z-index:999;
+}
+
+div.navbar-header>a.DIMNavbarBrand{
+    padding-bottom:0;
+    padding-top:10px;
+}
+/*end of code added by Archana*/
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /*height:80px;*//*Code commented by Archana Jan5*/
+    
+}
+.header-nav {
+background-color:#464646;
+border-color:#464646;
+/*Dec20 code added by Archana to remove border*/
+border:none;
+/*end of code added by Archana n Dec20*/
+}
+.header-nav .navbar-nav > li > a {
+    color: #fff;
+}
+.header-nav .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    color: #fff;
+    background-color:#464646;
+}
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    color: #fff;
+   /*background-color:#ff8200;*/
+   background-color:#464646;
+}
+
+/*Above code for setting color/bg-color for main links in navigation viz. Design Item/Series/Ratings*/
+
+/*code added on Dec6 to style Quantity field in Create/Update BOM table*/
+.noWrap{
+    white-space:nowrap;
+}
+/*end of code added on Dec6 to style Quantity field in Create/Update BOM table*/
+
+/*code added on Dec6 to style checkbox for Select All*/
+div.whereUsedDIWrapper>table.table>thead>tr>th>input.chkSelectAll{
+vertical-align:top; 
+margin:4px 4px 0 0;
+}
+/*end of code added on Dec6 to style checkbox for Select All*/
+/*code added on Dec7 to style for Create New Revision*/
+ .createRevChildBOMWrapper>label{
+     margin-left:15px;
+     font-weight:bold;
+ }
+ .createRevChildBOMWrapper{
+     margin-top:10px;
+     margin-bottom:30px;
+ }
+
+
+/*end of code added on Dec7*/
+/*code added on Dec8*/
+div.relatedRatingsModalButtons{
+    padding:15px 0;
+    border-top:1px solid #ddd;
+}
+/*end of code added on Dec8*/
+
+/*}*/
+ul#sidebar >  ul > li  {
+    list-style-type:none;
+    padding:3px 0px 3px 0px;
+    
+}
+ul#sidebar >  ul > li  a {
+    text-decoration:none !important;
+    color:#2b9faa;
+}
+ul#sidebar >  ul > li  a:hover {
+    color:#000;
+}
+/*ul#sidebar >  ul   {
+   background-color:#f8d676;
+}*/
+ul#sidebar >  ul > li:hover {
+  cursor: pointer;
+}
+div.list-group-submenu a {
+    background-color: #fff;
+}
+div.list-group-submenu a:hover {
+    background-color: #464646;
+}
+
+
+div.list-group-submenu a:hover span{
+    color : #fff;
+}
+.panel-default > .panel-heading {
+    color: white;
+    background-color: #464646;
+    border-color: black;
+}
+.navbar-orange {
+    background-color:#464646;
+}
+a.list-group-item span i {
+    margin-top: 9px;
+}
+/*Focus TextBox  --------Added by Divya*/
+ .form-control:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+/*.form-control:focus {
+    border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}*/
+.list-group-item {
+padding:5px 15px;
+border: 1px solid #464646;
+}
+div.list-group-submenu a span {
+    font-family: Segoe UI;
+    font-size: 12px;
+    line-height: 15px;
+    color: #000000;
+    font-weight: normal;
+}
+.dropdown-menu > li > a:hover {
+    background-color:#464646;
+}
+input[type="radio"], input[type="checkbox"] {
+    margin: 1px 0 0;
+}
+
+div#myNavbar > ul > li > a > label, div#myNavbar > ul > li > a > span,navbar-brand {
+    color: #fff !important;
+}
+
+/*code added on Jan2,2017 to style buttons in Design Item warning modal box*/
+div.divButtons{
+    margin-bottom:20px;
+}
+#DesignItemValidationMessages > div.divButtons>a, #BOMValidationMessages > div.divButtons>a{
+    padding-right:5px;
+}
+#DesignItemValidationMessages > div.divButtons>a:hover,#DesignItemValidationMessages > div.divButtons>a:focus{
+   text-decoration:none;
+   color: #F89827;
+}
+
+#BOMValidationMessages > div.divButtons>a:hover,#BOMValidationMessages > div.divButtons>a:focus{
+   text-decoration:none;
+   color: #F89827;
+}
+
+#GeometryValidationMessages > div.divButtons>a{
+    padding-right:5px;
+}
+#GeometryValidationMessages > div.divButtons>a:hover,#DesignItemValidationMessages > div.divButtons>a:focus{
+   text-decoration:none;
+   color: #F89827;
+}
+
+div.divMsg{
+    margin-bottom:20px;
+}
+div.divMsg>p{
+    margin-bottom:2px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size:12px;
+}
+/*end of code added on Jan2,2017*/
+
+/*code added on Jan3,2017*/
+div.divMsg>h5{
+    margin-bottom:5px;
+}
+div.divMsg>h5>a{
+    color:#000;
+    text-decoration:none;
+}
+div.divMsg>h5>a:hover,div.divMsg>h5>a:focus{
+    color:#000;
+    text-decoration:none;
+}
+
+div#collapseGeoMessages table thead{
+    color:#fff;
+}
+/*end of code added on Jan3,2017*/
+
+/*code added on Jan2 to style labels inside the modal box*/
+.lblCreateUpdateDI{
+    font-family:Helvetica, sans-serif neue;
+    font-size:16px;
+}
+/*end of code added on Jan2 to style labels inside the modal box*/
+
+/*code added on Jan4 for header without navigation*/
+header {
+    background-color: #464646;
+    padding: 15px;
+    margin: 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+    header .DIMLogo {
+        display: block;
+        text-align: center;
+        /*margin-bottom: 5px;*/
+    }
+
+
+    header .DIMAppName {
+        display: block;
+        text-align: center;
+        
+        line-height: 30px;
+        
+    }
+
+        header .DIMAppName > p>label {
+            margin-bottom: 0;
+            color: #fff;
+        font-size: 15px;
+        }
+
+    header:after {
+        content: "";
+        display: block;
+        clear: both;
+        margin: 0;
+    }
+    .userNameWrapperNoAccess{
+    top:80px;
+}
+/*end of code added on Jan4 for header without navigation*/
+/*Code added on Jan4 to style No Access Page*/
+.errorWrapper{
+    width:80%; 
+    margin-left:auto; 
+    margin-right:auto; 
+    margin-top:80px; 
+    margin-bottom:80px;
+    border:4px solid #f89828; 
+    border-radius:4px; 
+    padding:20px;
+    box-shadow:2px 2px 10px hsla(0,50%,0%,0.4);
+}
+.errorMsg{
+    font-size:18px; 
+    color:#585858; 
+    font-weight:bold; 
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    padding:0px 20px;
+    text-align:center;
+}
+.errImgWrapper{
+    margin-bottom:20px;
+}
+
+.errImgWrapper > div {
+    width:100px;
+    height:100px;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius:50px;
+    border:4px solid #f89828;
+    vertical-align:middle;
+    text-align:center;
+    box-shadow:1px 1px 5px hsla(0,50%,0%,0.4);
+}
+.errImgWrapper > div >span{
+    line-height:100px;
+    font-size:72px;
+    color:#f89828;
+    text-shadow:1px 1px 2px hsla(0,50%,0%,0.4);
+}
+
+.errImgWrapper>div.divNoAccessCircle>span{
+    
+    font-size:125px;
+    color:#f89828;
+    transform: rotate(16deg);
+    text-shadow:none;
+    
+}
+
+.errImgWrapper>p.noAccessMsg{
+   font-size:20px;
+   text-shadow:none;
+   font-weight:bold;
+   margin-bottom:30px;
+   color:#f89828;   
+}
+
+div.divNoAccessCircle{
+    margin-bottom:10px;
+}
+/*end of code added on Jan4 to style No Access Page*/
+
+/*code added on Jan11 for Page not Found*/
+.errNotFoundWrapper>p{
+    font-size:72px;
+    color:#f89828;
+    text-shadow:2px 2px 2px hsla(0,50%,0%,0.5);
+    margin-bottom:0;
+    text-align:center;    
+}
+
+.errNotFoundWrapper>p.notFoundMsg{
+   font-size:20px;
+   text-shadow:none;
+   font-weight:bold;
+   margin-bottom:30px;
+   color:#f89828;   
+}
+/*end of code added on Jan11 for Page not found*/
+
+/*div#myNavbar > ul > li > ul > li > a > span {
+    color:#000 !important;
+}*/
+/*code commented on Nov17 to make submenu item to appear in black only for screen widths more than 768px*/
+
+/*Jan5 code added to make scrolling banner images cover full screen*/
+.full-screen {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/*end of code added on Jan5 to make scrolling banner images cover full screen*/
+
+#hdTblGeometry,.tblProductHierarchy-dimension{
+    display:block;
+}
+#hdTblGeometry>tr>th>label{
+    margin-right:0;
+}
+
+#hdTblGeometry>tr>th{
+    white-space:normal;
+}
+    #hdTblGeometry > tr > th wbr {
+    display:inline-block;
+    }
+
+.tblProductHierarchy-dimension>tr>td:not(:first-child){
+   width:7.25294%;
+   min-width:80px;
+white-space:normal;
+
+}
+
+.tblProductHierarchy-dimension>tr>td:nth-child(4){
+    width:18.132366%;
+    min-width:200px;
+    white-space:normal;
+}
+
+.tblProductHierarchy-dimension > tr > td:nth-child(7), #tblProductHierarchy > tr > td:nth-child(9) {
+        width:13.780598%;
+        min-width:152px;
+    }
+
+.tblProductHierarchy-dimension {
+    height: 500px;       
+    max-height:500px;
+    overflow-y: auto;    /* Trigger vertical scroll    */   
+}
+
+.buildInfo{
+    /*margin-right:15px; text-align:right;*/
+    margin-left:15px;
+}
+
+.buildInfo>label{
+    color:#ffffff; 
+    opacity:0.85;
+}
+
+
+/*Jan4 code added to place the app name and logo in the header on no access page*/
+@media screen and (min-width:400px) {
+    header .DIMLogo {
+        float: left;
+        margin-bottom: 0;
+    }
+
+    header .DIMAppName {
+        float: right;
+    }
+
+    .userNameWrapperNoAccess{
+    top:50px;
+}
+}
+/*Jan4 end of code added to place the app name and logo in the header on no access page*/
+
+/*Nov17 for correcting navbar*/
+@media screen and (max-width:767px){
+    ul.dropdown-menu{
+        color:#fff;
+    }
+    
+    div#myNavbar > ul > li > ul > li > a > span {
+        color: #ddd !important;
+    }
+    div#myNavbar > ul > li > ul > li > a:hover >span{
+        color:#fff !important;
+        font-size:13px;
+    }
+}
+
+@media screen and (min-width:768px){
+
+    div#myNavbar > ul > li > ul > li > a > span {
+    color:#000 !important;
+}
+}
+div#myNavbar ul li a:hover label{
+    color: #fff !important;
+}
+div#myNavbar ul li a:hover span{
+    color: #fff !important;
+}
+div#myNavbar ul li a:hover span.caret{
+    border-top-color: #fff;
+}
+div#myNavbar ul li a {
+    /*updated by nairsa*/
+     /*padding-bottom:4px;*/
+     margin-top: 5px;
+}
+
+div#myNavbar ul li a:active, div#myNavbar ul li a:focus {
+    color:#fff;
+}
+div#myNavbar ul li ul li a label {
+     /*updated by nairsa*/
+    color: #000 !important;
+}
+div#myNavbar > ul > li > a > span.caret {
+    border-top-color: #fff;
+}
+
+div#myNavbar > ul {
+    /*updated by nairsa*/
+    /*margin-top:18px;*/
+}
+div#myNavbar > ul > li.active {
+    font-size: 12px;
+}
+div#myNavbar > ul > li.dropdown > ul.dropdown-menu {
+    margin-top: 3px;
+}
+div#myNavbar ul.navbar-right li a label {
+    font-size: 16px;
+}
+
+.panel-heading label {
+    /*padding-top: 0px;*/
+    padding: 5px 10px;
+}
+.panel-heading{
+    /*updated by nairsa*/
+    /*height: 32px;*/
+}
+table.table {
+     border:1px solid #000;
+}
+table.table thead tr {
+    background-color: #464646;
+}
+table.table thead tr th label{
+    color:white;
+    /* margin space for the sort icons */
+    margin-right: 5px;
+}
+table.table thead tr th {
+    border:1px solid #000;
+}
+table.table tbody tr td {
+    border:1px solid #000;
+    font-family: Segoe UI;
+    font-size: 12px;
+    line-height: 15px;
+    color: #000000;
+    font-weight: normal;
+}
+table.table tbody tr:nth-child(odd) {
+    background-color:#F8ECE3 ;
+}
+table.table tbody tr:nth-child(even) {
+    background-color: #ffffff;
+}
+table.table > thead > tr > th  {
+   
+    white-space: nowrap;
+
+}
+
+.glyphicon-sort:before {
+    content: "\e150";
+    color: white;
+}
+.sort{
+     cursor:pointer;
+     padding-left: 2px;
+     
+}
+#lastupdatedon{
+    /*max-width:200px;*/
+}
+.CreatedOn
+{
+    max-width:180px;
+}
+.divmaxwidth
+{
+    /*max-width:200px;*/
+}
+.Dimensions{
+    width:100%;
+     border:0
+}
+.Dimensionsthead{
+   align-content:center;
+}
+.dropdownleft{
+    padding-left: 17px;
+}
+.seriesupdate
+{
+ padding-left: 17px;
+}
+.status{
+padding-top:15px;
+padding-left:100px;
+}
+/*Dec23 code added by Archana to reduce gap between logo and App Name*/
+.navHeaderMaxHeight{
+    max-height:45px;
+}
+/*Dec23 end of code added by Archana to reduce gap between logo and App Name*/
+#labelheading
+{
+    /*updated by nairsa*/
+    padding-top: 20px;
+
+    font-size:medium;
+    color:white;
+    /*margin-right:20px;*/
+    margin-right:15px; /*code modified on Dec14 by Archana*/
+     /*Dec23 code added by Archana to design application name*/
+
+     padding-top:0;
+     padding-left:15px;
+
+ /*end of code added by Archana on Dec23*/
+
+}
+
+.labelheading
+{
+    /*updated by nairsa*/
+    padding-top: 20px;
+
+    font-size:medium;
+    color:#F89828;
+    /*margin-right:20px;*/
+    margin-right:15px; /*code modified on Dec14 by Archana*/
+     /*Dec23 code added by Archana to design application name*/
+
+     padding-top:0;
+     padding-left:15px;
+
+ /*end of code added by Archana on Dec23*/
+
+}
+
+/*Dec14 code added by Archana to style for User name and role data*/
+.userNameWrapper{
+    text-align:right; 
+    /*margin-top:10px;*/ 
+    /*padding:5px 0;*/ 
+    background-color:#F89828;
+}
+
+.userNameWrapper>.lblUserName{
+    font-size:14px;
+    color:white; 
+    margin-right:15px;
+}
+
+
+.Renderdiv{
+    width:100%;
+    margin:0 auto;
+    
+}
+
+.sidemenu{
+    /*Commented by nairsa*/
+    /*padding-left:0px;
+    padding-right:0px*/
+}
+
+.sorts{
+    cursor:pointer;
+    /*Commented by nairsa*/
+    /*padding-left: 10px*/
+}
+/*#removetablescroll{
+        
+    overflow-x: hidden;
+    overflow-y: hidden;
+    -ms-overflow-style: none;
+    border:none;
+   
+}*/
+
+.tablebackgroundcolor
+{
+    background-color:#fcdead;
+}
+.footerParagraph{
+    text-align:center;
+    margin:0 0 0px;
+}
+.footerdiv{
+    margin:0px auto;
+}
+.footerstyle{
+    font-size: 7.5px;
+    color: #fff
+}
+.tabletheads{
+      background-color: darkgray;
+}
+.Componenttheads{
+    background-color: darkgray;
+}
+.remarkstext
+{
+   padding-left:0px;
+}
+.col-md-6 label:not(.radio-inline) {
+    padding-left: 0px;
+}
+#selectcomponent
+{
+    font-weight:bold;
+}
+#tablethead{
+    text-align: center;
+}
+#componentthead
+{
+    text-align: center;
+ }
+.carousel-inner > .item > img
+    {
+        width: 100%;
+        margin: auto;
+        /*height:450px;*/
+        max-height: 650px;
+    }
+.pager {
+    padding-left: 0;
+    margin: 5px 0px 5px 0px;
+    text-align: center;
+    list-style: none;
+}
+.alertify-buttons
+{
+    background-color:white;
+    text-align:center;
+    border-top: none;
+    border-radius: 0 0 0 0; 
+    box-shadow:none;
+    padding:0px;
+}
+.alertify-button-ok, .alertify-button-ok:hover, .alertify-button-ok:focus {
+    background-color: #f89828;
+}
+.alertify-message {
+    padding-top: 0px;
+    font-weight: bold;
+}
+.alertify-button-cancel, .alertify-button-cancel:hover, .alertify-button-cancel:focus {
+    background-color: #f89828;
+}
+@media(min-width:992px) {
+       .sidemenu.col-md-3 {
+    width: 25%;
+    }
+}
+@media (min-width: 768px) and (max-width: 1920px) {
+    .rmk {
+    padding-right:0px;
+    }
+    
+    body {
+    /*padding-top: 50px;*/
+    /*Jan6 code commented by Archana as it was adding space below the sticky footer*/
+        
+    /*padding-bottom: 20px;
+ 
+    margin-bottom: 80px;*/
+                /*Jan6 end of code commented by Archana*/
+    }
+
+    .table-responsive {
+    width: 100%;
+    margin-bottom: 0px;
+    /*overflow-x: scroll;*/
+    overflow-y: hidden;
+    border: 1px solid #dddddd;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    -webkit-overflow-scrolling: touch;
+    }
+}
+@media (min-width: 768px) {
+    .table-responsive {
+        width : 100%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 790px)
+ {
+    div#myNavbar ul.navbar-right li a label {
+    display:none;
+    }
+     .table-responsive {
+    width: 100%;
+    margin-bottom: 15px;
+    /*overflow-x: scroll;*/
+    overflow-y: hidden;
+    border: 1px solid #dddddd;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    -webkit-overflow-scrolling: touch;
+    }
+     /*#removetablescroll{
+        
+     width: 100%;
+    margin-bottom: 15px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    border: 1px solid #dddddd;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    -webkit-overflow-scrolling: touch;
+   
+}*/
+ }
+ @media (max-width: 768px) {
+     /*Jan6 code commented by Archana*/
+    /*.footer {
+    height:222px;
+    }
+    body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    margin-bottom: 222px;
+    }*/
+    /*Jan6 end of code commented by Archana*/
+}
+ span{
+   
+    font-size: 12px;
+    line-height: 15px;
+    color: #000000;
+    font-weight: normal;
+}
+
+
+
+ .form-group {
+    margin-bottom: 10px;
+}
+
+ .form-control-table{
+     width: 100%;
+     padding: 3px;
+     border:solid 1px #555;
+     }
+
+ 	.form-control-table[disabled],
+	.form-control-table[readonly],
+	fieldset[disabled] .form-control {
+		cursor: not-allowed;
+		background-color: #eeeeee;
+	}
+     /*Oct20*/
+     .form-control-table-sm{
+         width:90%;
+         padding: 3px;
+     border:solid 1px #555;
+      min-width:200px;
+
+     /*min-width:100px;*/
+     
+     }
+
+     .form-control-table-sm[disabled],
+	.form-control-table-sm[readonly],
+	fieldset[disabled] .form-control {
+		cursor: not-allowed;
+		background-color: #eeeeee;
+	}
+     @media screen and (min-width:768px){
+      .form-control-table-sm {
+            width: 92%;
+            
+        }   
+     }
+
+     @media screen and (min-width:992px){
+      .form-control-table-sm {
+            width: 90%;
+            
+        }   
+     }
+     @media screen and (min-width:1100px){
+      .form-control-table-sm {
+            width: 92%;
+            
+        }   
+     }
+     @media screen and (min-width:1325px){
+        .form-control-table-sm {
+            width: 94%;
+        }
+     }
+     /*Oct20*/
+
+ .container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.control-btn-group {
+    margin-top: 15px;
+}
+
+
+/* Fix for modal not being centered*/
+#divLoading.modal {
+    height:auto; 
+    background-color: rgba(0, 0, 0, 0.3)!important;
+
+    /*Disable the scrollbar on the loader*/
+    overflow: hidden;
+    overflow-y: hidden;
+}
+
+/* Fix for modal not being centered*/
+#divLoading .modal-content {
+    background: transparent;
+    box-shadow: none;
+    border-color: #428bca;
+}
+/* Fix for side menu padding */
+.sidemenu .list-group a.active {
+    background: #464646;
+    border: none;
+}
+
+.sidemenu .list-group > a:first-child {
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+.sidemenu .list-group-item:first-child{
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+@media (max-width: 550px) {
+    /*Dec20 code commented by Archana to eliminate margin change for toggle button*/
+    /*.navbar-inverse button{
+        margin-top: 13px;
+    }*/
+    /*Dec20 end of code commented by Archana to eliminate margin change for toggle button*/
+    .margin-form-group-xs {
+        margin-bottom: 15px;
+    }
+    .clear-left-xs {
+        clear: left;
+    }
+    .btn-left-margin {
+        margin-left: 0 !important;
+    }
+
+    textarea.width-form-fit{
+        width: 89% !important;
+    }
+}
+
+.panel-heading button.close {
+    margin-right: 10px;
+    color: #fff;
+    opacity: 1;
+    margin-top: 5px;
+}
+
+.panel-heading button.close span {
+    color: #fff;
+    font-size: 1.1em;
+}
+
+textarea.width-form-fit{
+    width: 27.1%;
+}
+
+
+/* utils */
+.block-padding-10 {
+    padding: 10px;
+    display:block;
+}
+
+.block-margin-top-10 {
+    margin-top: 10px;
+}
+
+.block-margin-bottom-10 {
+    margin-bottom: 10px;
+}
+
+.btn-left-margin{
+    margin-left: -25px;
+}
+
+.clear-left {
+    clear: left;
+}
+
+.clear-right {
+    clear:right;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+/* Create design item page style - Issue with bootstrap styles applied*/
+.header-fixed {
+    width: 100% 
+}
+
+.header-fixed > thead,
+.header-fixed > tbody,
+.header-fixed > thead > tr,
+.header-fixed > tbody > tr,
+.header-fixed > thead > tr > th,
+.header-fixed > tbody > tr > td {
+    display: block;
+}
+
+.header-fixed > tbody > tr:after,
+.header-fixed > thead > tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+.header-fixed > tbody {
+    overflow-y: auto;
+    height: 150px;
+}
+
+.header-fixed > tbody > tr > td,
+.header-fixed > thead > tr > th {
+    width: 20%;
+    float: left;
+}
+/*code added by Archana Oct12 to increase the size of glyphicon*/
+.icon_arrow_large{
+    font-size:18px;
+    top:5px;
+    color:#eee;
+}
+/*code added on Jan24 to avoid scrollbar on parent browser window for the modal overflow*/
+#divGeometryValidatonMessage{
+    overflow:hidden;
+}
+/*end of code added on Jan24 to avoid scrollbar on parent browser window for the modal overflow*/
+
+div#divCopyNewDesignItem>div.dialog-style,
+div#divCreateNewRevision>div.dialog-style,
+div#divCreateNewRevisionAssembly>div.dialog-style,
+div#divProductHierarchy>div.dialog-style,
+div#divRelatedRatingSection>div.dialog-style,div#WhereUsedBOMModal>div.modal-dialog,
+div#divValidatonMessage>div.modal-dialog,
+div#divGeometryValidatonMessage>div.modal-dialog
+{
+    left:0%;
+}
+
+div#divValidatonMessageNewDesignItem>div.modal-dialog, div#divValidatonMessageNewRev>div.modal-dialog
+{
+    left:0%;
+    width:75%;
+}
+
+div#divErrorMessage>div.modal-dialog, div#divValidatonMessageNewRev>div.modal-dialog
+{
+    left:0%;
+    width:75%;
+}
+
+div#divCopyNewDesignItem>div.dialog-style>div.modal-content>div.modal-header,
+div#divCreateNewRevision>div.dialog-style>div.modal-content>div.modal-header,
+div#divCreateNewRevisionAssembly>div.dialog-style>div.modal-content>div.modal-header,
+div#divProductHierarchy>div.dialog-style>div.modal-content>div.modal-header,
+div#divRelatedRatingSection>div.dialog-style>div.modal-content>div.modal-header,
+div#WhereUsedBOMModal>div.modal-dialog>div.modal-content>div.modal-header,
+div#searchDesignItemModal>div.modal-dialog>div.modal-content>div.modal-header,
+div#divValidatonMessage>div.modal-dialog>div.modal-content>div.modal-header,
+div#divGeometryValidatonMessage>div.modal-dialog>div.modal-content>div.modal-header,
+div#divValidatonMessageNewRev>div.modal-dialog>div.modal-content>div.modal-header, 
+div#divValidatonMessageNewDesignItem>div.modal-dialog>div.modal-content>div.modal-header,
+div#divErrorMessage>div.modal-dialog>div.modal-content>div.modal-header
+{
+    background-color:#464646;
+}
+
+div#divValidatonMessage>div.modal-dialog>div.modal-content>div.modal-header,
+div#divGeometryValidatonMessage>div.modal-dialog>div.modal-content>div.modal-header
+{
+    color:#fff;
+}
+
+div#divCopyNewDesignItem>div.dialog-style>div.modal-content>div.modal-header>button.close,
+div#divCreateNewRevision>div.dialog-style>div.modal-content>div.modal-header>button.close,
+div#divCreateNewRevisionAssembly>div.dialog-style>div.modal-content>div.modal-header>button.close,
+div#divProductHierarchy>div.dialog-style>div.modal-content>div.modal-header>button.close,
+div#divRelatedRatingSection>div.dialog-style>div.modal-content>div.modal-header>button.close,
+div#WhereUsedBOMModal>div.modal-dialog>div.modal-content>div.modal-header>button.close,
+div#searchDesignItemModal>div.modal-dialog>div.modal-content>div.modal-header>button.close,
+div#divValidatonMessage>div.modal-dialog>div.modal-content>div.modal-header>button.close, 
+div#divGeometryValidatonMessage>div.modal-dialog>div.modal-content>div.modal-header>button.close,
+div#divValidatonMessageNewRev>div.modal-dialog>div.modal-content>div.modal-header>button.close, 
+div#divValidatonMessageNewDesignItem>div.modal-dialog>div.modal-content>div.modal-header>button.close,
+div#divErrorMessage>div.modal-dialog>div.modal-content>div.modal-header>button.close
+
+{
+    opacity:0.5;
+}
+
+div#divCopyNewDesignItem>div.dialog-style>div.modal-content>div.modal-header>button.close:hover,
+div#divCopyNewDesignItem>div.dialog-style>div.modal-content>div.modal-header>button.close:focus,
+div#divCreateNewRevision>div.dialog-style>div.modal-content>div.modal-header>button.close:hover,
+div#divCreateNewRevision>div.dialog-style>div.modal-content>div.modal-header>button.close:focus,
+div#divCreateNewRevisionAssembly>div.dialog-style>div.modal-content>div.modal-header>button.close:hover,
+div#divCreateNewRevisionAssembly>div.dialog-style>div.modal-content>div.modal-header>button.close:focus,
+div#divProductHierarchy>div.dialog-style>div.modal-content>div.modal-header>button.close:hover,
+div#divProductHierarchy>div.dialog-style>div.modal-content>div.modal-header>button.close:focus,
+div#divRelatedRatingSection>div.dialog-style>div.modal-content>div.modal-header>button.close:hover,
+div#divRelatedRatingSection>div.dialog-style>div.modal-content>div.modal-header>button.close:focus,
+div#WhereUsedBOMModal>div.modal-dialog>div.modal-content>div.modal-header>button.close:hover,
+div#WhereUsedBOMModal>div.modal-dialog>div.modal-content>div.modal-header>button.close:focus,
+div#searchDesignItemModal>div.modal-dialog>div.modal-content>div.modal-header>button.close:hover,
+div#searchDesignItemModal>div.modal-dialog>div.modal-content>div.modal-header>button.close:focus,
+div#divValidatonMessage>div.modal-dialog>div.modal-content>div.modal-header>button.close:hover,
+div#divValidatonMessage>div.modal-dialog>div.modal-content>div.modal-header>button.close:focus,
+div#divGeometryValidatonMessage>div.modal-dialog>div.modal-content>div.modal-header>button.close:hover,
+div#divGeometryValidatonMessage>div.modal-dialog>div.modal-content>div.modal-header>button.close:focus,
+div#divValidatonMessageNewRev>div.modal-dialog>div.modal-content>div.modal-header>button.close:hover,
+div#divValidatonMessageNewRev>div.modal-dialog>div.modal-content>div.modal-header>button.close:focus,
+div#divValidatonMessageNewDesignItem>div.modal-dialog>div.modal-content>div.modal-header>button.close:hover,
+div#divValidatonMessageNewDesignItem>div.modal-dialog>div.modal-content>div.modal-header>button.close:focus,
+div#divErrorMessage>div.modal-dialog>div.modal-content>div.modal-header>button.close:hover,
+div#divErrorMessage>div.modal-dialog>div.modal-content>div.modal-header>button.close:focus
+{
+    opacity:0.8;
+}
+
+div#divCopyNewDesignItem>div.dialog-style>div.modal-content>div.modal-header>button.close>span,
+div#divCreateNewRevision>div.dialog-style>div.modal-content>div.modal-header>button.close>span,
+div#divCreateNewRevisionAssembly>div.dialog-style>div.modal-content>div.modal-header>button.close>span,
+div#divProductHierarchy>div.dialog-style>div.modal-content>div.modal-header>button.close>span,
+div#divRelatedRatingSection>div.dialog-style>div.modal-content>div.modal-header>button.close>span,
+div#WhereUsedBOMModal>div.modal-dialog>div.modal-content>div.modal-header>button.close>span,
+div#searchDesignItemModal>div.modal-dialog>div.modal-content>div.modal-header>button.close>span,
+div#divValidatonMessage>div.modal-dialog>div.modal-content>div.modal-header>button.close>span,
+div#divGeometryValidatonMessage>div.modal-dialog>div.modal-content>div.modal-header>button.close>span,
+div#divValidatonMessageNewRev>div.modal-dialog>div.modal-content>div.modal-header>button.close>span,
+div#divValidatonMessageNewDesignItem>div.modal-dialog>div.modal-content>div.modal-header>button.close>span,
+div#divErrorMessage>div.modal-dialog>div.modal-content>div.modal-header>button.close>span
+{
+    color:#ffffff;
+    /*font-size:30px;
+    opacity:1;*/
+    font-size:24px;
+}
+
+div#divProductHierachyDetails>div.container-fluid>div.row{
+     margin-top:10px;
+}
+div#divCopyNewDesignItem form .form-group,div#divCreateNewRevision form .form-group, div#divCreateNewRevisionAssembly form .form-group{
+    margin-bottom:20px;
+}
+
+#txtCopyPartNumber{
+    width:100%;
+}
+
+.btnGroup input{
+    
+    width:120px;
+    white-space:normal;
+    word-wrap: break-word;
+    }
+
+.btnGroup>input:first-child{
+    margin-bottom:5px;
+}
+
+div#divCopyNewDesignItem div.modal-body,div#divCreateNewRevision div.modal-body, div#divCreateNewRevisionAssembly div.modal-body{
+    padding-left:30px;
+    padding-right:30px;
+}
+div#divCopyNewDesignItem form>div.form-group:last-child, div#divCreateNewRevision form>div.form-group:last-child, div#divCreateNewRevisionAssembly form>div.form-group:last-child{
+    /*background-color:red;*/
+    width:120px;
+    margin-left:auto;
+    margin-right:auto;
+}
+div#divCopyNewDesignItem form > div.form-group:last-child>input.ButtonWithImage, div#divCreateNewRevision form > div.form-group:last-child>input.ButtonWithImage, 
+div#divCreateNewRevisionAssembly form > div.form-group:last-child>input.ButtonWithImage {
+    width:55px;
+}
+/*styling on BOM tables*/
+.panelBOMSearch div.table-responsive{
+    margin-bottom:10px;
+}
+.tblSearchBOM{
+    margin-bottom:10px;
+}
+
+/*styling added for where used bom table on Dec1 By Archana*/
+.thdSearchBOM>tr>th,div#divWhereUsedBOM table>thead>tr>th{
+    color:#ffffff;
+    font-family:'Segoe UI';
+    font-size:12px;
+    line-height:15px;
+    font-weight:normal;
+}
+.btntblBOMSearch{
+    width:60px;
+    margin-bottom:2px;
+}
+
+.btnBOMSave, .btnBOMCancel{
+    width:60px;
+}
+.editableCtrlBOM{
+width:150px;
+}
+/*remove text decoration on hover and focus of Add new item to end of BOM link*/
+div.panelBOMSearch div.table-responsive + div a:hover,div.panelBOMSearch div.table-responsive + div a:focus{
+  text-decoration:none;
+}
+
+/*styling delete and pencil glyphs*/
+.glyphicon.glyphicon-remove{
+    font-size:16px;
+    color:red;
+}
+.glyphicon.glyphicon-pencil{
+    font-size:14px;
+}
+/*end of styling delete and pencil glyphs*/
+
+/*first level children to be indented and greyed*/
+table.table>tbody>tr.BOMFirstChild>td{
+    color:rgba(0,0,0,0.4);
+    font-weight:bold;
+ }
+
+
+/*end of first level children to be indented and greyed*/
+
+/* + icon which collapses and expands children*/
+/*table.table>tbody>tr.hasChildren>td:first-child span{
+     display:inline-block;
+    font-size:16px;
+    margin-right:10px;
+    font-weight:bold;
+ }*/
+
+/*add padding for cells that do not have children*/
+/*table.table>tbody>tr:not(.hasChildren)>td:first-child{
+    padding-left:30px;
+}*/
+
+/*tr.hasChildren>td:first-child span{
+   color:rgba(0,0,0,1);
+}*/
+
+/*to make to links arrear in black*/
+tr.firstLevelChild>td:first-child>a{
+    color:rgba(0,0,0,1);
+}
+
+/*to grey out children that are not first level*/
+tr:not(.firstLevelChild)>td:first-child span {
+    color:rgba(0,0,0,0.4);
+    font-weight:bold;
+}
+/*to allign the first level child*/
+tr:not(.hasChildren).firstLevelChild>td:first-child{
+    padding-left:10px;
+}
+
+tr.hasChildren>td:first-child span{
+    margin-left:2px;
+}
+/*for first level children that have children we need space between expander and text*/
+tr.hasChildren.firstLevelChild>td:first-child>a{
+    margin-left:2px;
+
+}
+
+tr:not(.firstLevelChild).hasChildren>td:first-child>span{
+    margin-left:2px;
+}
+/*tr:not(.firstLevelChild).hasChildren>td:first-child span{
+    color:pink;
+}*/
+table.table>tbody>tr.BOMFirstChild>td:first-child{
+    padding-left:30px;
+ }
+
+
+/*.FirstLevel_HasNoChild>td:first-child{
+    padding-left:20px;
+}*/
+
+
+/*end of styling on BOM tables*/
+
+/*start of Search Design Item Modal*/
+#searchDesignItemModal>div.modal-dialog{
+    left:0%;
+}
+#searchDesignItemModal .modal-header {
+    padding-top:8px;
+    padding-bottom:8px;
+}
+
+#searchDesignItemModal .modal-footer{
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+#searchDesignItemModal .modal-body {
+
+}
+
+/*Oct24 Form Search Design Item Revision Styling*/
+/*div.form-group>label.lblForm{
+    padding-top:3px;
+    padding-right:0;
+     
+}*/
+
+.txtRevIndependentPartNum{
+    max-width:250px;
+    margin-bottom:5px;
+}
+
+/*Nov2 commented by Archana*/
+
+/*select#selSeriesType{
+    width:50%;
+}*/
+
+/*Oct25*/
+/*input.ButtonWithImage.bigButtonWrap{
+    width:150px;
+    white-space:normal;
+}*/
+/*Nov2*/
+div.form-horizontal>div.form-group>div.btnOpenPartNumGen>input.ButtonWithImage{
+    white-space:normal;
+}
+
+/*Oct27*/
+div.form-group label.formLabelAlign{
+        padding-left:15px;
+        text-align:left;
+        padding-right:0;
+        
+    }
+
+.rightPadding0px{
+    padding-right:0px;
+}
+
+div.form-group>div.marginBottom10px{
+
+}
+/*Oct28*/
+/*div.form-group>label.lblPadding{
+   
+}*/
+/*commented on Nov2*/
+/*div.form-group.btnSearchRating{
+    padding-left:15px;
+}*/
+div.form-group.btnSearchRating>div{
+        text-align:left;
+        
+    }
+/*Nov2*/
+.btnDivSearchDesignItem{
+    padding-left:15px;
+}
+/*Nov3*/
+div.panel-heading.createDIPanelHeading{
+    background-color:#464646;
+}
+
+div.panel-heading.createDIPanelHeading>label{
+    color:#fff;
+
+}
+
+div.panel-heading.createDISubPanelHeading{
+    background-color:#fff;
+    padding:0;
+}
+div.panel-heading.createDISubPanelHeading>label{
+    display:block;
+    padding:0;
+    margin:0;
+}
+
+div.panel-heading.createDISubPanelHeading>label>a{
+    display:inline-block;
+    width:100%;
+    padding:5px 10px;
+}
+
+div.panel-heading.createDISubPanelHeading>label>a>span.glyphicon{
+    margin-right:10px;
+    color:#464646;
+}
+div.panel-heading.createDISubPanelHeading>label>a,div.panel-heading.createDISubPanelHeading>label>a:hover,div.panel-heading.createDISubPanelHeading>label>a:focus{
+text-decoration:none;
+color:#464646;
+}
+div.panel-group#accordion{
+    margin-bottom:20px;
+}
+div.panel-group#accordion div.panel.panel-default{
+    margin-bottom:10px;
+}
+
+.editGeoPanelCollapsibleHeader>.panel-heading, .editGeoPanelCollapsiblePAC>.panel-heading, .editGeoPanelCollapsibleGeometry>.panel-heading, .searchPanelCollapsibleHeader>.panel-heading   {
+    padding-top:0;
+    padding-bottom:0;
+}
+
+.editGeoPanelCollapsibleHeader>.panel-heading>.panel-title>label,.editGeoPanelCollapsiblePAC>.panel-heading>.panel-title>label, .editGeoPanelCollapsibleGeometry>.panel-heading>.panel-title>label, 
+.searchPanelCollapsibleHeader>.panel-heading>.panel-title>label
+ {
+    padding-top:0;
+    padding-bottom:0;
+    display:block;
+}
+.editGeoPanelCollapsibleHeader > .panel-heading > .panel-title > label > a, .editGeoPanelCollapsiblePAC > .panel-heading > .panel-title > label > a, 
+.editGeoPanelCollapsibleGeometry > .panel-heading > .panel-title > label > a,
+.searchPanelCollapsibleHeader > .panel-heading > .panel-title > label > a
+ {
+color:#fff;
+display:block;
+padding-top:8px;
+padding-bottom:8px;
+    }
+    .editGeoPanelCollapsibleHeader > .panel-heading > .panel-title > label > a:hover, .editGeoPanelCollapsibleHeader > .panel-heading > .panel-title > label > a:focus {
+    text-decoration:none;
+    }
+        .editGeoPanelCollapsiblePAC > .panel-heading > .panel-title > label > a:hover, .editGeoPanelCollapsiblePAC > .panel-heading > .panel-title > label > a:focus {
+    text-decoration:none;
+    }
+            .editGeoPanelCollapsibleGeometry > .panel-heading > .panel-title > label > a:hover, .editGeoPanelCollapsibleGeometry > .panel-heading > .panel-title > label > a:focus {
+    text-decoration:none;
+    }
+
+     .searchPanelCollapsibleHeader > .panel-heading > .panel-title > label > a:hover, .searchPanelCollapsibleHeader > .panel-heading > .panel-title > label > a:focus {
+    text-decoration:none;
+    }
+
+            
+
+/*Nov4*/
+.designItemWrapper{
+    padding:0 15px;
+}
+
+
+.designItemInput{
+    max-width:250px;
+}
+
+.divCreateDIRemarks {
+padding-left:15px;
+width:80%;
+}
+/*Nov 7*/
+/*.relatedSeriesNum,.relatedRatingInput{
+    min-width:90px;
+    max-width:100px;
+}*/
+/*above code commented on Nov15*/
+.relatedSeriesRev{
+    min-width:50px;
+    max-width:100px;
+}
+
+/*Nov9*/
+div.relatedRatingTypeInput{
+padding-right:0px;
+}
+div#divSeries{
+    /*padding-left:15px;*/
+    padding-left:0;
+}
+
+.relatedRatingsSearchWrapper .relatedRatingsSearchWrapper{
+    text-align:left; 
+}
+.relatedRatingsSearchWrapper input{
+    width:100px;
+}
+.colRelatedRating{
+    margin-bottom:20px;
+}
+
+/*Nov11*/
+.sm-marginBottom{
+    margin-bottom:10px;
+}
+
+
+/*Nov15 code added for Related Series Form*/
+.relatedSeriesWrapper,.relatedRatingWrapper{
+            padding-left:15px;
+            padding-right:15px;
+            width:100%;
+}
+.relatedSeriesMainWrapper,.relatedRatingMainWrapper{
+     padding-left:15px;
+}
+
+/*above code commented on Nov30 to let the input control sizes be defaulted on small screen widths*/
+/*.relatedSeriesInput,.relatedRatingInput{
+    width:125px;
+}*/
+/*end of code commented on Nov30*/
+/*code added on Nov30 to limit the maximum size of the input controls for Create Design Item >related series and ratings*/
+.relatedSeriesInput,.relatedRatingInput{
+    max-width:250px;
+}
+/*end of code added on Nov30 to  limit the maximum size of input controls*/
+/*below code commented on Feb3,2017*/
+/*.relatedSeriesLabel,.relatedRatingLabel{ 
+    width:100px;
+}*/
+.relatedSeriesLabel{ 
+    width:100px;
+}
+/*below code added on Feb3,2017 to allow related rating labels have default width and screen sizes upto 768px*/
+.relatedRatingLabel{
+    width:auto;
+}
+/*end of code added on Feb3,2017 to allow related ratings labels have default width*/
+.seriesNumWrapper,.revisionWrapper,.ratingTypeWrapper,.rollersPerRowWrapper,.baseSeriesWrapper{
+    margin-bottom:10px;
+}
+/*end of code added for related Series and related ratings form*/
+
+/*code added on Nov30 to create margin below Add Series and Search Ratings button in Create Design Item*/
+.addButtonWrapper,.searchButtonWrapper{
+                margin-bottom:20px;
+            }
+/*end of code added on Nov30*/
+
+@media screen and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+     /* IE10+ CSS styles go here */
+     div.table-responsive>table.table>tbody>tr:last-child>td,
+     div.table-responsive>table.table>tbody>tr.lastPT-tree>td,
+     div.table-responsive>table.table>tbody>tr.lastPL-tree>td,
+     div.table-responsive>table.table>tbody>tr.lastPV-tree>td, 
+     div.table-responsive>table.table>tbody>tr.lastPD-tree>td {
+    padding-bottom:18px;
+}
+ /*above code modified on Dec2 to handle ie scrollbar overlap issue on last row in tables with treegrid*/
+}
+
+/*Code added on Dec2 to stop wrapping of content in the Material Description column of BOM table and of Dimensions table*/
+.tblSearchBOM>tbody>tr>td:first-child,.tblSearchBOM>tbody>tr>td:first-child>span,table.tblCreateDimension>tbody>tr>td:first-child{
+    white-space:nowrap;
+    
+}
+
+/*end of code added on Dec2 to stop wrapping of content in BOM table and Dimensions table*/
+
+
+
+
+@media screen and (min-width:250px){
+
+/*input.ButtonWithImage.bigButtonWrap{
+    width:auto;
+    white-space:nowrap;
+}*/
+/*Nov 2*/
+    /*div.btnOpenPartNumGen > input.ButtomWithImage {
+            width:auto;
+    white-space:nowrap;
+    }*/
+}
+/*IE10+ specific code*/
+
+/*end of IE10+ specific code*/
+
+/*Nov2 code commented and due to redundant media query*/
+/*@media screen and (min-width:768px){
+#searchDesignItemModal>div.modal-dialog{
+    width:90%;
+}
+
+.txtRevIndependentPartNum{
+    max-width:100%;
+    margin-bottom:0;
+}
+
+div.form-group label.formLabelAlign{
+        padding-left:0px;
+        text-align:right;
+        padding-top:3px;
+    }
+}*/
+
+/*end of search design item modal*/
+@media screen and (min-width:256px){
+.btnGroup input{
+    width:165px;
+    white-space:nowrap;
+    max-width:100%;
+}
+}
+
+@media screen and (min-width:550px){
+.btnGroup{
+    padding-left:10%;
+}
+}
+
+@media screen and (min-width:600px){
+.btnGroup{
+    width:340px;
+    margin-left:auto;
+    margin-right:auto;
+    padding:0;
+}
+}
+@media screen and (min-width:768px){
+    /*Dec20 code added to align logo with navbar toggle button*/
+    div.navbar-header>a.DIMNavbarBrand{
+        padding-top:15px;
+    }
+
+    .navbar-nav >li>a{
+        padding-bottom:10px;
+    }
+    .navbar-right{
+        margin-top:2px;
+    }
+    /*Dec20 end of code addded by Archana to align logo with navbar toggle button */
+    div#divProductHierarchy>div.dialog-style{
+        width:700px;
+    }
+
+    .buildInfo{
+    margin-right:15px; text-align:right;
+    margin-left:0;
+}
+
+ /*Oct28*/   
+ /*div.form-group>label.lblPadding{
+ padding-top:3px;
+
+ padding-right:0;  
+}*/
+
+ /*div.form-group.btnSearchRating{
+text-align:center;
+}*/
+
+ div.form-group>label.lblPrevRemarks{
+        width:33.3333%; 
+        padding-right:15px; 
+        padding-left:15px;
+        float:left;
+    }
+    div.form-group>div.divPrevRemarks{
+        float:left;
+        width:50%;
+    }
+
+/*Nov2 code brought down from redundant media query*/
+/*.btnDivSearchDesignItem{
+    text-align:center;
+}*/
+/*above code commented on Nov16*/
+
+
+/*Below code modified on Dec5 to increase the size of Create New Revision Modal and match it to BOM's Search Design Item Modal*/
+#searchDesignItemModal>div.modal-dialog,#divCreateNewRevision>div.modal-dialog,#divCreateNewRevisionAssembly>div.modal-dialog,
+#divValidatonMessage>div.modal-dialog,#divGeometryValidatonMessage>div.modal-dialog{/*code modified on Jan24 to increase width of geometry validation message dialog*/
+    width:90%;
+}
+/*end of code added on Dec5*/
+
+
+.txtRevIndependentPartNum{
+    max-width:100%;
+    margin-bottom:0;
+}
+/*Oct27*/
+div.form-group label.formLabelAlign{
+        padding-left:0px;
+        text-align:right;
+        padding-top:3px;
+    }
+
+.btnGoPadding{
+    padding-left:0;
+}
+
+div.btnOpenPartNumGen{
+    padding-left:0;
+}
+/*Nov4*/
+.lblCreateDIRemarks{
+    width:33.33333%;
+    float:left;
+}
+.divCreateDIRemarks{
+    float:left;
+    width:50%;
+}
+
+/*Nov 7*/
+.relatedSeriesAddWrapper{
+    padding-left:0;
+}
+
+.relatedRatingsSearchWrapper .relatedRatingsSearchWrapper{
+    text-align:center;
+}
+/*Nov9*/
+/*.relatedRatingInput{*/
+    /*min-width:initial;*/
+/*}*/
+/*above code commented on Nov15*/
+.lblRollersPerRow{
+    padding-left:0;
+}
+.lblBaseSeries{
+    padding-left:0;
+}
+
+div#divSeries{
+    padding-left:0px;
+}
+/*Nov14*/
+.createRatingLabel{
+    /*line-height:23px;*/
+    padding-top:3px;
+}
+/*Nov15*/
+ .relatedSeriesLabel,.relatedSeriesInput,.relatedRatingLabel, .relatedRatingInput{
+                float:left;
+            }
+ .relatedSeriesLabel,.relatedRatingLabel{
+                text-align:right;
+                padding-right:15px;
+                padding-top:3px;
+            }
+
+
+
+ /*below code added on Nov30 to make the related series and related ratings forms center aligned inside the panel body*/
+.relatedSeriesWrapper,.relatedRatingWrapper{
+            width:380px;
+            margin-left:auto;
+            margin-right:auto;
+}
+/*end of code added on Nov30 to make forms center aligned inside panel body*/
+   
+ .addButtonWrapper,.searchButtonWrapper{
+    padding-left:100px;
+}
+ /*code added on Dec23 to style Application Name*/
+    #labelheading {
+        padding-top:20px;
+        padding-left:0;
+    }
+    /*end of code added to style Application name*/
+    /*start of code added on Dec23 to adjust Username div for sm and bigger screens*/
+.divUserNameRolefixed{
+    top:65px;
+}
+/*end of code added on Dec23*/
+/*code added on Jan11 to style error msg for Page Not Found*/
+.errorMsg{
+    text-align:left;   
+}
+/*end of code added on Jan11 to style error msg for Page Not Found*/
+}
+
+/*Oct27*/
+@media screen and (min-width:768px) and (max-width:992px){
+div.form-group>div.marginBottom10px{
+        margin-bottom:10px;
+    }
+ /*code added on Feb3 to align Base Series Number label correctly*/
+ .relatedRatingWrapper,.relatedSeriesWrapper{
+     width:430px;
+ }
+.relatedRatingLabel,.relatedSeriesLabel{
+     width:125px;
+ }
+ .addButtonWrapper,.searchButtonWrapper{
+     padding-left:125px;
+ }
+ /*end of code added on Feb3*/
+}
+
+/*Oct28*/
+@media screen and (min-width:992px)
+{
+    div.form-group>label.lblPrevRemarks{
+        width:20.833%; 
+        padding-right:15px; 
+        padding-left:15px;
+        
+    }
+    div.form-group>div.divPrevRemarks{
+        width:66.666%;
+    }
+
+    div.form-group.btnSearchRating>div{
+        text-align:center;
+    }
+
+    .lblCreateDIRemarks{
+    width:20.833%;
+
+}
+.divCreateDIRemarks{
+    
+    width:66.66666%;
+}
+/*Nov 7*/
+.relatedSeriesNum{
+    max-width:none;
+}
+/*Nov11*/
+.sm-marginBottom{
+    margin-bottom:0;
+}
+/*Nov15*/
+.seriesNumWrapper,.revisionWrapper,.addButtonWrapper{
+                float:left;   
+}
+
+.ratingTypeWrapper,.rollersPerRowWrapper,.baseSeriesWrapper{
+    float:none;
+    margin-left:0;
+    margin-right:10px;
+    width:400px;/*Nov30*/
+}
+
+.ratingTypeWrapper>.relatedRatingLabel{
+    /*text-align:left;*//*code commented on Feb3 to align the label to right*/
+    text-align:right;/*code added to align label right on Feb3*/
+}
+/*code commented on Nov30*/
+/*.relatedRatingInput,.relatedSeriesInput{
+    width:100px;
+}*/
+.searchButtonWrapper{
+    padding:0;
+    width:100px;
+    margin-right:0;
+    float:none;
+    /*padding-left:100px;*//*Feb3 code commented to align the button correctly with textboxes above*/
+    padding-left:125px;/*Feb3 code added to align the button correctly with textboxes above*/
+}
+.seriesNumWrapper,.revisionWrapper{
+                margin-left:0;
+                margin-right:25px;
+}
+.addButtonWrapper {
+                /*width:40px;*//*code commented on Nov30*/
+                /*padding-left:70px;*/
+                margin-left:0;
+                padding-left:10px;
+}
+
+/*Related Series styling*/
+.seriesNumWrapper > .relatedSeriesLabel {
+        text-align:left;
+        width:98px;
+}
+.revisionWrapper > .relatedSeriesLabel {
+width:62px;
+}
+
+.relatedSeriesInput{
+    width:150px;
+}
+.seriesNumWrapper{
+    width:250px;
+}
+.revisionWrapper{
+    width:220px;
+}
+/*Related Series styling ends*/
+/*code commented on Nov30*/
+ /*.seriesNumWrapper{
+     width:198px;
+ }
+ .revisionWrapper{
+     width:162px;
+ }*/
+
+ /*Nov16 code added to make buttons appear centered only at widths greater than 992px*/
+ .btnDivSearchDesignItem{
+    text-align:center;
+}
+ /*Nov 30*/
+ .relatedSeriesWrapper,.relatedRatingWrapper{
+            width:100%;
+            margin-left:auto;
+            margin-right:auto;
+            padding-left:0;
+}
+ 
+ /*code added on Feb3 to fix width for labels in related rating*/
+ .relatedRatingLabel{
+     width:125px;
+     
+ }
+ /*Dec5 */
+ .divWhereUsedDIWrapper{
+     width:90%;
+     margin-left:auto; 
+     margin-right:auto;
+ }
+ /*Dec7 code added to style Child BOM div shown in Create New Revision*/
+ .createRevChildBOMWrapper{
+     width:80%;
+     margin-left:auto;
+     margin-right:auto;
+ }
+
+ div#divRelatedRatingSection div.modal-dialog{
+     width:80%;
+ }
+
+ /*end of code added on Dec7*/
+}
+@media screen and (min-width:1098px){
+    .tblSearchBOM{
+    margin-bottom:0px;
+}
+}
+
+/*below code commented on Nov30 to restyle related ratings panel in Create Design Item*/
+
+/*Nov15*/
+/*@media screen and (min-width:1015px){
+    .ratingTypeWrapper, .rollersPerRowWrapper, .baseSeriesWrapper, .searchButtonWrapper {
+        margin-right:15px;
+    }
+}*/
+/*Nov15*/
+/*@media screen and (min-width:992px) and (max-width:1100px){
+    .rollersPerRowWrapper>.relatedRatingInput,.baseSeriesWrapper>.relatedRatingInput{
+        padding-top:0;
+    }
+}
+@media screen and (min-width:1100px){  
+    .ratingTypeWrapper, .rollersPerRowWrapper, .baseSeriesWrapper, .searchButtonWrapper {
+        margin-right:25px;
+    }
+    .rollersPerRowWrapper,.baseSeriesWrapper{
+        width:200px;
+    }
+    .rollersPerRowWrapper>.relatedRatingLabel,.baseSeriesWrapper>.relatedRatingLabel{
+        width:100px;
+    }
+    
+}*/
+
+/*end of code commented on Nov30 to restyle related ratings panel in Create Design Item*/
+@media screen and (min-width:1205px){
+    /*code commented on Nov30 to be removed after testing*/
+/*.relatedRatingsSearchWrapper{
+    text-align:center;
+}
+.relatedRatingsSearchWrapper .relatedRatingsSearchWrapper{
+    text-align:center;
+}*/
+/*end of code commented on Nov30 to be removed after testing*/
+
+/*start of code added on Nov30 to restyle related ratings panel in create design item*/
+
+/*give widths to all the controls on related ratings panel*/
+
+
+/*Rating type*/
+.ratingTypeWrapper{
+    width:308px;
+    margin-right:25px;
+    
+}
+.ratingTypeWrapper>.relatedRatingLabel{
+    width:82px;
+}
+.ratingTypeWrapper>.relatedRatingInput{
+    width:225px;
+}
+/*Rating Type ends*/
+
+/*rollers per row*/
+.rollersPerRowWrapper>.relatedRatingInput{
+    width:70px;
+}
+.rollersPerRowWrapper>.relatedRatingLabel{
+    /*width:80px;*/
+    width:100px;
+}
+.rollersPerRowWrapper{
+    /*width:150px;*/
+    width:170px;
+    margin-right:25px;
+}
+/*end of rollers per row*/
+
+
+/*base series wrapper*/
+.baseSeriesWrapper{
+    width:225px;
+    margin-right:0;
+}
+.baseSeriesWrapper>.relatedRatingLabel{
+    width:100px;
+}
+.baseSeriesWrapper>.relatedRatingInput{
+    width:125px;
+}
+
+/*end of base series wrapper*/
+
+/*search button wrapper*/
+.searchButtonWrapper{
+    /*width:100px;
+    padding-left:0;*/
+    /*float:none;*/
+    padding:0;
+    /*width:100px;*/
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.searchButtonWrapper>.searchRatingButton{
+
+}
+/*end of search button wrapper*/
+/*float all the wrappers in the related ratings to left except the wrapper for search button*/
+.ratingTypeWrapper,.rollersPerRowWrapper,.baseSeriesWrapper{
+    float:left;
+}
+/*end of code added on Nov30 to restyle related ratings panel in create design item*/
+}
+
+@media screen and (min-width:1380px) {
+
+    .relatedRatingInputOnlyWrapper{
+        width:755px;
+        float:left;
+        margin-right:35px;
+    }
+/*bring the search button inline with the input controls*/
+    .searchButtonWrapper {
+        width:100px;
+        float:left;
+    }
+}
+
+/*@media screen and (min-width:1400px) {
+    .relatedRatingInputOnlyWrapper{
+        width:810px;
+        float:left;
+    }
+.ratingTypeWrapper,.rollersPerRowWrapper,.baseSeriesWrapper{
+    margin-right:25px;
+}
+
+}*/
+/* added by Udhay */
+input.error-class {background-color:red; color:#fff;}
+span.no-visibility { visibility:hidden;}
+tr.material-highlight-class td, tr.material-highlight-class td span {color:red !important;}
+span.dim-error-label  {color:red;clear:both;float:left;margin-top:0.5%;}
+div.dim-error-label  {color:red;clear:both;float:left;margin-top:0.5%;}
+div.decimal-digit-format-class {text-align:center;clear:both;}
+tr.hidden-row-class {display:none !important;visibility:hidden;}
+/* added by Udhay end*/

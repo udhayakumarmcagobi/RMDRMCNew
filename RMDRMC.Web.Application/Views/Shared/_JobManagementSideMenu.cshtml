@@ -1,0 +1,33 @@
+﻿
+<div id="MainMenu" class="">
+    <input type="hidden" id="hidSideMenuName" value="@ViewBag.sideMenuName" />
+    <div class="list-group panel">
+        <a href="#Menus" class="list-group-item list-group-item-success strong text-left active" data-toggle="collapse" data-parent="#MainMenu">
+            <label style="color:#fff">Job Management</label>
+        </a>
+
+        <div class="list-group-submenu" id="Menus">            
+
+            <a href="@Url.Action("Index","JobSpecifications", new { Area = "JobManagement" })" class="list-group-item" id="JobSpecifications" data-parent="#SubMenu6"><span>Job Specifications</span></a>
+            <a href="@Url.Action("Index","JobCard", new { Area = "JobManagement" })" class="list-group-item" id="JobCard" data-parent="#SubMenu6"><span>Job Card</span></a>           
+            <a href="@Url.Action("Index","JobScheduling", new { Area = "JobManagement" })" class="list-group-item" id="JobScheduling" data-parent="#SubMenu6"><span>Job Scheduling</span></a>
+            <a href="@Url.Action("Index","JobProcessScheduling", new { Area = "JobManagement" })" class="list-group-item" id="JobProcessScheduling" data-parent="#SubMenu6"><span>Job Process Scheduling</span></a>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

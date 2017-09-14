@@ -1,0 +1,18 @@
+﻿
+<div id="MainMenu" class="">
+    <input type="hidden" id="hidSideMenuName" value="@ViewBag.sideMenuName" />
+    <div class="list-group panel">
+        <a href="#Menus" class="list-group-item list-group-item-success strong text-left active" data-toggle="collapse" data-parent="#MainMenu">
+            <label style="color:#fff">Invoice Management</label>
+        </a>
+
+        <div class="list-group-submenu" id="Menus">            
+
+            <a href="@Url.Action("Index","JobInvoice", new { Area = "InvoiceManagement" })" class="list-group-item" id="JobInvoice" data-parent="#SubMenu7"><span>Job Invoice</span></a>
+            <a href="@Url.Action("Index","DC", new { Area = "InvoiceManagement" })" class="list-group-item" id="Quotation" data-parent="#SubMenu7"><span>DC</span></a>            
+
+        </div>
+    </div>
+</div>
+
+

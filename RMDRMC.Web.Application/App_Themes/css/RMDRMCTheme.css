@@ -1,21 +1,21 @@
-﻿.navbar-inverse .TimkenLogo {
-    background-image:url(../images/timken-logo-orange-small.png);
+﻿.navbar-inverse .RamyaLogo {
+    background-image:url(../images/Ramya-logo-orange-small.png);
     width:120px;
     height:30px;
     background-repeat:no-repeat;
     margin:8px 25px 0px  10px;
 }
 
-.navbar-gray .TimkenLogo {
-    background-image:url(../images/timken-logo-black-small.png);
+.navbar-gray .RamyaLogo {
+    background-image:url(../images/Ramya-logo-black-small.png);
     width:120px;
     height:30px;
     background-repeat:no-repeat;
     margin:8px 25px 0px  10px;
 }
 
-.navbar-orange .TimkenLogo {
-    background-image:url(../images/timken-logo-black-small.png);
+.navbar-orange .RamyaLogo {
+    background-image:url(../images/Ramya-logo-black-small.png);
     width:120px;
     height:30px;
     background-repeat:no-repeat;

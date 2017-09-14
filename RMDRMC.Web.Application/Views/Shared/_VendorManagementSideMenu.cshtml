@@ -1,0 +1,32 @@
+﻿
+<div id="MainMenu" class="">
+    <input type="hidden" id="hidSideMenuName" value="@ViewBag.sideMenuName" />
+    <div class="list-group panel">
+        <a href="#Menus" class="list-group-item list-group-item-success strong text-left active" data-toggle="collapse" data-parent="#MainMenu">
+            <label style="color:#fff">Vendor Management</label>
+        </a>
+
+        <div class="list-group-submenu" id="Menus">            
+
+            <a href="@Url.Action("Index","Enquiry", new { Area = "VendorManagement" })" class="list-group-item" id="Enquiry" data-parent="#SubMenu3"><span>Enquiry</span></a>
+            <a href="@Url.Action("Index","Quotation", new { Area = "VendorManagement" })" class="list-group-item" id="Quotation" data-parent="#SubMenu3"><span>Quotation</span></a>
+            <a href="@Url.Action("Index","QuotationAcceptance", new { Area = "VendorManagement" })" class="list-group-item" id="QuotationAcceptance" data-parent="#SubMenu3"><span>Quotation Acceptance</span></a>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

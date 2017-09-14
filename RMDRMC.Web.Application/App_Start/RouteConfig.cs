@@ -14,17 +14,17 @@ namespace RMDRMC.Web.Application
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-            name: "IncompletePath",
+            name: "HomePage",
              url: "{controller}/{action}/{id}",
-            defaults: new { controller = "Error", action = "NotFound", id = UrlParameter.Optional, }
+            defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional, }
             , namespaces: new[] { "RMDRMC.Web.Application.Controllers" }
             );
 
             routes.MapRoute(
-                name: "Default",
-                url: "{areas}/{controller}/{action}/{id}",
-                defaults: new { areas = "General", controller = "Home", action = "Index", id = UrlParameter.Optional, },
-                namespaces: new[] { "RMDRMC.Web.Application.Areas.General.Controllers" }
+            name: "IncompletePath",
+             url: "{controller}/{action}/{id}",
+            defaults: new { controller = "Error", action = "NotFound", id = UrlParameter.Optional, }
+            , namespaces: new[] { "RMDRMC.Web.Application.Controllers" }
             );
         }
     }

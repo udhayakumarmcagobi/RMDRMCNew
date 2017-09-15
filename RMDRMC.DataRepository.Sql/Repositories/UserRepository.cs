@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMDRMC.Infrastructure.Common
+namespace RMDRMC.DataRepository.Sql.Repositories
 {
-    public class Class1
+    class UserRepository
     {
     }
 }

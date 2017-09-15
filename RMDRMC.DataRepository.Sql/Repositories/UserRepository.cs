@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace RMDRMC.DataRepository.Sql.Repositories
 {
-    class UserRepository
+    public class UserRepository
     {
+
     }
 }

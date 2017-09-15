@@ -14,8 +14,7 @@
         @*Masters Starts*@
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span>Masters</span><span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="@Url.Action("Index","Bins", new { Area = "Master" })"><span>Bin</span></a></li>
+            <ul class="dropdown-menu">                
                 <li><a href="@Url.Action("Index","Size", new { Area = "Master" })"><span>Size</span></a></li>
                 <li><a href="@Url.Action("Index","Description", new { Area = "Master" })"><span>Description</span></a></li>
                 <li><a href="@Url.Action("Index","Property", new { Area = "Master" })"><span>Property</span></a></li>
@@ -25,6 +24,10 @@
                 <li><a href="@Url.Action("Index","Customer", new { Area = "Master" })"><span>Customer</span></a></li>
                 <li><a href="@Url.Action("Index","Item", new { Area = "Master" })"><span>Item</span></a></li>
                 <li><a href="@Url.Action("Index","Machine", new { Area = "Master" })"><span>Machine</span></a></li>
+                <li><a href="@Url.Action("Index","ProcessDepartment", new { Area = "Master" })"><span>Process/Department</span></a></li>
+                <li><a href="@Url.Action("Index","Component", new { Area = "Master" })"><span>Component</span></a></li>
+                <li><a href="@Url.Action("Index","JobCardComponentProcess", new { Area = "Master" })"><span>Job Card Component Process</span></a></li>
+                <li><a href="@Url.Action("Index","JobCardProcessComponent", new { Area = "Master" })"><span>Job Card Process and Component</span></a></li>
             </ul>
         </li>
         @*Masters Ends*@
@@ -57,10 +60,7 @@
             <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span>Inventory Management</span><span class="caret"></span></a>
             <ul class="dropdown-menu">
                 <li><a href="@Url.Action("Index","GRN", new { Area = "InventoryManagement"})"><span>GRN</span></a></li>
-                <li><a href="@Url.Action("Index","GRNInspection", new { Area = "InventoryManagement"})"><span>GRN Inspection</span></a></li>
-                <li><a href="@Url.Action("Index","BinAllocation", new { Area = "InventoryManagement"})"><span>Bin Allocation</span></a></li>
-                <li><a href="@Url.Action("Index","SwapBins", new { Area = "InventoryManagement"})"><span>Swap Bins</span></a></li>
-                <li><a href="@Url.Action("Index","ExcessQuantity", new { Area = "InventoryManagement"})"><span>Excess Quantity</span></a></li>
+                <li><a href="@Url.Action("Index","GRNInspection", new { Area = "InventoryManagement"})"><span>GRN Inspection</span></a></li>                
                 <li><a href="@Url.Action("Index","MaterialIssueReturns", new { Area = "InventoryManagement"})"><span>Materia lssue/Returns</span></a></li>
             </ul>
         </li>
@@ -69,8 +69,7 @@
         @*Job Management Starts*@
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span>Job Management</span><span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="@Url.Action("Index","JobSpecifications", new { Area = "JobManagement"})"><span>JobSpecifications</span></a></li>
+            <ul class="dropdown-menu">                
                 <li><a href="@Url.Action("Index","JobCard", new { Area = "JobManagement"})"><span>Job Card</span></a></li>
                 <li><a href="@Url.Action("Index","JobScheduling", new { Area = "JobManagement"})"><span>Job Scheduling</span></a></li>
                 <li><a href="@Url.Action("Index","JobProcessScheduling", new { Area = "JobManagement"})"><span>Job Process Scheduling</span></a></li>
@@ -81,8 +80,7 @@
         @*Invoice Management Starts*@
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span>Invoice Management</span><span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="@Url.Action("Index","JobInvoice", new { Area = "InvoiceManagement"})"><span>Job Invoice</span></a></li>
+            <ul class="dropdown-menu">                
                 <li><a href="@Url.Action("Index","DC", new { Area = "InvoiceManagement"})"><span>DC</span></a></li>
             </ul>
         </li>
@@ -99,6 +97,8 @@
                 <li><a href="@Url.Action("Index","MaterialIssue", new { Area = "Reports"})"><span>Material Issue</span></a></li>
                 <li><a href="@Url.Action("Index","MaterialReturns", new { Area = "Reports"})"><span>Material Returns</span></a></li>
                 <li><a href="@Url.Action("Index","Inventory", new { Area = "Reports"})"><span>Inventory</span></a></li>
+                <li><a href="@Url.Action("Index","Machine", new { Area = "Reports"})"><span>Machine</span></a></li>
+                <li><a href="@Url.Action("Index","PurchaseOrderPending", new { Area = "Reports"})"><span>Purchase Order Pending</span></a></li>
             </ul>
         </li>
         @*Reports Ends*@

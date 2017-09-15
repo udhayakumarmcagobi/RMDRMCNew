@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace RMDRMC.Web.Application.Areas.Master.Controllers
 {
-    public class BinsController : Controller
+    public class ProcessDepartmentController : Controller
     {
-        // GET: Master/Bins
+        // GET: Master/ProcessDepartment
         public ActionResult Index()
         {
             ViewBag.Sidemenu = "Masters";

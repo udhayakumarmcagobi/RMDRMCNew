@@ -40,11 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\ChildScreen.cs" />
+    <Compile Include="Domain\RequestBase.cs" />
+    <Compile Include="Domain\ResponseBase.cs" />
+    <Compile Include="Enum\ScreenAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Roles.cs" />
+    <Compile Include="Domain\RMDRMCBase.cs" />
+    <Compile Include="Reference\Screen.cs" />
+    <Compile Include="Reference\Roles.cs" />
+    <Compile Include="Reference\UserBase.cs" />
+    <Compile Include="Reference\Users.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

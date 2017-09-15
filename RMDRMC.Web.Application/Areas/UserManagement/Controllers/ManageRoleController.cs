@@ -14,5 +14,12 @@ namespace RMDRMC.Web.Application.Areas.UserManagement.Controllers
             ViewBag.Sidemenu = "UserManagement";
             return View();
         }
+
+        // GET: UserManagement/ManageRole/CreateRole
+        public ActionResult CreateRole()
+        {
+            ViewBag.Sidemenu = "UserManagement";
+            return View();
+        }
     }
 }

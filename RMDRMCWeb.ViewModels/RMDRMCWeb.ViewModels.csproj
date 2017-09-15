@@ -40,7 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\RMDRMCBaseVM.cs" />
+    <Compile Include="Domain\RolesVM.cs" />
+    <Compile Include="Domain\ScreenVM.cs" />
+    <Compile Include="Domain\UserBaseVM.cs" />
+    <Compile Include="Domain\UsersVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="InventoryManagement\" />
+    <Folder Include="InvoiceManagement\" />
+    <Folder Include="JobManagement\" />
+    <Folder Include="Masters\" />
+    <Folder Include="POManagement\" />
+    <Folder Include="Reports\" />
+    <Folder Include="VendorManagement\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

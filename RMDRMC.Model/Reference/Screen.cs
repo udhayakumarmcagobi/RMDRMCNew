@@ -1,10 +1,11 @@
-﻿using System;
+﻿using RMDRMC.Model.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMDRMC.Model.Domain
+namespace RMDRMC.Model.Reference
 {
     public class Screen
     {
@@ -12,5 +13,6 @@ namespace RMDRMC.Model.Domain
         public string ScreenName { get; set; }
         public string ParentScreenID { get; set; }
         public string ParentScreen { get; set; }
+        public ScreenAccess ScreenAccess { get; set; }
     }
 }

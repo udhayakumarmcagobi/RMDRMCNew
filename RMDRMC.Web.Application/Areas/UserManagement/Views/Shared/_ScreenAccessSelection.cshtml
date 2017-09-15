@@ -1,0 +1,821 @@
+﻿@model  List<ScreenVM>
+
+@if (Model != null && Model.Any() && Model.Any(x => x.ChildScreens != null && x.ChildScreens.Any()))
+{
+    for (int i = 1; i < Model.Count; i++)
+    {
+        if (Model[i].ChildScreens != null && Model[i].ChildScreens.Any())
+        {
+            <div class="col-md-6">
+                <div class="panel panel-default" style="border-color:#ddd;" id="panel@i">
+                    <div class="panel-heading">
+                        <label>
+                            <a href="#Screen@Model[i].ScreenID" data-toggle="collapse" data-parent="#panel@i">
+                                <span class="glyphicon glyphicon-minus"></span>@Model[i].ScreenName
+                            </a>
+                        </label>
+                    </div>
+
+                    <div id="masterscreens" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="Header Fields">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr style="color:#fff;">
+                                        <th class="text-center" width="60%">Name</th>
+                                        <th class="text-center" width="20%">Viewer</th>
+                                        <th class="text-center" width="20%">Modify</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int screen = 1; screen < Model[i].ChildScreens.Count; screen++)
+                                    {
+                                        <tr>
+
+                                            <td>
+                                                @Model[i].ChildScreens[screen].ScreenID
+                                                @Model[i].ChildScreens[screen].ScreenName
+                                            </td>
+
+                                            <td></td>
+
+                                            <td></td>
+
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+}
+
+<div class="col-md-4">
+    <div class="panel panel-default" style="border-color:#ddd;" id="panel1">
+        <div class="panel-heading-sm">
+            <label><a href="#masterscreens" data-toggle="collapse" data-parent="#panel1">Master Screen<span class="glyphicon glyphicon-minus"></span></a></label>
+        </div>
+        <div id="masterscreens" class="panel-body  panel-collapse collapse in" role="tabpanel" aria-labelledby="Header Fields">
+            <div class="text-center">
+                <div class="table-responsive">
+                    <table class="table table-heading-sm">
+                        <thead>
+                            <tr>
+
+                                <th width="70%">Name</th>
+
+                                <th width="15%">
+                                    <input class="form-check-input" type="checkbox">
+                                    Viewer
+
+
+
+                                </th>
+
+                                <th width="15%">
+                                    <input class="form-check-input" type="checkbox">
+                                    Modify
+
+
+
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+                            <tr>
+
+                                <td>Size</td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Size 4</td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Size 2</td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Size 3</td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="panel panel-default" style="border-color:#ddd;" id="panel2">
+        <div class="panel-heading-sm">
+            <label><a href="#inventoryscreens" data-toggle="collapse" data-parent="#panel2">Inventory Screen<span class="glyphicon glyphicon-minus"></span></a></label>
+        </div>
+        <div id="inventoryscreens" class="panel-body  panel-collapse collapse in" role="tabpanel" aria-labelledby="Header Fields">
+            <div class="text-center">
+                <div class="table-responsive">
+                    <table class="table table-heading-sm">
+                        <thead>
+                            <tr>
+
+                                <th width="70%">Name</th>
+
+                                <th width="15%">
+                                    <input class="form-check-input" type="checkbox">
+                                    Viewer
+
+
+
+                                </th>
+
+                                <th width="15%">
+                                    <input class="form-check-input" type="checkbox">
+                                    Modify
+
+
+
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+                            <tr>
+
+                                <td>Size</td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Size 4</td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Size 2</td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Size 3</td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="panel panel-default" style="border-color:#ddd;" id="panel3">
+        <div class="panel-heading-sm">
+            <label><a href="#vendorscreens" data-toggle="collapse" data-parent="#panel3">Vendor Screen<span class="glyphicon glyphicon-minus"></span></a></label>
+        </div>
+        <div id="vendorscreens" class="panel-body panel-collapse collapse in" role="tabpanel" aria-labelledby="Header Fields">
+            <div class="text-center">
+                <div class="table-responsive">
+                    <table class="table table-heading-sm">
+                        <thead>
+                            <tr>
+
+                                <th width="70%">Name</th>
+
+                                <th width="15%">
+                                    <input class="form-check-input" type="checkbox">
+                                    Viewer
+
+
+
+                                </th>
+
+                                <th width="15%">
+                                    <input class="form-check-input" type="checkbox">
+                                    Modify
+
+
+
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+                            <tr>
+
+                                <td>Size</td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Size 4</td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Size 2</td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Size 3</td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="panel panel-default" style="border-color:#ddd;" id="panel4">
+        <div class="panel-heading-sm">
+            <label><a href="#jobscreens" data-toggle="collapse" data-parent="#panel4">Job Screen<span class="glyphicon glyphicon-minus"></span></a></label>
+        </div>
+        <div id="jobscreens" class="panel-body panel-collapse collapse in" role="tabpanel" aria-labelledby="Header Fields">
+            <div class="text-center">
+                <div class="table-responsive">
+                    <table class="table table-heading-sm">
+                        <thead>
+                            <tr>
+
+                                <th width="70%">Name</th>
+
+                                <th width="15%">
+                                    <input class="form-check-input" type="checkbox">
+                                    Viewer
+
+
+
+                                </th>
+
+                                <th width="15%">
+                                    <input class="form-check-input" type="checkbox">
+                                    Modify
+
+
+
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+                            <tr>
+
+                                <td>Size</td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Size 4</td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Size 2</td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Size 3</td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="panel panel-default" style="border-color:#ddd;" id="panel4">
+        <div class="panel-heading-sm">
+            <label><a href="#jobscreens" data-toggle="collapse" data-parent="#panel4">Job Screen<span class="glyphicon glyphicon-minus"></span></a></label>
+        </div>
+        <div id="jobscreens" class="panel-body panel-collapse collapse in" role="tabpanel" aria-labelledby="Header Fields">
+            <div class="text-center">
+                <div class="table-responsive">
+                    <table class="table table-heading-sm">
+                        <thead>
+                            <tr>
+
+                                <th width="70%">Name</th>
+
+                                <th width="15%">
+                                    <input class="form-check-input" type="checkbox">
+                                    Viewer
+
+
+
+                                </th>
+
+                                <th width="15%">
+                                    <input class="form-check-input" type="checkbox">
+                                    Modify
+
+
+
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+                            <tr>
+
+                                <td>Size</td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Size 4</td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Size 2</td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Size 3</td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="panel panel-default" style="border-color:#ddd;" id="panel4">
+        <div class="panel-heading-sm">
+            <label><a href="#jobscreens" data-toggle="collapse" data-parent="#panel4">Job Screen<span class="glyphicon glyphicon-minus"></span></a></label>
+        </div>
+        <div id="jobscreens" class="panel-body panel-collapse collapse in" role="tabpanel" aria-labelledby="Header Fields">
+            <div class="text-center">
+                <div class="table-responsive">
+                    <table class="table table-heading-sm">
+                        <thead>
+                            <tr>
+
+                                <th width="70%">Name</th>
+
+                                <th width="15%">
+                                    <input class="form-check-input" type="checkbox">
+                                    Viewer
+
+                                   
+
+                                </th>
+
+                                <th width="15%">
+                                    <input class="form-check-input" type="checkbox">
+                                    Modify
+
+                                  
+
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+                            <tr>
+
+                                <td>Size</td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Size 4</td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Size 2</td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Size 3</td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

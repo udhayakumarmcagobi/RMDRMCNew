@@ -357,6 +357,45 @@ div.list-group-submenu a:hover span{
     background-color: #464646;
     border-color: black;
 }
+
+    .panel-default > .panel-heading > label {
+        color: #fff;
+    }
+
+/*panel heading changes starts*/
+
+/* CSS used here will be applied after bootstrap.css */
+.panel-heading-sm{
+    height: 28px;
+    padding: 4px 10px;
+}
+
+.panel-body-sm{
+   padding: 5px 10px;
+}
+
+table.table-heading-sm thead tr th, table.table-heading-sm  tbody tr td{
+  	font-size: 12px;
+    height: 28px;
+    padding: 4px 10px;
+    text-align:center;
+
+}
+table.table-heading-sm thead tr {
+    color: #fff;
+}
+
+.table-body-sm{
+   padding: 5px 10px;
+}
+ .panel-heading-sm > label { color:#000;float:right;width:100%;}
+  .panel-heading-sm > label > a { float:right;width:100%;padding-right:2%;}
+    .panel-heading-sm > label > a > span { float:right;}
+
+
+
+/*panel heading changes ends*/
+
 .navbar-orange {
     background-color:#464646;
 }

@@ -198,6 +198,8 @@
     <Content Include="Areas\Master\Views\ProcessDepartment\Index.cshtml" />
     <Content Include="Areas\Reports\Views\Machine\Index.cshtml" />
     <Content Include="Areas\Reports\Views\PurchaseOrderPending\Index.cshtml" />
+    <Content Include="Areas\UserManagement\Views\Shared\_ScreenAccessSelection.cshtml" />
+    <Content Include="Areas\UserManagement\Views\ManageRole\CreateRole.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -318,9 +320,14 @@
     <Folder Include="Areas\Master\Views\Shared\" />
     <Folder Include="Areas\POManagement\Views\Shared\" />
     <Folder Include="Areas\Reports\Views\Shared\" />
-    <Folder Include="Areas\UserManagement\Views\Shared\" />
     <Folder Include="Areas\VendorManagement\Views\Shared\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RMDRMCWeb.ViewModels\RMDRMCWeb.ViewModels.csproj">
+      <Project>{c49963cd-4098-4ca7-953a-d1248741c141}</Project>
+      <Name>RMDRMCWeb.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

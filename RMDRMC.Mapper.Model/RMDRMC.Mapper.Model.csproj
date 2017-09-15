@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,7 +44,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoMapper.cs" />
+    <Compile Include="AutoMapperConfiguration.cs" />
+    <Compile Include="DomainToSql\DomainToSqlEntityCustomMapper.cs" />
+    <Compile Include="DomainToSql\DomainToSqlEntityMapperProfile.cs" />
+    <Compile Include="DomainToViewModel\DomainToViewModelCustomMapper.cs" />
+    <Compile Include="DomainToViewModel\DomainToViewModelMapperProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlToDomain\SqlEntityToDomainMapperProfile.cs" />
+    <Compile Include="SqlToDomain\SqlToDomainCustomMapper.cs" />
+    <Compile Include="ViewModelToDomain\ViewModelToDomainCustomMapper.cs" />
+    <Compile Include="ViewModelToDomain\ViewModelToDomainMapperProfile.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

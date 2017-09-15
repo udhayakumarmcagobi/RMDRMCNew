@@ -4,10 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b3536bb3ff2047bca57e89d270ff0a51" Name="Diagram1">
-        <EntityTypeShape EntityType="RMDRMCModel.tblUser" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RMDRMCModel.tblRoleDetail" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RMDRMCModel.tblRole" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+      <Diagram DiagramId="5403a6341b684d5093f59ce5e01d32ec" Name="Diagram1">
+        <EntityTypeShape EntityType="RMDRMCDataModel.AccessDetail" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMDRMCDataModel.ChildScreen" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMDRMCDataModel.MainScreen" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMDRMCDataModel.Role" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMDRMCDataModel.RoleDetail" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="RMDRMCDataModel.FK_RoleDetails_AccessDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="RMDRMCDataModel.FK_ChildScreen_MainScreen" ManuallyRouted="false" />
+        <AssociationConnector Association="RMDRMCDataModel.FK_RoleDetails_ChildScreen" ManuallyRouted="false" />
+        <AssociationConnector Association="RMDRMCDataModel.FK_RoleDetails_Roles" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

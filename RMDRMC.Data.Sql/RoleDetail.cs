@@ -12,10 +12,15 @@ namespace RMDRMC.Data.Sql
     using System;
     using System.Collections.Generic;
     
-    public partial class tblRole
+    public partial class RoleDetail
     {
         public long RoleID { get; set; }
-        public string RoleName { get; set; }
-        public Nullable<long> Activate { get; set; }
+        public long ScreenID { get; set; }
+        public int AccessID { get; set; }
+        public Nullable<bool> Activate { get; set; }
+    
+        public virtual AccessDetail AccessDetail { get; set; }
+        public virtual ChildScreen ChildScreen { get; set; }
+        public virtual Role Role { get; set; }
     }
 }

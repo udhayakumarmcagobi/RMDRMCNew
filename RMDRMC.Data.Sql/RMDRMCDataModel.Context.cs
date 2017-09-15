@@ -25,8 +25,10 @@ namespace RMDRMC.Data.Sql
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<tblUser> tblUsers { get; set; }
-        public virtual DbSet<tblRoleDetail> tblRoleDetails { get; set; }
-        public virtual DbSet<tblRole> tblRoles { get; set; }
+        public virtual DbSet<AccessDetail> AccessDetails { get; set; }
+        public virtual DbSet<ChildScreen> ChildScreens { get; set; }
+        public virtual DbSet<MainScreen> MainScreens { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<RoleDetail> RoleDetails { get; set; }
     }
 }

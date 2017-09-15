@@ -4,153 +4,305 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RMDRMCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'DRMC2.dbo.tblRoleDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="tblRoleDetails">
+      <Schema Namespace="RMDRMCDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccessDetails">
           <Key>
-            <PropertyRef Name="RoleID" />
+            <PropertyRef Name="AccessID" />
           </Key>
-          <Property Name="RoleID" Type="bigint" Nullable="false" />
-          <Property Name="Parent" Type="bigint" />
-          <Property Name="Child" Type="bigint" />
-          <Property Name="Accesser" Type="bigint" />
-          <Property Name="Viewer" Type="bigint" />
+          <Property Name="AccessID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ChildScreen">
+          <Key>
+            <PropertyRef Name="ScreenID" />
+          </Key>
+          <Property Name="ScreenID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="MainScreenID" Type="bigint" Nullable="false" />
+          <Property Name="Activate" Type="bit" />
+        </EntityType>
+        <EntityType Name="MainScreen">
+          <Key>
+            <PropertyRef Name="ScreenID" />
+          </Key>
+          <Property Name="ScreenID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Activate" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DRMC2.dbo.tblRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="tblRoles">
+warning 6002: The table/view 'RMDRMCNew.dbo.RoleDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="RoleDetails">
+          <Key>
+            <PropertyRef Name="RoleID" />
+            <PropertyRef Name="ScreenID" />
+            <PropertyRef Name="AccessID" />
+          </Key>
+          <Property Name="RoleID" Type="bigint" Nullable="false" />
+          <Property Name="ScreenID" Type="bigint" Nullable="false" />
+          <Property Name="AccessID" Type="int" Nullable="false" />
+          <Property Name="Activate" Type="bit" />
+        </EntityType>
+        <EntityType Name="Roles">
           <Key>
             <PropertyRef Name="RoleID" />
           </Key>
           <Property Name="RoleID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
-          <Property Name="Activate" Type="bigint" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Activate" Type="bit" />
         </EntityType>
-        <EntityType Name="tblUsers">
-          <Key>
-            <PropertyRef Name="UserID" />
-          </Key>
-          <Property Name="UserID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
-          <Property Name="Address" Type="ntext" />
-          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
-          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" />
-          <Property Name="LoginID" Type="nvarchar" MaxLength="50" />
-          <Property Name="Password" Type="nvarchar" MaxLength="50" />
-          <Property Name="Comments" Type="nvarchar" MaxLength="50" />
-          <Property Name="Activate" Type="bigint" />
-          <Property Name="RoleID" Type="bigint" />
-          <Property Name="AdminGrp" Type="bigint" />
-        </EntityType>
-        <EntityContainer Name="RMDRMCModelStoreContainer">
-          <EntitySet Name="tblUsers" EntityType="Self.tblUsers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblRoleDetails" EntityType="Self.tblRoleDetails" store:Type="Tables" store:Schema="dbo">
+        <Association Name="FK_ChildScreen_MainScreen">
+          <End Role="MainScreen" Type="Self.MainScreen" Multiplicity="1" />
+          <End Role="ChildScreen" Type="Self.ChildScreen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MainScreen">
+              <PropertyRef Name="ScreenID" />
+            </Principal>
+            <Dependent Role="ChildScreen">
+              <PropertyRef Name="MainScreenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleDetails_AccessDetails">
+          <End Role="AccessDetails" Type="Self.AccessDetails" Multiplicity="1" />
+          <End Role="RoleDetails" Type="Self.RoleDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccessDetails">
+              <PropertyRef Name="AccessID" />
+            </Principal>
+            <Dependent Role="RoleDetails">
+              <PropertyRef Name="AccessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleDetails_ChildScreen">
+          <End Role="ChildScreen" Type="Self.ChildScreen" Multiplicity="1" />
+          <End Role="RoleDetails" Type="Self.RoleDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChildScreen">
+              <PropertyRef Name="ScreenID" />
+            </Principal>
+            <Dependent Role="RoleDetails">
+              <PropertyRef Name="ScreenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleDetails_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="RoleDetails" Type="Self.RoleDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="RoleDetails">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RMDRMCDataModelStoreContainer">
+          <EntitySet Name="AccessDetails" EntityType="Self.AccessDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChildScreen" EntityType="Self.ChildScreen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MainScreen" EntityType="Self.MainScreen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleDetails" EntityType="Self.RoleDetails" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [tblRoleDetails].[RoleID] AS [RoleID], 
-    [tblRoleDetails].[Parent] AS [Parent], 
-    [tblRoleDetails].[Child] AS [Child], 
-    [tblRoleDetails].[Accesser] AS [Accesser], 
-    [tblRoleDetails].[Viewer] AS [Viewer]
-    FROM [dbo].[tblRoleDetails] AS [tblRoleDetails]</DefiningQuery>
+    [RoleDetails].[RoleID] AS [RoleID], 
+    [RoleDetails].[ScreenID] AS [ScreenID], 
+    [RoleDetails].[AccessID] AS [AccessID], 
+    [RoleDetails].[Activate] AS [Activate]
+    FROM [dbo].[RoleDetails] AS [RoleDetails]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="tblRoles" EntityType="Self.tblRoles" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblRoles].[RoleID] AS [RoleID], 
-    [tblRoles].[RoleName] AS [RoleName], 
-    [tblRoles].[Activate] AS [Activate]
-    FROM [dbo].[tblRoles] AS [tblRoles]</DefiningQuery>
-          </EntitySet>
+          <AssociationSet Name="FK_ChildScreen_MainScreen" Association="Self.FK_ChildScreen_MainScreen">
+            <End Role="MainScreen" EntitySet="MainScreen" />
+            <End Role="ChildScreen" EntitySet="ChildScreen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleDetails_AccessDetails" Association="Self.FK_RoleDetails_AccessDetails">
+            <End Role="AccessDetails" EntitySet="AccessDetails" />
+            <End Role="RoleDetails" EntitySet="RoleDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleDetails_ChildScreen" Association="Self.FK_RoleDetails_ChildScreen">
+            <End Role="ChildScreen" EntitySet="ChildScreen" />
+            <End Role="RoleDetails" EntitySet="RoleDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleDetails_Roles" Association="Self.FK_RoleDetails_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="RoleDetails" EntitySet="RoleDetails" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="RMDRMCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="tblUser">
+      <Schema Namespace="RMDRMCDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AccessDetail">
           <Key>
-            <PropertyRef Name="UserID" />
+            <PropertyRef Name="AccessID" />
           </Key>
-          <Property Name="UserID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LoginID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Comments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Activate" Type="Int64" />
-          <Property Name="RoleID" Type="Int64" />
-          <Property Name="AdminGrp" Type="Int64" />
+          <Property Name="AccessID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RoleDetails" Relationship="Self.FK_RoleDetails_AccessDetails" FromRole="AccessDetails" ToRole="RoleDetails" />
         </EntityType>
-        <EntityType Name="tblRoleDetail">
+        <EntityType Name="ChildScreen">
           <Key>
-            <PropertyRef Name="RoleID" />
+            <PropertyRef Name="ScreenID" />
           </Key>
-          <Property Name="RoleID" Type="Int64" Nullable="false" />
-          <Property Name="Parent" Type="Int64" />
-          <Property Name="Child" Type="Int64" />
-          <Property Name="Accesser" Type="Int64" />
-          <Property Name="Viewer" Type="Int64" />
+          <Property Name="ScreenID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MainScreenID" Type="Int64" Nullable="false" />
+          <Property Name="Activate" Type="Boolean" />
+          <NavigationProperty Name="MainScreen" Relationship="Self.FK_ChildScreen_MainScreen" FromRole="ChildScreen" ToRole="MainScreen" />
+          <NavigationProperty Name="RoleDetails" Relationship="Self.FK_RoleDetails_ChildScreen" FromRole="ChildScreen" ToRole="RoleDetails" />
         </EntityType>
-        <EntityType Name="tblRole">
+        <EntityType Name="MainScreen">
+          <Key>
+            <PropertyRef Name="ScreenID" />
+          </Key>
+          <Property Name="ScreenID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Activate" Type="Boolean" />
+          <NavigationProperty Name="ChildScreens" Relationship="Self.FK_ChildScreen_MainScreen" FromRole="MainScreen" ToRole="ChildScreen" />
+        </EntityType>
+        <EntityType Name="Role">
           <Key>
             <PropertyRef Name="RoleID" />
           </Key>
           <Property Name="RoleID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Activate" Type="Int64" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Activate" Type="Boolean" />
+          <NavigationProperty Name="RoleDetails" Relationship="Self.FK_RoleDetails_Roles" FromRole="Roles" ToRole="RoleDetails" />
         </EntityType>
+        <EntityType Name="RoleDetail">
+          <Key>
+            <PropertyRef Name="RoleID" />
+            <PropertyRef Name="ScreenID" />
+            <PropertyRef Name="AccessID" />
+          </Key>
+          <Property Name="RoleID" Type="Int64" Nullable="false" />
+          <Property Name="ScreenID" Type="Int64" Nullable="false" />
+          <Property Name="AccessID" Type="Int32" Nullable="false" />
+          <Property Name="Activate" Type="Boolean" />
+          <NavigationProperty Name="AccessDetail" Relationship="Self.FK_RoleDetails_AccessDetails" FromRole="RoleDetails" ToRole="AccessDetails" />
+          <NavigationProperty Name="ChildScreen" Relationship="Self.FK_RoleDetails_ChildScreen" FromRole="RoleDetails" ToRole="ChildScreen" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_RoleDetails_Roles" FromRole="RoleDetails" ToRole="Roles" />
+        </EntityType>
+        <Association Name="FK_RoleDetails_AccessDetails">
+          <End Role="AccessDetails" Type="Self.AccessDetail" Multiplicity="1" />
+          <End Role="RoleDetails" Type="Self.RoleDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccessDetails">
+              <PropertyRef Name="AccessID" />
+            </Principal>
+            <Dependent Role="RoleDetails">
+              <PropertyRef Name="AccessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChildScreen_MainScreen">
+          <End Role="MainScreen" Type="Self.MainScreen" Multiplicity="1" />
+          <End Role="ChildScreen" Type="Self.ChildScreen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MainScreen">
+              <PropertyRef Name="ScreenID" />
+            </Principal>
+            <Dependent Role="ChildScreen">
+              <PropertyRef Name="MainScreenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleDetails_ChildScreen">
+          <End Role="ChildScreen" Type="Self.ChildScreen" Multiplicity="1" />
+          <End Role="RoleDetails" Type="Self.RoleDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChildScreen">
+              <PropertyRef Name="ScreenID" />
+            </Principal>
+            <Dependent Role="RoleDetails">
+              <PropertyRef Name="ScreenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleDetails_Roles">
+          <End Role="Roles" Type="Self.Role" Multiplicity="1" />
+          <End Role="RoleDetails" Type="Self.RoleDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="RoleDetails">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="RMDRMCContext" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
-          <EntitySet Name="tblRoleDetails" EntityType="Self.tblRoleDetail" />
-          <EntitySet Name="tblRoles" EntityType="Self.tblRole" />
+          <EntitySet Name="AccessDetails" EntityType="Self.AccessDetail" />
+          <EntitySet Name="ChildScreens" EntityType="Self.ChildScreen" />
+          <EntitySet Name="MainScreens" EntityType="Self.MainScreen" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="RoleDetails" EntityType="Self.RoleDetail" />
+          <AssociationSet Name="FK_RoleDetails_AccessDetails" Association="Self.FK_RoleDetails_AccessDetails">
+            <End Role="AccessDetails" EntitySet="AccessDetails" />
+            <End Role="RoleDetails" EntitySet="RoleDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChildScreen_MainScreen" Association="Self.FK_ChildScreen_MainScreen">
+            <End Role="MainScreen" EntitySet="MainScreens" />
+            <End Role="ChildScreen" EntitySet="ChildScreens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleDetails_ChildScreen" Association="Self.FK_RoleDetails_ChildScreen">
+            <End Role="ChildScreen" EntitySet="ChildScreens" />
+            <End Role="RoleDetails" EntitySet="RoleDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleDetails_Roles" Association="Self.FK_RoleDetails_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="RoleDetails" EntitySet="RoleDetails" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="RMDRMCModelStoreContainer" CdmEntityContainer="RMDRMCContext">
-          <EntitySetMapping Name="tblUsers">
-            <EntityTypeMapping TypeName="RMDRMCModel.tblUser">
-              <MappingFragment StoreEntitySet="tblUsers">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="LoginID" ColumnName="LoginID" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Comments" ColumnName="Comments" />
+        <EntityContainerMapping StorageEntityContainer="RMDRMCDataModelStoreContainer" CdmEntityContainer="RMDRMCContext">
+          <EntitySetMapping Name="AccessDetails">
+            <EntityTypeMapping TypeName="RMDRMCDataModel.AccessDetail">
+              <MappingFragment StoreEntitySet="AccessDetails">
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChildScreens">
+            <EntityTypeMapping TypeName="RMDRMCDataModel.ChildScreen">
+              <MappingFragment StoreEntitySet="ChildScreen">
+                <ScalarProperty Name="ScreenID" ColumnName="ScreenID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MainScreenID" ColumnName="MainScreenID" />
                 <ScalarProperty Name="Activate" ColumnName="Activate" />
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="AdminGrp" ColumnName="AdminGrp" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblRoleDetails">
-            <EntityTypeMapping TypeName="RMDRMCModel.tblRoleDetail">
-              <MappingFragment StoreEntitySet="tblRoleDetails">
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="Parent" ColumnName="Parent" />
-                <ScalarProperty Name="Child" ColumnName="Child" />
-                <ScalarProperty Name="Accesser" ColumnName="Accesser" />
-                <ScalarProperty Name="Viewer" ColumnName="Viewer" />
+          <EntitySetMapping Name="MainScreens">
+            <EntityTypeMapping TypeName="RMDRMCDataModel.MainScreen">
+              <MappingFragment StoreEntitySet="MainScreen">
+                <ScalarProperty Name="ScreenID" ColumnName="ScreenID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Activate" ColumnName="Activate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblRoles">
-            <EntityTypeMapping TypeName="RMDRMCModel.tblRole">
-              <MappingFragment StoreEntitySet="tblRoles">
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="RMDRMCDataModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Activate" ColumnName="Activate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleDetails">
+            <EntityTypeMapping TypeName="RMDRMCDataModel.RoleDetail">
+              <MappingFragment StoreEntitySet="RoleDetails">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="ScreenID" ColumnName="ScreenID" />
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
                 <ScalarProperty Name="Activate" ColumnName="Activate" />
               </MappingFragment>
             </EntityTypeMapping>

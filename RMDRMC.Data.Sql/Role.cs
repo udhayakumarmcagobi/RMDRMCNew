@@ -12,12 +12,19 @@ namespace RMDRMC.Data.Sql
     using System;
     using System.Collections.Generic;
     
-    public partial class tblRoleDetail
+    public partial class Role
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Role()
+        {
+            this.RoleDetails = new HashSet<RoleDetail>();
+        }
+    
         public long RoleID { get; set; }
-        public Nullable<long> Parent { get; set; }
-        public Nullable<long> Child { get; set; }
-        public Nullable<long> Accesser { get; set; }
-        public Nullable<long> Viewer { get; set; }
+        public string Name { get; set; }
+        public Nullable<bool> Activate { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RoleDetail> RoleDetails { get; set; }
     }
 }

@@ -22,6 +22,7 @@
     <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" />
     <script src="~/Scripts/bootstrap-datepicker.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/BootSideMenu.js"></script>
     <link href="/Content/alertify.bootstrap.css" rel="stylesheet" />
     <link href="~/Content/alertify.core.css" rel="stylesheet" />
     <link href="~/Content/alertify.default.css" rel="stylesheet" />
@@ -99,6 +100,13 @@
 
         });
     </script>
+    @*<script type="text/javascript">
+    $(document).ready(function () {
+        $('#test-left').BootSideMenu({
+            side: "left",
+        });
+    });
+    </script>*@
 
     @RenderSection("head", required: false)
 </head>
@@ -155,90 +163,90 @@
                 <div class="row">
                     @if (ViewBag.Sidemenu == "UserManagement")
                 {
-                        <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_UserManagementSideMenu")</div>
+                        <div id="test-left"><div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_UserManagementSideMenu")</div></div>
                     }
                     else if (ViewBag.Sidemenu == "Masters")
                     {
                         <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_MastersSideMenu")</div>
-                    }
-                    else if (ViewBag.Sidemenu == "VendorManagement")
-                    {
+                        }
+                        else if (ViewBag.Sidemenu == "VendorManagement")
+                        {
                         <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_VendorManagementSideMenu")</div>
-                    }
-                    else if (ViewBag.Sidemenu == "POManagement")
-                    {
+                        }
+                        else if (ViewBag.Sidemenu == "POManagement")
+                        {
                         <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_POManagementSideMenu")</div>
-                    }
-                    else if (ViewBag.Sidemenu == "InventoryManagement")
-                    {
+                        }
+                        else if (ViewBag.Sidemenu == "InventoryManagement")
+                        {
                         <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_InventoryManagementSideMenu")</div>
-                    }
-                    else if (ViewBag.Sidemenu == "JobManagement")
-                    {
+                        }
+                        else if (ViewBag.Sidemenu == "JobManagement")
+                        {
                         <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_JobManagementSideMenu")</div>
-                    }
-                    else if (ViewBag.Sidemenu == "InvoiceManagement")
-                    {
+                        }
+                        else if (ViewBag.Sidemenu == "InvoiceManagement")
+                        {
                         <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_InvoiceManagementSideMenu")</div>
-                    }
-                    else if (ViewBag.Sidemenu == "Reports")
-                    {
+                        }
+                        else if (ViewBag.Sidemenu == "Reports")
+                        {
                         <div class="col-md-2">@Html.Partial("_ReportsSideMenu")</div>
-                    }
+                        }
 
-                    @*@if (ViewBag.sidemenu == "StatusHistory" || ViewBag.FooterDisplayFlag == WebConstants.BOM)*@
-                    @if (ViewBag.sidemenu == "Error" || ViewBag.sidemenu == "NotFound")
+                        @*@if (ViewBag.sidemenu == "StatusHistory" || ViewBag.FooterDisplayFlag == WebConstants.BOM)*@
+                        @if (ViewBag.sidemenu == "Error" || ViewBag.sidemenu == "NotFound")
                     {
-                        <div class="col-md-12 col-xs-12 text-center">@RenderBody()</div>
-                    }
-                    else
-                    {
-                        <div class="col-md-10 col-xs-12 main-body-content">@RenderBody()</div>
-                    }
+                            <div class="col-md-12 col-xs-12 text-center">@RenderBody()</div>
+                        }
+                        else
+                        {
+                            <div class="col-md-10 col-xs-12 main-body-content">@RenderBody()</div>
+                        }
 
-                    <div class="modal fade" id="divValidatonMessageNewDesignItem" role="dialog" aria-hidden="true"
-                         data-backdrop="static" data-keyboard="false">
-                        <div class="modal-dialog dialog-style modal-lg" @*style="width:90%;left:4%;"*@>
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <label style="color:#fff;">Copy new Design Item status messages</label>
-                                    <!--Close button-->
-                                    <button type="button" class="close" data-dismiss="modal" onclick="ReloadDIM()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                </div>
-                                <div class="modal-body" style="overflow-y:auto;">
-                                    <div class="container-fluid">
-                                        <div class="row" id="divValidatonMessageDetailsNewDesignItem">
+                        <div class="modal fade" id="divValidatonMessageNewDesignItem" role="dialog" aria-hidden="true"
+                             data-backdrop="static" data-keyboard="false">
+                            <div class="modal-dialog dialog-style modal-lg" @*style="width:90%;left:4%;"*@>
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <label style="color:#fff;">Copy new Design Item status messages</label>
+                                        <!--Close button-->
+                                        <button type="button" class="close" data-dismiss="modal" onclick="ReloadDIM()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body" style="overflow-y:auto;">
+                                        <div class="container-fluid">
+                                            <div class="row" id="divValidatonMessageDetailsNewDesignItem">
 
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="modal fade" id="divErrorMessage" role="dialog" aria-hidden="true"
-                         data-backdrop="static" data-keyboard="false">
-                        <div class="modal-dialog dialog-style modal-lg" @*style="width:90%;left:4%;"*@>
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <label style="color:#fff;">Error Message Details</label>
-                                    <!--Close button-->
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                </div>
-                                <div class="modal-body" style="overflow-y:auto;">
-                                    <div class="container-fluid">
-                                        <div class="row" id="divErrorMessageDetails">
+                        <div class="modal fade" id="divErrorMessage" role="dialog" aria-hidden="true"
+                             data-backdrop="static" data-keyboard="false">
+                            <div class="modal-dialog dialog-style modal-lg" @*style="width:90%;left:4%;"*@>
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <label style="color:#fff;">Error Message Details</label>
+                                        <!--Close button-->
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body" style="overflow-y:auto;">
+                                        <div class="container-fluid">
+                                            <div class="row" id="divErrorMessageDetails">
 
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                </div>
+                    </div>
 
             </div>
         }

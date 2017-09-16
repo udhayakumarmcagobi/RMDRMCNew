@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "CreateUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <label> Create User  </label>
+    </div>
+
+    <div class="panel-body">
+
+        <div class="row text-center" style="margin-bottom:20px;">
+
+            <input type="submit" value="Save" class="ButtonWithImage btnSaveUsers" data-alert="false" />
+            <input type="button" value="Cancel" class="ButtonWithImage" onclick="ClearFields()" />
+
+        </div>
+
+        <div class="row">
+            <div class="text-center">
+                <div class="panel panel-default" style="border-color:#ddd;" id="userinfopanel">
+                    <div class="panel-heading-sm">
+                        <label><a href="#userinfo" data-toggle="collapse" data-parent="#userinfopanel">User Info<span class="glyphicon glyphicon-minus"></span></a></label>
+                    </div>
+
+                    <div id="userinfo" class="panel-body  panel-collapse collapse in" role="tabpanel" aria-labelledby="Header Fields">
+                        <div class="col-md-6">
+                            @Html.Partial("_UserPersonalDetails")
+                        </div>
+
+                        <div class="col-md-6">
+                            @Html.Partial("_UserLoginDetails")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="text-center">
+
+                <div class="panel panel-default" style="border-color:#ddd;" id="roleinfopanel">
+                    <div class="panel-heading-sm">
+                        <label><a href="#roleinfo" data-toggle="collapse" data-parent="#roleinfopanel">Role Info<span class="glyphicon glyphicon-minus"></span></a></label>
+                    </div>
+
+                    <div id="roleinfo" class="panel-body  panel-collapse collapse in" role="tabpanel" aria-labelledby="Header Fields">
+
+                        <div class="form-group clearfix">
+                            <label class="control-label col-md-4 tooltip-enable formLabelAlign"
+                                   data-toggle="tooltip" id="lblSelectRole" data-placement="bottom" title="Select Role">Select Role:</label>
+                            <div class="col-md-8">
+                                <select class="form-control input-sm tooltip-enable designItemInput" id="drpRoleDetails"
+                                        data-toggle="tooltip" data-placement="bottom" name="RoleDetails" title="Select Role"></select>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default" style="border-color:#ddd;" id="roleaccesspanel">
+                            <div class="panel-heading-sm">
+                                <label><a href="#roleacessDetails" data-toggle="collapse" data-parent="#roleaccesspanel">Role Access Details<span class="glyphicon glyphicon-minus"></span></a></label>
+                            </div>
+
+                            <div id="roleacessDetails" class="panel-body  panel-collapse collapse in" role="tabpanel" aria-labelledby="Header Fields">
+                                @Html.Partial("_ScreenAccessSelection", null)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="row text-center" style="margin-bottom:20px;">
+
+            <input type="submit" value="Save" class="ButtonWithImage btnSaveUsers" data-alert="false" />
+            <input type="button" value="Cancel" class="ButtonWithImage" onclick="ClearFields()" />
+
+        </div>
+
+    </div>
+</div>
+
+

@@ -2332,4 +2332,9 @@ span.dim-error-label  {color:red;clear:both;float:left;margin-top:0.5%;}
 div.dim-error-label  {color:red;clear:both;float:left;margin-top:0.5%;}
 div.decimal-digit-format-class {text-align:center;clear:both;}
 tr.hidden-row-class {display:none !important;visibility:hidden;}
-/* added by Udhay end*/
+
+label.role-form-check {float:left;margin-top:2%;}
+input.role-input { width:100%;}
+label.role-form-check-label {float:left;margin-top:2%;margin-left:3%;}
+
+/* added by Udhay end*

@@ -32,6 +32,7 @@ namespace RMDRMC.DataRepository.Sql.Infrastructure
                 IsolationLevel = IsolationLevel.ReadCommitted
             };
         }
+
         public void Commit()
         {
             try

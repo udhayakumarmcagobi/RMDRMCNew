@@ -17,7 +17,7 @@ namespace RMDRMC.Web.Application.Areas.UserManagement
             context.MapRoute(
                 "UserManagement_default",
                 "UserManagement/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Create", id = UrlParameter.Optional }
             );
         }
     }

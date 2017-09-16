@@ -56,7 +56,20 @@
     <Compile Include="ViewModelToDomain\ViewModelToDomainCustomMapper.cs" />
     <Compile Include="ViewModelToDomain\ViewModelToDomainMapperProfile.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\RMDRMC.Data.Sql\RMDRMC.Data.Sql.csproj">
+      <Project>{05b679d4-5c18-49ed-8093-150fd80e8acd}</Project>
+      <Name>RMDRMC.Data.Sql</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RMDRMC.Model\RMDRMC.Model.csproj">
+      <Project>{581f990c-8fd7-40ca-b202-221eb70dea41}</Project>
+      <Name>RMDRMC.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RMDRMCWeb.ViewModels\RMDRMCWeb.ViewModels.csproj">
+      <Project>{c49963cd-4098-4ca7-953a-d1248741c141}</Project>
+      <Name>RMDRMCWeb.ViewModels</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

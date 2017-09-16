@@ -27,87 +27,12 @@
     <link href="~/Content/alertify.core.css" rel="stylesheet" />
     <link href="~/Content/alertify.default.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
-    <script>
-        $(function () {
-
-            // Enable tooltips
-            $(".tooltip-enable").tooltip();
-
-            $(".datepicker").datepicker({
-                format: 'mm/dd/yyyy',
-                autoclose: true,
-                todayBtn: 'linked'
-            }).on("changeDate", function (e) {
-                $(this).datepicker('hide');
-            });
-
-            $("#ChangeToggle").click(function () {
-
-            });
-            //Menu Icon Change
-            $(".list-group-item").click(function () {
-                if ($(this).find("span").is(".dropdown")) {
-                    $(this).find("span").removeClass("dropdown").addClass("dropup");
-                }
-                else {
-                    $(this).find("span").removeClass("dropup").addClass("dropdown");
-                }
-            });
-            //Menu Hover
-            $('ul.nav li.dropdown').hover(function () {
-                if ($(window).width() > 768) {
-                    $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
-                }
-            }, function () {
-                if ($(window).width() > 768) {
-                    $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
-                }
-            });
-
-        });
-
-        $(document).ready(function () {
-            var WrapperPadding = function () {
-
-                var navHeight = $('nav').height();
-                //alert("nav Height: " + navHeight);
-                var userInfoHeight = $('div.divUserNameRolefixed').height();
-                //alert("User Info Height: " + userInfoHeight);
-                //alert("total height " + navHeight + "+" + userInfoHeight + "=")
-                //alert(navHeight + userInfoHeight);
-                var totalHeaderHeight = navHeight + userInfoHeight;
-
-
-                var footerHeight = $('footer').height();
-                //alert(" footer height: " + footerHeight);
-                $('div.wrapper').css({ 'padding-top': totalHeaderHeight, 'padding-bottom': footerHeight });
-
-                $('div.divUserNameRolefixed').css({ 'top': navHeight });
-            };
-
-            didResize = false;
-            WrapperPadding();
-            $(window).resize(function () {
-                didResize = true;
-            });
-            setInterval(function () {
-                if (didResize) {
-
-                    didResize = false;
-                    WrapperPadding();
-                }
-            }, 250);
-
+    <script src="~/CustomScripts/Common.js"></script>
+    <script type="text/javascript">
+        $(document).on("click", "div.panel-heading-sm > label >a", function () {
+            $(this).find('span.glyphicon').toggleClass('glyphicon-plus glyphicon-minus');
         });
     </script>
-    @*<script type="text/javascript">
-    $(document).ready(function () {
-        $('#test-left').BootSideMenu({
-            side: "left",
-        });
-    });
-    </script>*@
-
     @RenderSection("head", required: false)
 </head>
 <body>
@@ -127,7 +52,7 @@
 
                 <div class="nav navbar-right">
                     <label class="labelheading">
-                       
+
                     </label>
                     <label id="labelheading">Ramya Printers - 1.0</label>
                     <div class="buildInfo">
@@ -161,123 +86,45 @@
         {
             <div class="body-content-nu container-fluid" id="body-content">
                 <div class="row">
-                    @if (ViewBag.Sidemenu == "UserManagement")
-                {
-                        <div id="test-left"><div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_UserManagementSideMenu")</div></div>
+
+                    @Html.Partial("_SideMenu")
+
+                    @if (ViewBag.sidemenu == "Error" || ViewBag.sidemenu == "NotFound")
+                    {
+                        <div class="col-md-12 col-xs-12 text-center">@RenderBody()</div>
                     }
-                    else if (ViewBag.Sidemenu == "Masters")
+                    else
                     {
-                        <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_MastersSideMenu")</div>
-                        }
-                        else if (ViewBag.Sidemenu == "VendorManagement")
-                        {
-                        <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_VendorManagementSideMenu")</div>
-                        }
-                        else if (ViewBag.Sidemenu == "POManagement")
-                        {
-                        <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_POManagementSideMenu")</div>
-                        }
-                        else if (ViewBag.Sidemenu == "InventoryManagement")
-                        {
-                        <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_InventoryManagementSideMenu")</div>
-                        }
-                        else if (ViewBag.Sidemenu == "JobManagement")
-                        {
-                        <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_JobManagementSideMenu")</div>
-                        }
-                        else if (ViewBag.Sidemenu == "InvoiceManagement")
-                        {
-                        <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_InvoiceManagementSideMenu")</div>
-                        }
-                        else if (ViewBag.Sidemenu == "Reports")
-                        {
-                        <div class="col-md-2">@Html.Partial("_ReportsSideMenu")</div>
-                        }
+                        <div class="col-md-10 col-xs-12 main-body-content">@RenderBody()</div>
+                    }
 
-                        @*@if (ViewBag.sidemenu == "StatusHistory" || ViewBag.FooterDisplayFlag == WebConstants.BOM)*@
-                        @if (ViewBag.sidemenu == "Error" || ViewBag.sidemenu == "NotFound")
-                    {
-                            <div class="col-md-12 col-xs-12 text-center">@RenderBody()</div>
-                        }
-                        else
-                        {
-                            <div class="col-md-10 col-xs-12 main-body-content">@RenderBody()</div>
-                        }
+                    <div class="modal fade" id="divErrorMessage" role="dialog" aria-hidden="true"
+                         data-backdrop="static" data-keyboard="false">
+                        <div class="modal-dialog dialog-style modal-lg" @*style="width:90%;left:4%;"*@>
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <label style="color:#fff;">Error Message Details</label>
+                                    <!--Close button-->
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                </div>
+                                <div class="modal-body" style="overflow-y:auto;">
+                                    <div class="container-fluid">
+                                        <div class="row" id="divErrorMessageDetails">
 
-                        <div class="modal fade" id="divValidatonMessageNewDesignItem" role="dialog" aria-hidden="true"
-                             data-backdrop="static" data-keyboard="false">
-                            <div class="modal-dialog dialog-style modal-lg" @*style="width:90%;left:4%;"*@>
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <label style="color:#fff;">Copy new Design Item status messages</label>
-                                        <!--Close button-->
-                                        <button type="button" class="close" data-dismiss="modal" onclick="ReloadDIM()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    </div>
-                                    <div class="modal-body" style="overflow-y:auto;">
-                                        <div class="container-fluid">
-                                            <div class="row" id="divValidatonMessageDetailsNewDesignItem">
-
-                                            </div>
                                         </div>
                                     </div>
-
                                 </div>
+
                             </div>
                         </div>
-
-                        <div class="modal fade" id="divErrorMessage" role="dialog" aria-hidden="true"
-                             data-backdrop="static" data-keyboard="false">
-                            <div class="modal-dialog dialog-style modal-lg" @*style="width:90%;left:4%;"*@>
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <label style="color:#fff;">Error Message Details</label>
-                                        <!--Close button-->
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    </div>
-                                    <div class="modal-body" style="overflow-y:auto;">
-                                        <div class="container-fluid">
-                                            <div class="row" id="divErrorMessageDetails">
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
-
+                </div>
             </div>
         }
 
-        <footer class="navbar-orange navbar-fixed-bottom footer">
-            <div class="footerdiv">
-                <p class="footerParagraph">
-                    <font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="orange">
-                        IMPORTANT NOTICE
-                    </font>
-                </p>
-                <p class="footerParagraph">
-                    <font face="Verdana, Arial, Helvetica, sans-serif" class="footerstyle">
-                        THIS DATA AND THE IDEAS IN 	THE DATA AND PRINCIPLES REPRESENTED
-                        ARE THE PROPERTY OF THE RAMYA PRINTERS TO BE USED EXCLUSIVELY
-                        FOR ITS WORK AND FOR NO OTHER PURPOSE WHATSOEVER. THE DATA
-                        AND THE IDEAS AND PRINCIPLES IT REPRESENTS ARE CONFIDENTIAL
-                        AND MAY NOT BE DIVULGED TO ANYONE EXCEPT FOR
-                        THE PURPOSE FOR WHICH THE DATA IS PROVIDED. VIEWING BY
-                        UNAUTHORIZED PERSONS IS EXPRESSLY PROHIBITED.
-                    </font>
-                </p>
-                <p class="footerParagraph">
-                    <font face="Verdana, Arial, Helvetica, sans-serif" class="footerstyle">
-                        THIS DATA IS NOT TO BE COPIED OR REPRODUCED WITHOUT THE CONSENT
-                        OF THE RAMYA PRINTERS. ALL PRINTS AND COPIES THEREOF ARE TO
-                        BE RETURNED TO THE RAMYA PRINTERS.
-                    </font>
-                </p>
-            </div>
-        </footer>
+        @Html.Partial("_Footer");
+
+
 
         @{
             string hostName = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + HttpRuntime.AppDomainAppVirtualPath;

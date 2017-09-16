@@ -30,3 +30,6 @@
 /RMDRMCWeb.ViewModels/bin/Debug
 /RMDRMC.Model/bin/Debug
 /RMDRMC.Model/obj/Debug
+/RMDRMC.Data.Sql/bin
+/RMDRMC.Web.Core/bin/Debug
+/RMDRMC.Web.Core/obj/Debug

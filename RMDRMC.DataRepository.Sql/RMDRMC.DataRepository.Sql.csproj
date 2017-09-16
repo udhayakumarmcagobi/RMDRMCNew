@@ -58,8 +58,13 @@
     <Compile Include="Infrastructure\Interfaces\IEFRepository.cs" />
     <Compile Include="Infrastructure\Interfaces\IEFUnitOfWork.cs" />
     <Compile Include="Infrastructure\Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Interfaces\IRoleRepository.cs" />
+    <Compile Include="Interfaces\IScreenRepository.cs" />
+    <Compile Include="Interfaces\IUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Infrastructure\UnitOfWork\EFUnitOfWork.cs" />
+    <Compile Include="Repositories\Common\ScreenRepository.cs" />
+    <Compile Include="Repositories\UserManagement\RoleRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -70,10 +75,17 @@
       <Project>{05b679d4-5c18-49ed-8093-150fd80e8acd}</Project>
       <Name>RMDRMC.Data.Sql</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RMDRMC.Mapper.Model\RMDRMC.Mapper.Model.csproj">
+      <Project>{7c208610-670d-452a-a46a-322db85a1636}</Project>
+      <Name>RMDRMC.Mapper.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RMDRMC.Model\RMDRMC.Model.csproj">
+      <Project>{581f990c-8fd7-40ca-b202-221eb70dea41}</Project>
+      <Name>RMDRMC.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repositories\Masters\" />
-    <Folder Include="Repositories\UserManagement\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

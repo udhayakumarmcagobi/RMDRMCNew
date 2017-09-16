@@ -1,0 +1,113 @@
+﻿@model  RolesVM
+
+@{
+    ViewBag.Title = "CreateRole";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    string pageName = ViewBag.page;
+    ViewBag.Title = ViewBag.PageName;
+
+    string actionMethod = ViewBag.ActionMethod;
+
+    string ajaxRoleSuccessMethod = "CreateRoleSuccess";
+    string ajaxRoleFailureMethod = "CreateRoleFailure";
+    if (pageName == "Edit")
+    {
+        ajaxRoleSuccessMethod = "UpdateRoleSuccess";
+        ajaxRoleFailureMethod = "UpdateRoleFailure";
+    }
+}
+
+@using (Ajax.BeginForm(actionMethod, "ManageRole", FormMethod.Post,
+                                                                                                        new AjaxOptions
+                                                                                                        {
+                                                                                                            HttpMethod = "Post",
+                                                                                                            OnBegin = "ShowProgressbar",
+                                                                                                            OnComplete = "HideProgressbar",
+                                                                                                            OnSuccess = ajaxRoleSuccessMethod,
+                                                                                                            OnFailure = ajaxRoleFailureMethod
+
+                                                                                                        }, new { Id = "FormCreateRole" }
+                                                                                                        ))
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <label> Create Role  </label>
+        </div>
+
+
+        <div class="panel-body">
+
+            @*Hidden Field Starts*@
+            <input type="hidden" id="hidRoleID" name="RoleID" value="@Model.RoleID" />
+
+            @*Hidden Field Ends*@
+
+            @*Action Button Starts*@
+            <div class="row text-center" style="margin-bottom:20px;">
+                @if (pageName != "Edit")
+                {
+                    <input type="submit" value="Save" class="ButtonWithImage btnSaveRoles" data-alert="false" />
+                    <input type="button" value="Cancel" class="ButtonWithImage" onclick="ClearFields()" />
+                }
+
+            </div>
+            @*Action Button Ends*@
+
+            <div class="row">
+
+                <div class="text-center">
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group clearfix">
+                            <label class="control-label col-sm-4 col-md-5 tooltip-enable formLabelAlign" data-toggle="tooltip" id="lblRoleName"
+                                   data-placement="bottom" title="Role">Role Name:</label>
+                            <div class="col-sm-8 col-md-7">
+                                <input type="text" class="form-control input-sm tooltip-enable role-input" id="txtRoleName"
+                                       data-toggle="tooltip" data-placement="bottom" title="Role Name" maxlength="50" value="@Model.RoleName"
+                                       name="RoleName" />
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-2 form-check mb-2 mr-sm-2 mb-sm-0">
+                        <label class="form-check-label role-form-check">
+                            <input class="form-check-input" type="checkbox" checked="@Model.IsActive" name="IsActive" value="@Model.IsActive">
+                        </label>
+                        <label class="role-form-check-label">Activate/De-Activate</label>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+
+                </div>
+            </div>
+
+            @*Page/Screen details Starts*@
+            <div class="row" style="margin-top:2%;">
+                <div class="text-center">
+                    @if (Model.ParentScreens != null)
+                    {
+                        Html.Partial("_ScreenAccessSelection", Model.ParentScreens);
+                    }
+                </div>
+            </div>
+            @*Page/Screen details Ends*@
+
+            @*Action Button Starts*@
+            <div class="row text-center" style="margin-bottom:20px;">
+                @if (pageName != "Edit")
+                {
+                    <input type="submit" value="Save" class="ButtonWithImage btnSaveRoles" data-alert="false" />
+                    <input type="button" value="Cancel" class="ButtonWithImage" onclick="ClearFields()" />
+                }
+
+            </div>
+            @*Action Button Ends*@
+
+        </div>
+    </div>
+}
+
+

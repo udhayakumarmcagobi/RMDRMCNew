@@ -1,0 +1,34 @@
+﻿
+@if (ViewBag.Sidemenu == "UserManagement")
+{
+    <div id="test-left"><div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_UserManagementSideMenu")</div></div>
+}
+else if (ViewBag.Sidemenu == "Masters")
+{
+    <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_MastersSideMenu")</div>
+}
+else if (ViewBag.Sidemenu == "VendorManagement")
+{
+    <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_VendorManagementSideMenu")</div>
+}
+else if (ViewBag.Sidemenu == "POManagement")
+{
+    <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_POManagementSideMenu")</div>
+}
+else if (ViewBag.Sidemenu == "InventoryManagement")
+{
+    <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_InventoryManagementSideMenu")</div>
+}
+else if (ViewBag.Sidemenu == "JobManagement")
+{
+    <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_JobManagementSideMenu")</div>
+}
+else if (ViewBag.Sidemenu == "InvoiceManagement")
+{
+    <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_InvoiceManagementSideMenu")</div>
+}
+else if (ViewBag.Sidemenu == "Reports")
+{
+    <div class="col-md-2">@Html.Partial("_ReportsSideMenu")</div>
+}
+

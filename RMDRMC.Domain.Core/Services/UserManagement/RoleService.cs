@@ -18,14 +18,14 @@ namespace RMDRMC.Domain.Core.Services
             roleRepository = new RoleRepository();           
         }
 
-        public Roles GetAllRoleByID()
+        public Roles GetAllRoleByID(long roleID)
         {
-            throw new NotImplementedException();
+            return roleRepository.GetRolesByID(roleID);
         }
 
         public IEnumerable<Roles> GetAllRoles()
         {
-            throw new NotImplementedException();
+            return roleRepository.GetAllRoles();
         }
 
         public Roles GetEmptyRole()

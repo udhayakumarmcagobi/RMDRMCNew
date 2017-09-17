@@ -10,7 +10,7 @@ namespace RMDRMC.Domain.Core.Interfaces
     public interface IRoleService
     {
         IEnumerable<Roles> GetAllRoles();
-        Roles GetAllRoleByID();
+        Roles GetAllRoleByID(long roleID);
         Roles GetEmptyRole();
         bool CreateNewRole(Roles roles);
     }

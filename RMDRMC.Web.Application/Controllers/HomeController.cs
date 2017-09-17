@@ -10,7 +10,7 @@ namespace RMDRMC.Web.Application.Controllers
     {
         // GET: Home
         public ActionResult Index()
-        {            
+        {
             return View();
         }
     }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RMDRMC.Model.Reference;
+using RMDRMCWeb.ViewModels.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +13,12 @@ namespace RMDRMC.Mapper.Model.ViewModelToDomain
         public override string ProfileName
         {
             get { return "ViewModelToDomainMapperProfile"; }
+        }
+
+        public ViewModelToDomainMapperProfile()
+        {
+            CreateMap<RolesVM, Roles>()
+                .ForMember(model => model.AccessScreens, map => map.Ignore());
         }
     }
 }

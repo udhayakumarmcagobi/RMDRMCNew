@@ -27,3 +27,10 @@ function CreateRole() {
     });
 }
 
+function CreateRoleSuccess(response) {
+    alert("success");
+}
+
+function CreateRoleFailure(response) {
+    alert("Failed");
+}

@@ -67,3 +67,14 @@
 
 });
 
+// To show Progress bar
+function ShowProgressbar() {
+    $("#divLoading").modal("show");
+    $("body").removeClass("modal-open");
+}
+
+//To hide Progress bar
+function HideProgressbar() {
+    $("#divLoading").modal("hide");
+}
+

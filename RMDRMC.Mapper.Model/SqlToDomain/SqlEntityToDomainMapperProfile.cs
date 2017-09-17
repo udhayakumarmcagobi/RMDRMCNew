@@ -23,7 +23,6 @@ namespace RMDRMC.Mapper.Model.SqlToDomain
          
 
             CreateMap<RoleDetail, Screen>()
-               .ForMember(model => model.ScreenID, map => map.MapFrom(m => m.ScreenID))
                .ForMember(model => model.ScreenName, map => map.MapFrom(m => m.ChildScreen.Name))
                .ForMember(model => model.ParentScreenID, map => map.MapFrom(m => m.ChildScreen.MainScreenID))
                .ForMember(model => model.ParentScreen, map => map.MapFrom(m => m.ChildScreen.MainScreen.Name))
@@ -31,11 +30,9 @@ namespace RMDRMC.Mapper.Model.SqlToDomain
 
 
             CreateMap<ChildScreen, Screen>()
-               .ForMember(model => model.ScreenID, map => map.MapFrom(m => m.ScreenID))
                .ForMember(model => model.ScreenName, map => map.MapFrom(m => m.Name))
                .ForMember(model => model.ParentScreenID, map => map.MapFrom(m => m.MainScreenID))
-               .ForMember(model => model.ParentScreen, map => map.MapFrom(m => m.MainScreen.Name))              
-               ;
+               .ForMember(model => model.ParentScreen, map => map.MapFrom(m => m.MainScreen.Name));            
                
         }
     }

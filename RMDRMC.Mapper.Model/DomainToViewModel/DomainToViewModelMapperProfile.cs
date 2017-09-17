@@ -22,22 +22,8 @@ namespace RMDRMC.Mapper.Model.DomainToViewModel
                 .ForMember(model => model.ParentScreens, map => map.Ignore());
 
             CreateMap<Screen, ScreenVM>()
-                  .ForMember(model => model.IsViewer, map => map.MapFrom(m => IsViewer(m.ScreenAccess)))
-                  .ForMember(model => model.IsModifier, map => map.MapFrom(m => IsModfier(m.ScreenAccess)));
-        }
-
-        private bool IsViewer(ScreenAccess access)
-        {
-            if (access != ScreenAccess.None) return true;
-
-            return false;
-        }
-
-        private bool IsModfier(ScreenAccess access)
-        {
-            if (access == ScreenAccess.Modify) return true;
-
-            return false;
+                  .ForMember(model => model.IsViewer, map => map.MapFrom(m => DomainToViewModelCustomMapper.IsViewer(m.ScreenAccess)))
+                  .ForMember(model => model.IsModifier, map => map.MapFrom(m => DomainToViewModelCustomMapper.IsModfier(m.ScreenAccess)));
         }
     }
 }

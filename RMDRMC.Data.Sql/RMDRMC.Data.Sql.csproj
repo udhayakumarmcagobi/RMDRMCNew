@@ -76,6 +76,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RMDRMCDataModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="RMDRMCDataModel1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RMDRMCDataModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Role.cs">
       <DependentUpon>RMDRMCDataModel.tt</DependentUpon>
     </Compile>
@@ -88,7 +93,7 @@
     <None Include="packages.config" />
     <EntityDeploy Include="RMDRMCDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RMDRMCDataModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>RMDRMCDataModel1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="RMDRMCDataModel.edmx.diagram">
       <DependentUpon>RMDRMCDataModel.edmx</DependentUpon>

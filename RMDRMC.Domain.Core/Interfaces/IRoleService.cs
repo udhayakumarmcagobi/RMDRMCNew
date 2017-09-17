@@ -12,5 +12,6 @@ namespace RMDRMC.Domain.Core.Interfaces
         IEnumerable<Roles> GetAllRoles();
         Roles GetAllRoleByID();
         Roles GetEmptyRole();
+        bool CreateNewRole(Roles roles);
     }
 }

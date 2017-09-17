@@ -10,8 +10,8 @@
 
     string actionMethod = ViewBag.ActionMethod;
 
-    string ajaxRoleSuccessMethod = "OnSuccess";
-    string ajaxRoleFailureMethod = "OnFailure";
+    string ajaxRoleSuccessMethod = "CreateRoleSuccess";
+    string ajaxRoleFailureMethod = "CreateRoleFailure";
     if (pageName == "Edit")
     {
         ajaxRoleSuccessMethod = "UpdateRoleSuccess";
@@ -20,13 +20,15 @@
 }
 
 @using (Ajax.BeginForm("Create", "ManageRole", FormMethod.Post,
-                                                                                                                                            new AjaxOptions
-                                                                                                                                            {
-                                                                                                                                                OnSuccess = ajaxRoleSuccessMethod,
-                                                                                                                                                OnFailure = ajaxRoleFailureMethod
+                                                                                                                                                        new AjaxOptions
+                                                                                                                                                        {
+                                                                                                                                                            OnBegin = "ShowProgressbar",
+                                                                                                                                                            OnComplete = "HideProgressbar",
+                                                                                                                                                            OnSuccess = ajaxRoleSuccessMethod,
+                                                                                                                                                            OnFailure = ajaxRoleFailureMethod
 
-                                                                                                                                            }, new { Id = "FormCreateRole" }
-                                                                                                                                            ))
+                                                                                                                                                        }, new { Id = "FormCreateRole" }
+                                                                                                                                                        ))
 {
     <div class="panel panel-default">
         <div class="panel-heading">

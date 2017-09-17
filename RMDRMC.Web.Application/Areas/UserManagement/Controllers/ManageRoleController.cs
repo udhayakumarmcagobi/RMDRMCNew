@@ -45,6 +45,8 @@ namespace RMDRMC.Web.Application.Areas.UserManagement.Controllers
         {
             string str = string.Empty;
 
+            roleClientService.CreateNewRole(rolesVM);
+
             return View(rolesVM);
         }
     }

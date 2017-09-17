@@ -135,6 +135,9 @@
     <Content Include="App_Themes\css\ui-lightness\jquery-ui-1.10.3.custom.css" />
     <Content Include="App_Themes\css\ui-lightness\jquery-ui-1.10.3.custom.min.css" />
     <Content Include="App_Themes\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="App_Themes\images\Loading.gif" />
+    <Content Include="App_Themes\images\LoadingImage.gif" />
+    <Content Include="App_Themes\images\orangebackground.jpg" />
     <Content Include="App_Themes\images\ramya-logo-orange-small.png" />
     <Content Include="App_Themes\js\bootstrap.js" />
     <Content Include="App_Themes\js\bootstrap.min.js" />

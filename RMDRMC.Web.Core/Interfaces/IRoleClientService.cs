@@ -10,5 +10,6 @@ namespace RMDRMC.Web.Core.Interfaces
     public interface IRoleClientService
     {
        RolesVM GetEmptyRole();
+       bool CreateNewRole(RolesVM rolesVM);
     }
 }

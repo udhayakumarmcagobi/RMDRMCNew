@@ -5,111 +5,122 @@
     {
         for (int i = 0; i < Model.ParentScreens.Count; i++)
         {
-            if (Model.ParentScreens[i].ChildScreens != null && Model.ParentScreens[i].ChildScreens.Any())
-            {
-                <div class="col-md-4">
-                    <div class="panel panel-default" style="border-color:#ddd;" id="panel@i">
-                        <div class="panel-heading-sm">
-                            <label>
-                                <a href="#screen@i" data-toggle="collapse" data-parent="#panel@i">
-                                    @Html.HiddenFor(model => Model.ParentScreens[i].ScreenID, Model.ParentScreens[i].ScreenID)
-                                    @Html.HiddenFor(model => Model.ParentScreens[i].ScreenName, Model.ParentScreens[i].ScreenName)
-                                    @Model.ParentScreens[i].ScreenName<span class="glyphicon glyphicon-minus">
-                                    </span>
-                                </a>
-                            </label>
-                        </div>
-                        <div id="screen@i" class="panel-body panel-collapse collapse in" role="tabpanel" aria-labelledby="Header Fields">
-                            <div class="text-center">
-                                <div class="text-center form-check mb-2 mr-sm-2 mb-sm-0">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="checkbox">  Select All
-                                    </label>
-                                </div>
-                                <div class="table-responsive">
-                                    <table class="table table-heading-sm">
-                                        <thead>
-                                            <tr>
+                string rowValue = string.Empty;
+                if (i == 0 || i%5 == 0)
+                {
+                    rowValue = "custom-row-col";
+                }
 
-                                                <th width="70%">Name</th>
-
-                                                <th width="15%">
-                                                    <input class="form-check-input main-view-@i" type="checkbox">
-                                                    Viewer
-                                                </th>
-
-                                                <th width="15%">
-                                                    <input class="form-check-input main-modify-@i" type="checkbox">
-                                                    Modify
-                                                </th>
-
-                                            </tr>
-
-                                        </thead>
-
-                                        <tbody>
-                                            @for (int screen = 0; screen < Model.ParentScreens[i].ChildScreens.Count; screen++)
-                                            {
+                if (Model.ParentScreens[i].ChildScreens != null && Model.ParentScreens[i].ChildScreens.Any())
+                {
+                    <div class="col-md-4 @rowValue">
+                        <div class="panel panel-default" style="border-color:#ddd;" id="panel-@i">
+                            <div class="panel-heading-sm">
+                                <label>
+                                    <a href="#screen-@i" data-toggle="collapse" data-parent="#panel-@i">
+                                        @Html.HiddenFor(model => Model.ParentScreens[i].ScreenID, Model.ParentScreens[i].ScreenID)
+                                        @Html.HiddenFor(model => Model.ParentScreens[i].ScreenName, Model.ParentScreens[i].ScreenName)
+                                        @Model.ParentScreens[i].ScreenName<span class="glyphicon glyphicon-minus">
+                                        </span>
+                                    </a>
+                                </label>
+                            </div>
+                            <div id="screen-@i" class="panel-body panel-collapse collapse in" role="tabpanel" aria-labelledby="Header Fields">
+                                <div class="text-center">
+                                    <div class="text-center form-check mb-2 mr-sm-2 mb-sm-0">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">  Select All
+                                        </label>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-heading-sm">
+                                            <thead>
                                                 <tr>
 
-                                                    <td>
-                                                        @Html.HiddenFor(model => Model.ParentScreens[i].ChildScreens[screen].ScreenName,
-                              Model.ParentScreens[i].ChildScreens[screen].ScreenName)
-                                                        @Html.HiddenFor(model => Model.ParentScreens[i].ChildScreens[screen].ScreenID,
-                              Model.ParentScreens[i].ChildScreens[screen].ScreenID)
-                                                        @Model.ParentScreens[i].ChildScreens[screen].ScreenName
-                                                    </td>
+                                                    <th width="70%">Name</th>
 
+                                                    <th width="15%">
+                                                        <input class="form-check-input main-view-@i" type="checkbox">
+                                                        Viewer
+                                                    </th>
 
-
-                                                    <td>
-                                                        <div class="form-check mb-2 mr-sm-2 mb-sm-0">
-                                                            @{
-                                                                var viewerClass = string.Format("{0} {1}-{2}-{3}-{4}", "form-check-input", "main-view", i, "child", screen);
-                                                            }
-                                                            <label class="form-check-label">
-
-                                                                @Html.EditorFor(model => Model.ParentScreens[i].ChildScreens[screen].IsViewer, new
-                                                           {
-                                                               htmlAttributes = new
-                                                               {
-                                                                   @class = viewerClass,
-                                                               }
-                                                           })
-
-                                                            </label>
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="form-check mb-2 mr-sm-2 mb-sm-0">
-                                                            @{
-                                                                var modifyClass = string.Format("{0} {1}-{2}-{3}-{4}", "form-check-input", "main-modify", i, "child", screen);
-                                                            }
-                                                            <label class="form-check-label">
-                                                                @Html.EditorFor(model => Model.ParentScreens[i].ChildScreens[screen].IsModifier, new
-                                                           {
-                                                               htmlAttributes = new
-                                                               {
-                                                                   @class = modifyClass,
-                                                               }
-                                                           })
-                                                            </label>
-                                                        </div>
-                                                    </td>
+                                                    <th width="15%">
+                                                        <input class="form-check-input main-modify-@i" type="checkbox">
+                                                        Modify
+                                                    </th>
 
                                                 </tr>
-                                               }
 
-                                        </tbody>
-                                    </table>
+                                            </thead>
+
+                                            <tbody>
+                                                @for (int screen = 0; screen < Model.ParentScreens[i].ChildScreens.Count; screen++)
+                                                {
+                                                    <tr>
+
+                                                        <td>
+                                                            @Html.HiddenFor(model => Model.ParentScreens[i].ChildScreens[screen].ScreenName,
+                              Model.ParentScreens[i].ChildScreens[screen].ScreenName)
+                                                            @Html.HiddenFor(model => Model.ParentScreens[i].ChildScreens[screen].ScreenID,
+                              Model.ParentScreens[i].ChildScreens[screen].ScreenID)
+                                                            @Model.ParentScreens[i].ChildScreens[screen].ScreenName
+                                                        </td>
+
+
+
+                                                        <td>
+                                                            <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                                                @{
+                                                                    //var viewerClass = string.Format("{0} {1}-{2}-{3}-{4}", "form-check-input", "main-view", i, "child", screen);
+                                                                    var viewerClass = string.Empty;
+                                                                }
+                                                                <label class="form-check-label">
+
+                                                                    @Html.EditorFor(model => Model.ParentScreens[i].ChildScreens[screen].IsViewer, new
+                                                               {
+                                                                   htmlAttributes = new
+                                                                   {
+                                                                       @class = viewerClass,
+                                                                   }
+                                                               })
+
+                                                                </label>
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                                                @{
+                                                                    var modifyClass = string.Format("{0} {1}-{2}-{3}-{4}", "form-check-input", "main-modify", i, "child", screen);
+                                                                }
+                                                                <label class="form-check-label">
+                                                                    @Html.EditorFor(model => Model.ParentScreens[i].ChildScreens[screen].IsModifier, new
+                                                               {
+                                                                   htmlAttributes = new
+                                                                   {
+                                                                       @class = modifyClass,
+                                                                   }
+                                                               })
+                                                                </label>
+                                                            </div>
+                                                        </td>
+
+                                                    </tr>
+                                                                    }
+
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-             }
-          }
-      }
+
+
+                                                                    }
+
+
+                                                                        }
+                                                                    }
 
 </div>

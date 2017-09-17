@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RMDRMCDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="RMDRMCDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AccessDetails">
           <Key>
             <PropertyRef Name="AccessID" />
@@ -103,13 +103,7 @@ warning 6002: The table/view 'RMDRMCNew.dbo.RoleDetails' does not have a primary
           <EntitySet Name="ChildScreen" EntityType="Self.ChildScreen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MainScreen" EntityType="Self.MainScreen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RoleDetails" EntityType="Self.RoleDetails" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [RoleDetails].[RoleID] AS [RoleID], 
-    [RoleDetails].[ScreenID] AS [ScreenID], 
-    [RoleDetails].[AccessID] AS [AccessID], 
-    [RoleDetails].[Activate] AS [Activate]
-    FROM [dbo].[RoleDetails] AS [RoleDetails]</DefiningQuery>
+          <EntitySet Name="RoleDetails" EntityType="Self.RoleDetails" store:Type="Tables" Schema="dbo">
           </EntitySet>
           <AssociationSet Name="FK_ChildScreen_MainScreen" Association="Self.FK_ChildScreen_MainScreen">
             <End Role="MainScreen" EntitySet="MainScreen" />
@@ -128,8 +122,7 @@ warning 6002: The table/view 'RMDRMCNew.dbo.RoleDetails' does not have a primary
             <End Role="RoleDetails" EntitySet="RoleDetails" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RMDRMCDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">

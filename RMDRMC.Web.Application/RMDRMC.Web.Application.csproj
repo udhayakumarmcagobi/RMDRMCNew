@@ -148,6 +148,7 @@
     <Content Include="Content\alertify.bootstrap.css" />
     <Content Include="Content\alertify.core.css" />
     <Content Include="Content\alertify.default.css" />
+    <Content Include="CustomScripts\UserManagement.js" />
     <Content Include="CustomScripts\Common.js" />
     <Content Include="Scripts\BootSideMenu.js" />
     <Content Include="Content\bootstrap-datepicker.css" />

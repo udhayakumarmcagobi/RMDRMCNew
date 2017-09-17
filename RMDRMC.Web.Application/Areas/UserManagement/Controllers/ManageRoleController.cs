@@ -34,7 +34,16 @@ namespace RMDRMC.Web.Application.Areas.UserManagement.Controllers
             ViewBag.Sidemenu = "UserManagement";
 
             RolesVM rolesVM = roleClientService.GetEmptyRole();
-            rolesVM.IsActive = true;            
+            rolesVM.IsActive = true;
+
+            return View(rolesVM);
+        }
+
+        // POST: UserManagement/ManageRole/Create
+        [HttpPost]
+        public ActionResult Create(RolesVM rolesVM)
+        {
+            string str = string.Empty;
 
             return View(rolesVM);
         }

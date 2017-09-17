@@ -10,8 +10,8 @@
 
     string actionMethod = ViewBag.ActionMethod;
 
-    string ajaxRoleSuccessMethod = "CreateRoleSuccess";
-    string ajaxRoleFailureMethod = "CreateRoleFailure";
+    string ajaxRoleSuccessMethod = "OnSuccess";
+    string ajaxRoleFailureMethod = "OnFailure";
     if (pageName == "Edit")
     {
         ajaxRoleSuccessMethod = "UpdateRoleSuccess";
@@ -19,17 +19,14 @@
     }
 }
 
-@using (Ajax.BeginForm(actionMethod, "ManageRole", FormMethod.Post,
-                                                                                                        new AjaxOptions
-                                                                                                        {
-                                                                                                            HttpMethod = "Post",
-                                                                                                            OnBegin = "ShowProgressbar",
-                                                                                                            OnComplete = "HideProgressbar",
-                                                                                                            OnSuccess = ajaxRoleSuccessMethod,
-                                                                                                            OnFailure = ajaxRoleFailureMethod
+@using (Ajax.BeginForm("Create", "ManageRole", FormMethod.Post,
+                                                                                                                                            new AjaxOptions
+                                                                                                                                            {
+                                                                                                                                                OnSuccess = ajaxRoleSuccessMethod,
+                                                                                                                                                OnFailure = ajaxRoleFailureMethod
 
-                                                                                                        }, new { Id = "FormCreateRole" }
-                                                                                                        ))
+                                                                                                                                            }, new { Id = "FormCreateRole" }
+                                                                                                                                            ))
 {
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -74,7 +71,13 @@
                     </div>
                     <div class="col-md-2 form-check mb-2 mr-sm-2 mb-sm-0">
                         <label class="form-check-label role-form-check">
-                            <input class="form-check-input" type="checkbox" checked="@Model.IsActive" name="IsActive" value="@Model.IsActive">
+                            @Html.EditorFor(model => Model.IsActive, new
+                       {
+                           htmlAttributes = new
+                           {
+                               @class = "form-check-input",
+                           }
+                       })
                         </label>
                         <label class="role-form-check-label">Activate/De-Activate</label>
                     </div>
@@ -89,7 +92,7 @@
                 <div class="text-center">
                     @if (Model.ParentScreens != null)
                     {
-                        Html.Partial("_ScreenAccessSelection", Model.ParentScreens);
+                        @Html.Partial("_ScreenAccessSelection", Model);
                     }
                 </div>
             </div>
@@ -99,7 +102,7 @@
             <div class="row text-center" style="margin-bottom:20px;">
                 @if (pageName != "Edit")
                 {
-                    <input type="submit" value="Save" class="ButtonWithImage btnSaveRoles" data-alert="false" />
+                    <input type="button" value="Save" class="ButtonWithImage btnSaveRoles" data-alert="false" />
                     <input type="button" value="Cancel" class="ButtonWithImage" onclick="ClearFields()" />
                 }
 
@@ -110,4 +113,5 @@
     </div>
 }
 
+<script src="~/CustomScripts/UserManagement.js"></script>
 

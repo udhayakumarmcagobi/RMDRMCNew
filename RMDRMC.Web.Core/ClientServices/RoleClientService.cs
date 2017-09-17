@@ -23,8 +23,20 @@ namespace RMDRMC.Web.Core.ClientServices
         public RolesVM GetEmptyRole()
         {
             var emptyRole = roleService.GetEmptyRole();
+          
+            var rolesVM = AutoMappers.Map<Roles, RolesVM>(emptyRole);
 
-            return AutoMappers.Map<Roles, RolesVM>(emptyRole);
+            rolesVM.ParentScreens = emptyRole.AccessScreens.GroupBy(a => a.ParentScreenID,
+                                    (aKey, aData) =>
+                                    new ScreenVM()
+                                    {
+                                         ScreenID = aKey,
+                                         ScreenName = aData.FirstOrDefault().ParentScreen,
+                                         ChildScreens = AutoMappers.Map<IEnumerable<Screen>, List<ScreenVM>>(aData)
+ 
+                                    }).OrderByDescending(x => x.ChildScreens.Count).ToList();
+
+            return rolesVM;
         }
     }
 }

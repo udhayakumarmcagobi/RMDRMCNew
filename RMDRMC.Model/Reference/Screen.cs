@@ -11,7 +11,7 @@ namespace RMDRMC.Model.Reference
     {
         public long ScreenID { get; set; }
         public string ScreenName { get; set; }
-        public string ParentScreenID { get; set; }
+        public long ParentScreenID { get; set; }
         public string ParentScreen { get; set; }
         public ScreenAccess ScreenAccess { get; set; }
     }

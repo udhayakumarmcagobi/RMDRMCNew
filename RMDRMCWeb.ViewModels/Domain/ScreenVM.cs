@@ -12,6 +12,8 @@ namespace RMDRMCWeb.ViewModels.Domain
         public string ScreenName { get; set; }
         public bool ScreenSelected { get; set; }
         public string ScreenAccess { get; set; }
+        public bool IsViewer { get; set; }
+        public bool IsModifier { get; set; }
         public List<ScreenVM> ChildScreens { get; set; }
     }
 }

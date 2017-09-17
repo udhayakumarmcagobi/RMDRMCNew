@@ -21,7 +21,7 @@
     <link href="~/Scripts/jquery.treegrid.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" />
     <script src="~/Scripts/bootstrap-datepicker.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/Scripts/BootSideMenu.js"></script>
     <link href="/Content/alertify.bootstrap.css" rel="stylesheet" />
     <link href="~/Content/alertify.core.css" rel="stylesheet" />
@@ -123,8 +123,6 @@
         }
 
         @Html.Partial("_Footer");
-
-
 
         @{
             string hostName = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + HttpRuntime.AppDomainAppVirtualPath;

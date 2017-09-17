@@ -31,7 +31,7 @@ namespace RMDRMC.Domain.Core.Services
         public Roles GetEmptyRole()
         {
             var role = new Roles();
-            role.AccessScreens = GetAllScreens()?.ToList();
+            role.AccessScreens = GetAllScreens()?.Where(x => x.ParentScreenID != 1).ToList();
 
             return role;
         }

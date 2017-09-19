@@ -19,7 +19,7 @@ namespace RMDRMC.Mapper.Model.DomainToViewModel
         public DomainToViewModelMapperProfile()
         {
             CreateMap<Roles, RolesVM>()
-                .ForMember(model => model.ParentScreens, map => map.Ignore());
+                .ForMember(model => model.ParentScreens, map => map.MapFrom(m => DomainToViewModelCustomMapper.MapParentScreens(m.AccessScreens)));
 
             CreateMap<Screen, ScreenVM>()
                   .ForMember(model => model.IsViewer, map => map.MapFrom(m => DomainToViewModelCustomMapper.IsViewer(m.ScreenAccess)))

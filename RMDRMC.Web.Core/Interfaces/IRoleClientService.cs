@@ -11,5 +11,7 @@ namespace RMDRMC.Web.Core.Interfaces
     {
        RolesVM GetEmptyRole();
        bool CreateNewRole(RolesVM rolesVM);
+       List<RolesVM> GetRoles(string rolePrefix);
+       RolesVM GetRolesByID(long roleID);
     }
 }

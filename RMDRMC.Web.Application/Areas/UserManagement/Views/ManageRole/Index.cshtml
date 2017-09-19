@@ -1,4 +1,5 @@
-﻿
+﻿@model  List<RolesVM>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,7 +11,7 @@
     </div>
 
     <div id="approles" class="panel-body  panel-collapse collapse in" role="tabpanel" aria-labelledby="Header Fields">
-        <h2>All Application Roles</h2>
+        @Html.Partial("_RoleSearch", null)
     </div>
 </div>
 

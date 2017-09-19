@@ -217,6 +217,7 @@
     <Content Include="Areas\UserManagement\Views\Shared\_UserLoginDetails.cshtml" />
     <Content Include="Areas\UserManagement\Views\Shared\_UserPersonalDetails.cshtml" />
     <Content Include="Areas\UserManagement\Views\ManageUser\Create.cshtml" />
+    <Content Include="Areas\UserManagement\Views\Shared\_RoleSearch.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -298,6 +299,7 @@
     <Compile Include="Areas\VendorManagement\Controllers\QuotationController.cs" />
     <Compile Include="Areas\VendorManagement\Controllers\EnquiryController.cs" />
     <Compile Include="Areas\VendorManagement\VendorManagementAreaRegistration.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -341,7 +343,9 @@
     <Folder Include="Areas\POManagement\Views\Shared\" />
     <Folder Include="Areas\Reports\Views\Shared\" />
     <Folder Include="Areas\VendorManagement\Views\Shared\" />
+    <Folder Include="CustomHTMLHelpers\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RMDRMC.Mapper.Model\RMDRMC.Mapper.Model.csproj">

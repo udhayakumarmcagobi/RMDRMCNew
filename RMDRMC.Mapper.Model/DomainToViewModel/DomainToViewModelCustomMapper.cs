@@ -1,4 +1,6 @@
 ﻿using RMDRMC.Model.Enum;
+using RMDRMC.Model.Reference;
+using RMDRMCWeb.ViewModels.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +23,19 @@ namespace RMDRMC.Mapper.Model.DomainToViewModel
             if (access == ScreenAccess.Modify) return true;
 
             return false;
+        }        
+
+        public static List<ScreenVM> MapParentScreens(List<Screen> screens)
+        {
+           return  screens.GroupBy(a => a.ParentScreenID,
+                                    (aKey, aData) =>
+                                    new ScreenVM()
+                                    {
+                                        ScreenID = aKey,
+                                        ScreenName = aData.FirstOrDefault().ParentScreen,
+                                        ChildScreens = AutoMappers.Map<IEnumerable<Screen>, List<ScreenVM>>(aData)
+
+                                    }).ToList();
         }
     }
 }

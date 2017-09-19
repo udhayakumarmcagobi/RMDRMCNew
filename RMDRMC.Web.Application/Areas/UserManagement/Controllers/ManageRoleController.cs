@@ -1,4 +1,5 @@
-﻿using RMDRMC.Web.Core.ClientServices;
+﻿using RMDRMC.Web.Application.Controllers;
+using RMDRMC.Web.Core.ClientServices;
 using RMDRMC.Web.Core.Interfaces;
 using RMDRMCWeb.ViewModels.Domain;
 using System;
@@ -13,16 +14,18 @@ namespace RMDRMC.Web.Application.Areas.UserManagement.Controllers
     public class ManageRoleController : Controller
     {
         private readonly IRoleClientService roleClientService;
+        private const string SideMenuName = "UserManagement";
 
-        public ManageRoleController()
+        public ManageRoleController():base()
         {
             roleClientService = new RoleClientService();
+            ViewBag.Sidemenu = SideMenuName;
         }
         // GET: UserManagement/ManageRole
         public ActionResult Index()
         {
-            ViewBag.Sidemenu = "UserManagement";
-            return View();
+            var rolesVMList = roleClientService.GetRoles(string.Empty);
+            return View(rolesVMList);
         }
 
         // GET: UserManagement/ManageRole/Create
@@ -31,7 +34,6 @@ namespace RMDRMC.Web.Application.Areas.UserManagement.Controllers
             ViewBag.page = "Create";
             ViewBag.PageName = "Create Role";
             ViewBag.ActionMethod = "CreateRole";
-            ViewBag.Sidemenu = "UserManagement";
 
             RolesVM rolesVM = roleClientService.GetEmptyRole();
             rolesVM.IsActive = true;

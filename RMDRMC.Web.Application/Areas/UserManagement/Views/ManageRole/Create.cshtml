@@ -61,11 +61,11 @@
                     </div>
                     <div class="col-md-5">
                         <div class="form-group clearfix">
-                            <label class="control-label col-sm-4 col-md-5 tooltip-enable formLabelAlign" data-toggle="tooltip" id="lblRoleName"
+                            <label class="control-label col-sm-4 col-md-5 tooltip-enable formLabelAlign important" data-toggle="tooltip" id="lblRoleName"
                                    data-placement="bottom" title="Role">Role Name:</label>
                             <div class="col-sm-8 col-md-7">
                                 <input type="text" class="form-control input-sm tooltip-enable role-input" id="txtRoleName"
-                                       data-toggle="tooltip" data-placement="bottom" title="Role Name" maxlength="50" value="@Model.RoleName"
+                                       data-toggle="tooltip" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{5,12}$" required data-placement="bottom" title="Role Name" maxlength="50" value="@Model.RoleName"
                                        name="RoleName" />
                             </div>
                         </div>

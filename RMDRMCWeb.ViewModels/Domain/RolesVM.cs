@@ -12,5 +12,6 @@ namespace RMDRMCWeb.ViewModels.Domain
         public string RoleName { get; set; }
         public List<ScreenVM> ParentScreens { get; set; }
         public bool IsActive { get; set; }
+        public bool Selected { get; set; }
     }
 }

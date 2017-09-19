@@ -41,35 +41,7 @@
         <div class="row">
             <div class="text-center">
 
-                <div class="panel panel-default" style="border-color:#ddd;" id="roleinfopanel">
-                    <div class="panel-heading-sm">
-                        <label><a href="#roleinfo" data-toggle="collapse" data-parent="#roleinfopanel">Role Info<span class="glyphicon glyphicon-minus"></span></a></label>
-                    </div>
-
-                    <div id="roleinfo" class="panel-body  panel-collapse collapse in" role="tabpanel" aria-labelledby="Header Fields">
-
-                        <div class="form-group clearfix">
-                            <label class="control-label col-xs-2 col-sm-5 col-md-6 tooltip-enable formLabelAlign"
-                                   data-toggle="tooltip" id="lblSelectRole" data-placement="bottom" title="Select Role">Select Role:</label>
-                            <div class="col-xs-6 col-sm-7 col-md-6">
-                                <select class="form-control input-sm tooltip-enable designItemInput" id="drpRoleDetails"
-                                        data-toggle="tooltip" data-placement="bottom" name="RoleDetails" title="Select Role"></select>
-                            </div>
-                        </div>
-
-                        <div class="panel panel-default" style="border-color:#ddd;" id="roleaccesspanel">
-                            <div class="panel-heading-sm">  
-                                <label><a href="#roleacessDetails" data-toggle="collapse" data-parent="#roleaccesspanel">Role Access Details<span class="glyphicon glyphicon-minus"></span></a></label>
-                            </div>
-
-                            <div id="roleacessDetails" class="panel-body  panel-collapse collapse in" role="tabpanel" aria-labelledby="Header Fields">
-                                @Html.Partial("_ScreenAccessSelection", null)
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
+                @Html.Partial("_RoleSearch", null);
 
             </div>
         </div>

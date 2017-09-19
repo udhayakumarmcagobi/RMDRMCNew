@@ -15,11 +15,22 @@ namespace RMDRMC.Web.Core.ClientServices
 {
     public class RoleClientService : IRoleClientService
     {
+        #region Fields
+
         private readonly IRoleService roleService;
+
+        #endregion
+
+        #region Constructors
+
         public RoleClientService()
         {
             roleService = new RoleService();
         }
+
+        #endregion
+
+        #region Public Methods
 
         public RolesVM GetEmptyRole()
         {
@@ -42,16 +53,6 @@ namespace RMDRMC.Web.Core.ClientServices
             return rolesVM;
         }
 
-        private List<ScreenVM> GetCustomOrderScreen(List<ScreenVM> parentScreens)
-        {
-            return parentScreens.OrderBy(x => x.ScreenName.StartsWith("M") ? 1 
-                    : x.ScreenName.StartsWith("V") ? 2
-                    : x.ScreenName.StartsWith("P") ? 3
-                    : x.ScreenName.StartsWith("Inven") ? 4
-                    : x.ScreenName.StartsWith("J") ? 5
-                    : x.ScreenName.StartsWith("R") ? 6 : 7).ToList();
-        }
-
         public bool CreateNewRole(RolesVM rolesVM)
         {
             if (rolesVM == null) return false;
@@ -62,19 +63,42 @@ namespace RMDRMC.Web.Core.ClientServices
 
             roleService.CreateNewRole(roles);
 
-            rolesVM = AutoMappers.Map<Roles, RolesVM>(roles);
-
-            rolesVM.ParentScreens = roles.AccessScreens.GroupBy(a => a.ParentScreenID,
-                                    (aKey, aData) =>
-                                    new ScreenVM()
-                                    {
-                                        ScreenID = aKey,
-                                        ScreenName = aData.FirstOrDefault().ParentScreen,
-                                        ChildScreens = AutoMappers.Map<IEnumerable<Screen>, List<ScreenVM>>(aData)
-
-                                    }).OrderBy(x => x.ScreenName).ToList();
+            rolesVM = AutoMappers.Map<Roles, RolesVM>(roles);            
 
             return true;
+        }
+
+        public List<RolesVM> GetRoles(string rolePrefix)
+        {
+            var allRoles = roleService.GetAllRoles();
+
+            var allRolesVM  = AutoMappers.Map<IEnumerable<Roles>, List<RolesVM>>(allRoles);
+
+            if (string.IsNullOrWhiteSpace(rolePrefix)) return allRolesVM;
+
+            return allRolesVM.Where(x => x.RoleName.StartsWith(rolePrefix)).ToList();
+
+        }
+
+        public RolesVM GetRolesByID(long roleID)
+        {
+            var role = roleService.GetAllRoleByID(roleID);
+
+            return AutoMappers.Map<Roles, RolesVM>(role);                        
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private List<ScreenVM> GetCustomOrderScreen(List<ScreenVM> parentScreens)
+        {
+            return parentScreens.OrderBy(x => x.ScreenName.StartsWith("M") ? 1 
+                    : x.ScreenName.StartsWith("V") ? 2
+                    : x.ScreenName.StartsWith("P") ? 3
+                    : x.ScreenName.StartsWith("Inven") ? 4
+                    : x.ScreenName.StartsWith("J") ? 5
+                    : x.ScreenName.StartsWith("R") ? 6 : 7).ToList();
         }
 
         private List<Screen> GetAccessScreens(List<ScreenVM> accessScreensVMList)
@@ -94,6 +118,10 @@ namespace RMDRMC.Web.Core.ClientServices
             return newScreens;
         }
 
+        #endregion
+
+        #region Helper Methods
+
         private ScreenAccess GetScreenAccess(ScreenVM screenVM)
         {
             if (screenVM.IsModifier) return ScreenAccess.Modify;
@@ -102,5 +130,7 @@ namespace RMDRMC.Web.Core.ClientServices
 
             return ScreenAccess.None;
         }
+
+        #endregion
     }
 }

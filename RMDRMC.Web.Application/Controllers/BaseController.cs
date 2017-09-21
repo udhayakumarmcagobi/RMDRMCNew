@@ -26,8 +26,8 @@ namespace RMDRMC.Web.Application.Controllers
         public ActionResult GetScreensByRole(long roleID)
         {
            var roleVM =  roleClientService.GetRolesByID(roleID);
-
-            return PartialView("_ScreenAccessSelection", roleVM);
+            
+           return PartialView("_ScreenAccessSelection", roleVM);
         }
     }
 }

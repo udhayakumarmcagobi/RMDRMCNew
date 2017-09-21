@@ -49,7 +49,24 @@ namespace RMDRMC.Web.Application.Areas.UserManagement.Controllers
 
             roleClientService.CreateNewRole(rolesVM);
 
-            return View(rolesVM);
+            return new JsonResult
+            {
+                Data = new
+                {
+                    result = true,
+                    data = rolesVM
+                }
+
+            };
+        }
+
+        [HttpGet]
+        [ActionName("GetScreenAccessByRoleID")]
+        public ActionResult GetScreensByRole(long roleID)
+        {
+            var roleVM = roleClientService.GetRolesByID(roleID);
+
+            return PartialView("_ScreenAccessSelection", roleVM);
         }
     }
 }

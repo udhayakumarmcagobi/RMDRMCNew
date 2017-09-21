@@ -115,3 +115,8 @@ function CreateRoleSuccess(response) {
 function CreateRoleFailure(response) {
     alert("Failed");
 }
+
+function RedirectCreateNewRole() {
+    var hostPath = $("#hostpath").val();
+    window.location.href = hostPath + "/UserManagement/ManageRole/Create";
+}

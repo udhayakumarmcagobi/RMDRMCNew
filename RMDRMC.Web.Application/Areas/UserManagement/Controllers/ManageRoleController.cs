@@ -60,6 +60,25 @@ namespace RMDRMC.Web.Application.Areas.UserManagement.Controllers
             };
         }
 
+        // POST: UserManagement/ManageRole/Update
+        [HttpPost]
+        public ActionResult Update(RolesVM rolesVM)
+        {
+            string str = string.Empty;
+
+            roleClientService.UpdateRole(rolesVM);
+
+            return new JsonResult
+            {
+                Data = new
+                {
+                    result = true,
+                    data = rolesVM
+                }
+
+            };
+        }
+
         [HttpGet]
         [ActionName("GetScreenAccessByRoleID")]
         public ActionResult GetScreensByRole(long roleID)

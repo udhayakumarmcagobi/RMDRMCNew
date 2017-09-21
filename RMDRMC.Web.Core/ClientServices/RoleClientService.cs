@@ -68,6 +68,21 @@ namespace RMDRMC.Web.Core.ClientServices
             return true;
         }
 
+        public bool UpdateRole(RolesVM rolesVM)
+        {
+            if (rolesVM == null) return false;
+
+            var roles = AutoMappers.Map<RolesVM, Roles>(rolesVM);
+
+            roles.AccessScreens = GetAccessScreens(rolesVM.ParentScreens);
+
+            roleService.UpdateRole(roles);
+
+            rolesVM = AutoMappers.Map<Roles, RolesVM>(roles);
+
+            return true;
+        }
+
         public List<RolesVM> GetRoles(string rolePrefix)
         {
             var allRoles = roleService.GetAllRoles();

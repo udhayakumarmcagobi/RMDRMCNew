@@ -13,5 +13,6 @@ namespace RMDRMC.Domain.Core.Interfaces
         Roles GetAllRoleByID(long roleID);
         Roles GetEmptyRole();
         bool CreateNewRole(Roles roles);
+        bool UpdateRole(Roles roles);
     }
 }

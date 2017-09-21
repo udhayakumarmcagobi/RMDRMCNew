@@ -40,5 +40,10 @@ namespace RMDRMC.Domain.Core.Services
         {
            return roleRepository.CreateRole(roles);
         }
+
+        public bool UpdateRole(Roles roles)
+        {
+            return roleRepository.UpdateRole(roles);
+        }
     }
 }

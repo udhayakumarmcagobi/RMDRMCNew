@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
 
     $(document).on("click", ".main-view-check", function () {
-        MaxCheckBoxFlips(this, 1);      
+        MaxCheckBoxFlips(this, 1);
     });
 
     $(document).on("click", ".main-modify-check", function () {
@@ -29,9 +29,9 @@ function MaxCheckBoxFlips(checkboxObject, pos) {
 }
 
 function CreateRoleSuccess(response) {
-    if(response.result) {
-        alertify.alert("New Role "+response.data.RoleName+" has been created successfully");
-     }
+    if (response.result) {
+        alertify.alert("New Role " + response.data.RoleName + " has been created successfully");
+    }
 }
 
 function CreateRoleFailure(response) {
@@ -48,7 +48,6 @@ function LoadScreenAccessDetailsOfRole(roleID) {
             data: { 'roleID': roleID },
             dataType: "html",
             url: hostPath + '/UserManagement/ManageRole/GetScreenAccessByRoleID/',
-            // dataType: "Html",
             beforeSend: function () {
                 ShowProgressbar();
             },
@@ -67,6 +66,42 @@ function LoadScreenAccessDetailsOfRole(roleID) {
             }
         });
     }
+}
+
+function UpdateRole() {
+    debugger;
+    var hostPath = $("#hostpath").val();
+    var roleID = $("#drpRoleDetails").val();
+
+    if (roleID == "") {
+        alertify.alert("select role to update");
+        return;
+    }
+
+    $.ajax({
+        async: true,
+        type: "Post",
+        cache: false,
+        data: { 'roleID': roleID },
+        dataType: "json",
+        url: hostPath + '/UserManagement/ManageRole/Update/',
+        beforeSend: function () {
+            ShowProgressbar();
+        },
+        success: function (jsonResult) {
+            if (jsonResult.result) {
+                alertify.alert("Role has been updated successfully");
+            }
+        },
+        error: function (err) {
+            alertify.alert("Role update failed");
+            $("#roleacessDetails").html("");
+            HideProgressbar();
+        },
+        complete: function () {
+            HideProgressbar();
+        }
+    });
 }
 
 function RedirectCreateNewRole() {

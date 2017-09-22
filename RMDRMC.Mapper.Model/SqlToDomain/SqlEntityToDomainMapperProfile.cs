@@ -19,6 +19,7 @@ namespace RMDRMC.Mapper.Model.SqlToDomain
         {
             CreateMap<Role, Roles>()
                .ForMember(model => model.RoleName, map => map.MapFrom(m => m.Name))
+               .ForMember(model => model.IsActive, map => map.MapFrom(m => m.Activate))
                .ForMember(model => model.AccessScreens, map => map.MapFrom(m => m.RoleDetails));
          
 

@@ -2,7 +2,10 @@
 
 <div class="row" id="screen-selection">
     @if (Model != null && Model.ParentScreens != null && Model.ParentScreens.Any() && Model.ParentScreens.Any(x => x.ChildScreens != null && x.ChildScreens.Any()))
-    {
+    {        
+        @Html.HiddenFor(model => model.IsActive, Model.IsActive);
+        @Html.HiddenFor(model => model.RoleName, Model.RoleName);
+
         for (int i = 0; i < Model.ParentScreens.Count; i++)
         {
             string rowValue = string.Empty;
@@ -29,11 +32,11 @@
                             <div class="text-center">
                                 <div class="text-center form-check mb-2 mr-sm-2 mb-sm-0">
                                     <label class="form-check-label">
-                                        <input class="form-check-input form-check-check-all" type="checkbox">  Select All
+                                        <input class="form-check-input form-check-check-all" data-html="@Model.ParentScreens[i].ScreenName" type="checkbox">  Select All
                                     </label>
                                 </div>
                                 <div class="table-responsive">
-                                    <table class="table table-heading-sm">
+                                    <table id="@Model.ParentScreens[i].ScreenName" class="table table-heading-sm">
                                         <thead>
                                             <tr>
                                                 <th width="70%">Name</th>

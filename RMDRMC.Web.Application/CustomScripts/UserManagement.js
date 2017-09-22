@@ -73,6 +73,8 @@ function UpdateRole() {
     var hostPath = $("#hostpath").val();
     var roleID = $("#drpRoleDetails").val();
 
+    var roleData = $("#rolewithaccess").serialize();
+
     if (roleID == "") {
         alertify.alert("select role to update");
         return;
@@ -81,9 +83,8 @@ function UpdateRole() {
     $.ajax({
         async: true,
         type: "Post",
-        cache: false,
-        data: { 'roleID': roleID },
-        dataType: "json",
+        cache: false,        
+        data:  roleData,        
         url: hostPath + '/UserManagement/ManageRole/Update/',
         beforeSend: function () {
             ShowProgressbar();

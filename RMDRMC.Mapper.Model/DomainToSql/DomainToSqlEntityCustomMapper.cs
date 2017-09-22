@@ -11,11 +11,17 @@ namespace RMDRMC.Mapper.Model.DomainToSql
     {
         public static int GetAccessID(ScreenAccess screenAccess)
         {
-            if (screenAccess == ScreenAccess.None) return 1;
-            if (screenAccess == ScreenAccess.ViewOnly) return 2;
-            if (screenAccess == ScreenAccess.Modify) return 3;
-
-            return 1;
+            switch (screenAccess)
+            {
+                case ScreenAccess.None:
+                    return 1;
+                case ScreenAccess.ViewOnly:
+                    return 2;
+                case ScreenAccess.Modify:
+                    return 3;
+                default:
+                    return 1;
+            }
         }
     }
 }

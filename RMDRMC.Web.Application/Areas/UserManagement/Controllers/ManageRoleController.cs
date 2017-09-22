@@ -1,4 +1,5 @@
 ﻿using RMDRMC.Web.Application.Controllers;
+using RMDRMC.Web.Application.Helpers;
 using RMDRMC.Web.Core.ClientServices;
 using RMDRMC.Web.Core.Interfaces;
 using RMDRMCWeb.ViewModels.Domain;
@@ -45,38 +46,18 @@ namespace RMDRMC.Web.Application.Areas.UserManagement.Controllers
         [HttpPost]
         public ActionResult Create(RolesVM rolesVM)
         {
-            string str = string.Empty;
-
             roleClientService.CreateNewRole(rolesVM);
 
-            return new JsonResult
-            {
-                Data = new
-                {
-                    result = true,
-                    data = rolesVM
-                }
-
-            };
+            return UtilityHelpers.GetJsonResult(true, rolesVM);
         }
 
         // POST: UserManagement/ManageRole/Update
         [HttpPost]
         public ActionResult Update(RolesVM rolesVM)
         {
-            string str = string.Empty;
-
             roleClientService.UpdateRole(rolesVM);
 
-            return new JsonResult
-            {
-                Data = new
-                {
-                    result = true,
-                    data = rolesVM
-                }
-
-            };
+            return UtilityHelpers.GetJsonResult(true, rolesVM);
         }
 
         [HttpGet]

@@ -30,14 +30,14 @@ namespace RMDRMC.DataRepository.Sql.Repositories
 
         public bool UpdateRole(Roles role)
         {
-            if (role == null || role.RoleID <= 0 || string.IsNullOrWhiteSpace(role.RoleName)) return false;
+            if (role == null || role.RoleID <= 0) return false;
 
-            var entity = GetFirstOrDefault(x => x.RoleID == role.RoleID && x.Name.Equals(role.RoleName));
+            var entity = GetFirstOrDefault(x => x.RoleID == role.RoleID);
             if (entity == null) return false;
 
-            Role roleEntity = AutoMappers.Map<Roles, Role>(role);
+            //entity = AutoMappers.Map<Roles, Role>(role);
 
-            Update(roleEntity);
+            Update(entity);
             Commit();
 
             return true;

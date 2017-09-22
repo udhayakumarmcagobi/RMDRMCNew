@@ -35,7 +35,7 @@ namespace RMDRMC.DataRepository.Sql.Repositories
             var entity = GetFirstOrDefault(x => x.RoleID == role.RoleID);
             if (entity == null) return false;
 
-            //entity = AutoMappers.Map<Roles, Role>(role);
+            entity = AutoMappers.Map<Roles, Role>(role, entity);
 
             Update(entity);
             Commit();

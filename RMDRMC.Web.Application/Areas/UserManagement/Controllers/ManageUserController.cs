@@ -1,4 +1,7 @@
-﻿using System;
+﻿using RMDRMC.Web.Core.ClientServices;
+using RMDRMC.Web.Core.Interfaces;
+using RMDRMCWeb.ViewModels.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,13 +11,18 @@ namespace RMDRMC.Web.Application.Areas.UserManagement.Controllers
 {
     public class ManageUserController : Controller
     {
+        private readonly IUserClientService userClientService;
+
         private const string SideMenu = "UserManagement";
         private const string sideMenuName = "ManageUser";
 
+        
         public ManageUserController()
         {
             ViewBag.Sidemenu = SideMenu;
             ViewBag.sideMenuName = sideMenuName;
+
+            userClientService = new UserClientService();
         }
 
         // GET: UserManagement/ManageUser
@@ -23,10 +31,12 @@ namespace RMDRMC.Web.Application.Areas.UserManagement.Controllers
             return View();
         }
 
-        // GET: UserManagement/ManageRole/Create
+        // GET: UserManagement/ManageUser/Create
         public ActionResult Create()
         {
-            return View();
+            UsersVM usersVM = userClientService.GetEmptyUser();
+            usersVM.IsActive = true;
+            return View(usersVM);
         }
     }
 }

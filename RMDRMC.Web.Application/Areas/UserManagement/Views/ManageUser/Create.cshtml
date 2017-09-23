@@ -1,4 +1,4 @@
-﻿
+﻿@model UsersVM
 @{
     ViewBag.Title = "CreateUser";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -14,7 +14,7 @@
         <div class="row text-center" style="margin-bottom:20px;">
 
             <input type="submit" value="Save" class="ButtonWithImage btnSaveUsers" data-alert="false" />
-            <input type="button" value="Cancel" class="ButtonWithImage" onclick="ClearFields()" />
+            <input type="button" value="Cancel" class="ButtonWithImage" onclick="RefreshScreen()" />
 
         </div>
 
@@ -41,7 +41,7 @@
         <div class="row">
             <div class="text-center">
 
-                @Html.Partial("_RoleSearch", null);
+                @Html.Partial("_RoleSearch", Model.AllUserRoles);
 
             </div>
         </div>
@@ -49,11 +49,11 @@
         <div class="row text-center" style="margin-bottom:20px;">
 
             <input type="submit" value="Save" class="ButtonWithImage btnSaveUsers" data-alert="false" />
-            <input type="button" value="Cancel" class="ButtonWithImage" onclick="ClearFields()" />
+            <input type="button" value="Cancel" class="ButtonWithImage" onclick="RefreshScreen()" />
 
         </div>
 
     </div>
 </div>
-
+<script src="~/CustomScripts/UserManagement.js"></script>
 

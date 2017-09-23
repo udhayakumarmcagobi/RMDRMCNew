@@ -8,10 +8,18 @@ namespace RMDRMC.Web.Application.Areas.JobManagement.Controllers
 {
     public class JobCardController : Controller
     {
+        private const string SideMenu = "JobManagement";
+        private const string sideMenuName = "JobCard";
+
+        public JobCardController()
+        {
+            ViewBag.Sidemenu = SideMenu;
+            ViewBag.sideMenuName = sideMenuName;
+        }
+
         // GET: JobManagement/JobCard
         public ActionResult Index()
         {
-            ViewBag.Sidemenu = "JobManagement";
             return View();
         }
     }

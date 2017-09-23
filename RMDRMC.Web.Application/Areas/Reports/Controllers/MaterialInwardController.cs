@@ -8,10 +8,18 @@ namespace RMDRMC.Web.Application.Areas.Reports.Controllers
 {
     public class MaterialInwardController : Controller
     {
+        private const string SideMenu = "Reports";
+        private const string sideMenuName = "MaterialInward";
+
+        public MaterialInwardController()
+        {
+            ViewBag.Sidemenu = SideMenu;
+            ViewBag.sideMenuName = sideMenuName;
+        }
+
         // GET: Reports/MaterialInward
         public ActionResult Index()
         {
-            ViewBag.Sidemenu = "Reports";
             return View();
         }
     }

@@ -8,10 +8,18 @@ namespace RMDRMC.Web.Application.Areas.InventoryManagement.Controllers
 {
     public class MaterialIssueReturnsController : Controller
     {
+        private const string SideMenu = "InventoryManagement";
+        private const string sideMenuName = "MaterialIssueReturns";
+
+        public MaterialIssueReturnsController()
+        {
+            ViewBag.Sidemenu = SideMenu;
+            ViewBag.sideMenuName = sideMenuName;
+        }
+
         // GET: InventoryManagement/MaterialIssueReturns
         public ActionResult Index()
         {
-            ViewBag.Sidemenu = "InventoryManagement";
             return View();
         }
     }

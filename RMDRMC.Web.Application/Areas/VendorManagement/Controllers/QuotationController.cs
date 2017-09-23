@@ -8,10 +8,17 @@ namespace RMDRMC.Web.Application.Areas.VendorManagement.Controllers
 {
     public class QuotationController : Controller
     {
+        private const string SideMenu = "VendorManagement";
+        private const string sideMenuName = "Quotation";
+
+        public QuotationController()
+        {
+            ViewBag.Sidemenu = SideMenu;
+            ViewBag.sideMenuName = sideMenuName;
+        }
         // GET: VendorManagement/Quotation
         public ActionResult Index()
         {
-            ViewBag.Sidemenu = "VendorManagement";
             return View();
         }
     }

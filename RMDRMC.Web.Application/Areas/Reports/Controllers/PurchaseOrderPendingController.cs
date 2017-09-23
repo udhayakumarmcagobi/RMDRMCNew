@@ -8,10 +8,18 @@ namespace RMDRMC.Web.Application.Areas.Reports.Controllers
 {
     public class PurchaseOrderPendingController : Controller
     {
+        private const string SideMenu = "Reports";
+        private const string sideMenuName = "PurchaseOrderPending";
+
+        public PurchaseOrderPendingController()
+        {
+            ViewBag.Sidemenu = SideMenu;
+            ViewBag.sideMenuName = sideMenuName;
+        }
+
         // GET: Reports/PurchaseOrderPending
         public ActionResult Index()
         {
-            ViewBag.Sidemenu = "Reports";
             return View();
         }
     }

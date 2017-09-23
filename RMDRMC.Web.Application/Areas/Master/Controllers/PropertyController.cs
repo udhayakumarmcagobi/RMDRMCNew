@@ -8,10 +8,18 @@ namespace RMDRMC.Web.Application.Areas.Master.Controllers
 {
     public class PropertyController : Controller
     {
+        private const string SideMenu = "Masters";
+        private const string sideMenuName = "Property";
+
+        public PropertyController()
+        {
+            ViewBag.Sidemenu = SideMenu;
+            ViewBag.sideMenuName = sideMenuName;
+        }
+
         // GET: Master/Property
         public ActionResult Index()
         {
-            ViewBag.Sidemenu = "Masters";
             return View();
         }
     }

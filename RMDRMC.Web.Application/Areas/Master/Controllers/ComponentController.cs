@@ -8,10 +8,18 @@ namespace RMDRMC.Web.Application.Areas.Master.Controllers
 {
     public class ComponentController : Controller
     {
+        private const string SideMenu = "Masters";
+        private const string sideMenuName = "Component";
+
+        public ComponentController()
+        {
+            ViewBag.Sidemenu = SideMenu;
+            ViewBag.sideMenuName = sideMenuName;
+        }
+
         // GET: Master/Component
         public ActionResult Index()
         {
-            ViewBag.Sidemenu = "Masters";
             return View();
         }
     }

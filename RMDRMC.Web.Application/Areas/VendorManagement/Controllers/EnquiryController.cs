@@ -8,10 +8,18 @@ namespace RMDRMC.Web.Application.Areas.VendorManagement.Controllers
 {
     public class EnquiryController : Controller
     {
+        private const string SideMenu = "VendorManagement";
+        private const string sideMenuName = "Enquiry";
+
+        public EnquiryController()
+        {
+            ViewBag.Sidemenu = SideMenu;
+            ViewBag.sideMenuName = sideMenuName;
+        }
+
         // GET: VendorManagement/Enquiry
         public ActionResult Index()
         {
-            ViewBag.Sidemenu = "VendorManagement";
             return View();
         }
     }

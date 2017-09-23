@@ -17,11 +17,12 @@
                             data-toggle="tooltip" data-placement="bottom" name="RoleID" title="Select Role">
                         @if (Model != null && Model.Any())
                         {
+                            <option value="0"> --Select One-- </option>
                             foreach (var role in Model)
                             {
                                 string roleSelected = role.Selected ? "selected" : "";
 
-                                <option @roleSelected value="@role.RoleID">@role.RoleName </option>
+                                <option @roleSelected value="@role.RoleID"> @role.RoleName </option>
                             }
                         }
                     </select>
@@ -45,7 +46,7 @@
                 </div>
 
                 <div id="roleacessDetails" class="panel-body  panel-collapse collapse in" role="tabpanel" aria-labelledby="Header Fields">
-                    @Html.Partial("_ScreenAccessSelection", Model?.FirstOrDefault())
+                    @Html.Partial("_ScreenAccessSelection", new RolesVM())
                 </div>
             </div>
         </form>

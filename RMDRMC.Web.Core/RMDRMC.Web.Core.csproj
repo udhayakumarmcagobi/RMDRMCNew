@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientServices\UserClientService.cs" />
     <Compile Include="ClientServices\RoleClientService.cs" />
+    <Compile Include="Interfaces\IUserClientService.cs" />
     <Compile Include="Interfaces\IRoleClientService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

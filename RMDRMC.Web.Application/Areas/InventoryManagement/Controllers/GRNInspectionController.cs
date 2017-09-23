@@ -8,10 +8,18 @@ namespace RMDRMC.Web.Application.Areas.InventoryManagement.Controllers
 {
     public class GRNInspectionController : Controller
     {
+        private const string SideMenu = "InventoryManagement";
+        private const string sideMenuName = "GRNInspection";
+
+        public GRNInspectionController()
+        {
+            ViewBag.Sidemenu = SideMenu;
+            ViewBag.sideMenuName = sideMenuName;
+        }
+
         // GET: InventoryManagement/GRNInspection
         public ActionResult Index()
         {
-            ViewBag.Sidemenu = "InventoryManagement";
             return View();
         }
     }

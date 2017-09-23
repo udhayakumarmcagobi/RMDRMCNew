@@ -10,6 +10,7 @@ namespace RMDRMCWeb.ViewModels.Domain
     {
         public long UserID { get; set; }
         public string UserName { get; set; }
-        public RolesVM UserRole { get; set; }
+        public RolesVM UserRoleSelected { get; set; }
+        public List<RolesVM> AllUserRoles { get; set; }
     }
 }

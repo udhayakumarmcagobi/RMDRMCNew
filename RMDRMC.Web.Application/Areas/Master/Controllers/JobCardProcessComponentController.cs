@@ -8,10 +8,18 @@ namespace RMDRMC.Web.Application.Areas.Master.Controllers
 {
     public class JobCardProcessComponentController : Controller
     {
+        private const string SideMenu = "Masters";
+        private const string sideMenuName = "JobCardProcessComponent";
+
+        public JobCardProcessComponentController()
+        {
+            ViewBag.Sidemenu = SideMenu;
+            ViewBag.sideMenuName = sideMenuName;
+        }
+
         // GET: Master/JobCardProcessComponent
         public ActionResult Index()
         {
-            ViewBag.Sidemenu = "Masters";
             return View();
         }
     }

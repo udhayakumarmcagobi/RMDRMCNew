@@ -210,7 +210,7 @@
     <Content Include="Areas\Master\Views\JobCardComponentProcess\Index.cshtml" />
     <Content Include="Areas\Master\Views\Component\Index.cshtml" />
     <Content Include="Areas\Master\Views\ProcessDepartment\Index.cshtml" />
-    <Content Include="Areas\Reports\Views\Machine\Index.cshtml" />
+    <Content Include="Areas\Reports\Views\MachineReports\Index.cshtml" />
     <Content Include="Areas\Reports\Views\PurchaseOrderPending\Index.cshtml" />
     <Content Include="Areas\UserManagement\Views\Shared\_ScreenAccessSelection.cshtml" />
     <Content Include="Areas\UserManagement\Views\ManageRole\Create.cshtml" />

@@ -68,13 +68,16 @@
 });
 
 // To show Progress bar
-function ShowProgressbar() {
+var ShowProgressbar = function () {
     $("#divLoading").modal("show");
     $("body").removeClass("modal-open");
 }
 
 //To hide Progress bar
-function HideProgressbar() {
+var HideProgressbar = function () {
     $("#divLoading").modal("hide");
 }
 
+var RefreshScreen = function () {
+    location.reload();
+}

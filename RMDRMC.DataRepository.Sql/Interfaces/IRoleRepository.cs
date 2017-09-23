@@ -19,7 +19,7 @@ namespace RMDRMC.DataRepository.Sql.Interfaces
 
         Roles GetRolesByName(string roleName);
 
-        bool DeleteRole(int roleID);
+        bool DeleteRole(long roleID);
        
     }
 }

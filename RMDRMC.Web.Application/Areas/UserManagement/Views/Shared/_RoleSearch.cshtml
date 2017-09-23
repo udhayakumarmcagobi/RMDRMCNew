@@ -29,7 +29,7 @@
                 <div class="col-sm-9 col-md-2 form-check text-center">
                     <label class="form-check-label role-form-check">
                         @{
-                            var checkedValue = Model.FirstOrDefault().IsActive ? "checked" : "";
+                            var checkedValue = Model != null && Model.FirstOrDefault() != null && Model.FirstOrDefault().IsActive ? "checked" : "";
                         }
                         <input type="checkbox" class="form-check-input" id="chkActivateDeactivate" checked="@checkedValue" />
                     </label>

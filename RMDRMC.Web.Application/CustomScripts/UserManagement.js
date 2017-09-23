@@ -1,5 +1,8 @@
-﻿$(document).ready(function () {
+﻿var hostPath = ""; 
 
+$(document).ready(function () {
+    hostPath = $("#hostpath").val();
+    //jQuery events starts
     $(document).on("click", ".main-view-check", function () {
         MaxCheckBoxFlips(this, 1);
     });
@@ -25,9 +28,12 @@
         }
     });
 
+    //jQuery events ends
+
 });
 
-function MaxCheckBoxFlipsAllinTable(checkboxObject) {
+// Checkbox Flips on Screen Access starts
+var MaxCheckBoxFlipsAllinTable  = function(checkboxObject) {
     var checkedValue = checkboxObject.checked;
     var idvalue = $(checkboxObject).attr("data-html");
 
@@ -48,8 +54,7 @@ function MaxCheckBoxFlipsAllinTable(checkboxObject) {
     });
 }
 
-function MaxCheckBoxFlips(checkboxObject, pos) {
-    debugger;
+var MaxCheckBoxFlips  = function(checkboxObject, pos) {    
     var checkedValue = checkboxObject.checked;
 
     var tables = $(checkboxObject).closest("table");
@@ -76,19 +81,20 @@ function MaxCheckBoxFlips(checkboxObject, pos) {
 
     });
 }
+// Checkbox Flips on Screen Access ends
 
-function CreateRoleSuccess(response) {
+var CreateRoleSuccess = function(response) {
     if (response.result) {
         alertify.alert("New Role " + response.data.RoleName + " has been created successfully");
     }
 }
 
-function CreateRoleFailure(response) {
+var CreateRoleFailure = function(response) {
     alertify.alert("New Role " + response.data.RoleName + "creation failed");
 }
 
-function LoadScreenAccessDetailsOfRole(roleID) {
-    var hostPath = $("#hostpath").val();
+//Main functionalities of Role Starts
+var LoadScreenAccessDetailsOfRole = function(roleID) {
     if (roleID != "") {
         $.ajax({
             async: true,
@@ -125,9 +131,8 @@ function LoadScreenAccessDetailsOfRole(roleID) {
     }
 }
 
-function UpdateRole() {
-    debugger;
-    var hostPath = $("#hostpath").val();
+var UpdateRole = function() {
+        
     var roleID = $("#drpRoleDetails").val();
 
     var roleData = $("#rolewithaccess").serialize();
@@ -163,7 +168,44 @@ function UpdateRole() {
     });
 }
 
-function RedirectCreateNewRole() {
-    var hostPath = $("#hostpath").val();
+var DeleteRole = function () {
+    
+    var roleID = $("#drpRoleDetails").val();    
+
+    if (roleID == "") {
+        alertify.alert("select role to update");
+        return;
+    }
+
+    $.ajax({
+        async: true,
+        type: "Post",
+        cache: false,
+        data: { "roleID": roleID },
+        url: hostPath + '/UserManagement/ManageRole/Delete/',
+        beforeSend: function () {
+            ShowProgressbar();
+        },
+        success: function (jsonResult) {
+            if (jsonResult.result) {
+                alertify.alert("Role has been deleted successfully");
+            }
+        },
+        error: function (err) {
+            alertify.alert("Role delete failed");
+            $("#roleacessDetails").html("");
+
+            HideProgressbar();
+        },
+        complete: function () {
+            HideProgressbar();
+        }
+    });
+}
+
+var RedirectCreateNewRole = function() {
+    
     window.location.href = hostPath + "/UserManagement/ManageRole/Create";
 }
+
+//Main functionalities of Role Ends

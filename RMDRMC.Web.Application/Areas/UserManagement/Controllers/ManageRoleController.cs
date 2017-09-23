@@ -60,6 +60,15 @@ namespace RMDRMC.Web.Application.Areas.UserManagement.Controllers
             return UtilityHelpers.GetJsonResult(true, rolesVM);
         }
 
+        // POST: UserManagement/ManageRole/Delete
+        [HttpPost]
+        public ActionResult Delete(long roleID)
+        {
+            roleClientService.DeleteRole(roleID);
+
+            return UtilityHelpers.GetJsonResult(true, null);
+        }
+
         [HttpGet]
         [ActionName("GetScreenAccessByRoleID")]
         public ActionResult GetScreensByRole(long roleID)

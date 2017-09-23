@@ -68,7 +68,7 @@ namespace RMDRMC.DataRepository.Sql.Repositories
             return AutoMappers.Map<Role, Roles>(roleEntity);
         }
 
-        public bool DeleteRole(int roleID)
+        public bool DeleteRole(long roleID)
         {
             Delete(roleID);
             Commit();

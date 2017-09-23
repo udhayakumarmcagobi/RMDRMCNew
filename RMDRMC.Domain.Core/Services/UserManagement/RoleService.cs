@@ -45,5 +45,10 @@ namespace RMDRMC.Domain.Core.Services
         {
             return roleRepository.UpdateRole(roles);
         }
+
+        public bool DeleteRole(long roleID)
+        {
+            return roleRepository.DeleteRole(roleID);
+        }
     }
 }

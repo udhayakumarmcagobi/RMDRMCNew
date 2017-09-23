@@ -83,6 +83,15 @@ namespace RMDRMC.Web.Core.ClientServices
             return true;
         }
 
+        public bool DeleteRole(long roleID)
+        {
+            if (roleID <=0) return false;
+
+            roleService.DeleteRole(roleID);            
+
+            return true;
+        }
+
         public List<RolesVM> GetRoles(string rolePrefix)
         {
             var allRoles = roleService.GetAllRoles();

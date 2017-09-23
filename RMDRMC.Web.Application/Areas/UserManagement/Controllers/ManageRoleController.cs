@@ -14,25 +14,27 @@ namespace RMDRMC.Web.Application.Areas.UserManagement.Controllers
 {
     public class ManageRoleController : Controller
     {
-        private readonly IRoleClientService roleClientService;
-        private const string SideMenuName = "UserManagement";
+        private readonly IRoleClientService roleClientService;        
+        private const string SideMenu = "UserManagement";
+        private const string sideMenuName = "ManageRole";
 
         public ManageRoleController():base()
         {
             roleClientService = new RoleClientService();
-            ViewBag.Sidemenu = SideMenuName;
+            ViewBag.Sidemenu = SideMenu;
+            ViewBag.sideMenuName = sideMenuName;
         }
         // GET: UserManagement/ManageRole
         public ActionResult Index()
         {
+            ViewBag.PageName = "Manage Roles";
             var rolesVMList = roleClientService.GetRoles(string.Empty);
             return View(rolesVMList);
         }
 
         // GET: UserManagement/ManageRole/Create
         public ActionResult Create()
-        {
-            ViewBag.page = "Create";
+        {            
             ViewBag.PageName = "Create Role";
             ViewBag.ActionMethod = "CreateRole";
 

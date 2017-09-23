@@ -1,4 +1,5 @@
-﻿var hostPath = ""; 
+﻿
+var hostPath = "";
 
 $(document).ready(function () {
     hostPath = $("#hostpath").val();
@@ -85,7 +86,7 @@ var MaxCheckBoxFlips  = function(checkboxObject, pos) {
 
 var CreateRoleSuccess = function(response) {
     if (response.result) {
-        alertify.alert("New Role " + response.data.RoleName + " has been created successfully");
+        alertify.alert("New Role '" + response.data.RoleName + "' has been created successfully");
     }
 }
 

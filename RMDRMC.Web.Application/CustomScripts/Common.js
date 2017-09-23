@@ -65,6 +65,9 @@
         }
     }, 250);
 
+    var hidSideMenuName = $("#hidSideMenuName").val();
+    $("#" + hidSideMenuName).css("background-color", "#464646");
+    $("#" + hidSideMenuName + " > span").css("color", "#fff");
 });
 
 // To show Progress bar

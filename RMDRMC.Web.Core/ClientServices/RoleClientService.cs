@@ -108,7 +108,11 @@ namespace RMDRMC.Web.Core.ClientServices
         {
             var role = roleService.GetAllRoleByID(roleID);
 
-            return AutoMappers.Map<Roles, RolesVM>(role);                        
+            var roleVM =  AutoMappers.Map<Roles, RolesVM>(role);
+
+            roleVM.ParentScreens = GetCustomOrderScreen(roleVM.ParentScreens);
+
+            return roleVM;
         }
 
         #endregion

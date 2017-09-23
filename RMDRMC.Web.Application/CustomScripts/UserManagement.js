@@ -9,22 +9,22 @@ $(document).ready(function () {
     });
 
     $(document).on("click", ".main-modify-check", function () {
-        MaxCheckBoxFlips(this, 2)
+        MaxCheckBoxFlips(this, 2);
     });
 
     $(document).on("change", "#drpRoleDetails", function () {
         LoadScreenAccessDetailsOfRole($(this).val());
     });
 
-    $(document).on("change", ".form-check-check-all", function () {        
+    $(document).on("change", ".form-check-check-all", function () {
         MaxCheckBoxFlipsAllinTable(this);
     });
 
     $(document).on("change", "#chkActivateDeactivate", function () {
-        if ($(this).is(":checked")) {            
+        if ($(this).is(":checked")) {
             $("#IsActive").val("true");
         }
-        else {            
+        else {
             $("#IsActive").val("false");
         }
     });
@@ -34,7 +34,7 @@ $(document).ready(function () {
 });
 
 // Checkbox Flips on Screen Access starts
-var MaxCheckBoxFlipsAllinTable  = function(checkboxObject) {
+var MaxCheckBoxFlipsAllinTable = function (checkboxObject) {
     var checkedValue = checkboxObject.checked;
     var idvalue = $(checkboxObject).attr("data-html");
 
@@ -55,23 +55,37 @@ var MaxCheckBoxFlipsAllinTable  = function(checkboxObject) {
     });
 }
 
-var MaxCheckBoxFlips  = function(checkboxObject, pos) {    
+var MaxCheckBoxFlips = function (checkboxObject, pos) {
     var checkedValue = checkboxObject.checked;
 
     var tables = $(checkboxObject).closest("table");
 
-    if (pos == 2) {
+    if (pos == 2 && checkedValue) {
         tables.find("thead tr").each(function () {
             $(this).find("th:eq(" + (pos - 1) + ") input").each(function () {
                 this.checked = checkedValue;
             });
-        });        
+        });
+    }
+
+    if (pos == 1 && !checkedValue) {
+        tables.find("thead tr").each(function () {
+            $(this).find("th:eq(" + (pos + 1) + ") input").each(function () {
+                this.checked = checkedValue;
+            });
+        });
     }
 
     tables.find("tbody tr").each(function () {
 
-        if (pos == 2) {
-            $(this).find("td:eq(" +(pos-1) + ") input").each(function () {
+        if (pos == 2 && checkedValue) {
+            $(this).find("td:eq(" + (pos - 1) + ") input").each(function () {
+                this.checked = checkedValue;
+            });
+        }
+
+        if (pos == 1 && !checkedValue) {
+            $(this).find("td:eq(" + (pos + 1) + ") input").each(function () {
                 this.checked = checkedValue;
             });
         }
@@ -84,18 +98,18 @@ var MaxCheckBoxFlips  = function(checkboxObject, pos) {
 }
 // Checkbox Flips on Screen Access ends
 
-var CreateRoleSuccess = function(response) {
+var CreateRoleSuccess = function (response) {
     if (response.result) {
         alertify.alert("New Role '" + response.data.RoleName + "' has been created successfully");
     }
 }
 
-var CreateRoleFailure = function(response) {
+var CreateRoleFailure = function (response) {
     alertify.alert("New Role " + response.data.RoleName + "creation failed");
 }
 
 //Main functionalities of Role Starts
-var LoadScreenAccessDetailsOfRole = function(roleID) {
+var LoadScreenAccessDetailsOfRole = function (roleID) {
     if (roleID != "") {
         $.ajax({
             async: true,
@@ -108,13 +122,13 @@ var LoadScreenAccessDetailsOfRole = function(roleID) {
                 ShowProgressbar();
             },
             success: function (jsonResult) {
-                if (jsonResult != "") {                    
-                    $("#roleacessDetails").html(jsonResult);                                    
-                    
+                if (jsonResult != "") {
+                    $("#roleacessDetails").html(jsonResult);
+
                     var isActive = $("#IsActive").val();
 
                     if (isActive == "True") {
-                        $("#chkActivateDeactivate").prop("checked",true);
+                        $("#chkActivateDeactivate").prop("checked", true);
                     }
                     else {
                         $("#chkActivateDeactivate").prop("checked", false);
@@ -132,8 +146,8 @@ var LoadScreenAccessDetailsOfRole = function(roleID) {
     }
 }
 
-var UpdateRole = function() {
-        
+var UpdateRole = function () {
+
     var roleID = $("#drpRoleDetails").val();
 
     var roleData = $("#rolewithaccess").serialize();
@@ -146,7 +160,7 @@ var UpdateRole = function() {
     $.ajax({
         async: true,
         type: "Post",
-        cache: false,        
+        cache: false,
         data: roleData,
         url: hostPath + '/UserManagement/ManageRole/Update/',
         beforeSend: function () {
@@ -170,8 +184,17 @@ var UpdateRole = function() {
 }
 
 var DeleteRole = function () {
-    
-    var roleID = $("#drpRoleDetails").val();    
+    alertify.confirm("Are you sure want to delete this role?",
+ function (e) {
+     if (e) {
+         DeleteRoleConfirmed();
+     }
+ });
+}
+
+var DeleteRoleConfirmed = function () {
+
+    var roleID = $("#drpRoleDetails").val();
 
     if (roleID == "") {
         alertify.alert("select role to update");
@@ -204,8 +227,8 @@ var DeleteRole = function () {
     });
 }
 
-var RedirectCreateNewRole = function() {
-    
+var RedirectCreateNewRole = function () {
+
     window.location.href = hostPath + "/UserManagement/ManageRole/Create";
 }
 

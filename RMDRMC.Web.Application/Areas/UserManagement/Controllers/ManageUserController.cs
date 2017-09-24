@@ -35,22 +35,40 @@ namespace RMDRMC.Web.Application.Areas.UserManagement.Controllers
         }
 
         // GET: UserManagement/ManageUser/Create
+        [ActionName("Create")]
         public ActionResult Create()
         {
             ViewBag.PageName = "Create User";
+            ViewBag.Page = "Create";
 
             UsersVM usersVM = userClientService.GetEmptyUser();
             usersVM.IsActive = true;
             return View(usersVM);
         }
 
+        // GET: UserManagement/ManageUser/Edit/1
+        [HttpGet]
+        [ActionName("Edit")]
+        public ActionResult Create(string ID)
+        {
+            ViewBag.PageName = "Edit User";
+            ViewBag.Page = "Edit";
+
+            UsersVM usersVM = userClientService.GetUsersByID(Convert.ToInt64(ID));
+            return View("Create",usersVM);
+        }
+
         // GET: UserManagement/ManageUser/Search
         [HttpPost]
-        public ActionResult Search()
+        public ActionResult Search(string firstName, string popup)
         {
-            var usersList = userClientService.GetUsers("");
+            var usersList = userClientService.GetUsers(firstName);
 
-            return View("_UserSearch", usersList);
+            if(popup == "main") {
+                return View("_UserSearch", usersList);
+            }
+
+            return View("_UserSearchResults", usersList);
         }
 
         // POST: UserManagement/ManageUser/Create

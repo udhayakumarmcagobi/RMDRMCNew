@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="table-responsive">
-                <table class="table table-bordered table-condensed" id="tblTableSort">
+                <table class="table table-bordered table-condensed table-common" id="tblTableSort">
                     <thead>
                         <tr>
                             <th>
@@ -31,7 +31,7 @@
                                 <tr>
 
                                     <td>
-                                        <a onclick="ShowProgressbar()" href="@Url.Action("Create", "ManageUser", new { id = user.UserID })">@user.LoginID</a>
+                                        <a onclick="ShowProgressbar()" href="@Url.Action("Edit", "ManageUser", new { id = user.UserID })">@user.LoginID</a>
                                     </td>
                                     <td>
                                         @user.FirstName

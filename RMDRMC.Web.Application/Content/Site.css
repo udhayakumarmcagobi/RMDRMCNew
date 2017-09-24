@@ -2339,4 +2339,5 @@ label.role-form-check-label {float:left;margin-top:2%;margin-left:3%;}
 .custom-row-col {clear:both;}
 button.rmd-search-button { float:left;height:22px;}
 div.role-selection-disabled { opacity:0.5;pointer-events:none;}
-/* added by Udhay end*
+table.table-common tr th {text-align:center;}
+/* added by Udhay end */

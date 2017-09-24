@@ -7,31 +7,43 @@
 @{
     ViewBag.Title = ViewBag.PageName;
 
+    string pageName = ViewBag.Page;
+
     string ajaxRoleSuccessMethod = "CreateUserSuccess";
     string ajaxRoleFailureMethod = "CreateUserFailure";
+
+    if (pageName == "Edit")
+    {
+        ajaxRoleSuccessMethod = "EditUserSuccess";
+        ajaxRoleFailureMethod = "EditUserFailure";
+    }
 }
 
-@using (Ajax.BeginForm("Create", "ManageUser", FormMethod.Post,
-                                                                                                                                                                                                        new AjaxOptions
-                                                                                                                                                                                                        {
-                                                                                                                                                                                                            OnBegin = "ShowProgressbar",
-                                                                                                                                                                                                            OnComplete = "HideProgressbar",
-                                                                                                                                                                                                            OnSuccess = ajaxRoleSuccessMethod,
-                                                                                                                                                                                                            OnFailure = ajaxRoleFailureMethod
+@using (Ajax.BeginForm(pageName, "ManageUser", FormMethod.Post,
+                                                                                                                                                                                                                    new AjaxOptions
+                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                        OnBegin = "ShowProgressbar",
+                                                                                                                                                                                                                        OnComplete = "HideProgressbar",
+                                                                                                                                                                                                                        OnSuccess = ajaxRoleSuccessMethod,
+                                                                                                                                                                                                                        OnFailure = ajaxRoleFailureMethod
 
-                                                                                                                                                                                                        }, new { Id = "FormCreateUser" }
-                                                                                                                                                                                                        ))
+                                                                                                                                                                                                                    }, new { Id = "FormCreateUser" }
+                                                                                                                                                                                                                    ))
 {
     <div class="panel panel-default">
         <div class="panel-heading">
-            <label> Create User  </label>
+            <label> @ViewBag.Title  </label>
         </div>
 
         <div class="panel-body">
-
+            <input type="hidden" id="hidUserID" value="@Model.UserID" />
             <div class="row text-center" style="margin-bottom:20px;">
-
                 <input type="submit" value="Save" class="ButtonWithImage btnSaveUsers" data-alert="false" />
+                @if (pageName == "Edit")
+                {
+                    <input type="button" value="Delete" class="ButtonWithImage btnDeleteUsers" data-alert="false" />
+                }
+
                 <input type="button" value="Cancel" class="ButtonWithImage" onclick="RefreshScreen()" />
 
             </div>
@@ -66,7 +78,12 @@
 
             <div class="row text-center" style="margin-bottom:20px;">
 
-                <input type="submit" value="Save" class="ButtonWithImage btnSaveUsers" data-alert="false" />
+                <input type="submit" value="@pageName" class="ButtonWithImage btnSaveUsers" data-alert="false" />
+                @if (pageName == "Edit")
+                {
+                    <input type="button" value="Delete" class="ButtonWithImage btnDeleteUsers" data-alert="false" />
+                }
+
                 <input type="button" value="Cancel" class="ButtonWithImage" onclick="RefreshScreen()" />
 
             </div>

@@ -13,7 +13,7 @@
                        data-toggle="tooltip" id="lblFirstName" data-placement="bottom" title="Login ID">Login ID:</label>
                 <div class="col-xs-6 col-sm-8 col-md-8">
                     <input type="text" class="form-control input-sm tooltip-enable designItemInput" id="txtLoginID"
-                           data-toggle="tooltip" data-placement="bottom" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" required title="Login ID" maxlength="20" value=""
+                           data-toggle="tooltip" data-placement="bottom" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" required title="Login ID" maxlength="20" value="@Model.LoginID"
                            name="LoginID" />
                 </div>
             </div>
@@ -24,7 +24,7 @@
                        data-toggle="tooltip" id="lblPassword" data-placement="bottom" title="Password">Password:</label>
                 <div class="col-xs-6 col-sm-8 col-md-8">
                     <input type="password" class="form-control input-sm tooltip-enable designItemInput" id="txtPassword"
-                           data-toggle="tooltip" data-placement="bottom" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" title="Password" maxlength="20" value="" 
+                           data-toggle="tooltip" data-placement="bottom" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" title="Password" maxlength="20" value="@Model.Password" 
                            name="Password" required />
                 </div>
             </div>
@@ -35,7 +35,7 @@
                        data-toggle="tooltip" id="lblConfirmPassword" data-placement="bottom" title="Confirm Password">Confirm Password:</label>
                 <div class="col-xs-6 col-sm-8 col-md-8">
                     <input type="password" class="form-control input-sm tooltip-enable designItemInput" id="txtConfirmPassword"
-                           data-toggle="tooltip" data-placement="bottom" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" title="Confirm Password" maxlength="20" value=""
+                           data-toggle="tooltip" data-placement="bottom" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" title="Confirm Password" maxlength="20" value="@Model.ConfirmPassword"
                            name="ConfirmPassword" required />
                 </div>
             </div>

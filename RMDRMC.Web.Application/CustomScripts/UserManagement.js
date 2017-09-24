@@ -40,6 +40,15 @@ $(document).ready(function () {
 
         return validateResult;
     });
+
+    $(document).on("keyup", "#txtFirstName", function () {
+
+        var prefixFirstName = $(this).val();
+        
+        var contentHtml = SearchUserResults(prefixFirstName, "sub");
+
+        $("#usersearchresults").html(contentHtml);
+    });
     
     //jQuery events ends
 
@@ -298,32 +307,41 @@ var ValidateCreateUser = function () {
 
 var SearchUsers = function () {
 
-    var firstName = $("#txtFirstName").val();
+    var contentHtml = SearchUserResults("", "main");
+
+    $("#divModalWindow").modal("show");
+    $("span.divModalheadline").html("User Search Results");
+    $("#divModalWindowContent").html(contentHtml);
+
+}
+
+var SearchUserResults = function (firstNamePrefix, popup) {
+
+    var contentHtml = "";
 
     $.ajax({
-        async: true,
+        async: false,
         type: "Post",
         cache: false,
-        data: { "firstName": firstName },
+        data: { "firstName": firstNamePrefix, "popup" : popup },
         url: hostPath + '/UserManagement/ManageUser/Search',
-        dataType : "html",
+        dataType: "html",
         beforeSend: function () {
-            ShowProgressbar();
+            //ShowProgressbar();
         },
-        success: function (jsonResult) {
-            $("#divModalWindow").modal("show");
-            $("#divModalWindowContent").html(jsonResult);
-
-            $("span.divModalheadline").html("User Search Results");
+        success: function (jsonResult) {            
+            contentHtml = jsonResult;
         },
-        error: function (err) {           
+        error: function (err) {
             $("#divModalWindow").modal("hide");
-            HideProgressbar();
+            //HideProgressbar();
         },
         complete: function () {
-            HideProgressbar();
+            //HideProgressbar();
         }
     });
+
+    return contentHtml;
 }
 
 // User Screen validation Ends

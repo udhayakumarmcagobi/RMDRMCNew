@@ -91,7 +91,7 @@ namespace RMDRMC.Web.Core.ClientServices
 
             if (string.IsNullOrWhiteSpace(userPrefix)) return allUsersVM;
 
-            return allUsersVM.Where(x => x.LoginID.StartsWith(userPrefix)).ToList();
+            return allUsersVM.Where(x => x.FirstName.ToUpper().StartsWith(userPrefix.ToUpper())).ToList();
 
         }
 

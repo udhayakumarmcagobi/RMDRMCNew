@@ -1,5 +1,11 @@
 ﻿@model  List<RolesVM>
-
+@{ 
+    var roleselectiondisabled = "";
+    if(ViewBag.userscreen == true)
+    {
+        roleselectiondisabled = "role-selection-disabled";
+    }
+}
 <div class="panel panel-default" style="border-color:#ddd;" id="roleinfopanel">
     <div class="panel-heading-sm">
         <label><a href="#roleinfo" data-toggle="collapse" data-parent="#roleinfopanel">Role Info<span class="glyphicon glyphicon-minus"></span></a></label>
@@ -45,7 +51,7 @@
                     <label><a href="#roleacessDetails" data-toggle="collapse" data-parent="#roleaccesspanel">Role Access Details<span class="glyphicon glyphicon-minus"></span></a></label>
                 </div>
 
-                <div id="roleacessDetails" class="panel-body  panel-collapse collapse in" role="tabpanel" aria-labelledby="Header Fields">
+                <div id="roleacessDetails" class="panel-body  panel-collapse collapse in @roleselectiondisabled" role="tabpanel" aria-labelledby="Header Fields">
                     @if (Model == null || !Model.Any(x => x.Selected))
                     {
                         @Html.Partial("_ScreenAccessSelection", new RolesVM())

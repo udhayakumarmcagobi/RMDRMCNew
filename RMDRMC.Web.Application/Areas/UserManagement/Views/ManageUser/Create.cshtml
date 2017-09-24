@@ -59,7 +59,7 @@
             <div class="row">
                 <div class="text-center">
                     <input id="hidRoleIDofUser" type="hidden" name="RoleID" value="@Model.RoleID" />
-                    @Html.Partial("_RoleSearch", Model.AllUserRoles);
+                    @Html.Partial("_RoleSearch", Model.AllUserRoles, new ViewDataDictionary { { "userscreen", true } });
 
                 </div>
             </div>

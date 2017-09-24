@@ -7,7 +7,7 @@ namespace RMDRMC.Web.Core.Interfaces
     {
         UsersVM GetEmptyUser();
         UsersVM CreateNewUser(UsersVM usersVM);
-        bool UpdateUser(UsersVM usersVM);
+        UsersVM UpdateUser(UsersVM usersVM);
         bool DeleteUser(long userID);
         List<UsersVM> GetUsers(string userPrefix);
         UsersVM GetUsersByID(long userID);

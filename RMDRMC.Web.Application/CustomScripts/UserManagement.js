@@ -17,7 +17,7 @@ $(document).ready(function () {
 
         var hidRoleID = $("#hidRoleIDofUser");
 
-        if (hidRoleID.length > 0) {            
+        if (hidRoleID.length > 0) {
             hidRoleID.val($("#drpRoleDetails").val());
         }
     });
@@ -44,12 +44,12 @@ $(document).ready(function () {
     $(document).on("keyup", "#txtFirstName", function () {
 
         var prefixFirstName = $(this).val();
-        
+
         var contentHtml = SearchUserResults(prefixFirstName, "sub");
 
         $("#usersearchresults").html(contentHtml);
     });
-    
+
     //jQuery events ends
 
 });
@@ -140,6 +140,19 @@ var CreateUserSuccess = function (response) {
 
 var CreateUserFailure = function (response) {
     alertify.alert("New user " + response.data.LoginID + "creation failed");
+}
+
+var UpdateUserSuccess = function (response) {
+    if (response.result) {
+        alertify.alert("User '" + response.data.LoginID + "' has been updated successfully");
+    }
+    else {
+        alertify.alert("User " + response.data.LoginID + "update failed");
+    }
+}
+
+var UpdateUserFailure = function (response) {
+    alertify.alert("User " + response.data.LoginID + "update failed");
 }
 
 //Main functionalities of Role Starts
@@ -270,11 +283,11 @@ var RedirectCreateNewRole = function () {
 
 // User screen validation Starts
 
-var ValidateCreateUser = function () {    
+var ValidateCreateUser = function () {
     var firstName = $("#txtFirstName").val().trim()
     var lastName = $("#txtLastName").val().trim();
 
-    if(firstName == "" && lastName == "") {
+    if (firstName == "" && lastName == "") {
         alertify.alert("First Name or Last Name is Mandatory");
         return false;
     }
@@ -301,7 +314,7 @@ var ValidateCreateUser = function () {
         alertify.alert("Select atleast one role.");
         return false;
     }
-    
+
     return true;
 }
 
@@ -323,13 +336,13 @@ var SearchUserResults = function (firstNamePrefix, popup) {
         async: false,
         type: "Post",
         cache: false,
-        data: { "firstName": firstNamePrefix, "popup" : popup },
+        data: { "firstName": firstNamePrefix, "popup": popup },
         url: hostPath + '/UserManagement/ManageUser/Search',
         dataType: "html",
         beforeSend: function () {
             //ShowProgressbar();
         },
-        success: function (jsonResult) {            
+        success: function (jsonResult) {
             contentHtml = jsonResult;
         },
         error: function (err) {

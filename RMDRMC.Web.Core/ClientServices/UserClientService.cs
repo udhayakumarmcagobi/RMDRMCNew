@@ -61,9 +61,9 @@ namespace RMDRMC.Web.Core.ClientServices
             return usersVM;
         }
 
-        public bool UpdateUser(UsersVM usersVM)
+        public UsersVM UpdateUser(UsersVM usersVM)
         {
-            if (usersVM == null) return false;
+            if (usersVM == null) return usersVM;
 
             var users = AutoMappers.Map<UsersVM, Users>(usersVM);            
 
@@ -71,7 +71,11 @@ namespace RMDRMC.Web.Core.ClientServices
 
             usersVM = AutoMappers.Map<Users, UsersVM>(users);
 
-            return true;
+            usersVM.AllUserRoles = roleClientService.GetRoles(string.Empty);
+
+            usersVM.AllUserRoles.Where(x => x.RoleID == usersVM.RoleID).ToList().ForEach(x => x.Selected = true);
+
+            return usersVM;
         }
 
         public bool DeleteUser(long userID)
@@ -99,7 +103,13 @@ namespace RMDRMC.Web.Core.ClientServices
         {
             var user = userService.GetAllUserByID(userID);
 
-            return AutoMappers.Map<Users, UsersVM>(user);                        
+            var usersVM = AutoMappers.Map<Users, UsersVM>(user);
+
+            usersVM.AllUserRoles = roleClientService.GetRoles(string.Empty);
+
+            usersVM.AllUserRoles.Where(x => x.RoleID == usersVM.UserRoleSelected.RoleID).ToList().ForEach(x => x.Selected = true);
+
+            return usersVM;                   
         }
 
         #endregion

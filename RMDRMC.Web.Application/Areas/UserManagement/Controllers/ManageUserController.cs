@@ -84,5 +84,19 @@ namespace RMDRMC.Web.Application.Areas.UserManagement.Controllers
 
             return UtilityHelpers.GetJsonResult(false, usersVM);
         }
+
+        // POST: UserManagement/ManageUser/Update
+        [HttpPost]
+        [ActionName("Update")]
+        public ActionResult Update(UsersVM usersVM)
+        {            
+            if (ModelState.IsValid)
+            {
+                usersVM = userClientService.UpdateUser(usersVM);
+                return UtilityHelpers.GetJsonResult(true, usersVM);
+            }
+
+            return UtilityHelpers.GetJsonResult(false, usersVM);
+        }
     }
 }

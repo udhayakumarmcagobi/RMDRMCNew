@@ -106,6 +106,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DBScripts\DBScript_User_Table.sql" />
     <Content Include="DBScripts\RMDRMCNew_092232017.sql" />
     <Content Include="RMDRMCDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

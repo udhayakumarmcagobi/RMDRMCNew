@@ -30,5 +30,6 @@ namespace RMDRMC.Data.Sql
         public virtual DbSet<MainScreen> MainScreens { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<RoleDetail> RoleDetails { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

@@ -14,6 +14,12 @@ $(document).ready(function () {
 
     $(document).on("change", "#drpRoleDetails", function () {
         LoadScreenAccessDetailsOfRole($(this).val());
+
+        var hidRoleID = $("#hidRoleIDofUser");
+
+        if (hidRoleID.length > 0) {            
+            hidRoleID.val($("#drpRoleDetails").val());
+        }
     });
 
     $(document).on("change", ".form-check-check-all", function () {
@@ -29,6 +35,12 @@ $(document).ready(function () {
         }
     });
 
+    $(document).on("click", ".btnSaveUsers", function () {
+        var validateResult = ValidateCreateUser();
+
+        return validateResult;
+    });
+    
     //jQuery events ends
 
 });
@@ -106,6 +118,19 @@ var CreateRoleSuccess = function (response) {
 
 var CreateRoleFailure = function (response) {
     alertify.alert("New Role " + response.data.RoleName + "creation failed");
+}
+
+var CreateUserSuccess = function (response) {
+    if (response.result) {
+        alertify.alert("New user '" + response.data.LoginID + "' has been created successfully");
+    }
+    else {
+        alertify.alert("New user " + response.data.LoginID + "creation failed");
+    }
+}
+
+var CreateUserFailure = function (response) {
+    alertify.alert("New user " + response.data.LoginID + "creation failed");
 }
 
 //Main functionalities of Role Starts
@@ -233,3 +258,72 @@ var RedirectCreateNewRole = function () {
 }
 
 //Main functionalities of Role Ends
+
+// User screen validation Starts
+
+var ValidateCreateUser = function () {    
+    var firstName = $("#txtFirstName").val().trim()
+    var lastName = $("#txtLastName").val().trim();
+
+    if(firstName == "" && lastName == "") {
+        alertify.alert("First Name or Last Name is Mandatory");
+        return false;
+    }
+
+    var mobile = $("#txtMobile").val().trim()
+    var phone = $("#txtPhone").val().trim();
+
+    if (mobile == "" && phone == "") {
+        alertify.alert("Mobile or Phone is Mandatory");
+        return false;
+    }
+
+    var password = $("#txtPassword").val().trim()
+    var confirmPassword = $("#txtConfirmPassword").val().trim();
+
+    if (password != confirmPassword) {
+        alertify.alert("Password and Confirm Password does not match");
+        return false;
+    }
+
+    var roleID = $("#hidRoleIDofUser").val();
+
+    if (roleID == "" || roleID <= 0) {
+        alertify.alert("Select atleast one role.");
+        return false;
+    }
+    
+    return true;
+}
+
+var SearchUsers = function () {
+
+    var firstName = $("#txtFirstName").val();
+
+    $.ajax({
+        async: true,
+        type: "Post",
+        cache: false,
+        data: { "firstName": firstName },
+        url: hostPath + '/UserManagement/ManageUser/Search',
+        dataType : "html",
+        beforeSend: function () {
+            ShowProgressbar();
+        },
+        success: function (jsonResult) {
+            $("#divModalWindow").modal("show");
+            $("#divModalWindowContent").html(jsonResult);
+
+            $("span.divModalheadline").html("User Search Results");
+        },
+        error: function (err) {           
+            $("#divModalWindow").modal("hide");
+            HideProgressbar();
+        },
+        complete: function () {
+            HideProgressbar();
+        }
+    });
+}
+
+// User Screen validation Ends

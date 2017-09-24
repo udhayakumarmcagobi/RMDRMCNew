@@ -50,6 +50,23 @@ warning 6002: The table/view 'RMDRMCNew.dbo.RoleDetails' does not have a primary
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="Activate" Type="bit" />
         </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="20" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="20" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="10" />
+          <Property Name="Email" Type="nvarchar" MaxLength="20" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="RoleID" Type="bigint" Nullable="false" />
+          <Property Name="Activate" Type="bit" />
+        </EntityType>
         <Association Name="FK_ChildScreen_MainScreen">
           <End Role="MainScreen" Type="Self.MainScreen" Multiplicity="1" />
           <End Role="ChildScreen" Type="Self.ChildScreen" Multiplicity="*" />
@@ -87,7 +104,9 @@ warning 6002: The table/view 'RMDRMCNew.dbo.RoleDetails' does not have a primary
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RoleDetails_Roles">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="RoleDetails" Type="Self.RoleDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Roles">
@@ -98,12 +117,31 @@ warning 6002: The table/view 'RMDRMCNew.dbo.RoleDetails' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Users_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="RMDRMCDataModelStoreContainer">
           <EntitySet Name="AccessDetails" EntityType="Self.AccessDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChildScreen" EntityType="Self.ChildScreen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MainScreen" EntityType="Self.MainScreen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RoleDetails" EntityType="Self.RoleDetails" store:Type="Tables" Schema="dbo">
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleDetails" EntityType="Self.RoleDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RoleDetails].[RoleID] AS [RoleID], 
+    [RoleDetails].[ScreenID] AS [ScreenID], 
+    [RoleDetails].[AccessID] AS [AccessID], 
+    [RoleDetails].[Activate] AS [Activate]
+    FROM [dbo].[RoleDetails] AS [RoleDetails]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_ChildScreen_MainScreen" Association="Self.FK_ChildScreen_MainScreen">
             <End Role="MainScreen" EntitySet="MainScreen" />
@@ -120,6 +158,10 @@ warning 6002: The table/view 'RMDRMCNew.dbo.RoleDetails' does not have a primary
           <AssociationSet Name="FK_RoleDetails_Roles" Association="Self.FK_RoleDetails_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="RoleDetails" EntitySet="RoleDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -162,6 +204,7 @@ warning 6002: The table/view 'RMDRMCNew.dbo.RoleDetails' does not have a primary
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Activate" Type="Boolean" />
           <NavigationProperty Name="RoleDetails" Relationship="Self.FK_RoleDetails_Roles" FromRole="Roles" ToRole="RoleDetails" />
+          <NavigationProperty Name="Users" Relationship="RMDRMCDataModel.FK_Users_Roles" FromRole="Role" ToRole="User" />
         </EntityType>
         <EntityType Name="RoleDetail">
           <Key>
@@ -247,7 +290,42 @@ warning 6002: The table/view 'RMDRMCNew.dbo.RoleDetails' does not have a primary
             <End Role="Roles" EntitySet="Roles" />
             <End Role="RoleDetails" EntitySet="RoleDetails" />
           </AssociationSet>
+          <EntitySet Name="Users" EntityType="RMDRMCDataModel.User" />
+          <AssociationSet Name="FK_Users_Roles" Association="RMDRMCDataModel.FK_Users_Roles">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RoleID" Type="Int64" Nullable="false" />
+          <Property Name="Activate" Type="Boolean" />
+          <NavigationProperty Name="Role" Relationship="RMDRMCDataModel.FK_Users_Roles" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_Users_Roles">
+          <End Type="RMDRMCDataModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="RMDRMCDataModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -297,6 +375,24 @@ warning 6002: The table/view 'RMDRMCNew.dbo.RoleDetails' does not have a primary
                 <ScalarProperty Name="ScreenID" ColumnName="ScreenID" />
                 <ScalarProperty Name="AccessID" ColumnName="AccessID" />
                 <ScalarProperty Name="Activate" ColumnName="Activate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="RMDRMCDataModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Activate" ColumnName="Activate" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

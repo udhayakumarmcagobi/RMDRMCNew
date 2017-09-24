@@ -33,7 +33,7 @@ namespace RMDRMC.Mapper.Model.DomainToViewModel
                                     {
                                         ScreenID = aKey,
                                         ScreenName = aData.FirstOrDefault().ParentScreen,
-                                        ChildScreens = AutoMappers.Map<IEnumerable<Screen>, List<ScreenVM>>(aData)
+                                        ChildScreens = AutoMappers.Map<IEnumerable<Screen>, List<ScreenVM>>(aData).OrderBy(x => x.ScreenName).ToList()
 
                                     }).ToList();
         }

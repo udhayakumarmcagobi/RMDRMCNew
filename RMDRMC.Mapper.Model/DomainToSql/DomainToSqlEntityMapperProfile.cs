@@ -33,6 +33,10 @@ namespace RMDRMC.Mapper.Model.DomainToSql
                    .ForMember(model => model.Name, map => map.MapFrom(m => m.ScreenName))
                    .ForMember(model => model.MainScreen, map => map.MapFrom(m => m.ParentScreen))
                    .ForMember(model => model.MainScreenID, map => map.MapFrom(m => m.ParentScreenID));
+
+            CreateMap<Users, User>()
+                  .ForMember(model => model.Activate, map => map.MapFrom(m => m.IsActive))                  
+                  .ForMember(model => model.RoleID, map => map.MapFrom(m => m.UserRole.RoleID));
         }
     }
 }

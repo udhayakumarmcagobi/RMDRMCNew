@@ -24,6 +24,12 @@ namespace RMDRMC.Mapper.Model.DomainToViewModel
             CreateMap<Screen, ScreenVM>()
                   .ForMember(model => model.IsViewer, map => map.MapFrom(m => DomainToViewModelCustomMapper.IsViewer(m.ScreenAccess)))
                   .ForMember(model => model.IsModifier, map => map.MapFrom(m => DomainToViewModelCustomMapper.IsModfier(m.ScreenAccess)));
+
+            CreateMap<Users, UsersVM>()
+                .ForMember(model => model.ConfirmPassword, map => map.MapFrom(m => m.Password))
+                .ForMember(model => model.RoleID, map => map.MapFrom(m => m.UserRole.RoleID))
+                .ForMember(model => model.AllUserRoles, map => map.Ignore())
+                .ForMember(model => model.UserRoleSelected, map => map.MapFrom(m => m.UserRole));
         }
     }
 }

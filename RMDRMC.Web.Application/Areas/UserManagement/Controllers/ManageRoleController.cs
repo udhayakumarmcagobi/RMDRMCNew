@@ -36,7 +36,6 @@ namespace RMDRMC.Web.Application.Areas.UserManagement.Controllers
         public ActionResult Create()
         {            
             ViewBag.PageName = "Create Role";
-            ViewBag.ActionMethod = "CreateRole";
 
             RolesVM rolesVM = roleClientService.GetEmptyRole();
             rolesVM.IsActive = true;

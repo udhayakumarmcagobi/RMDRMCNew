@@ -5,11 +5,11 @@ namespace RMDRMC.Web.Core.Interfaces
 {
     public interface IUserClientService
     {
-       UsersVM GetEmptyUser();
-       bool CreateNewUser(UsersVM rolesVM);
-        bool UpdateUser(UsersVM rolesVM);
-        bool DeleteUser(long roleID);
+        UsersVM GetEmptyUser();
+        UsersVM CreateNewUser(UsersVM usersVM);
+        bool UpdateUser(UsersVM usersVM);
+        bool DeleteUser(long userID);
         List<UsersVM> GetUsers(string userPrefix);
-        UsersVM GetUsersByID(long roleID);
+        UsersVM GetUsersByID(long userID);
     }
 }

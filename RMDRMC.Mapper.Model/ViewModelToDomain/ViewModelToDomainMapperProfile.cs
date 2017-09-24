@@ -19,6 +19,9 @@ namespace RMDRMC.Mapper.Model.ViewModelToDomain
         {
             CreateMap<RolesVM, Roles>()
                 .ForMember(model => model.AccessScreens, map => map.Ignore());
+
+            CreateMap<UsersVM, Users>()
+                .ForMember(model => model.UserRole, map => map.MapFrom(m => ViewModelToDomainCustomMapper.GetSelectedUserRole(m.RoleID)));
         }
     }
 }

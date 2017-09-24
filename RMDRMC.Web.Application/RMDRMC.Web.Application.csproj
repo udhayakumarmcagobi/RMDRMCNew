@@ -218,6 +218,8 @@
     <Content Include="Areas\UserManagement\Views\Shared\_UserPersonalDetails.cshtml" />
     <Content Include="Areas\UserManagement\Views\ManageUser\Create.cshtml" />
     <Content Include="Areas\UserManagement\Views\Shared\_RoleSearch.cshtml" />
+    <Content Include="Areas\UserManagement\Views\Shared\_UserSearch.cshtml" />
+    <Content Include="Areas\UserManagement\Views\Shared\_UserSearchResults.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

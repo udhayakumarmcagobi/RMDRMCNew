@@ -1,0 +1,33 @@
+﻿@model List<UsersVM>
+
+<div class="panel panel-default" style="border-color:#ddd;" id="userinfopanel">
+    <div class="panel-heading-sm">
+        <label><a href="#userinfo" data-toggle="collapse" data-parent="#userinfopanel">User Search<span class="glyphicon glyphicon-minus"></span></a></label>
+    </div>
+
+    <div id="userinfo" class="panel-body  panel-collapse collapse in" role="tabpanel" aria-labelledby="Header Fields">
+        <div class="form-group clearfix">
+            <div class="col-sm-6 col-md-3 text-right">
+                <label class="control-label  tooltip-enable formLabelAlign"
+                       data-toggle="tooltip" id="lblUserName" data-placement="bottom" title="Select ">Name:</label>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <input type="text" class="form-control input-sm tooltip-enable designItemInput" id="txtUserName"
+                       data-toggle="tooltip" data-placement="bottom" title="Login ID" maxlength="20" value=""
+                       name="UserName" />
+            </div>
+   
+        </div>
+
+        <div class="panel panel-default" style="border-color:#ddd;" id="usersearchresultspanel">
+            <div class="panel-heading-sm">
+                <label><a href="#usersearchresults" data-toggle="collapse" data-parent="#usersearchresultspanel">User search results<span class="glyphicon glyphicon-minus"></span></a></label>
+            </div>
+
+            <div id="usersearchresults" class="panel-body  panel-collapse collapse in" role="tabpanel" aria-labelledby="Header Fields">
+                @Html.Partial("_UserSearchResults", Model)
+            </div>
+        </div>
+
+    </div>
+</div>

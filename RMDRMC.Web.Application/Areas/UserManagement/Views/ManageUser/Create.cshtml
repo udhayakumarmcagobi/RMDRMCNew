@@ -4,56 +4,76 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <label> Create User  </label>
-    </div>
+@{
+    ViewBag.Title = ViewBag.PageName;
 
-    <div class="panel-body">
+    string ajaxRoleSuccessMethod = "CreateUserSuccess";
+    string ajaxRoleFailureMethod = "CreateUserFailure";
+}
 
-        <div class="row text-center" style="margin-bottom:20px;">
+@using (Ajax.BeginForm("Create", "ManageUser", FormMethod.Post,
+                                                                                                                                                                                                        new AjaxOptions
+                                                                                                                                                                                                        {
+                                                                                                                                                                                                            OnBegin = "ShowProgressbar",
+                                                                                                                                                                                                            OnComplete = "HideProgressbar",
+                                                                                                                                                                                                            OnSuccess = ajaxRoleSuccessMethod,
+                                                                                                                                                                                                            OnFailure = ajaxRoleFailureMethod
 
-            <input type="submit" value="Save" class="ButtonWithImage btnSaveUsers" data-alert="false" />
-            <input type="button" value="Cancel" class="ButtonWithImage" onclick="RefreshScreen()" />
-
+                                                                                                                                                                                                        }, new { Id = "FormCreateUser" }
+                                                                                                                                                                                                        ))
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <label> Create User  </label>
         </div>
 
-        <div class="row">
-            <div class="text-center">
-                <div class="panel panel-default" style="border-color:#ddd;" id="userinfopanel">
-                    <div class="panel-heading-sm">
-                        <label><a href="#userinfo" data-toggle="collapse" data-parent="#userinfopanel">User Info<span class="glyphicon glyphicon-minus"></span></a></label>
-                    </div>
+        <div class="panel-body">
 
-                    <div id="userinfo" class="panel-body  panel-collapse collapse in" role="tabpanel" aria-labelledby="Header Fields">
-                        <div class="col-md-6">
-                            @Html.Partial("_UserPersonalDetails")
+            <div class="row text-center" style="margin-bottom:20px;">
+
+                <input type="submit" value="Save" class="ButtonWithImage btnSaveUsers" data-alert="false" />
+                <input type="button" value="Cancel" class="ButtonWithImage" onclick="RefreshScreen()" />
+
+            </div>
+
+            <div class="row">
+                <div class="text-center">
+                    <div class="panel panel-default" style="border-color:#ddd;" id="userinfopanel">
+                        <div class="panel-heading-sm">
+                            <label><a href="#userinfo" data-toggle="collapse" data-parent="#userinfopanel">User Info<span class="glyphicon glyphicon-minus"></span></a></label>
                         </div>
 
-                        <div class="col-md-6">
-                            @Html.Partial("_UserLoginDetails")
+                        <div id="userinfo" class="panel-body  panel-collapse collapse in" role="tabpanel" aria-labelledby="Header Fields">
+                            <div class="col-md-6">
+                                @Html.Partial("_UserPersonalDetails", Model)
+                            </div>
+
+                            <div class="col-md-6">
+                                @Html.Partial("_UserLoginDetails", Model)
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="text-center">
+            <div class="row">
+                <div class="text-center">
+                    <input id="hidRoleIDofUser" type="hidden" name="RoleID" value="@Model.RoleID" />
+                    @Html.Partial("_RoleSearch", Model.AllUserRoles);
 
-                @Html.Partial("_RoleSearch", Model.AllUserRoles);
+                </div>
+            </div>
+
+            <div class="row text-center" style="margin-bottom:20px;">
+
+                <input type="submit" value="Save" class="ButtonWithImage btnSaveUsers" data-alert="false" />
+                <input type="button" value="Cancel" class="ButtonWithImage" onclick="RefreshScreen()" />
 
             </div>
-        </div>
-
-        <div class="row text-center" style="margin-bottom:20px;">
-
-            <input type="submit" value="Save" class="ButtonWithImage btnSaveUsers" data-alert="false" />
-            <input type="button" value="Cancel" class="ButtonWithImage" onclick="RefreshScreen()" />
 
         </div>
-
     </div>
-</div>
+}
 <script src="~/CustomScripts/UserManagement.js"></script>
+
 

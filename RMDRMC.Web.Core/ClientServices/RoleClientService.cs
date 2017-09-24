@@ -110,7 +110,10 @@ namespace RMDRMC.Web.Core.ClientServices
 
             var roleVM =  AutoMappers.Map<Roles, RolesVM>(role);
 
-            roleVM.ParentScreens = GetCustomOrderScreen(roleVM.ParentScreens);
+            if (roleVM != null)
+            {
+                roleVM.ParentScreens = GetCustomOrderScreen(roleVM.ParentScreens);
+            }
 
             return roleVM;
         }

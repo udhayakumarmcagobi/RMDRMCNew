@@ -46,7 +46,14 @@
                 </div>
 
                 <div id="roleacessDetails" class="panel-body  panel-collapse collapse in" role="tabpanel" aria-labelledby="Header Fields">
-                    @Html.Partial("_ScreenAccessSelection", new RolesVM())
+                    @if (Model == null || !Model.Any(x => x.Selected))
+                    {
+                        @Html.Partial("_ScreenAccessSelection", new RolesVM())
+                    }
+                    else
+                    {
+                        @Html.Partial("_ScreenAccessSelection", Model.Where(x => x.Selected).FirstOrDefault())
+                    }
                 </div>
             </div>
         </form>

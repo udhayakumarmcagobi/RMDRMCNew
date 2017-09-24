@@ -6,39 +6,42 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RMDRMC.Model.Reference;
+using RMDRMC.DataRepository.Sql.Interfaces;
+using RMDRMC.DataRepository.Sql.Repositories;
 
 namespace RMDRMC.Domain.Core.Services
 {
     public class UserService : BaseService, IUserService
-    {               
+    {
+        private readonly IUserRepository userRepository;
         public UserService()
         {
-            
+            userRepository = new UserRepository();
         }
 
         public bool CreateNewUser(Users users)
         {
-            throw new NotImplementedException();
+            return userRepository.CreateUser(users);
         }
 
         public bool DeleteUser(long userID)
         {
-            throw new NotImplementedException();
+            return userRepository.DeleteUser(userID);
         }
 
         public Users GetAllUserByID(long userID)
         {
-            throw new NotImplementedException();
+            return userRepository.GetUserByID(userID);
         }
 
         public IEnumerable<Users> GetAllUsers()
         {
-            throw new NotImplementedException();
+            return userRepository.GetAllUsers();
         }
 
         public bool UpdateUser(Users users)
         {
-            throw new NotImplementedException();
+            return userRepository.UpdateUser(users);
         }
     }
 }

@@ -87,6 +87,9 @@
     <Compile Include="RoleDetail.cs">
       <DependentUpon>RMDRMCDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>RMDRMCDataModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

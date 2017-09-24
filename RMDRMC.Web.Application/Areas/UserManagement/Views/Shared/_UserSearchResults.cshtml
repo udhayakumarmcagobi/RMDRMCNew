@@ -1,0 +1,67 @@
+﻿@model  List<UsersVM>
+
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table table-bordered table-condensed" id="tblTableSort">
+                    <thead>
+                        <tr>
+                            <th>
+                                <label> Login ID  </label>
+                            </th>
+                            <th>
+                                <label> First name  </label>
+                            </th>
+                            <th>
+                                <label> Last Name </label>
+                            </th>
+                            <th>
+                                <label> Is Active  </label>
+                            </th>
+                        </tr>
+                    </thead>
+
+
+                    <tbody class="text-center">
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var user in Model)
+                            {
+                                <tr>
+
+                                    <td>
+                                        <a onclick="ShowProgressbar()" href="@Url.Action("Create", "ManageUser", new { id = user.UserID })">@user.LoginID</a>
+                                    </td>
+                                    <td>
+                                        @user.FirstName
+                                    </td>
+
+                                    <td>
+                                        @user.LastName
+                                    </td>
+                                    <td>
+                                        @user.IsActive
+                                    </td>
+                                </tr>
+                            }
+
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="12">
+                                    No matching design items found.
+                                </td>
+                            </tr>
+
+                        }
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+</div>

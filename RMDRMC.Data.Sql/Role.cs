@@ -18,6 +18,7 @@ namespace RMDRMC.Data.Sql
         public Role()
         {
             this.RoleDetails = new HashSet<RoleDetail>();
+            this.Users = new HashSet<User>();
         }
     
         public long RoleID { get; set; }
@@ -26,5 +27,7 @@ namespace RMDRMC.Data.Sql
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RoleDetail> RoleDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
     }
 }

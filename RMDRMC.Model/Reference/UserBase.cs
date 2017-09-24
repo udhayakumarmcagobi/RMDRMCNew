@@ -9,7 +9,7 @@ namespace RMDRMC.Model.Reference
     public class UserBase
     {
         public long UserID { get; set; }
-        public string UserName { get; set; }
+        public string LoginID { get; set; }
         public Roles UserRole { get; set; }
     }
 }

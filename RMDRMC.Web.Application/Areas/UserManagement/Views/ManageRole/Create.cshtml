@@ -4,31 +4,23 @@
     ViewBag.Title = "CreateRole";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@{
-    string pageName = ViewBag.page;
+@{    
     ViewBag.Title = ViewBag.PageName;
-
-    string actionMethod = ViewBag.ActionMethod;
 
     string ajaxRoleSuccessMethod = "CreateRoleSuccess";
     string ajaxRoleFailureMethod = "CreateRoleFailure";
-    if (pageName == "Edit")
-    {
-        ajaxRoleSuccessMethod = "UpdateRoleSuccess";
-        ajaxRoleFailureMethod = "UpdateRoleFailure";
-    }
 }
 
-@using (Ajax.BeginForm("Create", "ManageRole", FormMethod.Post,
-                                                                                                                                                        new AjaxOptions
-                                                                                                                                                        {
-                                                                                                                                                            OnBegin = "ShowProgressbar",
-                                                                                                                                                            OnComplete = "HideProgressbar",
-                                                                                                                                                            OnSuccess = ajaxRoleSuccessMethod,
-                                                                                                                                                            OnFailure = ajaxRoleFailureMethod
+@using (Ajax.BeginForm("Create", "ManageUser", FormMethod.Post,
+                                                                                                                                                                    new AjaxOptions
+                                                                                                                                                                    {
+                                                                                                                                                                        OnBegin = "ShowProgressbar",
+                                                                                                                                                                        OnComplete = "HideProgressbar",
+                                                                                                                                                                        OnSuccess = ajaxRoleSuccessMethod,
+                                                                                                                                                                        OnFailure = ajaxRoleFailureMethod
 
-                                                                                                                                                        }, new { Id = "FormCreateRole" }
-                                                                                                                                                        ))
+                                                                                                                                                                    }, new { Id = "FormCreateRole" }
+                                                                                                                                                                    ))
 {
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -45,11 +37,9 @@
 
             @*Action Button Starts*@
             <div class="row text-center" style="margin-bottom:20px;">
-                @if (pageName != "Edit")
-                {
-                    <input type="submit" value="Save" class="ButtonWithImage btnSaveRoles" data-alert="false" />
-                    <input type="button" value="Cancel" class="ButtonWithImage" onclick="RefreshScreen()" />
-                }
+
+                <input type="submit" value="Save" class="ButtonWithImage btnSaveRoles" data-alert="false" />
+                <input type="button" value="Cancel" class="ButtonWithImage" onclick="RefreshScreen()" />
 
             </div>
             @*Action Button Ends*@
@@ -66,7 +56,7 @@
                             <div class="col-sm-8 col-md-7">
                                 <input type="text" class="form-control input-sm tooltip-enable role-input" id="txtRoleName"
                                        data-toggle="tooltip" required data-placement="bottom" title="Role Name" maxlength="50" value="@Model.RoleName"
-                                       name="RoleName" />
+                                       name="RoleName" /><button class="btn btn-primary" "><i class="glyphicon glyphicon-search"></i></button>
                             </div>
                         </div>
 
@@ -103,11 +93,9 @@
 
             @*Action Button Starts*@
             <div class="row text-center" style="margin-bottom:20px;">
-                @if (pageName != "Edit")
-                {
-                    <input type="submit" value="Save" class="ButtonWithImage btnSaveRoles" data-alert="false" />
-                    <input type="button" value="Cancel" class="ButtonWithImage" onclick="RefreshScreen()" />
-                }
+
+                <input type="submit" value="Save" class="ButtonWithImage btnSaveRoles" data-alert="false" />
+                <input type="button" value="Cancel" class="ButtonWithImage" onclick="RefreshScreen()" />
 
             </div>
             @*Action Button Ends*@

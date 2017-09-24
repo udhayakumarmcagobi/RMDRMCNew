@@ -44,17 +44,21 @@ namespace RMDRMC.Web.Core.ClientServices
             return usersVM;
         }
 
-        public bool CreateNewUser(UsersVM usersVM)
+        public UsersVM CreateNewUser(UsersVM usersVM)
         {
-            if (usersVM == null) return false;
+            if (usersVM == null) return usersVM;
 
             var users = AutoMappers.Map<UsersVM, Users>(usersVM);            
 
             userService.CreateNewUser(users);
 
-            usersVM = AutoMappers.Map<Users, UsersVM>(users);            
+            usersVM = AutoMappers.Map<Users, UsersVM>(users);
 
-            return true;
+            usersVM.AllUserRoles = roleClientService.GetRoles(string.Empty);
+
+            usersVM.AllUserRoles.Where(x => x.RoleID == usersVM.RoleID).ToList().ForEach(x => x.Selected = true);
+
+            return usersVM;
         }
 
         public bool UpdateUser(UsersVM usersVM)
@@ -87,7 +91,7 @@ namespace RMDRMC.Web.Core.ClientServices
 
             if (string.IsNullOrWhiteSpace(userPrefix)) return allUsersVM;
 
-            return allUsersVM.Where(x => x.UserName.StartsWith(userPrefix)).ToList();
+            return allUsersVM.Where(x => x.LoginID.StartsWith(userPrefix)).ToList();
 
         }
 
@@ -110,36 +114,6 @@ namespace RMDRMC.Web.Core.ClientServices
                     : x.ScreenName.StartsWith("Inven") ? 4
                     : x.ScreenName.StartsWith("J") ? 5
                     : x.ScreenName.StartsWith("R") ? 6 : 7).ToList();
-        }
-
-        private List<Screen> GetAccessScreens(List<ScreenVM> accessScreensVMList)
-        {
-            if (accessScreensVMList == null || !accessScreensVMList.Any()) return null;
-
-            var newScreens = accessScreensVMList.Where(x => x.ChildScreens != null).SelectMany(x => x.ChildScreens, (parent, child) =>
-                            new Screen()
-                            {
-                                ParentScreenID = parent.ScreenID,
-                                ParentScreen = parent.ScreenName,
-                                ScreenID = child.ScreenID,
-                                ScreenName = child.ScreenName,
-                                ScreenAccess = GetScreenAccess(child),
-                            }).ToList();
-
-            return newScreens;
-        }
-
-        #endregion
-
-        #region Helper Methods
-
-        private ScreenAccess GetScreenAccess(ScreenVM screenVM)
-        {
-            if (screenVM.IsModifier) return ScreenAccess.Modify;
-
-            if (screenVM.IsViewer) return ScreenAccess.ViewOnly;
-
-            return ScreenAccess.None;
         }
 
         #endregion

@@ -14,6 +14,8 @@
         <AssociationConnector Association="RMDRMCDataModel.FK_ChildScreen_MainScreen" ManuallyRouted="false" />
         <AssociationConnector Association="RMDRMCDataModel.FK_RoleDetails_ChildScreen" ManuallyRouted="false" />
         <AssociationConnector Association="RMDRMCDataModel.FK_RoleDetails_Roles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="RMDRMCDataModel.User" Width="1.5" PointX="5.375" PointY="4.75" />
+        <AssociationConnector Association="RMDRMCDataModel.FK_Users_Roles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

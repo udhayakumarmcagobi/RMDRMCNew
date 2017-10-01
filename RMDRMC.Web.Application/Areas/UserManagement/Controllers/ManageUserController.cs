@@ -98,5 +98,14 @@ namespace RMDRMC.Web.Application.Areas.UserManagement.Controllers
 
             return UtilityHelpers.GetJsonResult(false, usersVM);
         }
+
+        // POST: UserManagement/ManageUser/Delete
+        [HttpPost]
+        public ActionResult Delete(long userID)
+        {
+            userClientService.DeleteUser(userID);
+
+            return UtilityHelpers.GetJsonResult(true, null);
+        }
     }
 }

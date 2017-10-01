@@ -129,6 +129,7 @@ var CreateRoleFailure = function (response) {
     alertify.alert("New Role " + response.data.RoleName + "creation failed");
 }
 
+// Main functionalities of User Starts
 var CreateUserSuccess = function (response) {
     if (response.result) {
         alertify.alert("New user '" + response.data.LoginID + "' has been created successfully");
@@ -154,6 +155,53 @@ var UpdateUserSuccess = function (response) {
 var UpdateUserFailure = function (response) {
     alertify.alert("User " + response.data.LoginID + "update failed");
 }
+
+var DeleteUser = function () {
+    alertify.confirm("Are you sure want to delete this user?",
+ function (e) {
+     if (e) {
+         DeleteUserConfirmed();
+     }
+ });
+}
+
+var DeleteUserConfirmed = function () {
+
+    var userID = $("#hidUserID").val();
+
+    if (userID == "") {
+        alertify.alert("select user to Delete");
+        return;
+    }
+
+    $.ajax({
+        async: true,
+        type: "Post",
+        cache: false,
+        data: { "userID": userID },
+        url: hostPath + '/UserManagement/ManageUser/Delete/',
+        beforeSend: function () {
+            ShowProgressbar();
+        },
+        success: function (jsonResult) {
+            if (jsonResult.result) {
+                alertify.alert("User has been deleted successfully",  function() {
+                    window.location.href = hostPath + "/UserManagement/ManageUser/Create";
+                });                
+            }
+        },
+        error: function (err) {
+            alertify.alert("User delete failed");            
+            HideProgressbar();
+        },
+        complete: function () {
+            HideProgressbar();
+        }
+    });
+}
+
+// Main functionalities of User Ends
+
 
 //Main functionalities of Role Starts
 var LoadScreenAccessDetailsOfRole = function (roleID) {

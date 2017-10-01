@@ -104,6 +104,29 @@ namespace RMDRMC.Web.Core.ClientServices
 
         }
 
+        public List<RolesVM> GetRoles(string rolePrefix, long selectedRoleID)
+        {
+            List<RolesVM> resultRoles = new List<RolesVM>();
+
+            var allRoles = roleService.GetAllRoles();
+
+            resultRoles = AutoMappers.Map<IEnumerable<Roles>, List<RolesVM>>(allRoles);
+
+            if (string.IsNullOrWhiteSpace(rolePrefix))
+            {
+                resultRoles = resultRoles.Where(x => x.RoleName.StartsWith(rolePrefix)).ToList();
+            }
+
+            resultRoles.Where(x => x.RoleID == selectedRoleID).ToList().ForEach(x => x.Selected = true);
+
+            foreach(var role in resultRoles)
+            {
+                role.ParentScreens = GetCustomOrderScreen(role.ParentScreens);
+            }
+
+            return resultRoles;
+        }
+
         public RolesVM GetRolesByID(long roleID)
         {
             var role = roleService.GetAllRoleByID(roleID);

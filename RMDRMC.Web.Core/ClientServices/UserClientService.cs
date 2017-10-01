@@ -54,9 +54,7 @@ namespace RMDRMC.Web.Core.ClientServices
 
             usersVM = AutoMappers.Map<Users, UsersVM>(users);
 
-            usersVM.AllUserRoles = roleClientService.GetRoles(string.Empty);
-
-            usersVM.AllUserRoles.Where(x => x.RoleID == usersVM.RoleID).ToList().ForEach(x => x.Selected = true);
+            usersVM.AllUserRoles = roleClientService.GetRoles(string.Empty, usersVM.RoleID);
 
             return usersVM;
         }
@@ -71,9 +69,7 @@ namespace RMDRMC.Web.Core.ClientServices
 
             usersVM = AutoMappers.Map<Users, UsersVM>(users);
 
-            usersVM.AllUserRoles = roleClientService.GetRoles(string.Empty);
-
-            usersVM.AllUserRoles.Where(x => x.RoleID == usersVM.RoleID).ToList().ForEach(x => x.Selected = true);
+            usersVM.AllUserRoles = roleClientService.GetRoles(string.Empty, usersVM.RoleID);
 
             return usersVM;
         }
@@ -105,9 +101,7 @@ namespace RMDRMC.Web.Core.ClientServices
 
             var usersVM = AutoMappers.Map<Users, UsersVM>(user);
 
-            usersVM.AllUserRoles = roleClientService.GetRoles(string.Empty);
-
-            usersVM.AllUserRoles.Where(x => x.RoleID == usersVM.UserRoleSelected.RoleID).ToList().ForEach(x => x.Selected = true);
+            usersVM.AllUserRoles = roleClientService.GetRoles(string.Empty, usersVM.UserRoleSelected.RoleID);
 
             return usersVM;                   
         }

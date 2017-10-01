@@ -14,6 +14,7 @@ namespace RMDRMC.Web.Core.Interfaces
         bool UpdateRole(RolesVM rolesVM);
         bool DeleteRole(long roleID);
         List<RolesVM> GetRoles(string rolePrefix);
-       RolesVM GetRolesByID(long roleID);
+        List<RolesVM> GetRoles(string rolePrefix, long selectedRoleID);
+        RolesVM GetRolesByID(long roleID);
     }
 }

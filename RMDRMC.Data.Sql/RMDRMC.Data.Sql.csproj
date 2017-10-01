@@ -54,10 +54,43 @@
     <Compile Include="AccessDetail.cs">
       <DependentUpon>RMDRMCDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="AccountManager.cs">
+      <DependentUpon>RMDRMCDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Address.cs">
+      <DependentUpon>RMDRMCDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ChildScreen.cs">
       <DependentUpon>RMDRMCDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Contact.cs">
+      <DependentUpon>RMDRMCDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Country.cs">
+      <DependentUpon>RMDRMCDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>RMDRMCDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Department.cs">
+      <DependentUpon>RMDRMCDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Designation.cs">
+      <DependentUpon>RMDRMCDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="MainScreen.cs">
+      <DependentUpon>RMDRMCDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Manufacturer.cs">
+      <DependentUpon>RMDRMCDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ManufacturerVendorMapping.cs">
+      <DependentUpon>RMDRMCDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OtherDetail.cs">
+      <DependentUpon>RMDRMCDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentTerm.cs">
       <DependentUpon>RMDRMCDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,7 +120,13 @@
     <Compile Include="RoleDetail.cs">
       <DependentUpon>RMDRMCDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="State.cs">
+      <DependentUpon>RMDRMCDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="User.cs">
+      <DependentUpon>RMDRMCDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vendor.cs">
       <DependentUpon>RMDRMCDataModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>

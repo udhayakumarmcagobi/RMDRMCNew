@@ -31,5 +31,18 @@ namespace RMDRMC.Data.Sql
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<RoleDetail> RoleDetails { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<AccountManager> AccountManagers { get; set; }
+        public virtual DbSet<Address> Addresses { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Department> Departments { get; set; }
+        public virtual DbSet<Designation> Designations { get; set; }
+        public virtual DbSet<Manufacturer> Manufacturers { get; set; }
+        public virtual DbSet<OtherDetail> OtherDetails { get; set; }
+        public virtual DbSet<PaymentTerm> PaymentTerms { get; set; }
+        public virtual DbSet<State> States { get; set; }
+        public virtual DbSet<Vendor> Vendors { get; set; }
+        public virtual DbSet<ManufacturerVendorMapping> ManufacturerVendorMappings { get; set; }
     }
 }

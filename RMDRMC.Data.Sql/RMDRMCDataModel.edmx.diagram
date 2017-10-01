@@ -16,6 +16,39 @@
         <AssociationConnector Association="RMDRMCDataModel.FK_RoleDetails_Roles" ManuallyRouted="false" />
         <EntityTypeShape EntityType="RMDRMCDataModel.User" Width="1.5" PointX="5.375" PointY="4.75" />
         <AssociationConnector Association="RMDRMCDataModel.FK_Users_Roles" />
+        <EntityTypeShape EntityType="RMDRMCDataModel.AccountManager" Width="1.5" PointX="7.375" PointY="10.5" />
+        <EntityTypeShape EntityType="RMDRMCDataModel.Address" Width="1.5" PointX="7.375" PointY="13.25" />
+        <EntityTypeShape EntityType="RMDRMCDataModel.Contact" Width="1.5" PointX="7.375" PointY="22" />
+        <EntityTypeShape EntityType="RMDRMCDataModel.Country" Width="1.5" PointX="5.125" PointY="15.625" />
+        <EntityTypeShape EntityType="RMDRMCDataModel.Customer" Width="1.5" PointX="9.625" PointY="0.75" />
+        <EntityTypeShape EntityType="RMDRMCDataModel.Department" Width="1.5" PointX="5.125" PointY="21.875" />
+        <EntityTypeShape EntityType="RMDRMCDataModel.Designation" Width="1.5" PointX="5.125" PointY="24.25" />
+        <EntityTypeShape EntityType="RMDRMCDataModel.Manufacturer" Width="1.5" PointX="9.625" PointY="6.375" />
+        <EntityTypeShape EntityType="RMDRMCDataModel.OtherDetail" Width="1.5" PointX="7.375" PointY="18.125" />
+        <EntityTypeShape EntityType="RMDRMCDataModel.PaymentTerm" Width="1.5" PointX="7.375" PointY="7.25" />
+        <EntityTypeShape EntityType="RMDRMCDataModel.State" Width="1.5" PointX="5.125" PointY="12.875" />
+        <EntityTypeShape EntityType="RMDRMCDataModel.Vendor" Width="1.5" PointX="12.625" PointY="6.375" />
+        <EntityTypeShape EntityType="RMDRMCDataModel.ManufacturerVendorMapping" Width="1.5" PointX="11.875" PointY="11.375" />
+        <AssociationConnector Association="RMDRMCDataModel.FK_Customer_AccountManager" />
+        <AssociationConnector Association="RMDRMCDataModel.FK_Address_Country" />
+        <AssociationConnector Association="RMDRMCDataModel.FK_Address_State" />
+        <AssociationConnector Association="RMDRMCDataModel.FK_Customer_Address" />
+        <AssociationConnector Association="RMDRMCDataModel.FK_Manufacturer_Address" />
+        <AssociationConnector Association="RMDRMCDataModel.FK_Vendor_Address" />
+        <AssociationConnector Association="RMDRMCDataModel.FK_Contact_Department" />
+        <AssociationConnector Association="RMDRMCDataModel.FK_Contact_Designation" />
+        <AssociationConnector Association="RMDRMCDataModel.FK_State_Country" />
+        <AssociationConnector Association="RMDRMCDataModel.FK_Customer_CustomerParent" />
+        <AssociationConnector Association="RMDRMCDataModel.FK_Customer_OtherDetail" />
+        <AssociationConnector Association="RMDRMCDataModel.FK_Customer_PaymentTerm" />
+        <AssociationConnector Association="RMDRMCDataModel.FK_Manufacturer_OtherDetail" />
+        <AssociationConnector Association="RMDRMCDataModel.FK_Manufacturer_PaymentTerm" />
+        <AssociationConnector Association="RMDRMCDataModel.FK_ManufacturerVendorMapping_Manufacturer" />
+        <AssociationConnector Association="RMDRMCDataModel.FK_Vendor_OtherDetail" />
+        <AssociationConnector Association="RMDRMCDataModel.FK_Vendor_PaymentTerm" />
+        <AssociationConnector Association="RMDRMCDataModel.CustomerContactMapping" />
+        <AssociationConnector Association="RMDRMCDataModel.ManufacturerContactMapping" />
+        <AssociationConnector Association="RMDRMCDataModel.VendorContactMapping" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

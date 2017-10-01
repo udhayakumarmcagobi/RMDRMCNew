@@ -12,6 +12,27 @@
           <Property Name="AccessID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="AccountManager">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Area" Type="nvarchar" MaxLength="200" />
+          <Property Name="District" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="StateID" Type="bigint" />
+          <Property Name="Pincode" Type="bigint" />
+          <Property Name="CountryID" Type="bigint" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Http" Type="nvarchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="ChildScreen">
           <Key>
             <PropertyRef Name="ScreenID" />
@@ -21,6 +42,68 @@
           <Property Name="MainScreenID" Type="bigint" Nullable="false" />
           <Property Name="Activate" Type="bit" />
         </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DepartmentID" Type="bigint" />
+          <Property Name="DesignationID" Type="bigint" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="15" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="10" />
+          <Property Name="Rating" Type="bigint" />
+          <Property Name="InvCustomerName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ParentID" Type="bigint" />
+          <Property Name="CustomerRRPLID" Type="bigint" />
+          <Property Name="CreditLimit" Type="nvarchar" MaxLength="20" />
+          <Property Name="AccountManagerID" Type="int" />
+          <Property Name="PaymentTermID" Type="bigint" />
+          <Property Name="AddressID" Type="bigint" />
+          <Property Name="OtherDetailID" Type="bigint" />
+          <Property Name="Activate" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RMDRMCNew.dbo.CustomerContactMapping' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CustomerContactMapping">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="CustomerID" Type="bigint" Nullable="false" />
+          <Property Name="ContactID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Designation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <EntityType Name="MainScreen">
           <Key>
             <PropertyRef Name="ScreenID" />
@@ -28,6 +111,58 @@
           <Property Name="ScreenID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="Activate" Type="bit" />
+        </EntityType>
+        <EntityType Name="Manufacturer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Code" Type="nvarchar" MaxLength="10" />
+          <Property Name="Rating" Type="bigint" />
+          <Property Name="Activate" Type="bit" />
+          <Property Name="PaymentTermID" Type="bigint" />
+          <Property Name="AddressID" Type="bigint" />
+          <Property Name="OtherDetailID" Type="bigint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RMDRMCNew.dbo.ManufacturerContactMapping' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ManufacturerContactMapping">
+          <Key>
+            <PropertyRef Name="ManufacturerID" />
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ManufacturerID" Type="bigint" Nullable="false" />
+          <Property Name="ContactID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RMDRMCNew.dbo.ManufacturerVendorMapping' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ManufacturerVendorMapping">
+          <Key>
+            <PropertyRef Name="ManufacturerID" />
+            <PropertyRef Name="VendorID" />
+          </Key>
+          <Property Name="ManufacturerID" Type="bigint" Nullable="false" />
+          <Property Name="VendorID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OtherDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIN" Type="nvarchar" MaxLength="100" />
+          <Property Name="CST" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExciseNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="Range" Type="nvarchar" MaxLength="100" />
+          <Property Name="Division" Type="nvarchar" MaxLength="100" />
+          <Property Name="VAT" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="PaymentTerm">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'RMDRMCNew.dbo.RoleDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -50,6 +185,14 @@ warning 6002: The table/view 'RMDRMCNew.dbo.RoleDetails' does not have a primary
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="Activate" Type="bit" />
         </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CountryID" Type="bigint" Nullable="false" />
+        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="UserID" />
@@ -67,6 +210,54 @@ warning 6002: The table/view 'RMDRMCNew.dbo.RoleDetails' does not have a primary
           <Property Name="RoleID" Type="bigint" Nullable="false" />
           <Property Name="Activate" Type="bit" />
         </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="10" />
+          <Property Name="Rating" Type="bigint" />
+          <Property Name="Activate" Type="bit" />
+          <Property Name="POName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PaymentTermID" Type="bigint" />
+          <Property Name="AddressID" Type="bigint" />
+          <Property Name="OtherDetailID" Type="bigint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RMDRMCNew.dbo.VendorContactMapping' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VendorContactMapping">
+          <Key>
+            <PropertyRef Name="VendorID" />
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="VendorID" Type="bigint" Nullable="false" />
+          <Property Name="ContactID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Address_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ChildScreen_MainScreen">
           <End Role="MainScreen" Type="Self.MainScreen" Multiplicity="1" />
           <End Role="ChildScreen" Type="Self.ChildScreen" Multiplicity="*" />
@@ -76,6 +267,186 @@ warning 6002: The table/view 'RMDRMCNew.dbo.RoleDetails' does not have a primary
             </Principal>
             <Dependent Role="ChildScreen">
               <PropertyRef Name="MainScreenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_Designation">
+          <End Role="Designation" Type="Self.Designation" Multiplicity="0..1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Designation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="DesignationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_AccountManager">
+          <End Role="AccountManager" Type="Self.AccountManager" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountManager">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="AccountManagerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_CustomerParent">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Customer1" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customer1">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_OtherDetail">
+          <End Role="OtherDetail" Type="Self.OtherDetail" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtherDetail">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="OtherDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_PaymentTerm">
+          <End Role="PaymentTerm" Type="Self.PaymentTerm" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentTerm">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="PaymentTermID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerContactMapping_Contact1">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+          <End Role="CustomerContactMapping" Type="Self.CustomerContactMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerContactMapping">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerContactMapping_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="CustomerContactMapping" Type="Self.CustomerContactMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerContactMapping">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Manufacturer_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Manufacturer">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Manufacturer_OtherDetail">
+          <End Role="OtherDetail" Type="Self.OtherDetail" Multiplicity="0..1" />
+          <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtherDetail">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Manufacturer">
+              <PropertyRef Name="OtherDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Manufacturer_PaymentTerm">
+          <End Role="PaymentTerm" Type="Self.PaymentTerm" Multiplicity="0..1" />
+          <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentTerm">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Manufacturer">
+              <PropertyRef Name="PaymentTermID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManufacturerContactMapping_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+          <End Role="ManufacturerContactMapping" Type="Self.ManufacturerContactMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ManufacturerContactMapping">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManufacturerContactMapping_Manufacturer">
+          <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1" />
+          <End Role="ManufacturerContactMapping" Type="Self.ManufacturerContactMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ManufacturerContactMapping">
+              <PropertyRef Name="ManufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManufacturerVendorMapping_Manufacturer">
+          <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1" />
+          <End Role="ManufacturerVendorMapping" Type="Self.ManufacturerVendorMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ManufacturerVendorMapping">
+              <PropertyRef Name="ManufacturerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -117,6 +488,20 @@ warning 6002: The table/view 'RMDRMCNew.dbo.RoleDetails' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_State_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="State" Type="Self.State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Users_Roles">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
@@ -129,12 +514,102 @@ warning 6002: The table/view 'RMDRMCNew.dbo.RoleDetails' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Vendor_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendor_OtherDetail">
+          <End Role="OtherDetail" Type="Self.OtherDetail" Multiplicity="0..1" />
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtherDetail">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="OtherDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendor_PaymentTerm">
+          <End Role="PaymentTerm" Type="Self.PaymentTerm" Multiplicity="0..1" />
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentTerm">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="PaymentTermID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorContactMapping_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+          <End Role="VendorContactMapping" Type="Self.VendorContactMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VendorContactMapping">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorContactMapping_Vendor">
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="1" />
+          <End Role="VendorContactMapping" Type="Self.VendorContactMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VendorContactMapping">
+              <PropertyRef Name="VendorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="RMDRMCDataModelStoreContainer">
           <EntitySet Name="AccessDetails" EntityType="Self.AccessDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountManager" EntityType="Self.AccountManager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChildScreen" EntityType="Self.ChildScreen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Designation" EntityType="Self.Designation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MainScreen" EntityType="Self.MainScreen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OtherDetail" EntityType="Self.OtherDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentTerm" EntityType="Self.PaymentTerm" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerContactMapping" EntityType="Self.CustomerContactMapping" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CustomerContactMapping].[CustomerID] AS [CustomerID], 
+    [CustomerContactMapping].[ContactID] AS [ContactID]
+    FROM [dbo].[CustomerContactMapping] AS [CustomerContactMapping]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ManufacturerContactMapping" EntityType="Self.ManufacturerContactMapping" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ManufacturerContactMapping].[ManufacturerID] AS [ManufacturerID], 
+    [ManufacturerContactMapping].[ContactID] AS [ContactID]
+    FROM [dbo].[ManufacturerContactMapping] AS [ManufacturerContactMapping]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ManufacturerVendorMapping" EntityType="Self.ManufacturerVendorMapping" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ManufacturerVendorMapping].[ManufacturerID] AS [ManufacturerID], 
+    [ManufacturerVendorMapping].[VendorID] AS [VendorID]
+    FROM [dbo].[ManufacturerVendorMapping] AS [ManufacturerVendorMapping]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="RoleDetails" EntityType="Self.RoleDetails" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [RoleDetails].[RoleID] AS [RoleID], 
@@ -143,9 +618,83 @@ warning 6002: The table/view 'RMDRMCNew.dbo.RoleDetails' does not have a primary
     [RoleDetails].[Activate] AS [Activate]
     FROM [dbo].[RoleDetails] AS [RoleDetails]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="VendorContactMapping" EntityType="Self.VendorContactMapping" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VendorContactMapping].[VendorID] AS [VendorID], 
+    [VendorContactMapping].[ContactID] AS [ContactID]
+    FROM [dbo].[VendorContactMapping] AS [VendorContactMapping]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Address_Country" Association="Self.FK_Address_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_State" Association="Self.FK_Address_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
           <AssociationSet Name="FK_ChildScreen_MainScreen" Association="Self.FK_ChildScreen_MainScreen">
             <End Role="MainScreen" EntitySet="MainScreen" />
             <End Role="ChildScreen" EntitySet="ChildScreen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_Department" Association="Self.FK_Contact_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_Designation" Association="Self.FK_Contact_Designation">
+            <End Role="Designation" EntitySet="Designation" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_AccountManager" Association="Self.FK_Customer_AccountManager">
+            <End Role="AccountManager" EntitySet="AccountManager" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Address" Association="Self.FK_Customer_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_CustomerParent" Association="Self.FK_Customer_CustomerParent">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Customer1" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_OtherDetail" Association="Self.FK_Customer_OtherDetail">
+            <End Role="OtherDetail" EntitySet="OtherDetail" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_PaymentTerm" Association="Self.FK_Customer_PaymentTerm">
+            <End Role="PaymentTerm" EntitySet="PaymentTerm" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerContactMapping_Contact1" Association="Self.FK_CustomerContactMapping_Contact1">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="CustomerContactMapping" EntitySet="CustomerContactMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerContactMapping_Customer" Association="Self.FK_CustomerContactMapping_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustomerContactMapping" EntitySet="CustomerContactMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Manufacturer_Address" Association="Self.FK_Manufacturer_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Manufacturer" EntitySet="Manufacturer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Manufacturer_OtherDetail" Association="Self.FK_Manufacturer_OtherDetail">
+            <End Role="OtherDetail" EntitySet="OtherDetail" />
+            <End Role="Manufacturer" EntitySet="Manufacturer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Manufacturer_PaymentTerm" Association="Self.FK_Manufacturer_PaymentTerm">
+            <End Role="PaymentTerm" EntitySet="PaymentTerm" />
+            <End Role="Manufacturer" EntitySet="Manufacturer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManufacturerContactMapping_Contact" Association="Self.FK_ManufacturerContactMapping_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="ManufacturerContactMapping" EntitySet="ManufacturerContactMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManufacturerContactMapping_Manufacturer" Association="Self.FK_ManufacturerContactMapping_Manufacturer">
+            <End Role="Manufacturer" EntitySet="Manufacturer" />
+            <End Role="ManufacturerContactMapping" EntitySet="ManufacturerContactMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManufacturerVendorMapping_Manufacturer" Association="Self.FK_ManufacturerVendorMapping_Manufacturer">
+            <End Role="Manufacturer" EntitySet="Manufacturer" />
+            <End Role="ManufacturerVendorMapping" EntitySet="ManufacturerVendorMapping" />
           </AssociationSet>
           <AssociationSet Name="FK_RoleDetails_AccessDetails" Association="Self.FK_RoleDetails_AccessDetails">
             <End Role="AccessDetails" EntitySet="AccessDetails" />
@@ -159,9 +708,33 @@ warning 6002: The table/view 'RMDRMCNew.dbo.RoleDetails' does not have a primary
             <End Role="Roles" EntitySet="Roles" />
             <End Role="RoleDetails" EntitySet="RoleDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_State_Country" Association="Self.FK_State_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="State" EntitySet="State" />
+          </AssociationSet>
           <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendor_Address" Association="Self.FK_Vendor_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Vendor" EntitySet="Vendor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendor_OtherDetail" Association="Self.FK_Vendor_OtherDetail">
+            <End Role="OtherDetail" EntitySet="OtherDetail" />
+            <End Role="Vendor" EntitySet="Vendor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendor_PaymentTerm" Association="Self.FK_Vendor_PaymentTerm">
+            <End Role="PaymentTerm" EntitySet="PaymentTerm" />
+            <End Role="Vendor" EntitySet="Vendor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorContactMapping_Contact" Association="Self.FK_VendorContactMapping_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="VendorContactMapping" EntitySet="VendorContactMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorContactMapping_Vendor" Association="Self.FK_VendorContactMapping_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="VendorContactMapping" EntitySet="VendorContactMapping" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -295,6 +868,99 @@ warning 6002: The table/view 'RMDRMCNew.dbo.RoleDetails' does not have a primary
             <End Role="Role" EntitySet="Roles" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
+          <EntitySet Name="AccountManagers" EntityType="RMDRMCDataModel.AccountManager" />
+          <EntitySet Name="Addresses" EntityType="RMDRMCDataModel.Address" />
+          <EntitySet Name="Contacts" EntityType="RMDRMCDataModel.Contact" />
+          <EntitySet Name="Countries" EntityType="RMDRMCDataModel.Country" />
+          <EntitySet Name="Customers" EntityType="RMDRMCDataModel.Customer" />
+          <EntitySet Name="Departments" EntityType="RMDRMCDataModel.Department" />
+          <EntitySet Name="Designations" EntityType="RMDRMCDataModel.Designation" />
+          <EntitySet Name="Manufacturers" EntityType="RMDRMCDataModel.Manufacturer" />
+          <EntitySet Name="OtherDetails" EntityType="RMDRMCDataModel.OtherDetail" />
+          <EntitySet Name="PaymentTerms" EntityType="RMDRMCDataModel.PaymentTerm" />
+          <EntitySet Name="States" EntityType="RMDRMCDataModel.State" />
+          <EntitySet Name="Vendors" EntityType="RMDRMCDataModel.Vendor" />
+          <EntitySet Name="ManufacturerVendorMappings" EntityType="RMDRMCDataModel.ManufacturerVendorMapping" />
+          <AssociationSet Name="FK_Customer_AccountManager" Association="RMDRMCDataModel.FK_Customer_AccountManager">
+            <End Role="AccountManager" EntitySet="AccountManagers" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_Country" Association="RMDRMCDataModel.FK_Address_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_State" Association="RMDRMCDataModel.FK_Address_State">
+            <End Role="State" EntitySet="States" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Address" Association="RMDRMCDataModel.FK_Customer_Address">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Manufacturer_Address" Association="RMDRMCDataModel.FK_Manufacturer_Address">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Manufacturer" EntitySet="Manufacturers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendor_Address" Association="RMDRMCDataModel.FK_Vendor_Address">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Vendor" EntitySet="Vendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_Department" Association="RMDRMCDataModel.FK_Contact_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Contact" EntitySet="Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_Designation" Association="RMDRMCDataModel.FK_Contact_Designation">
+            <End Role="Designation" EntitySet="Designations" />
+            <End Role="Contact" EntitySet="Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_State_Country" Association="RMDRMCDataModel.FK_State_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="State" EntitySet="States" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_CustomerParent" Association="RMDRMCDataModel.FK_Customer_CustomerParent">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Customer1" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_OtherDetail" Association="RMDRMCDataModel.FK_Customer_OtherDetail">
+            <End Role="OtherDetail" EntitySet="OtherDetails" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_PaymentTerm" Association="RMDRMCDataModel.FK_Customer_PaymentTerm">
+            <End Role="PaymentTerm" EntitySet="PaymentTerms" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Manufacturer_OtherDetail" Association="RMDRMCDataModel.FK_Manufacturer_OtherDetail">
+            <End Role="OtherDetail" EntitySet="OtherDetails" />
+            <End Role="Manufacturer" EntitySet="Manufacturers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Manufacturer_PaymentTerm" Association="RMDRMCDataModel.FK_Manufacturer_PaymentTerm">
+            <End Role="PaymentTerm" EntitySet="PaymentTerms" />
+            <End Role="Manufacturer" EntitySet="Manufacturers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManufacturerVendorMapping_Manufacturer" Association="RMDRMCDataModel.FK_ManufacturerVendorMapping_Manufacturer">
+            <End Role="Manufacturer" EntitySet="Manufacturers" />
+            <End Role="ManufacturerVendorMapping" EntitySet="ManufacturerVendorMappings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendor_OtherDetail" Association="RMDRMCDataModel.FK_Vendor_OtherDetail">
+            <End Role="OtherDetail" EntitySet="OtherDetails" />
+            <End Role="Vendor" EntitySet="Vendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendor_PaymentTerm" Association="RMDRMCDataModel.FK_Vendor_PaymentTerm">
+            <End Role="PaymentTerm" EntitySet="PaymentTerms" />
+            <End Role="Vendor" EntitySet="Vendors" />
+          </AssociationSet>
+          <AssociationSet Name="CustomerContactMapping" Association="RMDRMCDataModel.CustomerContactMapping">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="ManufacturerContactMapping" Association="RMDRMCDataModel.ManufacturerContactMapping">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Manufacturer" EntitySet="Manufacturers" />
+          </AssociationSet>
+          <AssociationSet Name="VendorContactMapping" Association="RMDRMCDataModel.VendorContactMapping">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Vendor" EntitySet="Vendors" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -325,6 +991,399 @@ warning 6002: The table/view 'RMDRMCNew.dbo.RoleDetails' does not have a primary
               <PropertyRef Name="RoleID" />
             </Dependent>
           </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AccountManager">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customers" Relationship="RMDRMCDataModel.FK_Customer_AccountManager" FromRole="AccountManager" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Area" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StateID" Type="Int64" />
+          <Property Name="Pincode" Type="Int64" />
+          <Property Name="CountryID" Type="Int64" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Http" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Country" Relationship="RMDRMCDataModel.FK_Address_Country" FromRole="Address" ToRole="Country" />
+          <NavigationProperty Name="State" Relationship="RMDRMCDataModel.FK_Address_State" FromRole="Address" ToRole="State" />
+          <NavigationProperty Name="Customers" Relationship="RMDRMCDataModel.FK_Customer_Address" FromRole="Address" ToRole="Customer" />
+          <NavigationProperty Name="Manufacturers" Relationship="RMDRMCDataModel.FK_Manufacturer_Address" FromRole="Address" ToRole="Manufacturer" />
+          <NavigationProperty Name="Vendors" Relationship="RMDRMCDataModel.FK_Vendor_Address" FromRole="Address" ToRole="Vendor" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentID" Type="Int64" />
+          <Property Name="DesignationID" Type="Int64" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Department" Relationship="RMDRMCDataModel.FK_Contact_Department" FromRole="Contact" ToRole="Department" />
+          <NavigationProperty Name="Designation" Relationship="RMDRMCDataModel.FK_Contact_Designation" FromRole="Contact" ToRole="Designation" />
+          <NavigationProperty Name="Customers" Relationship="RMDRMCDataModel.CustomerContactMapping" FromRole="Contact" ToRole="Customer" />
+          <NavigationProperty Name="Manufacturers" Relationship="RMDRMCDataModel.ManufacturerContactMapping" FromRole="Contact" ToRole="Manufacturer" />
+          <NavigationProperty Name="Vendors" Relationship="RMDRMCDataModel.VendorContactMapping" FromRole="Contact" ToRole="Vendor" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Addresses" Relationship="RMDRMCDataModel.FK_Address_Country" FromRole="Country" ToRole="Address" />
+          <NavigationProperty Name="States" Relationship="RMDRMCDataModel.FK_State_Country" FromRole="Country" ToRole="State" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Rating" Type="Int64" />
+          <Property Name="InvCustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ParentID" Type="Int64" />
+          <Property Name="CustomerRRPLID" Type="Int64" />
+          <Property Name="CreditLimit" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AccountManagerID" Type="Int32" />
+          <Property Name="PaymentTermID" Type="Int64" />
+          <Property Name="AddressID" Type="Int64" />
+          <Property Name="OtherDetailID" Type="Int64" />
+          <Property Name="Activate" Type="Boolean" />
+          <NavigationProperty Name="AccountManager" Relationship="RMDRMCDataModel.FK_Customer_AccountManager" FromRole="Customer" ToRole="AccountManager" />
+          <NavigationProperty Name="Address" Relationship="RMDRMCDataModel.FK_Customer_Address" FromRole="Customer" ToRole="Address" />
+          <NavigationProperty Name="Customer1" Relationship="RMDRMCDataModel.FK_Customer_CustomerParent" FromRole="Customer" ToRole="Customer1" />
+          <NavigationProperty Name="Customer2" Relationship="RMDRMCDataModel.FK_Customer_CustomerParent" FromRole="Customer1" ToRole="Customer" />
+          <NavigationProperty Name="OtherDetail" Relationship="RMDRMCDataModel.FK_Customer_OtherDetail" FromRole="Customer" ToRole="OtherDetail" />
+          <NavigationProperty Name="PaymentTerm" Relationship="RMDRMCDataModel.FK_Customer_PaymentTerm" FromRole="Customer" ToRole="PaymentTerm" />
+          <NavigationProperty Name="Contacts" Relationship="RMDRMCDataModel.CustomerContactMapping" FromRole="Customer" ToRole="Contact" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contacts" Relationship="RMDRMCDataModel.FK_Contact_Department" FromRole="Department" ToRole="Contact" />
+        </EntityType>
+        <EntityType Name="Designation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contacts" Relationship="RMDRMCDataModel.FK_Contact_Designation" FromRole="Designation" ToRole="Contact" />
+        </EntityType>
+        <EntityType Name="Manufacturer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Rating" Type="Int64" />
+          <Property Name="Activate" Type="Boolean" />
+          <Property Name="PaymentTermID" Type="Int64" />
+          <Property Name="AddressID" Type="Int64" />
+          <Property Name="OtherDetailID" Type="Int64" />
+          <NavigationProperty Name="Address" Relationship="RMDRMCDataModel.FK_Manufacturer_Address" FromRole="Manufacturer" ToRole="Address" />
+          <NavigationProperty Name="OtherDetail" Relationship="RMDRMCDataModel.FK_Manufacturer_OtherDetail" FromRole="Manufacturer" ToRole="OtherDetail" />
+          <NavigationProperty Name="PaymentTerm" Relationship="RMDRMCDataModel.FK_Manufacturer_PaymentTerm" FromRole="Manufacturer" ToRole="PaymentTerm" />
+          <NavigationProperty Name="ManufacturerVendorMappings" Relationship="RMDRMCDataModel.FK_ManufacturerVendorMapping_Manufacturer" FromRole="Manufacturer" ToRole="ManufacturerVendorMapping" />
+          <NavigationProperty Name="Contacts" Relationship="RMDRMCDataModel.ManufacturerContactMapping" FromRole="Manufacturer" ToRole="Contact" />
+        </EntityType>
+        <EntityType Name="OtherDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CST" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ExciseNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Range" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Division" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="VAT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customers" Relationship="RMDRMCDataModel.FK_Customer_OtherDetail" FromRole="OtherDetail" ToRole="Customer" />
+          <NavigationProperty Name="Manufacturers" Relationship="RMDRMCDataModel.FK_Manufacturer_OtherDetail" FromRole="OtherDetail" ToRole="Manufacturer" />
+          <NavigationProperty Name="Vendors" Relationship="RMDRMCDataModel.FK_Vendor_OtherDetail" FromRole="OtherDetail" ToRole="Vendor" />
+        </EntityType>
+        <EntityType Name="PaymentTerm">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customers" Relationship="RMDRMCDataModel.FK_Customer_PaymentTerm" FromRole="PaymentTerm" ToRole="Customer" />
+          <NavigationProperty Name="Manufacturers" Relationship="RMDRMCDataModel.FK_Manufacturer_PaymentTerm" FromRole="PaymentTerm" ToRole="Manufacturer" />
+          <NavigationProperty Name="Vendors" Relationship="RMDRMCDataModel.FK_Vendor_PaymentTerm" FromRole="PaymentTerm" ToRole="Vendor" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Addresses" Relationship="RMDRMCDataModel.FK_Address_State" FromRole="State" ToRole="Address" />
+          <NavigationProperty Name="Country" Relationship="RMDRMCDataModel.FK_State_Country" FromRole="State" ToRole="Country" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Rating" Type="Int64" />
+          <Property Name="Activate" Type="Boolean" />
+          <Property Name="POName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentTermID" Type="Int64" />
+          <Property Name="AddressID" Type="Int64" />
+          <Property Name="OtherDetailID" Type="Int64" />
+          <NavigationProperty Name="Address" Relationship="RMDRMCDataModel.FK_Vendor_Address" FromRole="Vendor" ToRole="Address" />
+          <NavigationProperty Name="OtherDetail" Relationship="RMDRMCDataModel.FK_Vendor_OtherDetail" FromRole="Vendor" ToRole="OtherDetail" />
+          <NavigationProperty Name="PaymentTerm" Relationship="RMDRMCDataModel.FK_Vendor_PaymentTerm" FromRole="Vendor" ToRole="PaymentTerm" />
+          <NavigationProperty Name="Contacts" Relationship="RMDRMCDataModel.VendorContactMapping" FromRole="Vendor" ToRole="Contact" />
+        </EntityType>
+        <EntityType Name="ManufacturerVendorMapping">
+          <Key>
+            <PropertyRef Name="ManufacturerID" />
+            <PropertyRef Name="VendorID" />
+          </Key>
+          <Property Name="ManufacturerID" Type="Int64" Nullable="false" />
+          <Property Name="VendorID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Manufacturer" Relationship="RMDRMCDataModel.FK_ManufacturerVendorMapping_Manufacturer" FromRole="ManufacturerVendorMapping" ToRole="Manufacturer" />
+        </EntityType>
+        <Association Name="FK_Customer_AccountManager">
+          <End Type="RMDRMCDataModel.AccountManager" Role="AccountManager" Multiplicity="0..1" />
+          <End Type="RMDRMCDataModel.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountManager">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="AccountManagerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_Country">
+          <End Type="RMDRMCDataModel.Country" Role="Country" Multiplicity="0..1" />
+          <End Type="RMDRMCDataModel.Address" Role="Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_State">
+          <End Type="RMDRMCDataModel.State" Role="State" Multiplicity="0..1" />
+          <End Type="RMDRMCDataModel.Address" Role="Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Address">
+          <End Type="RMDRMCDataModel.Address" Role="Address" Multiplicity="0..1" />
+          <End Type="RMDRMCDataModel.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Manufacturer_Address">
+          <End Type="RMDRMCDataModel.Address" Role="Address" Multiplicity="0..1" />
+          <End Type="RMDRMCDataModel.Manufacturer" Role="Manufacturer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Manufacturer">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendor_Address">
+          <End Type="RMDRMCDataModel.Address" Role="Address" Multiplicity="0..1" />
+          <End Type="RMDRMCDataModel.Vendor" Role="Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_Department">
+          <End Type="RMDRMCDataModel.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="RMDRMCDataModel.Contact" Role="Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_Designation">
+          <End Type="RMDRMCDataModel.Designation" Role="Designation" Multiplicity="0..1" />
+          <End Type="RMDRMCDataModel.Contact" Role="Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Designation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="DesignationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_State_Country">
+          <End Type="RMDRMCDataModel.Country" Role="Country" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="RMDRMCDataModel.State" Role="State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_CustomerParent">
+          <End Type="RMDRMCDataModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="RMDRMCDataModel.Customer" Role="Customer1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customer1">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_OtherDetail">
+          <End Type="RMDRMCDataModel.OtherDetail" Role="OtherDetail" Multiplicity="0..1" />
+          <End Type="RMDRMCDataModel.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtherDetail">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="OtherDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_PaymentTerm">
+          <End Type="RMDRMCDataModel.PaymentTerm" Role="PaymentTerm" Multiplicity="0..1" />
+          <End Type="RMDRMCDataModel.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentTerm">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="PaymentTermID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Manufacturer_OtherDetail">
+          <End Type="RMDRMCDataModel.OtherDetail" Role="OtherDetail" Multiplicity="0..1" />
+          <End Type="RMDRMCDataModel.Manufacturer" Role="Manufacturer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtherDetail">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Manufacturer">
+              <PropertyRef Name="OtherDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Manufacturer_PaymentTerm">
+          <End Type="RMDRMCDataModel.PaymentTerm" Role="PaymentTerm" Multiplicity="0..1" />
+          <End Type="RMDRMCDataModel.Manufacturer" Role="Manufacturer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentTerm">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Manufacturer">
+              <PropertyRef Name="PaymentTermID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManufacturerVendorMapping_Manufacturer">
+          <End Type="RMDRMCDataModel.Manufacturer" Role="Manufacturer" Multiplicity="1" />
+          <End Type="RMDRMCDataModel.ManufacturerVendorMapping" Role="ManufacturerVendorMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ManufacturerVendorMapping">
+              <PropertyRef Name="ManufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendor_OtherDetail">
+          <End Type="RMDRMCDataModel.OtherDetail" Role="OtherDetail" Multiplicity="0..1" />
+          <End Type="RMDRMCDataModel.Vendor" Role="Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtherDetail">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="OtherDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendor_PaymentTerm">
+          <End Type="RMDRMCDataModel.PaymentTerm" Role="PaymentTerm" Multiplicity="0..1" />
+          <End Type="RMDRMCDataModel.Vendor" Role="Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentTerm">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="PaymentTermID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CustomerContactMapping">
+          <End Type="RMDRMCDataModel.Contact" Role="Contact" Multiplicity="*" />
+          <End Type="RMDRMCDataModel.Customer" Role="Customer" Multiplicity="*" />
+        </Association>
+        <Association Name="ManufacturerContactMapping">
+          <End Type="RMDRMCDataModel.Contact" Role="Contact" Multiplicity="*" />
+          <End Type="RMDRMCDataModel.Manufacturer" Role="Manufacturer" Multiplicity="*" />
+        </Association>
+        <Association Name="VendorContactMapping">
+          <End Type="RMDRMCDataModel.Contact" Role="Contact" Multiplicity="*" />
+          <End Type="RMDRMCDataModel.Vendor" Role="Vendor" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -396,6 +1455,177 @@ warning 6002: The table/view 'RMDRMCNew.dbo.RoleDetails' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="AccountManagers">
+            <EntityTypeMapping TypeName="RMDRMCDataModel.AccountManager">
+              <MappingFragment StoreEntitySet="AccountManager">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="RMDRMCDataModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="Http" ColumnName="Http" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="RMDRMCDataModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="RMDRMCDataModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="RMDRMCDataModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Activate" ColumnName="Activate" />
+                <ScalarProperty Name="OtherDetailID" ColumnName="OtherDetailID" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="PaymentTermID" ColumnName="PaymentTermID" />
+                <ScalarProperty Name="AccountManagerID" ColumnName="AccountManagerID" />
+                <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
+                <ScalarProperty Name="CustomerRRPLID" ColumnName="CustomerRRPLID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="InvCustomerName" ColumnName="InvCustomerName" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="RMDRMCDataModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Designations">
+            <EntityTypeMapping TypeName="RMDRMCDataModel.Designation">
+              <MappingFragment StoreEntitySet="Designation">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Manufacturers">
+            <EntityTypeMapping TypeName="RMDRMCDataModel.Manufacturer">
+              <MappingFragment StoreEntitySet="Manufacturer">
+                <ScalarProperty Name="OtherDetailID" ColumnName="OtherDetailID" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="PaymentTermID" ColumnName="PaymentTermID" />
+                <ScalarProperty Name="Activate" ColumnName="Activate" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OtherDetails">
+            <EntityTypeMapping TypeName="RMDRMCDataModel.OtherDetail">
+              <MappingFragment StoreEntitySet="OtherDetail">
+                <ScalarProperty Name="VAT" ColumnName="VAT" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="Range" ColumnName="Range" />
+                <ScalarProperty Name="ExciseNo" ColumnName="ExciseNo" />
+                <ScalarProperty Name="CST" ColumnName="CST" />
+                <ScalarProperty Name="TIN" ColumnName="TIN" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentTerms">
+            <EntityTypeMapping TypeName="RMDRMCDataModel.PaymentTerm">
+              <MappingFragment StoreEntitySet="PaymentTerm">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="RMDRMCDataModel.State">
+              <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendors">
+            <EntityTypeMapping TypeName="RMDRMCDataModel.Vendor">
+              <MappingFragment StoreEntitySet="Vendor">
+                <ScalarProperty Name="OtherDetailID" ColumnName="OtherDetailID" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="PaymentTermID" ColumnName="PaymentTermID" />
+                <ScalarProperty Name="POName" ColumnName="POName" />
+                <ScalarProperty Name="Activate" ColumnName="Activate" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ManufacturerVendorMappings">
+            <EntityTypeMapping TypeName="RMDRMCDataModel.ManufacturerVendorMapping">
+              <MappingFragment StoreEntitySet="ManufacturerVendorMapping">
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+                <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="CustomerContactMapping" TypeName="RMDRMCDataModel.CustomerContactMapping" StoreEntitySet="CustomerContactMapping">
+            <EndProperty Name="Customer">
+              <ScalarProperty Name="ID" ColumnName="CustomerID" />
+            </EndProperty>
+            <EndProperty Name="Contact">
+              <ScalarProperty Name="ID" ColumnName="ContactID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ManufacturerContactMapping" TypeName="RMDRMCDataModel.ManufacturerContactMapping" StoreEntitySet="ManufacturerContactMapping">
+            <EndProperty Name="Manufacturer">
+              <ScalarProperty Name="ID" ColumnName="ManufacturerID" />
+            </EndProperty>
+            <EndProperty Name="Contact">
+              <ScalarProperty Name="ID" ColumnName="ContactID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="VendorContactMapping" TypeName="RMDRMCDataModel.VendorContactMapping" StoreEntitySet="VendorContactMapping">
+            <EndProperty Name="Vendor">
+              <ScalarProperty Name="ID" ColumnName="VendorID" />
+            </EndProperty>
+            <EndProperty Name="Contact">
+              <ScalarProperty Name="ID" ColumnName="ContactID" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

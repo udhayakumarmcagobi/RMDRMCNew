@@ -15,6 +15,8 @@ namespace RMDRMCWeb.ViewModels.Masters
         public List<RatingVM> RatingList { get; set; }
         public string InvCustomerName { get; set; }
         public List<CustomerVM> ParentCustomerVM { get; set; }
+        public string ParentCustomerName { get; set; }
+        public string ParentCustomerCode { get; set; }
         public long CustomerRRPLID { get; set; }
         public string CreditLimit { get; set; }
         public List<AccountManagerVM> AccountManagerList { get; set; }

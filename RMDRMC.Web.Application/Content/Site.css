@@ -2344,5 +2344,12 @@ input.master-screen-input {width:98%;}
 select.master-screen-input {width:98%;}
 input.master-screen-input-small {width:94%;}
 select.master-screen-input-small {width:94%;}
+div.button-pos { 
+    margin-bottom:20px;
+}
+div.button-pos-right { 
+    margin-bottom:20px;
+    margin-right:0%;
+}
 
 /* added by Udhay end */

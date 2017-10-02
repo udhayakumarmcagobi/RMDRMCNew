@@ -6,14 +6,15 @@
             </div>
 
             <div id="address" class="panel-body  panel-collapse collapse in" role="tabpanel" aria-labelledby="Header Fields">
+
                 <div class="row">
                     <div class="form-group clearfix">
                         <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
-                               data-toggle="tooltip" id="lblLastName" data-placement="bottom" title="Last Name">Area/No#:</label>
+                               data-toggle="tooltip" id="lblAreaNo" data-placement="bottom" title="Area / No" for="txtAreaNo">Area/No#:</label>
                         <div class="col-sm-10 col-md-10">
-                            <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtLastName"
-                                   data-toggle="tooltip" data-placement="bottom" title="Last Name" value=""
-                                   name="LastName" />
+                            <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtAreaNo"
+                                   data-toggle="tooltip" data-placement="bottom" title="Area/No" value=""
+                                   name="Area" />
                         </div>
                     </div>
                 </div>
@@ -21,11 +22,11 @@
                 <div class="row">
                     <div class="form-group clearfix">
                         <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
-                               data-toggle="tooltip" id="lblLastName" data-placement="bottom" title="Last Name">Town/City:</label>
+                               data-toggle="tooltip" id="lblTownCity" data-placement="bottom" title="Town / City">Town/City:</label>
                         <div class="col-sm-10 col-md-10">
-                            <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtLastName"
-                                   data-toggle="tooltip" data-placement="bottom" title="Last Name" value=""
-                                   name="LastName" />
+                            <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtTownCity"
+                                   data-toggle="tooltip" data-placement="bottom" title="Town / City" value=""
+                                   name="City" />
                         </div>
                     </div>
                 </div>
@@ -33,11 +34,11 @@
                 <div class="row">
                     <div class="form-group clearfix">
                         <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
-                               data-toggle="tooltip" id="lblLastName" data-placement="bottom" title="Last Name">District:</label>
+                               data-toggle="tooltip" id="lblDistrict" data-placement="bottom" title="District">District:</label>
                         <div class="col-sm-10 col-md-10">
-                            <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtLastName"
-                                   data-toggle="tooltip" data-placement="bottom" title="Last Name" value=""
-                                   name="LastName" />
+                            <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtDistrict"
+                                   data-toggle="tooltip" data-placement="bottom" title="District" value=""
+                                   name="District" />
                         </div>
                     </div>
                 </div>
@@ -45,15 +46,15 @@
                 <div class="row">
                     <div class="form-group clearfix">
                         <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
-                               data-toggle="tooltip" id="lblEmail" data-placement="bottom" title="Email">Country:</label>
+                               data-toggle="tooltip" id="lblCountry" data-placement="bottom" title="Country" for="drpCountry">Country:</label>
                         <div class="col-sm-10 col-md-10">
                             <div class="row col-xs-11 col-sm-11 col-md-11">
-                                <select class="form-control input-sm tooltip-enable master-screen-input" id="drpPaymentTerms"
-                                        data-toggle="tooltip" data-placement="bottom" name="RoleID" title="Select Role">                                  
+                                <select class="form-control input-sm tooltip-enable master-screen-input" id="drpCountry"
+                                        data-toggle="tooltip" data-placement="bottom" name="Country" title="Select Country">                                  
                                 </select>
                             </div>
                             <div class="col-xs-1 col-sm-1 col-md-1">
-                                <button type="button" class="rmd-search-button ButtonWithImage" onclick="SearchCustomers()"><i class="glyphicon glyphicon-plus-sign"></i></button>
+                                <button type="button" class="rmd-search-button ButtonWithImage" onclick="AddCountries()"><i class="glyphicon glyphicon-plus-sign"></i></button>
                             </div>
                         </div>
                     </div>
@@ -62,14 +63,14 @@
                 <div class="row">
                     <div class="form-group clearfix">
                         <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
-                               data-toggle="tooltip" id="lblEmail" data-placement="bottom" title="Email">State:</label>
+                               data-toggle="tooltip" id="lblState" data-placement="bottom" title="State" for="drpState">State:</label>
                         <div class="col-sm-10 col-md-10">
                             <div class="row col-xs-11 col-sm-11 col-md-11">
-                                <select class="form-control input-sm tooltip-enable master-screen-input" id="drpPaymentTerms"
-                                        data-toggle="tooltip" data-placement="bottom" name="RoleID" title="Select Role"></select>
+                                <select class="form-control input-sm tooltip-enable master-screen-input" id="drpState"
+                                        data-toggle="tooltip" data-placement="bottom" name="State" title="Select State"></select>
                             </div>
                             <div class="col-xs-1 col-sm-1 col-md-1">
-                                <button type="button" class="rmd-search-button ButtonWithImage" onclick="SearchCustomers()"><i class="glyphicon glyphicon-plus-sign"></i></button>
+                                <button type="button" class="rmd-search-button ButtonWithImage" onclick="AddStates()"><i class="glyphicon glyphicon-plus-sign"></i></button>
                             </div>
                         </div>
                     </div>
@@ -78,11 +79,11 @@
                 <div class="row">
                     <div class="form-group clearfix">
                         <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
-                               data-toggle="tooltip" id="lblLastName" data-placement="bottom" title="Last Name">Pin Code:</label>
+                               data-toggle="tooltip" id="lblPincode" data-placement="bottom" title="Pin Code" for="txtPincode">Pin Code:</label>
                         <div class="col-sm-10 col-md-10">
-                            <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtLastName"
-                                   data-toggle="tooltip" data-placement="bottom" title="Last Name" value=""
-                                   name="LastName" />
+                            <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtPincode"
+                                   data-toggle="tooltip" data-placement="bottom" title="Pin Code" value=""
+                                   name="Pincode" />
                         </div>
                     </div>
                 </div>
@@ -90,11 +91,11 @@
                 <div class="row">
                     <div class="form-group clearfix">
                         <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
-                               data-toggle="tooltip" id="lblLastName" data-placement="bottom" title="Last Name">Email:</label>
+                               data-toggle="tooltip" id="lblEmail" data-placement="bottom" title="Email">Email:</label>
                         <div class="col-sm-10 col-md-10">
-                            <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtLastName"
-                                   data-toggle="tooltip" data-placement="bottom" title="Last Name" value=""
-                                   name="LastName" />
+                            <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtEmail"
+                                   data-toggle="tooltip" data-placement="bottom" title="Email" value=""
+                                   name="Email" />
                         </div>
                     </div>
                 </div>
@@ -102,11 +103,11 @@
                 <div class="row">
                     <div class="form-group clearfix">
                         <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
-                               data-toggle="tooltip" id="lblLastName" data-placement="bottom" title="Last Name">Web Site:</label>
+                               data-toggle="tooltip" id="lblWebsite" data-placement="bottom" title="Website">Web Site:</label>
                         <div class="col-sm-10 col-md-10">
-                            <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtLastName"
-                                   data-toggle="tooltip" data-placement="bottom" title="Last Name" value=""
-                                   name="LastName" />
+                            <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtWebsite"
+                                   data-toggle="tooltip" data-placement="bottom" title="Website" value=""
+                                   name="Website" />
                         </div>
                     </div>
                 </div>

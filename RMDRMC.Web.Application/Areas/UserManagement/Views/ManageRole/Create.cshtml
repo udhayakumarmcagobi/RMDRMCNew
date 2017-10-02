@@ -36,7 +36,7 @@
             @*Hidden Field Ends*@
 
             @*Action Button Starts*@
-            <div class="row text-center" style="margin-bottom:20px;">
+            <div class="row text-center button-pos" >
 
                 <input type="submit" value="Save" class="ButtonWithImage btnSaveRoles" data-alert="false" />
                 <input type="button" value="Cancel" class="ButtonWithImage" onclick="RefreshScreen()" />
@@ -52,11 +52,11 @@
                     <div class="col-md-5">
                         <div class="form-group clearfix">
                             <label class="control-label col-sm-4 col-md-5 tooltip-enable formLabelAlign important" data-toggle="tooltip" id="lblRoleName"
-                                   data-placement="bottom" title="Role">Role Name:</label>
+                                   data-placement="bottom" title="Role" for="txtRoleName">Role Name:</label>
                             <div class="col-sm-8 col-md-7">
                                 <input type="text" class="form-control input-sm tooltip-enable role-input" id="txtRoleName"
                                        data-toggle="tooltip" required data-placement="bottom" title="Role Name" maxlength="50" value="@Model.RoleName"
-                                       name="RoleName" /><button class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
+                                       name="RoleName" />
                             </div>
                         </div>
 
@@ -94,7 +94,7 @@
             @*Page/Screen details Ends*@
 
             @*Action Button Starts*@
-            <div class="row text-center" style="margin-bottom:20px;">
+            <div class="row text-center button-pos" >
 
                 <input type="submit" value="Save" class="ButtonWithImage btnSaveRoles" data-alert="false" />
                 <input type="button" value="Cancel" class="ButtonWithImage" onclick="RefreshScreen()" />

@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="form-group clearfix">
                     <label class="control-label col-xs-2 col-sm-2 col-md-2 tooltip-enable formLabelAlign"
-                           data-toggle="tooltip" id="lblFirstName" data-placement="bottom" title="First Name">First Name:</label>
+                           data-toggle="tooltip" id="lblFirstName" data-placement="bottom" title="First Name" for="txtFirstName">First Name:</label>
                     <div class="col-xs-10 col-sm-10 col-md-10">
                         <div class="row col-xs-11 col-sm-11 col-md-11">
                             <input type="text" class="form-control input-sm tooltip-enable text-left" id="txtFirstName"
@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="form-group clearfix">
                     <label class="control-label col-xs-2 col-sm-2 col-md-2 tooltip-enable formLabelAlign"
-                           data-toggle="tooltip" id="lblLastName" data-placement="bottom" title="Last Name">Last Name:</label>
+                           data-toggle="tooltip" id="lblLastName" data-placement="bottom" title="Last Name" for="txtLastName">Last Name:</label>
                     <div class="col-xs-8 col-sm-10 col-md-10">
                         <input type="text" class="form-control input-sm tooltip-enable" id="txtLastName"
                                data-toggle="tooltip" data-placement="bottom" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" title="Last Name" maxlength="20" value="@Model.LastName"
@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="form-group clearfix">
                     <label class="control-label col-xs-2 col-sm-2 col-md-2 tooltip-enable formLabelAlign"
-                           data-toggle="tooltip" id="lblAddress" data-placement="bottom" title="Address">Address:</label>
+                           data-toggle="tooltip" id="lblAddress" data-placement="bottom" title="Address" for="txtAddress">Address:</label>
                     <div class="col-xs-8 col-sm-10 col-md-10">
                         <textarea style="height:10%;" id="txtAddress" name="Address" class="form-control tooltip-enable" rows="2"
                                   data-toggle="tooltip" data-placement="bottom" title="Address">@Model.Address</textarea>
@@ -48,7 +48,7 @@
                 <div class="col-sm-12 col-md-6">
                     <div class="form-group clearfix">
                         <label class="control-label col-xs-2 col-sm-2 col-md-4 tooltip-enable formLabelAlign"
-                               data-toggle="tooltip" id="lblPhone" data-placement="bottom" title="Last Name">Phone:</label>
+                               data-toggle="tooltip" id="lblPhone" data-placement="bottom" title="Last Name" for="txtPhone">Phone:</label>
                         <div class="col-xs-8 col-sm-10 col-md-8">
                             <input type="text" class="form-control input-sm tooltip-enable designItemInput" id="txtPhone"
                                    data-toggle="tooltip" data-placement="bottom" title="Phone" maxlength="15" value="@Model.Phone"
@@ -59,7 +59,7 @@
                 <div class="col-sm-12 col-md-6">
                     <div class="form-group clearfix">
                         <label class="control-label col-xs-2 col-sm-2 col-md-4 tooltip-enable formLabelAlign"
-                               data-toggle="tooltip" id="lblMobile" data-placement="bottom" title="Last Name">Mobile:</label>
+                               data-toggle="tooltip" id="lblMobile" data-placement="bottom" title="Last Name" for="txtMobile">Mobile:</label>
                         <div class="col-xs-8 col-sm-10 col-md-8">
                             <input type="text" class="form-control input-sm tooltip-enable designItemInput" id="txtMobile"
                                    data-toggle="tooltip" max="10" data-placement="bottom" title="Mobile" maxlength="10" value="@Model.Mobile"
@@ -71,7 +71,7 @@
             <div class="row">
                 <div class="form-group clearfix">
                     <label class="control-label col-xs-2 col-sm-2 col-md-2 tooltip-enable formLabelAlign"
-                           data-toggle="tooltip" id="lblEmail" data-placement="bottom" title="Email">Email:</label>
+                           data-toggle="tooltip" id="lblEmail" data-placement="bottom" title="Email" for="txtEmail">Email:</label>
                     <div class="col-xs-8 col-sm-10 col-md-10">
                         <input type="email" class="form-control input-sm tooltip-enable" id="txtEmail"
                                data-toggle="tooltip" data-placement="bottom" title="Email" maxlength="25" value="@Model.Email"
@@ -83,7 +83,7 @@
             <div class="row">
                 <div class="form-group clearfix">
                     <label class="control-label col-xs-2 col-sm-2 col-md-2 tooltip-enable formLabelAlign"
-                           data-toggle="tooltip" id="lblComments" data-placement="bottom" title="Comments">Comments:</label>
+                           data-toggle="tooltip" id="lblComments" data-placement="bottom" title="Comments" for="txtComments">Comments:</label>
                     <div class="col-xs-8 col-sm-10 col-md-10">
                         <textarea id="txtComments" name="Comments" class="form-control tooltip-enable" rows="3"
                                   data-toggle="tooltip" data-placement="bottom" title="Comments">@Model.Comments</textarea>

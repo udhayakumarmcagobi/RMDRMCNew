@@ -11,12 +11,12 @@
                 <div class="row">
                     <div class="form-group clearfix">
                         <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
-                               data-toggle="tooltip" id="lblFirstName" data-placement="bottom" title="First Name">Customer Name:</label>
+                               data-toggle="tooltip" id="lblCustomerName" data-placement="bottom" title="Customer Name" for="txtCustomerName">Customer Name:</label>
                         <div class="col-sm-10 col-md-10">
                             <div class="row col-xs-11 col-sm-11 col-md-11">
-                                <input type="text" class="form-control input-sm tooltip-enable  text-left" id="txtFirstName"
-                                       data-toggle="tooltip" data-placement="bottom" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" title="First Name" maxlength="20" value="@Model.CustomerName"
-                                       name="FirstName" />
+                                <input type="text" class="form-control input-sm tooltip-enable  text-left" id="txtCustomerName"
+                                       data-toggle="tooltip" data-placement="bottom" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" title="Customer Name" maxlength="20" value="@Model.CustomerName"
+                                       name="CustomerName" />
                             </div>
                             <div class="col-xs-1 col-sm-1 col-md-1">
                                 <button type="button" class="rmd-search-button ButtonWithImage" onclick="SearchCustomers()"><i class="glyphicon glyphicon-search"></i></button>
@@ -27,11 +27,12 @@
                 <div class="row">
                     <div class="form-group clearfix">
                         <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
-                               data-toggle="tooltip" id="lblLastName" data-placement="bottom" title="Last Name">Inv Cust Name:</label>
+                               data-toggle="tooltip" id="lblInvCustName" data-placement="bottom" title="Inv Customer Name" for="txtInvCustName">Inv Cust Name:</label>
                         <div class="col-sm-10 col-md-10">
-                            <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtLastName"
-                                   data-toggle="tooltip" data-placement="bottom" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" title="Last Name" maxlength="20" value="@Model.InvCustomerName"
-                                   name="LastName" />
+                            <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtInvCustName"
+                                   data-toggle="tooltip" data-placement="bottom" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" title="Inv Customer Name" maxlength="20" 
+                                   value="@Model.InvCustomerName"
+                                   name="Inv Customer Name" />
                         </div>
                     </div>
                 </div>
@@ -39,21 +40,21 @@
                     <div class="col-sm-12 col-md-6">
                         <div class="form-group clearfix">
                             <label class="control-label col-sm-2 col-md-4 tooltip-enable formLabelAlign"
-                                   data-toggle="tooltip" id="lblPhone" data-placement="bottom" title="Last Name">Code:</label>
+                                   data-toggle="tooltip" id="lblCode" data-placement="bottom" title="Code" for="txtCode">Code:</label>
                             <div class="col-sm-10 col-md-8">
-                                <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtPhone"
-                                       data-toggle="tooltip" data-placement="bottom" title="Phone" maxlength="15" value="@Model.Code"
-                                       name="Phone" />
+                                <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtCode"
+                                       data-toggle="tooltip" data-placement="bottom" title="Code" maxlength="15" value="@Model.Code"
+                                       name="Code" />
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6">
                         <div class="form-group clearfix">
                             <label class="control-label col-sm-2 col-md-4 tooltip-enable formLabelAlign"
-                                   data-toggle="tooltip" id="lblMobile" data-placement="bottom" title="Last Name">Rating:</label>
+                                   data-toggle="tooltip" id="lblRating" data-placement="bottom" title="Rating" for="drpRatings">Rating:</label>
                             <div class="col-sm-10 col-md-8">
-                                <select class="form-control input-sm tooltip-enable master-screen-input-small" id="drpRoleDetails"
-                                        data-toggle="tooltip" data-placement="bottom" name="RoleID" title="Select Role">
+                                <select class="form-control input-sm tooltip-enable master-screen-input-small" id="drpRatings"
+                                        data-toggle="tooltip" data-placement="bottom" name="RatingList" title="Select Rating">
                                     @if (Model != null && Model.RatingList != null && Model.RatingList.Any())
                                     {
                                         <option value="0"> --Select One-- </option>
@@ -73,11 +74,11 @@
                 <div class="row">
                     <div class="form-group clearfix">
                         <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
-                               data-toggle="tooltip" id="lblEmail" data-placement="bottom" title="Email">Term of Payment:</label>
+                               data-toggle="tooltip" id="lblPaymentTerms" data-placement="bottom" title="Payment Terms" for="drpPaymentTerms">Term of Payment:</label>
                         <div class="col-sm-10 col-md-10">
                             <div class="row col-xs-11 col-sm-11 col-md-11">
                                 <select class="form-control input-sm tooltip-enable master-screen-input" id="drpPaymentTerms"
-                                        data-toggle="tooltip" data-placement="bottom" name="RoleID" title="Select Role">
+                                        data-toggle="tooltip" data-placement="bottom" name="PaymentTermList" title="Select Payment Term">
                                     @if (Model != null && Model.PaymentTermList != null && Model.PaymentTermList.Any())
                                     {
                                         <option value="0"> --Select One-- </option>
@@ -91,7 +92,7 @@
                                 </select>
                             </div>
                             <div class="col-xs-1 col-sm-1 col-md-1">
-                                <button type="button" class="rmd-search-button ButtonWithImage" onclick="SearchCustomers()"><i class="glyphicon glyphicon-plus-sign"></i></button>
+                                <button type="button" class="rmd-search-button ButtonWithImage" onclick="AddPaymentTerms()"><i class="glyphicon glyphicon-plus-sign"></i></button>
                             </div>
                         </div>
                     </div>
@@ -101,12 +102,13 @@
                 <div class="row">
                     <div class="form-group clearfix">
                         <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
-                               data-toggle="tooltip" id="lblFirstName" data-placement="bottom" title="First Name">Parent Cust Name:</label>
+                               data-toggle="tooltip" id="lblParentCustName" data-placement="bottom" title="Parent Customer Name" for="txtParentCustName">Parent Cust Name:</label>
                         <div class="col-sm-10 col-md-10">
                             <div class="row col-xs-11 col-sm-11 col-md-11">
-                                <input type="text" class="form-control input-sm tooltip-enable  text-left" id="txtFirstName"
-                                       data-toggle="tooltip" data-placement="bottom" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" title="First Name" maxlength="20" value="@Model.CustomerName"
-                                       name="FirstName" />
+                                <input type="text" class="form-control input-sm tooltip-enable  text-left" id="txtParentCustName"
+                                       data-toggle="tooltip" data-placement="bottom" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" title="Parent Customer Name" 
+                                       maxlength="20" value="@Model.ParentCustomerName"
+                                       name="Parent Customer Name" />
                             </div>
                             <div class="col-xs-1 col-sm-1 col-md-1">
                                 <button type="button" class="rmd-search-button ButtonWithImage" onclick="SearchParentCustomers()"><i class="glyphicon glyphicon-search"></i></button>
@@ -117,11 +119,12 @@
                 <div class="row">
                     <div class="form-group clearfix">
                         <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
-                               data-toggle="tooltip" id="lblLastName" data-placement="bottom" title="Last Name">Parent Cust Code:</label>
+                               data-toggle="tooltip" id="lblParentCustomerCode" data-placement="bottom" title="Parent Customer Code" for="txtParentCustomerCode">Parent Cust Code:</label>
                         <div class="col-sm-10 col-md-10">
-                            <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtLastName"
-                                   data-toggle="tooltip" data-placement="bottom" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" title="Last Name" maxlength="20" value="@Model.InvCustomerName"
-                                   name="LastName" />
+                            <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtParentCustomerCode"
+                                   data-toggle="tooltip" data-placement="bottom" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" title="Parent Customer Code" 
+                                   maxlength="20" value="@Model.ParentCustomerCode"
+                                   name="Parent Customer Code" />
                         </div>
                     </div>
                 </div>
@@ -129,22 +132,22 @@
                     <div class="col-sm-12 col-md-6">
                         <div class="form-group clearfix">
                             <label class="control-label col-sm-2 col-md-4 tooltip-enable formLabelAlign"
-                                   data-toggle="tooltip" id="lblPhone" data-placement="bottom" title="Last Name">Cust RRPL ID:</label>
+                                   data-toggle="tooltip" id="lblCustRRPLID" data-placement="bottom" title="Customer RRPL ID" for="txtCustRRPLID">Cust RRPL ID:</label>
                             <div class="col-sm-10 col-md-8">
-                                <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtPhone"
-                                       data-toggle="tooltip" data-placement="bottom" title="Phone" maxlength="15" value="@Model.CustomerRRPLID"
-                                       name="Phone" />
+                                <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtCustRRPLID"
+                                       data-toggle="tooltip" data-placement="bottom" title="Customer RRPL ID" maxlength="15" value="@Model.CustomerRRPLID"
+                                       name="CustomerRRPLID" />
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6">
                         <div class="form-group clearfix">
                             <label class="control-label col-sm-2 col-md-4 tooltip-enable formLabelAlign"
-                                   data-toggle="tooltip" id="lblMobile" data-placement="bottom" title="Last Name">Credit Limit:</label>
+                                   data-toggle="tooltip" id="lblCreditLimit" data-placement="bottom" title="Credit Limit" for="txtCreditLimit">Credit Limit:</label>
                             <div class="col-sm-10 col-md-8">
-                                <input type="text" class="form-control input-sm tooltip-enable master-screen-input-small" id="txtPhone"
-                                       data-toggle="tooltip" data-placement="bottom" title="Phone" maxlength="15" value="@Model.CreditLimit"
-                                       name="Phone" />
+                                <input type="text" class="form-control input-sm tooltip-enable master-screen-input-small" id="txtCreditLimit"
+                                       data-toggle="tooltip" data-placement="bottom" title="Credit Limit" maxlength="15" value="@Model.CreditLimit"
+                                       name="CreditLimit" />
                             </div>
                         </div>
                     </div>
@@ -152,11 +155,11 @@
                 <div class="row">
                     <div class="form-group clearfix">
                         <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
-                               data-toggle="tooltip" id="lblEmail" data-placement="bottom" title="Email">Account Manager:</label>
+                               data-toggle="tooltip" id="lblAccountManager" data-placement="bottom" title="AccountManager" for="drpAccountManager">Account Manager:</label>
                         <div class="col-sm-10 col-md-10">
                             <div class="row col-xs-11 col-sm-11 col-md-11">
-                                <select class="form-control input-sm tooltip-enable master-screen-input" id="drpPaymentTerms"
-                                        data-toggle="tooltip" data-placement="bottom" name="RoleID" title="Select Role">
+                                <select class="form-control input-sm tooltip-enable master-screen-input" id="drpAccountManager"
+                                        data-toggle="tooltip" data-placement="bottom" name="AccountManagerList" title="Select Account Manager">
                                     @if (Model != null && Model.AccountManagerList != null && Model.AccountManagerList.Any())
                                     {
                                         <option value="0"> --Select One-- </option>

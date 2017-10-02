@@ -45,11 +45,14 @@
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BaseService.cs" />
+    <Compile Include="Services\Masters\CustomerService.cs" />
+    <Compile Include="Services\Masters\MasterBaseService.cs" />
+    <Compile Include="Services\Masters\VendorService.cs" />
     <Compile Include="Services\UserManagement\RoleService.cs" />
     <Compile Include="Services\UserManagement\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Services\Masters\" />
+    <Folder Include="Interfaces\Masters\" />
     <Folder Include="Utilities\" />
     <Folder Include="Validations\" />
   </ItemGroup>

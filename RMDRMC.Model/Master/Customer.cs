@@ -1,4 +1,5 @@
-﻿using RMDRMC.Model.Master.Reference;
+﻿using RMDRMC.Model.Domain;
+using RMDRMC.Model.Master.Reference;
 using RMDRMC.Model.Reference;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RMDRMC.Model.Master
 {
-    public class Customer
+    public class Customer : RMDRMCBase
     {
         public long CustomerID { get; set; }
         public string CustomerName { get; set; }
@@ -22,7 +23,6 @@ namespace RMDRMC.Model.Master
         public PaymentTerm PaymentTerm { get; set; }
         public Address Address { get; set; }
         public OtherDetail OtherDetail { get; set; }
-        public bool IsActive { get; set; }
 
         public List<Contact> Contacts { get; set; }
     }

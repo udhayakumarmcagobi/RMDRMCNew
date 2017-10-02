@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RMDRMCWeb.ViewModels.Masters
 {
-    public class VendorVM
+    public class VendorVM : RMDRMCBaseVM
     {
         public long VendorID { get; set; }
         public string VendorName { get; set; }
@@ -17,7 +17,6 @@ namespace RMDRMCWeb.ViewModels.Masters
         public List<PaymentTermVM> PaymentTermList { get; set; }
         public AddressVM AddressVM { get; set; }
         public OtherDetailVM OtherDetailVM { get; set; }
-        public bool IsActive { get; set; }
         public bool Selected { get; set; }
 
         public List<ContactVM> ContactsVM { get; set; }

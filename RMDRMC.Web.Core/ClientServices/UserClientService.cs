@@ -13,23 +13,11 @@ using System.Threading.Tasks;
 
 namespace RMDRMC.Web.Core.ClientServices
 {
-    public class UserClientService : IUserClientService
+    public class UserClientService : BaseClientService, IUserClientService
     {
-        #region Fields
-
-        private readonly IUserService userService;
-        private readonly IRoleClientService roleClientService;
-        
-
-        #endregion
-
         #region Constructors
 
-        public UserClientService()
-        {
-            userService = new UserService();
-            roleClientService = new RoleClientService();
-        }
+        public UserClientService():base() {  }
 
         #endregion
 
@@ -93,17 +81,6 @@ namespace RMDRMC.Web.Core.ClientServices
 
             return allUsersVM.Where(x => x.FirstName.ToUpper().StartsWith(userPrefix.ToUpper())).ToList();
 
-        }
-
-        public UsersVM GetUsersByID(long userID)
-        {
-            var user = userService.GetAllUserByID(userID);
-
-            var usersVM = AutoMappers.Map<Users, UsersVM>(user);
-
-            usersVM.AllUserRoles = roleClientService.GetRoles(string.Empty, usersVM.UserRoleSelected.RoleID);
-
-            return usersVM;                   
         }
 
         #endregion

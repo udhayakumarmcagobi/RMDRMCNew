@@ -41,12 +41,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClientServices\BaseClientService.cs" />
+    <Compile Include="ClientServices\CommonClientService.cs" />
     <Compile Include="ClientServices\Master\CustomerClientService.cs" />
     <Compile Include="ClientServices\UserClientService.cs" />
     <Compile Include="ClientServices\RoleClientService.cs" />
     <Compile Include="Interfaces\IBaseClientService.cs" />
     <Compile Include="Interfaces\IUserClientService.cs" />
     <Compile Include="Interfaces\IRoleClientService.cs" />
+    <Compile Include="Interfaces\ICommonClientService.cs" />
     <Compile Include="Interfaces\Master\ICustomerClientService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

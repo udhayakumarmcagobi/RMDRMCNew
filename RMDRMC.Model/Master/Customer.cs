@@ -11,6 +11,15 @@ namespace RMDRMC.Model.Master
 {
     public class Customer : RMDRMCBase
     {
+        public Customer()
+        {
+            AccountManager = new Reference.AccountManager();
+            PaymentTerm = new Model.Reference.PaymentTerm();
+            Address = new Address();
+            OtherDetail = new OtherDetail();
+            Contacts = new List<Contact>();
+        }
+
         public long CustomerID { get; set; }
         public string CustomerName { get; set; }
         public string Code { get; set; }

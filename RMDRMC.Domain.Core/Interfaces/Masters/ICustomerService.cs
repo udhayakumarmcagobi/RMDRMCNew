@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RMDRMC.Domain.Core.Interfaces.Masters
 {
-    public interface ICustomerService
+    public interface ICustomerService : IMasterBaseService
     {
         IEnumerable<Customer> GetAllCustomers();
         Customer GetAllCustomerByID(long CustomerID);

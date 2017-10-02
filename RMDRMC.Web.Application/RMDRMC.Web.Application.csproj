@@ -361,6 +361,10 @@
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RMDRMC.Domain.Core\RMDRMC.Domain.Core.csproj">
+      <Project>{0EDDF708-EBCE-410A-AC38-C1725996150C}</Project>
+      <Name>RMDRMC.Domain.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RMDRMC.Mapper.Model\RMDRMC.Mapper.Model.csproj">
       <Project>{7c208610-670d-452a-a46a-322db85a1636}</Project>
       <Name>RMDRMC.Mapper.Model</Name>

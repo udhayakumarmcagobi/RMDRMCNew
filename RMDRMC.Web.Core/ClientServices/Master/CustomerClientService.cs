@@ -18,6 +18,7 @@ namespace RMDRMC.Web.Core.ClientServices.Master
         #region Fields
 
         private readonly ICustomerService customerService;
+        private readonly ICommonClientService commonClientService;
 
         #endregion
 
@@ -26,6 +27,7 @@ namespace RMDRMC.Web.Core.ClientServices.Master
         public CustomerClientService()
         {
             customerService = new CustomerService();
+            commonClientService = new CommonClientService();
         }
 
         #endregion
@@ -35,6 +37,7 @@ namespace RMDRMC.Web.Core.ClientServices.Master
         public CustomerVM GetEmptyCustomer()
         {
             var customerVM = new CustomerVM();
+            AddCustomerWithMasterDetails(customerVM);
 
             return customerVM;
         }
@@ -98,6 +101,14 @@ namespace RMDRMC.Web.Core.ClientServices.Master
         #endregion
 
         #region Private Methods
+
+        private void AddCustomerWithMasterDetails(CustomerVM customerVM)
+        {
+            if (customerVM == null) return;
+
+            customerVM.PaymentTermList = commonClientService.GetAllPaymentTermList();
+            customerVM.AddressVM.CountryList = commonClientService.GetAllCountryList();            
+        }
 
         #endregion
     }

@@ -9,6 +9,16 @@ namespace RMDRMCWeb.ViewModels.Masters
 {
     public class CustomerVM : RMDRMCBaseVM
     {
+        public CustomerVM()
+        {
+            RatingList = new List<RatingVM>();
+            AccountManagerList = new List<Masters.AccountManagerVM>();
+            PaymentTermList = new List<PaymentTermVM>();
+            AddressVM = new AddressVM();
+            OtherDetailVM = new OtherDetailVM();
+            ContactsVM = new List<ContactVM>();
+        }
+
         public long CustomerID { get; set; }
         public string CustomerName { get; set; }
         public string Code { get; set; }
@@ -21,7 +31,7 @@ namespace RMDRMCWeb.ViewModels.Masters
         public string CreditLimit { get; set; }
         public List<AccountManagerVM> AccountManagerList { get; set; }
         public List<PaymentTermVM> PaymentTermList { get; set; }
-        public AddressVM AddressList { get; set; }
+        public AddressVM AddressVM { get; set; }
         public OtherDetailVM OtherDetailVM { get; set; }
         public bool Selected { get; set; }
 

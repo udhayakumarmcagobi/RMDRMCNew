@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RMDRMCWeb.ViewModels.Masters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -20,7 +21,11 @@ namespace RMDRMC.Web.Application.Areas.Master.Controllers
         // GET: Master/Customer
         public ActionResult Index()
         {
-            return View();
+            ViewBag.Title = "Create Customer";
+
+            CustomerVM customerVM = new CustomerVM();
+
+            return View(customerVM);
         }
     }
 }

@@ -41,18 +41,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\CountryVM.cs" />
+    <Compile Include="Domain\DepartmentVM.cs" />
+    <Compile Include="Domain\DesignationVM.cs" />
+    <Compile Include="Domain\PaymentTermVM.cs" />
+    <Compile Include="Domain\RatingVM.cs" />
     <Compile Include="Domain\RMDRMCBaseVM.cs" />
     <Compile Include="Domain\RolesVM.cs" />
     <Compile Include="Domain\ScreenVM.cs" />
+    <Compile Include="Domain\State.cs" />
     <Compile Include="Domain\UserBaseVM.cs" />
     <Compile Include="Domain\UsersVM.cs" />
+    <Compile Include="Masters\CustomerVM.cs" />
+    <Compile Include="Masters\ManufacturerVM.cs" />
+    <Compile Include="Masters\Reference\AccountManagerVM.cs" />
+    <Compile Include="Masters\Reference\AddressVM.cs" />
+    <Compile Include="Masters\Reference\ContactVM.cs" />
+    <Compile Include="Masters\Reference\OtherDetailVM.cs" />
+    <Compile Include="Masters\VendorVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="InventoryManagement\" />
     <Folder Include="InvoiceManagement\" />
     <Folder Include="JobManagement\" />
-    <Folder Include="Masters\" />
     <Folder Include="POManagement\" />
     <Folder Include="Reports\" />
     <Folder Include="VendorManagement\" />

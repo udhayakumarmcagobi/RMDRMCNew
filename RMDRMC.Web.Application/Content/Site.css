@@ -73,8 +73,7 @@ textarea {
     color: red;
 }
 
-.ButtonWithImage,.ButtonWithoutImage {
-    background-image: url("../App_Themes/images/submit.gif");
+.ButtonWithImage,.ButtonWithoutImage {    
     background-repeat: no-repeat;
     background-position: left;
     outline: none;
@@ -142,6 +141,7 @@ button#AddBOMItem.ButtonWithoutImage>span.plusImage{
   outline-offset: -2px;
 }
 
+ button.ButtonWithImage > i {width:18px !important;}
 .row {
     /*Commented by nairsa*/
     /*padding-bottom: 2px;*/
@@ -2340,4 +2340,9 @@ label.role-form-check-label {float:left;margin-top:2%;margin-left:3%;}
 button.rmd-search-button { float:left;height:22px;}
 div.role-selection-disabled { opacity:0.5;pointer-events:none;}
 table.table-common tr th {text-align:center;}
+input.master-screen-input {width:98%;}
+select.master-screen-input {width:98%;}
+input.master-screen-input-small {width:94%;}
+select.master-screen-input-small {width:94%;}
+
 /* added by Udhay end */

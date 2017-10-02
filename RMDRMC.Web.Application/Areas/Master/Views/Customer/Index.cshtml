@@ -1,9 +1,51 @@
-﻿
+﻿@model CustomerVM
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Masters - Customer</h2>
+<div id="frmCustomer">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <label> @ViewBag.Title  </label>
+        </div>
+
+        <div class="panel-body">
+            <input type="hidden" id="hidCustomerID" name="UserID" value="@Model.CustomerID" />
+            <div class="row text-center" style="margin-bottom:20px;">
+
+                <input type="submit" value="Save" class="ButtonWithImage btnSaveCustomers" data-alert="false" />
+                <input type="button" value="Cancel" class="ButtonWithImage" onclick="RefreshScreen()" />
+
+            </div>
+            <div class="text-center">
+                @Html.Partial("_CustomerDetails", Model)
+            </div>
+
+            <div class="text-center">
+                <div class="col-md-6">
+                    @Html.Partial("_AddressDetails")
+                </div>
+                <div class="col-md-6">
+                    @Html.Partial("_OtherDetails")
+                </div>
+            </div>
+
+            <div class="text-center" style="clear:both;">
+                @Html.Partial("_ContactDetails")
+            </div>
+
+            <div class="row text-center" style="margin-bottom:20px;">
+
+                <input type="submit" value="Save" class="ButtonWithImage btnSaveCustomers" data-alert="false" />
+                <input type="button" value="Cancel" class="ButtonWithImage" onclick="RefreshScreen()" />
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
 
 

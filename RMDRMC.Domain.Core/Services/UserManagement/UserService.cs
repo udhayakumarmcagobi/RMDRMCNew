@@ -13,11 +13,22 @@ namespace RMDRMC.Domain.Core.Services
 {
     public class UserService : BaseService, IUserService
     {
+        #region Fields
+
         private readonly IUserRepository userRepository;
+
+        #endregion
+
+        #region Constructors
+
         public UserService()
         {
             userRepository = new UserRepository();
         }
+
+        #endregion
+
+        #region Public Methods
 
         public bool CreateNewUser(Users users)
         {
@@ -43,5 +54,7 @@ namespace RMDRMC.Domain.Core.Services
         {
             return userRepository.UpdateUser(users);
         }
+
+        #endregion
     }
 }

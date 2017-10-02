@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace RMDRMC.Domain.Core.Services.Masters
 {
-    public class MasterBaseService
+    public class MasterBaseService : BaseService
     {
+        public MasterBaseService() :base()
+        {
+
+        }
     }
 }

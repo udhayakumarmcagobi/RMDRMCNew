@@ -10,7 +10,13 @@ namespace RMDRMC.DataRepository.Sql.Repositories
 {
     public class UserRepository : EFRepository<User>, IUserRepository
     {
+        #region Constructors
+
         public UserRepository() : base(new EFUnitOfWork()) { }
+
+        #endregion
+
+        #region Public Methods
 
         public bool CreateUser(Users user)
         {
@@ -74,6 +80,8 @@ namespace RMDRMC.DataRepository.Sql.Repositories
             Commit();
             return true;
         }
+
+        #endregion
 
     }
 }

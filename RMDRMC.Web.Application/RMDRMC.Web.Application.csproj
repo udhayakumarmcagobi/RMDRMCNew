@@ -256,7 +256,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LoadingImage.cshtml" />
-    <Content Include="Views\Shared\_NoAccessLayout.cshtml" />
+    <Content Include="Views\Shared\_NoMenuLayout.cshtml" />
     <Content Include="Views\Error\Error.cshtml" />
     <Content Include="Views\Error\NoAccess.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
@@ -312,6 +312,7 @@
     <Compile Include="Areas\VendorManagement\Controllers\QuotationController.cs" />
     <Compile Include="Areas\VendorManagement\Controllers\EnquiryController.cs" />
     <Compile Include="Areas\VendorManagement\VendorManagementAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -340,6 +341,7 @@
     <Content Include="Views\Shared\_ReportsSideMenu.cshtml" />
     <Content Include="Views\Shared\_SideMenu.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

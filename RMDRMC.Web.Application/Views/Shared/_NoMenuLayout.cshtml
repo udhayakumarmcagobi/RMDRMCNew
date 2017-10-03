@@ -1,0 +1,36 @@
+﻿@using System.Web.Optimization
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <!-- View Responsiveness on mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>@ViewBag.Title - Ramya Printers</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link href="~/App_Themes/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/CustomScripts/Common.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="DIMLogo">
+                <a href="@Url.Action("Index", "Home")">
+                    <img src="~/App_Themes/images/ramya-logo-orange-small.png" />
+                </a>
+            </div>
+            <div class="DIMAppName">
+                <p><label>Ramya Printers</label></p>
+            </div>
+        </header>
+
+        <div class="container-fluid body-content-nu" style="clear:both;margin-top:5%;">
+            @RenderBody()
+        </div>
+
+        @Html.Partial("_Footer");
+    </div>
+    <script src="~/CustomScripts/Common.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+﻿@{
+    Layout = "~/Views/Shared/_NoMenuLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<div class="text-center">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <label> User Login </label>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-xs-3 col-sm-3 col-md-3 tooltip-enable formLabelAlign important"
+                               data-toggle="tooltip" id="lblFirstName" data-placement="bottom" title="Login ID" for="txtLoginID">Login ID:</label>
+                        <div class="col-xs-9 col-sm-9 col-md-9">
+                            <input type="text" class="form-control input-sm tooltip-enable designItemInput" id="txtLoginID"
+                                   data-toggle="tooltip" data-placement="bottom" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" required title="Login ID" maxlength="20" value=""
+                                   name="LoginID" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-xs-3 col-sm-3 col-md-3 tooltip-enable formLabelAlign important"
+                               data-toggle="tooltip" id="lblPassword" data-placement="bottom" title="Password" for="txtPassword">Password:</label>
+                        <div class="col-xs-9 col-sm-9 col-md-9">
+                            <input type="password" class="form-control input-sm tooltip-enable designItemInput" id="txtPassword"
+                                   data-toggle="tooltip" data-placement="bottom" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" title="Password" maxlength="20" value=""
+                                   name="Password" required />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row text-center button-pos">
+
+                    <input type="submit" value="Login" class="ButtonWithImage btnLogin" data-alert="false" />
+                    <input type="button" value="Cancel" class="ButtonWithImage" onclick="RefreshScreen()" />
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-4"></div>
+</div>

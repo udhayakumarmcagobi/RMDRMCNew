@@ -1,36 +1,37 @@
-﻿@using System.Web.Optimization
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <!-- View Responsiveness on mobile -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>@ViewBag.Title - Ramya Printers</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link href="~/App_Themes/css/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/Site.css" rel="stylesheet" />
-    <script src="~/CustomScripts/Common.js"></script>
-</head>
-<body>
-    <div class="wrapper">
-        <header>
-            <div class="DIMLogo">
-                <a href="@Url.Action("Index", "Home")">
-                    <img src="~/App_Themes/images/ramya-logo-orange-small.png" />
-                </a>
-            </div>
-            <div class="DIMAppName">
-                <p><label>Ramya Printers</label></p>
-            </div>
-        </header>
-
-        <div class="container-fluid body-content-nu" style="clear:both;margin-top:5%;">
-            @RenderBody()
+<nav class="navbar navbar-inverse navbar-fixed-top  header-nav">
+    <div class="container-fluid-nu">
+        <div class="navbar-header navHeaderMaxHeight">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand DIMNavbarBrand" href="@Url.Action("Index","Home", new { Area = "ZDES" })">
+                <img src="~/App_Themes/images/ramya-logo-orange-small.png" />
+            </a>
         </div>
 
-        @Html.Partial("_Footer");
+        <div class="nav navbar-right">
+            <label class="labelheading">
+
+            </label>
+            <label id="labelheading">Ramya Printers - 1.0</label>
+            <div class="buildInfo">
+                <label>
+                    Version: @ViewContext.Controller.GetType().Assembly.GetName().Version ; Date: @File.GetCreationTime(ViewContext.Controller.GetType().Assembly.Location).ToShortDateString()
+                </label>
+            </div>
+        </div>
+
     </div>
-    <script src="~/CustomScripts/Common.js"></script>
-</body>
-</html>
+</nav>
+<div class="Renderdiv">@RenderBody()</div>
+
+
+
+

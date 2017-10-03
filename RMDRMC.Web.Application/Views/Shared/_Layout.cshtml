@@ -37,110 +37,14 @@
 </head>
 <body>
     <div class="wrapper">
-        <nav class="navbar navbar-inverse navbar-fixed-top  header-nav">
-            <div class="container-fluid-nu">
-                <div class="navbar-header navHeaderMaxHeight">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand DIMNavbarBrand" href="@Url.Action("Index","Home", new { Area = "ZDES" })">
-                        <img src="~/App_Themes/images/ramya-logo-orange-small.png" />
-                    </a>
-                </div>
 
-                <div class="nav navbar-right">
-                    <label class="labelheading">
-
-                    </label>
-                    <label id="labelheading">Ramya Printers - 1.0</label>
-                    <div class="buildInfo">
-                        <label>
-                            Version: @ViewContext.Controller.GetType().Assembly.GetName().Version ; Date: @File.GetCreationTime(ViewContext.Controller.GetType().Assembly.Location).ToShortDateString()
-                        </label>
-                    </div>
-                </div>
-
-                @Html.Partial("_TopMenu")
-
-            </div>
-        </nav>
-        <div class="container-fluid divUserNameRolefixed" style="">
-            <div class="row">
-                <div class="userNameWrapper">
-                    <label class="lblUserName">
-                        <span class="glyphicon glyphicon-user" style="display:inline-block; margin-right:10px; color:white;"></span>
-                        Udhay
-                        @*@UserProfile.LoggedOnUser - @UserProfile.CurrentUserRoleDescription*@
-                    </label>
-                </div>
-            </div>
-        </div>
-
-        @if (ViewBag.Sidemenu == "Home")
-        {
-            <div class="Renderdiv">@RenderBody()</div>
-        }
-        else
-        {
-            <div class="body-content-nu container-fluid" id="body-content">
-                <div class="row">
-
-                    @Html.Partial("_SideMenu")
-
-                    @if (ViewBag.sidemenu == "Error" || ViewBag.sidemenu == "NotFound")
-                    {
-                        <div class="col-md-12 col-xs-12 text-center">@RenderBody()</div>
-                    }
-                    else
-                    {
-                        <div class="col-md-10 col-xs-12 main-body-content">@RenderBody()</div>
-                    }
-
-                    <div class="modal fade" id="divModalWindow" role="dialog" aria-hidden="true"
-                         data-backdrop="static" data-keyboard="false">
-                        <div class="modal-dialog dialog-style modal-lg" style="width:60%;left:4%;">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <label style="color:#fff;"><span class="divModalheadline"></span></label>
-                                    <!--Close button-->
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                </div>
-                                <div class="modal-body" style="overflow-y:auto;">
-                                    <div class="container-fluid">
-                                        <div class="row" id="divModalWindowContent">
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        }
-
+        <div>@RenderBody()</div>
         @Html.Partial("_Footer");
 
-        @{
-            string hostName = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + HttpRuntime.AppDomainAppVirtualPath;
-        }
-        <input id="hostpath" type="hidden" value="@hostName" />
-        @if (!(ViewBag.sidemenu == "Error" || ViewBag.sidemenu == "NotFound"))
-        {
-            <div id="divUpdateProgressBar">
-                @Html.Partial("_LoadingImage")
-            </div>
-        }
+        @Html.Partial("_HostProgress");
+
         <script src="~/CustomScripts/Common.js"></script>
         @RenderSection("scripts", required: false)
-        <script type="text/javascript">
-
-            //var st = '@Session["ROLE"]';
-        </script>
     </div>@*end of wrapper*@
 
 </body>

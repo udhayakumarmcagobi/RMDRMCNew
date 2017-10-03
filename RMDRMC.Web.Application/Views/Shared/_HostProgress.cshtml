@@ -1,0 +1,11 @@
+﻿
+@{
+            string hostName = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + HttpRuntime.AppDomainAppVirtualPath;
+}
+<input id="hostpath" type="hidden" value="@hostName" />
+@if (!(ViewBag.sidemenu == "Error" || ViewBag.sidemenu == "NotFound"))
+{
+    <div id="divUpdateProgressBar">
+        @Html.Partial("_LoadingImage")
+    </div>
+}

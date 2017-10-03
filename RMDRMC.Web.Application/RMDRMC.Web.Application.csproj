@@ -342,6 +342,8 @@
     <Content Include="Views\Shared\_SideMenu.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shared\_HostProgress.cshtml" />
+    <Content Include="Views\Shared\_MenuLayout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

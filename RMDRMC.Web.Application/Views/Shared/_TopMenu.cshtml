@@ -1,108 +1,41 @@
 ﻿<div class="collapse navbar-collapse" id="myNavbar">
-
     <ul class="nav navbar-nav">
-        <li id="home-menu" class="active"><a href="@Url.Action("Index","Home", new { area = "" })"><span>Home</span></a></li>
-        @*User Management Starts*@
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span>User Management</span><span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="@Url.Action("Create","ManageUser", new { Area = "UserManagement" })"><span>Manage User</span></a></li>
-                <li><a href="@Url.Action("Index","ManageRole", new { Area = "UserManagement" })"><span>Manage Role</span></a></li>
-            </ul>
-        </li>
-        @*User Management Ends*@
 
-        @*Masters Starts*@
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span>Masters</span><span class="caret"></span></a>
-            <ul class="dropdown-menu">                
-                <li><a href="@Url.Action("Index","Size", new { Area = "Master" })"><span>Size</span></a></li>
-                <li><a href="@Url.Action("Index","Description", new { Area = "Master" })"><span>Description</span></a></li>
-                <li><a href="@Url.Action("Index","Property", new { Area = "Master" })"><span>Property</span></a></li>
-                <li><a href="@Url.Action("Index","Category", new { Area = "Master" })"><span>Category</span></a></li>
-                <li><a href="@Url.Action("Index","Manufacturer", new { Area = "Master" })"><span>Manufacturer</span></a></li>
-                <li><a href="@Url.Action("Index","Vendor", new { Area = "Master" })"><span>Vendor</span></a></li>
-                <li><a href="@Url.Action("Index","Customer", new { Area = "Master" })"><span>Customer</span></a></li>
-                <li><a href="@Url.Action("Index","Item", new { Area = "Master" })"><span>Item</span></a></li>
-                <li><a href="@Url.Action("Index","MachineReports", new { Area = "Master" })"><span>Machine</span></a></li>
-                <li><a href="@Url.Action("Index","ProcessDepartment", new { Area = "Master" })"><span>Process/Department</span></a></li>
-                <li><a href="@Url.Action("Index","Component", new { Area = "Master" })"><span>Component</span></a></li>
-                <li><a href="@Url.Action("Index","JobCardComponentProcess", new { Area = "Master" })"><span>Job Card Component Process</span></a></li>
-                <li><a href="@Url.Action("Index","JobCardProcessComponent", new { Area = "Master" })"><span>Job Card Process and Component</span></a></li>
-            </ul>
-        </li>
-        @*Masters Ends*@
 
-        @*Vendor Management Starts*@
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span>Vendor Management</span><span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="@Url.Action("Index","Enquiry", new { Area = "VendorManagement"})" ><span>Enquiry</span></a></li>
-                <li><a href="@Url.Action("Index","Quotation", new { Area = "VendorManagement"})"><span>Quotation</span></a></li>
-                <li><a href="@Url.Action("Index","QuotationAcceptance", new { Area = "VendorManagement"})"><span>QuotationAcceptance</span></a></li>
-            </ul>
-        </li>
-        @*Vendor Management Ends*@
 
-        @*PO Management Starts*@
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span>PO Management</span><span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="@Url.Action("Index","Indent", new { Area = "POManagement"})"><span>Indent</span></a></li>
-                <li><a href="@Url.Action("Index","ApproveIndent", new { Area = "POManagement"})"><span>Approve Indent</span></a></li>
-                <li><a href="@Url.Action("Index","GeneratePO", new { Area = "POManagement"})"><span>Generate PO</span></a></li>
-                <li><a href="@Url.Action("Index","ApprovePO", new { Area = "POManagement"})"><span>Approve PO</span></a></li>
-            </ul>
-        </li>
-        @*PO Management Ends*@
+        @if (UserProfile.UserAccessibleScreens != null && UserProfile.UserAccessibleScreens.Any())
+        {
+            <li id="home-menu" class="active"><a href="@Url.Action("Index","Home", new { area = "" })"><span>Home</span></a></li>
 
-        @*Inventory Management Starts*@
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span>Inventory Management</span><span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="@Url.Action("Index","GRN", new { Area = "InventoryManagement"})"><span>GRN</span></a></li>
-                <li><a href="@Url.Action("Index","GRNInspection", new { Area = "InventoryManagement"})"><span>GRN Inspection</span></a></li>                
-                <li><a href="@Url.Action("Index","MaterialIssueReturns", new { Area = "InventoryManagement"})"><span>Materia lssue/Returns</span></a></li>
-            </ul>
-        </li>
-        @*Inventory Management Ends*@
+            if (UserProfile.IsAdmin)
+            {
+                @*User Management Starts*@
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span>User Management</span><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="@Url.Action("Create", "ManageUser", new { Area = "UserManagement" })"><span>Manage User</span></a></li>
+                        <li><a href="@Url.Action("Index", "ManageRole", new { Area = "UserManagement" })"><span>Manage Role</span></a></li>
+                    </ul>
+                </li>
+                @*User Management Ends*@
+            }
 
-        @*Job Management Starts*@
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span>Job Management</span><span class="caret"></span></a>
-            <ul class="dropdown-menu">                
-                <li><a href="@Url.Action("Index","JobCard", new { Area = "JobManagement"})"><span>Job Card</span></a></li>
-                <li><a href="@Url.Action("Index","JobScheduling", new { Area = "JobManagement"})"><span>Job Scheduling</span></a></li>
-                <li><a href="@Url.Action("Index","JobProcessScheduling", new { Area = "JobManagement"})"><span>Job Process Scheduling</span></a></li>
-            </ul>
-        </li>
-        @*Job Management Ends*@
-
-        @*Invoice Management Starts*@
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span>Invoice Management</span><span class="caret"></span></a>
-            <ul class="dropdown-menu">                
-                <li><a href="@Url.Action("Index","DC", new { Area = "InvoiceManagement"})"><span>DC</span></a></li>
-            </ul>
-        </li>
-        @*Invoice Management Ends*@
-
-        @*Reports Starts*@
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span>Reports</span><span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="@Url.Action("Index","DepartmentWise", new { Area = "Reports"})"><span>Department Wise</span></a></li>
-                <li><a href="@Url.Action("Index","JobCardWise", new { Area = "Reports"})"><span>JobCard Wise</span></a></li>
-                <li><a href="@Url.Action("Index","ComponentWise", new { Area = "Reports"})"><span>Component Wise</span></a></li>
-                <li><a href="@Url.Action("Index","MaterialInward", new { Area = "Reports"})"><span>Material Inward</span></a></li>
-                <li><a href="@Url.Action("Index","MaterialIssue", new { Area = "Reports"})"><span>Material Issue</span></a></li>
-                <li><a href="@Url.Action("Index","MaterialReturns", new { Area = "Reports"})"><span>Material Returns</span></a></li>
-                <li><a href="@Url.Action("Index","Inventory", new { Area = "Reports"})"><span>Inventory</span></a></li>
-                <li><a href="@Url.Action("Index","MachineReports", new { Area = "Reports"})"><span>Machine</span></a></li>
-                <li><a href="@Url.Action("Index","PurchaseOrderPending", new { Area = "Reports"})"><span>Purchase Order Pending</span></a></li>
-            </ul>
-        </li>
-        @*Reports Ends*@
-
+            foreach (var screen in UserProfile.UserAccessibleScreens)
+            {
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span>@screen.ScreenName</span><span class="caret"></span></a>
+                    @if (screen.ChildScreens != null && screen.ChildScreens.Any())
+                    {
+                        <ul class="dropdown-menu">
+                            @foreach (var childScreen in screen.ChildScreens)
+                            {
+                                <li><a href="@Url.Action("Index", Utility.RemoveSpaceSlash(childScreen.ScreenName), new { Area = screen.ScreenName })"><span>@childScreen.ScreenName</span></a></li>
+                            }
+                        </ul>
+                    }
+                </li>
+            }
+        }
     </ul>
+
 </div>

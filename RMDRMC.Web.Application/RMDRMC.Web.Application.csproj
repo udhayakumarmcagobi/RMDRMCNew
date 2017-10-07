@@ -149,9 +149,11 @@
     <Content Include="App_Themes\js\jquery-ui-1.10.3.custom.min.js" />
     <Content Include="App_Themes\js\modernizr-2.6.2.js" />
     <Content Include="App_Themes\js\respond.js" />
+    <Content Include="App_Themes\LogoutImage.png" />
     <Content Include="Content\alertify.bootstrap.css" />
     <Content Include="Content\alertify.core.css" />
     <Content Include="Content\alertify.default.css" />
+    <Content Include="CustomScripts\AccountManagement.js" />
     <Content Include="CustomScripts\UserManagement.js" />
     <Content Include="CustomScripts\Common.js" />
     <Content Include="Scripts\BootSideMenu.js" />
@@ -166,7 +168,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\UserManagement\Views\web.config" />
-    <Content Include="Areas\Master\Views\web.config" />
+    <Content Include="Areas\Masters\Views\web.config" />
     <Content Include="Areas\InventoryManagement\Views\web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -177,15 +179,15 @@
     <Content Include="Areas\VendorManagement\Views\web.config" />
     <Content Include="Areas\UserManagement\Views\ManageUser\Index.cshtml" />
     <Content Include="Areas\UserManagement\Views\ManageRole\Index.cshtml" />
-    <Content Include="Areas\Master\Views\Size\Index.cshtml" />
-    <Content Include="Areas\Master\Views\Description\Index.cshtml" />
-    <Content Include="Areas\Master\Views\Property\Index.cshtml" />
-    <Content Include="Areas\Master\Views\Category\Index.cshtml" />
-    <Content Include="Areas\Master\Views\Manufacturer\Index.cshtml" />
-    <Content Include="Areas\Master\Views\Vendor\Index.cshtml" />
-    <Content Include="Areas\Master\Views\Customer\Index.cshtml" />
-    <Content Include="Areas\Master\Views\Item\Index.cshtml" />
-    <Content Include="Areas\Master\Views\Machine\Index.cshtml" />
+    <Content Include="Areas\Masters\Views\Size\Index.cshtml" />
+    <Content Include="Areas\Masters\Views\Description\Index.cshtml" />
+    <Content Include="Areas\Masters\Views\Property\Index.cshtml" />
+    <Content Include="Areas\Masters\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Masters\Views\Manufacturer\Index.cshtml" />
+    <Content Include="Areas\Masters\Views\Vendor\Index.cshtml" />
+    <Content Include="Areas\Masters\Views\Customer\Index.cshtml" />
+    <Content Include="Areas\Masters\Views\Item\Index.cshtml" />
+    <Content Include="Areas\Masters\Views\Machine\Index.cshtml" />
     <Content Include="Areas\VendorManagement\Views\Enquiry\Index.cshtml" />
     <Content Include="Areas\VendorManagement\Views\Quotation\Index.cshtml" />
     <Content Include="Areas\VendorManagement\Views\QuotationAcceptance\Index.cshtml" />
@@ -207,10 +209,10 @@
     <Content Include="Areas\Reports\Views\MaterialInward\Index.cshtml" />
     <Content Include="Areas\Reports\Views\MaterialIssue\Index.cshtml" />
     <Content Include="Areas\Reports\Views\MaterialReturns\Index.cshtml" />
-    <Content Include="Areas\Master\Views\JobCardProcessComponent\Index.cshtml" />
-    <Content Include="Areas\Master\Views\JobCardComponentProcess\Index.cshtml" />
-    <Content Include="Areas\Master\Views\Component\Index.cshtml" />
-    <Content Include="Areas\Master\Views\ProcessDepartment\Index.cshtml" />
+    <Content Include="Areas\Masters\Views\JobCardProcessandComponent\Index.cshtml" />
+    <Content Include="Areas\Masters\Views\JobCardComponentProcess\Index.cshtml" />
+    <Content Include="Areas\Masters\Views\Component\Index.cshtml" />
+    <Content Include="Areas\Masters\Views\ProcessDepartment\Index.cshtml" />
     <Content Include="Areas\Reports\Views\MachineReports\Index.cshtml" />
     <Content Include="Areas\Reports\Views\PurchaseOrderPending\Index.cshtml" />
     <Content Include="Areas\UserManagement\Views\Shared\_ScreenAccessSelection.cshtml" />
@@ -221,16 +223,16 @@
     <Content Include="Areas\UserManagement\Views\Shared\_RoleSearch.cshtml" />
     <Content Include="Areas\UserManagement\Views\ManageUser\_UserSearch.cshtml" />
     <Content Include="Areas\UserManagement\Views\ManageUser\_UserSearchResults.cshtml" />
-    <Content Include="Areas\Master\Views\Shared\_AddressDetails.cshtml" />
-    <Content Include="Areas\Master\Views\Shared\_ContactDetails.cshtml" />
-    <Content Include="Areas\Master\Views\Shared\_OtherDetails.cshtml" />
-    <Content Include="Areas\Master\Views\Customer\_CustomerSearch.cshtml" />
-    <Content Include="Areas\Master\Views\Customer\_CustomerSearchResults.cshtml" />
-    <Content Include="Areas\Master\Views\Manufacturer\_ManufacturerSearch.cshtml" />
-    <Content Include="Areas\Master\Views\Manufacturer\_ManufacturerSearchResults.cshtml" />
-    <Content Include="Areas\Master\Views\Vendor\_VendorSearch.cshtml" />
-    <Content Include="Areas\Master\Views\Vendor\_VendorSearchResults.cshtml" />
-    <Content Include="Areas\Master\Views\Customer\_CustomerDetails.cshtml" />
+    <Content Include="Areas\Masters\Views\Shared\_AddressDetails.cshtml" />
+    <Content Include="Areas\Masters\Views\Shared\_ContactDetails.cshtml" />
+    <Content Include="Areas\Masters\Views\Shared\_OtherDetails.cshtml" />
+    <Content Include="Areas\Masters\Views\Customer\_CustomerSearch.cshtml" />
+    <Content Include="Areas\Masters\Views\Customer\_CustomerSearchResults.cshtml" />
+    <Content Include="Areas\Masters\Views\Manufacturer\_ManufacturerSearch.cshtml" />
+    <Content Include="Areas\Masters\Views\Manufacturer\_ManufacturerSearchResults.cshtml" />
+    <Content Include="Areas\Masters\Views\Vendor\_VendorSearch.cshtml" />
+    <Content Include="Areas\Masters\Views\Vendor\_VendorSearchResults.cshtml" />
+    <Content Include="Areas\Masters\Views\Customer\_CustomerDetails.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -276,20 +278,20 @@
     <Compile Include="Areas\JobManagement\Controllers\JobProcessSchedulingController.cs" />
     <Compile Include="Areas\JobManagement\Controllers\JobCardController.cs" />
     <Compile Include="Areas\JobManagement\JobManagementAreaRegistration.cs" />
-    <Compile Include="Areas\Master\Controllers\ComponentController.cs" />
-    <Compile Include="Areas\Master\Controllers\JobCardComponentProcessController.cs" />
-    <Compile Include="Areas\Master\Controllers\JobCardProcessComponentController.cs" />
-    <Compile Include="Areas\Master\Controllers\ProcessDepartmentController.cs" />
-    <Compile Include="Areas\Master\Controllers\DescriptionController.cs" />
-    <Compile Include="Areas\Master\Controllers\PropertyController.cs" />
-    <Compile Include="Areas\Master\Controllers\CategoryController.cs" />
-    <Compile Include="Areas\Master\Controllers\ManufacturerController.cs" />
-    <Compile Include="Areas\Master\Controllers\ItemController.cs" />
-    <Compile Include="Areas\Master\Controllers\MachineController.cs" />
-    <Compile Include="Areas\Master\Controllers\CustomerController.cs" />
-    <Compile Include="Areas\Master\Controllers\VendorController.cs" />
-    <Compile Include="Areas\Master\Controllers\SizeController.cs" />
-    <Compile Include="Areas\Master\MasterAreaRegistration.cs" />
+    <Compile Include="Areas\Masters\Controllers\ComponentController.cs" />
+    <Compile Include="Areas\Masters\Controllers\JobCardComponentProcessController.cs" />
+    <Compile Include="Areas\Masters\Controllers\JobCardProcessandComponentController.cs" />
+    <Compile Include="Areas\Masters\Controllers\ProcessDepartmentController.cs" />
+    <Compile Include="Areas\Masters\Controllers\DescriptionController.cs" />
+    <Compile Include="Areas\Masters\Controllers\PropertyController.cs" />
+    <Compile Include="Areas\Masters\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Masters\Controllers\ManufacturerController.cs" />
+    <Compile Include="Areas\Masters\Controllers\ItemController.cs" />
+    <Compile Include="Areas\Masters\Controllers\MachineController.cs" />
+    <Compile Include="Areas\Masters\Controllers\CustomerController.cs" />
+    <Compile Include="Areas\Masters\Controllers\VendorController.cs" />
+    <Compile Include="Areas\Masters\Controllers\SizeController.cs" />
+    <Compile Include="Areas\Masters\MastersAreaRegistration.cs" />
     <Compile Include="Areas\POManagement\Controllers\GeneratePOController.cs" />
     <Compile Include="Areas\POManagement\Controllers\ApprovePOController.cs" />
     <Compile Include="Areas\POManagement\Controllers\ApproveIndentController.cs" />
@@ -322,7 +324,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="packages.config" />
     <Content Include="App_Themes\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="App_Themes\fonts\glyphicons-halflings-regular.ttf" />
@@ -332,18 +336,20 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_TopMenu.cshtml" />
     <Content Include="Views\Shared\_UserManagementSideMenu.cshtml" />
-    <Content Include="Views\Shared\_MastersSideMenu.cshtml" />
-    <Content Include="Views\Shared\_VendorManagementSideMenu.cshtml" />
-    <Content Include="Views\Shared\_POManagementSideMenu.cshtml" />
-    <Content Include="Views\Shared\_InventoryManagementSideMenu.cshtml" />
-    <Content Include="Views\Shared\_JobManagementSideMenu.cshtml" />
-    <Content Include="Views\Shared\_InvoiceManagementSideMenu.cshtml" />
-    <Content Include="Views\Shared\_ReportsSideMenu.cshtml" />
+    <Content Include="Views\Shared\Sidemenu\_MastersSideMenu.cshtml" />
+    <Content Include="Views\Shared\Sidemenu\_VendorManagementSideMenu.cshtml" />
+    <Content Include="Views\Shared\Sidemenu\_POManagementSideMenu.cshtml" />
+    <Content Include="Views\Shared\Sidemenu\_InventoryManagementSideMenu.cshtml" />
+    <Content Include="Views\Shared\Sidemenu\_JobManagementSideMenu.cshtml" />
+    <Content Include="Views\Shared\Sidemenu\_InvoiceManagementSideMenu.cshtml" />
+    <Content Include="Views\Shared\Sidemenu\_ReportsSideMenu.cshtml" />
     <Content Include="Views\Shared\_SideMenu.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shared\_HostProgress.cshtml" />
     <Content Include="Views\Shared\_MenuLayout.cshtml" />
+    <Content Include="Views\Shared\_AppHeaderRight.cshtml" />
+    <Content Include="Views\Shared\_UserDetailsSection.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -356,7 +362,7 @@
     <Folder Include="Areas\InventoryManagement\Views\Shared\" />
     <Folder Include="Areas\InvoiceManagement\Views\Shared\" />
     <Folder Include="Areas\JobManagement\Views\Shared\" />
-    <Folder Include="Areas\Master\Models\" />
+    <Folder Include="Areas\Masters\Models\" />
     <Folder Include="Areas\POManagement\Views\Shared\" />
     <Folder Include="Areas\Reports\Views\Shared\" />
     <Folder Include="Areas\VendorManagement\Views\Shared\" />
@@ -376,6 +382,10 @@
     <ProjectReference Include="..\RMDRMC.Web.Core\RMDRMC.Web.Core.csproj">
       <Project>{4ae1833f-46e8-40d4-8f1e-79cb748454ac}</Project>
       <Name>RMDRMC.Web.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RMDRMC.Web.Infrastructure\RMDRMC.Web.Infrastructure.csproj">
+      <Project>{c08257e0-9f47-4398-9478-cb5d76cde0a8}</Project>
+      <Name>RMDRMC.Web.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\RMDRMCWeb.ViewModels\RMDRMCWeb.ViewModels.csproj">
       <Project>{c49963cd-4098-4ca7-953a-d1248741c141}</Project>

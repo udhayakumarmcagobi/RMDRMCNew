@@ -147,6 +147,7 @@
   <ItemGroup>
     <Content Include="DBScripts\DBScript_User_Table.sql" />
     <Content Include="DBScripts\RMDRMCNew_092232017.sql" />
+    <Content Include="DBScripts\RMDRMC_Script_10072017.sql" />
     <Content Include="RMDRMCDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>RMDRMCDataModel.edmx</DependentUpon>

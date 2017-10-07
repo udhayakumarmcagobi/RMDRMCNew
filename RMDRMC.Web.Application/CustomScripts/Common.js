@@ -84,3 +84,8 @@ var HideProgressbar = function () {
 var RefreshScreen = function () {
     location.reload();
 }
+
+
+var AjaxLoginFailure = function (response) {
+    alertify.alert("Login failed");
+}

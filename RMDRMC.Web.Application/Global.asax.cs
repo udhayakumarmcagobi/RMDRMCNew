@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RMDRMC.Web.Infrastructure.Security;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,6 +18,21 @@ namespace RMDRMC.Web.Application
             Bootstrapper.RegisterComponents();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+
+        protected void Application_OnPostAuthenticateRequest(object sender, EventArgs e)
+        {
+            if (Request.IsAuthenticated)
+            {
+                var identity = new CustomIdentity(HttpContext.Current.User.Identity);
+                var principal = new CustomPrincipal(identity);
+                HttpContext.Current.User = principal;                
+            }
+            else
+            {
+                HttpContext.Current.RewritePath("/Account/Login");
+            }
+
         }
     }
 }

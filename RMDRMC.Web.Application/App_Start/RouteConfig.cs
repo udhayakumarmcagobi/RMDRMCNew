@@ -14,6 +14,13 @@ namespace RMDRMC.Web.Application
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+            name: "HomePage",
+             url: "{controller}/{action}/{id}",
+            defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional, }
+            , namespaces: new[] { "RMDRMC.Web.Application.Controllers" }
+            );
+
+            routes.MapRoute(
             name: "LoginPage",
              url: "{controller}/{action}/{id}",
             defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional, }

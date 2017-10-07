@@ -10,6 +10,7 @@ namespace RMDRMC.Model.Reference
     {
         public long UserID { get; set; }
         public string LoginID { get; set; }
+        public bool IsAdmin { get; set; }
         public Roles UserRole { get; set; }
     }
 }

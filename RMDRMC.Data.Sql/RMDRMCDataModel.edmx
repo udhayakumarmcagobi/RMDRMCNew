@@ -209,6 +209,7 @@ warning 6002: The table/view 'RMDRMCNew.dbo.RoleDetails' does not have a primary
           <Property Name="Comments" Type="nvarchar(max)" />
           <Property Name="RoleID" Type="bigint" Nullable="false" />
           <Property Name="Activate" Type="bit" />
+          <Property Name="IsAdmin" Type="bit" />
         </EntityType>
         <EntityType Name="Vendor">
           <Key>
@@ -592,37 +593,15 @@ warning 6002: The table/view 'RMDRMCNew.dbo.VendorContactMapping' does not have 
           <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CustomerContactMapping" EntityType="Self.CustomerContactMapping" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [CustomerContactMapping].[CustomerID] AS [CustomerID], 
-    [CustomerContactMapping].[ContactID] AS [ContactID]
-    FROM [dbo].[CustomerContactMapping] AS [CustomerContactMapping]</DefiningQuery>
+          <EntitySet Name="CustomerContactMapping" EntityType="Self.CustomerContactMapping" store:Type="Tables" Schema="dbo">
           </EntitySet>
-          <EntitySet Name="ManufacturerContactMapping" EntityType="Self.ManufacturerContactMapping" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ManufacturerContactMapping].[ManufacturerID] AS [ManufacturerID], 
-    [ManufacturerContactMapping].[ContactID] AS [ContactID]
-    FROM [dbo].[ManufacturerContactMapping] AS [ManufacturerContactMapping]</DefiningQuery>
+          <EntitySet Name="ManufacturerContactMapping" EntityType="Self.ManufacturerContactMapping" store:Type="Tables" Schema="dbo">    
           </EntitySet>
-          <EntitySet Name="ManufacturerVendorMapping" EntityType="Self.ManufacturerVendorMapping" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ManufacturerVendorMapping].[ManufacturerID] AS [ManufacturerID], 
-    [ManufacturerVendorMapping].[VendorID] AS [VendorID]
-    FROM [dbo].[ManufacturerVendorMapping] AS [ManufacturerVendorMapping]</DefiningQuery>
+          <EntitySet Name="ManufacturerVendorMapping" EntityType="Self.ManufacturerVendorMapping" store:Type="Tables" Schema="dbo">
           </EntitySet>
-          <EntitySet Name="RoleDetails" EntityType="Self.RoleDetails" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [RoleDetails].[RoleID] AS [RoleID], 
-    [RoleDetails].[ScreenID] AS [ScreenID], 
-    [RoleDetails].[AccessID] AS [AccessID], 
-    [RoleDetails].[Activate] AS [Activate]
-    FROM [dbo].[RoleDetails] AS [RoleDetails]</DefiningQuery>
+          <EntitySet Name="RoleDetails" EntityType="Self.RoleDetails" store:Type="Tables" Schema="dbo">            
           </EntitySet>
-          <EntitySet Name="VendorContactMapping" EntityType="Self.VendorContactMapping" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [VendorContactMapping].[VendorID] AS [VendorID], 
-    [VendorContactMapping].[ContactID] AS [ContactID]
-    FROM [dbo].[VendorContactMapping] AS [VendorContactMapping]</DefiningQuery>
+          <EntitySet Name="VendorContactMapping" EntityType="Self.VendorContactMapping" store:Type="Tables" Schema="dbo">            
           </EntitySet>
           <AssociationSet Name="FK_Address_Country" Association="Self.FK_Address_Country">
             <End Role="Country" EntitySet="Country" />
@@ -979,6 +958,7 @@ warning 6002: The table/view 'RMDRMCNew.dbo.VendorContactMapping' does not have 
           <Property Name="RoleID" Type="Int64" Nullable="false" />
           <Property Name="Activate" Type="Boolean" />
           <NavigationProperty Name="Role" Relationship="RMDRMCDataModel.FK_Users_Roles" FromRole="User" ToRole="Role" />
+          <Property Name="IsAdmin" Type="Boolean" />
         </EntityType>
         <Association Name="FK_Users_Roles">
           <End Type="RMDRMCDataModel.Role" Role="Role" Multiplicity="1" />
@@ -1440,6 +1420,7 @@ warning 6002: The table/view 'RMDRMCNew.dbo.VendorContactMapping' does not have 
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="RMDRMCDataModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
                 <ScalarProperty Name="Activate" ColumnName="Activate" />
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="Comments" ColumnName="Comments" />

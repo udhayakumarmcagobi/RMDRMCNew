@@ -16,33 +16,17 @@
             </a>
         </div>
 
-        <div class="nav navbar-right">
-            <label class="labelheading">
+        @*App Header Right*@        
+        @Html.Partial("_AppHeaderRight")
 
-            </label>
-            <label id="labelheading">Ramya Printers - 1.0</label>
-            <div class="buildInfo">
-                <label>
-                    Version: @ViewContext.Controller.GetType().Assembly.GetName().Version ; Date: @File.GetCreationTime(ViewContext.Controller.GetType().Assembly.Location).ToShortDateString()
-                </label>
-            </div>
-        </div>
-
+        @*Top Menu*@
         @Html.Partial("_TopMenu")
 
     </div>
 </nav>
-<div class="container-fluid divUserNameRolefixed" style="">
-    <div class="row">
-        <div class="userNameWrapper">
-            <label class="lblUserName">
-                <span class="glyphicon glyphicon-user" style="display:inline-block; margin-right:10px; color:white;"></span>
-                Udhay
-                @*@UserProfile.LoggedOnUser - @UserProfile.CurrentUserRoleDescription*@
-            </label>
-        </div>
-    </div>
-</div>
+
+@*User Details Section*@
+@Html.Partial("_UserDetailsSection")
 
 @if (ViewBag.Sidemenu == "Home")
 {

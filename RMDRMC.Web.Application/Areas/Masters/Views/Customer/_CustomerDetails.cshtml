@@ -1,0 +1,184 @@
+﻿@model CustomerVM
+
+<div class="text-center">
+    <div class="panel panel-default" style="border-color:#ddd;" id="customerdetailspanel">
+        <div class="panel-heading-sm">
+            <label><a href="#customerdetails" data-toggle="collapse" data-parent="#customerdetailspanel">Customer Details<span class="glyphicon glyphicon-minus"></span></a></label>
+        </div>
+
+        <div id="customerdetails" class="panel-body  panel-collapse collapse in" role="tabpanel" aria-labelledby="Header Fields">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
+                               data-toggle="tooltip" id="lblCustomerName" data-placement="bottom" title="Customer Name" for="txtCustomerName">Customer Name:</label>
+                        <div class="col-sm-10 col-md-10">
+                            <div class="row col-xs-11 col-sm-11 col-md-11">
+                                <input type="text" class="form-control input-sm tooltip-enable  text-left" id="txtCustomerName"
+                                       data-toggle="tooltip" data-placement="bottom" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" title="Customer Name" maxlength="20" value="@Model.CustomerName"
+                                       name="CustomerName" />
+                            </div>
+                            <div class="col-xs-1 col-sm-1 col-md-1">
+                                <button type="button" class="rmd-search-button ButtonWithImage" onclick="SearchCustomers()"><i class="glyphicon glyphicon-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
+                               data-toggle="tooltip" id="lblInvCustName" data-placement="bottom" title="Inv Customer Name" for="txtInvCustName">Inv Cust Name:</label>
+                        <div class="col-sm-10 col-md-10">
+                            <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtInvCustName"
+                                   data-toggle="tooltip" data-placement="bottom" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" title="Inv Customer Name" maxlength="20" 
+                                   value="@Model.InvCustomerName"
+                                   name="Inv Customer Name" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="form-group clearfix">
+                            <label class="control-label col-sm-2 col-md-4 tooltip-enable formLabelAlign"
+                                   data-toggle="tooltip" id="lblCode" data-placement="bottom" title="Code" for="txtCode">Code:</label>
+                            <div class="col-sm-10 col-md-8">
+                                <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtCode"
+                                       data-toggle="tooltip" data-placement="bottom" title="Code" maxlength="15" value="@Model.Code"
+                                       name="Code" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="form-group clearfix">
+                            <label class="control-label col-sm-2 col-md-4 tooltip-enable formLabelAlign"
+                                   data-toggle="tooltip" id="lblRating" data-placement="bottom" title="Rating" for="drpRatings">Rating:</label>
+                            <div class="col-sm-10 col-md-8">
+                                <select class="form-control input-sm tooltip-enable master-screen-input-small" id="drpRatings"
+                                        data-toggle="tooltip" data-placement="bottom" name="RatingList" title="Select Rating">
+                                    @if (Model != null && Model.RatingList != null && Model.RatingList.Any())
+                                    {
+                                        <option value="0"> --Select One-- </option>
+                                        foreach (var rating in Model.RatingList)
+                                        {
+                                            string ratingSelected = rating.Selected ? "selected" : "";
+
+                                            <option @ratingSelected value="@rating.Code"> @rating.Value </option>
+                                        }
+                                    }
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
+                               data-toggle="tooltip" id="lblPaymentTerms" data-placement="bottom" title="Payment Terms" for="drpPaymentTerms">Term of Payment:</label>
+                        <div class="col-sm-10 col-md-10">
+                            <div class="row col-xs-11 col-sm-11 col-md-11">
+                                <select class="form-control input-sm tooltip-enable master-screen-input" id="drpPaymentTerms"
+                                        data-toggle="tooltip" data-placement="bottom" name="PaymentTermList" title="Select Payment Term">
+                                    @if (Model != null && Model.PaymentTermList != null && Model.PaymentTermList.Any())
+                                    {
+                                        <option value="0"> --Select One-- </option>
+                                        foreach (var paymentTerm in Model.PaymentTermList)
+                                        {
+                                            string paymentTermSelected = paymentTerm.Selected ? "selected" : "";
+
+                                            <option @paymentTermSelected value="@paymentTerm.PaymentTermID"> @paymentTerm.PaymentTermName </option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-xs-1 col-sm-1 col-md-1">
+                                <button type="button" class="rmd-search-button ButtonWithImage" onclick="AddPaymentTerms()"><i class="glyphicon glyphicon-plus-sign"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
+                               data-toggle="tooltip" id="lblParentCustName" data-placement="bottom" title="Parent Customer Name" for="txtParentCustName">Parent Cust Name:</label>
+                        <div class="col-sm-10 col-md-10">
+                            <div class="row col-xs-11 col-sm-11 col-md-11">
+                                <input type="text" class="form-control input-sm tooltip-enable  text-left" id="txtParentCustName"
+                                       data-toggle="tooltip" data-placement="bottom" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" title="Parent Customer Name" 
+                                       maxlength="20" value="@Model.ParentCustomerName"
+                                       name="Parent Customer Name" />
+                            </div>
+                            <div class="col-xs-1 col-sm-1 col-md-1">
+                                <button type="button" class="rmd-search-button ButtonWithImage" onclick="SearchParentCustomers()"><i class="glyphicon glyphicon-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
+                               data-toggle="tooltip" id="lblParentCustomerCode" data-placement="bottom" title="Parent Customer Code" for="txtParentCustomerCode">Parent Cust Code:</label>
+                        <div class="col-sm-10 col-md-10">
+                            <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtParentCustomerCode"
+                                   data-toggle="tooltip" data-placement="bottom" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" title="Parent Customer Code" 
+                                   maxlength="20" value="@Model.ParentCustomerCode"
+                                   name="Parent Customer Code" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="form-group clearfix">
+                            <label class="control-label col-sm-2 col-md-4 tooltip-enable formLabelAlign"
+                                   data-toggle="tooltip" id="lblCustRRPLID" data-placement="bottom" title="Customer RRPL ID" for="txtCustRRPLID">Cust RRPL ID:</label>
+                            <div class="col-sm-10 col-md-8">
+                                <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtCustRRPLID"
+                                       data-toggle="tooltip" data-placement="bottom" title="Customer RRPL ID" maxlength="15" value="@Model.CustomerRRPLID"
+                                       name="CustomerRRPLID" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="form-group clearfix">
+                            <label class="control-label col-sm-2 col-md-4 tooltip-enable formLabelAlign"
+                                   data-toggle="tooltip" id="lblCreditLimit" data-placement="bottom" title="Credit Limit" for="txtCreditLimit">Credit Limit:</label>
+                            <div class="col-sm-10 col-md-8">
+                                <input type="text" class="form-control input-sm tooltip-enable master-screen-input-small" id="txtCreditLimit"
+                                       data-toggle="tooltip" data-placement="bottom" title="Credit Limit" maxlength="15" value="@Model.CreditLimit"
+                                       name="CreditLimit" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
+                               data-toggle="tooltip" id="lblAccountManager" data-placement="bottom" title="AccountManager" for="drpAccountManager">Account Manager:</label>
+                        <div class="col-sm-10 col-md-10">
+                            <div class="row col-xs-11 col-sm-11 col-md-11">
+                                <select class="form-control input-sm tooltip-enable master-screen-input" id="drpAccountManager"
+                                        data-toggle="tooltip" data-placement="bottom" name="AccountManagerList" title="Select Account Manager">
+                                    @if (Model != null && Model.AccountManagerList != null && Model.AccountManagerList.Any())
+                                    {
+                                        <option value="0"> --Select One-- </option>
+                                        foreach (var accountManager in Model.AccountManagerList)
+                                        {
+                                            string accountManagerSelected = accountManager.Selected ? "selected" : "";
+
+                                            <option @accountManagerSelected value="@accountManager.AccountManagerID"> @accountManager.AccountManagerName </option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-xs-1 col-sm-1 col-md-1">
+                                <button type="button" class="rmd-search-button ButtonWithImage" onclick="SearchCustomers()"><i class="glyphicon glyphicon-plus-sign"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

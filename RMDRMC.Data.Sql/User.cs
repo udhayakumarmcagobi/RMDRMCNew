@@ -26,6 +26,7 @@ namespace RMDRMC.Data.Sql
         public string Comments { get; set; }
         public long RoleID { get; set; }
         public Nullable<bool> Activate { get; set; }
+        public Nullable<bool> IsAdmin { get; set; }
     
         public virtual Role Role { get; set; }
     }

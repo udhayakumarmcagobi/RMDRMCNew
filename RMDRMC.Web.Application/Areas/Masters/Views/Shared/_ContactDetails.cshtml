@@ -1,0 +1,115 @@
+﻿
+<div class="text-center">
+    <div class="panel panel-default" style="border-color:#ddd;" id="contactdetails">
+        <div class="panel-heading-sm">
+            <label><a href="#contact" data-toggle="collapse" data-parent="#contactdetails">Contact Details<span class="glyphicon glyphicon-minus"></span></a></label>
+        </div>
+
+        <div id="contact" class="panel-body  panel-collapse collapse in" role="tabpanel" aria-labelledby="Header Fields">
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
+                               data-toggle="tooltip" id="lblContactName" data-placement="bottom" title="Contact Name" for="txtContactName">Contact Name:</label>
+                        <div class="col-sm-10 col-md-10">
+                            <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtContactName"
+                                   data-toggle="tooltip" data-placement="bottom" title="Contact Name" value=""
+                                   name="ContactName" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
+                               data-toggle="tooltip" id="lblDepartment" data-placement="bottom" title="Department" for="drpDepartments">Department:</label>
+                        <div class="col-sm-10 col-md-10">
+                            <div class="row col-xs-11 col-sm-11 col-md-11">
+                                <select class="form-control input-sm tooltip-enable master-screen-input" id="drpDepartments"
+                                        data-toggle="tooltip" data-placement="bottom" name="Departments" title="Select Department"></select>
+                            </div>
+                            <div class="col-xs-1 col-sm-1 col-md-1">
+                                <button type="button" class="rmd-search-button ButtonWithImage" onclick="AddDepartment()"><i class="glyphicon glyphicon-plus-sign"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
+                               data-toggle="tooltip" id="lblDesignation" data-placement="bottom" title="Designation" for="drpDesignations">Designation:</label>
+                        <div class="col-sm-10 col-md-10">
+                            <div class="row col-xs-11 col-sm-11 col-md-11">
+                                <select class="form-control input-sm tooltip-enable master-screen-input" id="drpDesignations"
+                                        data-toggle="tooltip" data-placement="bottom" name="Designation" title="Select Designation"></select>
+                            </div>
+                            <div class="col-xs-1 col-sm-1 col-md-1">
+                                <button type="button" class="rmd-search-button ButtonWithImage" onclick="AddDesignations()"><i class="glyphicon glyphicon-plus-sign"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
+                               data-toggle="tooltip" id="lblEmail" data-placement="bottom" title="Email" for="txtEmail">Email:</label>
+                        <div class="col-sm-10 col-md-10">
+                            <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtEmail"
+                                   data-toggle="tooltip" data-placement="bottom" title="Email" value=""
+                                   name="Email" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
+                               data-toggle="tooltip" id="lblPhone" data-placement="bottom" title="Phone" for="txtPhone">Phone:</label>
+                        <div class="col-sm-10 col-md-10">
+                            <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtPhone"
+                                   data-toggle="tooltip" data-placement="bottom" title="Phone" value=""
+                                   name="Phone" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
+                               data-toggle="tooltip" id="lblMobile" data-placement="bottom" title="Mobile" for="txtMobile">Mobile:</label>
+                        <div class="col-sm-10 col-md-10">
+                            <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtMobile"
+                                   data-toggle="tooltip" data-placement="bottom" title="Mobile" value=""
+                                   name="Mobile" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-sm-2 col-md-2 tooltip-enable formLabelAlign"
+                               data-toggle="tooltip" id="lblFax" data-placement="bottom" title="Fax" for="txtFax">Fax:</label>
+                        <div class="col-sm-10 col-md-10">
+                            <input type="text" class="form-control input-sm tooltip-enable master-screen-input" id="txtFax"
+                                   data-toggle="tooltip" data-placement="bottom" title="Fax" value=""
+                                   name="Fax" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-12">
+                <div class="row text-right button-pos-right" >
+                    <input type="submit" value="Add" class="ButtonWithImage btnAddContact" data-alert="false" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientServices\BaseClientService.cs" />
     <Compile Include="ClientServices\CommonClientService.cs" />
     <Compile Include="ClientServices\Master\CustomerClientService.cs" />
     <Compile Include="ClientServices\UserClientService.cs" />
@@ -64,6 +63,10 @@
     <ProjectReference Include="..\RMDRMC.Model\RMDRMC.Model.csproj">
       <Project>{581f990c-8fd7-40ca-b202-221eb70dea41}</Project>
       <Name>RMDRMC.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RMDRMC.Web.Infrastructure\RMDRMC.Web.Infrastructure.csproj">
+      <Project>{c08257e0-9f47-4398-9478-cb5d76cde0a8}</Project>
+      <Name>RMDRMC.Web.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\RMDRMCWeb.ViewModels\RMDRMCWeb.ViewModels.csproj">
       <Project>{c49963cd-4098-4ca7-953a-d1248741c141}</Project>

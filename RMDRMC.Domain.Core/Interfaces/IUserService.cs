@@ -13,6 +13,6 @@ namespace RMDRMC.Domain.Core.Interfaces
         Users GetAllUserByID(long userID);        
         bool CreateNewUser(Users users);
         bool UpdateUser(Users users);
-        bool DeleteUser(long userID);
+        bool DeleteUser(long userID);        
     }
 }

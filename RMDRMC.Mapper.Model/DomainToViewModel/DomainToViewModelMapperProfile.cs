@@ -30,6 +30,10 @@ namespace RMDRMC.Mapper.Model.DomainToViewModel
                 .ForMember(model => model.RoleID, map => map.MapFrom(m => m.UserRole.RoleID))
                 .ForMember(model => model.AllUserRoles, map => map.Ignore())
                 .ForMember(model => model.UserRoleSelected, map => map.MapFrom(m => m.UserRole));
+
+            CreateMap<Users, UserBaseVM>()
+                .ForMember(model => model.AllUserRoles, map => map.Ignore())
+                .ForMember(model => model.UserRoleSelected, map => map.MapFrom(m => m.UserRole));
         }
     }
 }

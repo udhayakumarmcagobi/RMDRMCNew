@@ -1,34 +1,32 @@
 ﻿
-@if (ViewBag.Sidemenu == "UserManagement")
+@if (UserProfile.UserAccessibleScreens != null)
 {
-    <div id="test-left"><div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_UserManagementSideMenu")</div></div>
-}
-else if (ViewBag.Sidemenu == "Masters")
-{
-    <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_MastersSideMenu")</div>
-}
-else if (ViewBag.Sidemenu == "VendorManagement")
-{
-    <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_VendorManagementSideMenu")</div>
-}
-else if (ViewBag.Sidemenu == "POManagement")
-{
-    <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_POManagementSideMenu")</div>
-}
-else if (ViewBag.Sidemenu == "InventoryManagement")
-{
-    <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_InventoryManagementSideMenu")</div>
-}
-else if (ViewBag.Sidemenu == "JobManagement")
-{
-    <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_JobManagementSideMenu")</div>
-}
-else if (ViewBag.Sidemenu == "InvoiceManagement")
-{
-    <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_InvoiceManagementSideMenu")</div>
-}
-else if (ViewBag.Sidemenu == "Reports")
-{
-    <div class="col-md-2">@Html.Partial("_ReportsSideMenu")</div>
-}
+    var sideMenuAccessScreens = UserProfile.UserAccessibleScreens.Where(x => x.ScreenName.Equals(ViewBag.Sidemenu)).FirstOrDefault();
+    if (sideMenuAccessScreens != null && sideMenuAccessScreens.ChildScreens.Any())
+    {
+        <div class="col-md-2 col-xs-12 sidemenu">
+            <div id="MainMenu" class="">
+                <input type="hidden" id="hidSideMenuName" value="@ViewBag.sideMenuName" />
 
+                <div class="list-group panel">
+                    <a href="#Menus" class="list-group-item list-group-item-success strong text-left active" data-toggle="collapse" data-parent="#MainMenu">
+                        <label style="color:#fff">@ViewBag.Sidemenu</label>
+                    </a>
+
+                    <div class="list-group-submenu" id="Menus">
+                        @foreach (var sideMenuScreen in sideMenuAccessScreens.ChildScreens)
+                    {
+                            <a href="@Url.Action("Index", Utility.RemoveSpaceSlash(sideMenuScreen.ScreenName) , new { Area = ViewBag.Sidemenu })"
+                               class="list-group-item" id=@sideMenuScreen.ScreenName.Replace(" ","")><span>@sideMenuScreen.ScreenName</span></a>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else if (ViewBag.Sidemenu == "UserManagement" && UserProfile.IsAdmin)
+    {
+        <div class="col-md-2 col-xs-12 sidemenu">@Html.Partial("_UserManagementSideMenu")</div>
+    }
+}

@@ -4,6 +4,7 @@ using RMDRMC.Mapper.Model;
 using RMDRMC.Model.Enum;
 using RMDRMC.Model.Reference;
 using RMDRMC.Web.Core.Interfaces;
+using RMDRMC.Web.Infrastructure.Services;
 using RMDRMCWeb.ViewModels.Domain;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,12 @@ namespace RMDRMC.Web.Core.ClientServices
     {
         #region Constructors
 
-        public UserClientService():base() {  }
+        private readonly IRoleClientService roleClientService;
+
+        public UserClientService():base()
+        {
+            roleClientService = new RoleClientService();
+        }
 
         #endregion
 
@@ -95,6 +101,15 @@ namespace RMDRMC.Web.Core.ClientServices
                     : x.ScreenName.StartsWith("Inven") ? 4
                     : x.ScreenName.StartsWith("J") ? 5
                     : x.ScreenName.StartsWith("R") ? 6 : 7).ToList();
+        }
+
+        public override UsersVM GetUsersByID(long userID)
+        {
+            var usersVM = base.GetUsersByID(userID);
+
+            usersVM.AllUserRoles = roleClientService.GetRoles(string.Empty, usersVM.UserRoleSelected.RoleID);
+
+            return usersVM;
         }
 
         #endregion

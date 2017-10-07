@@ -11,5 +11,7 @@ namespace RMDRMC.Web.Core.Interfaces
         bool DeleteUser(long userID);
         List<UsersVM> GetUsers(string userPrefix);
         UsersVM GetUsersByID(long userID);
+
+        
     }
 }

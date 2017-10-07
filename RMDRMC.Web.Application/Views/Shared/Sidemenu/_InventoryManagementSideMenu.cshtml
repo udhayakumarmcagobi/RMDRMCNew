@@ -1,0 +1,33 @@
+﻿
+<div id="MainMenu" class="">
+    <input type="hidden" id="hidSideMenuName" value="@ViewBag.sideMenuName" />
+    <div class="list-group panel">
+        <a href="#Menus" class="list-group-item list-group-item-success strong text-left active" data-toggle="collapse" data-parent="#MainMenu">
+            <label style="color:#fff">Inventory Management</label>
+        </a>
+
+        <div class="list-group-submenu" id="Menus">            
+
+            <a href="@Url.Action("Index","GRN", new { Area = "InventoryManagement" })" class="list-group-item" id="GRN" data-parent="#SubMenu5"><span>GRN</span></a>
+            <a href="@Url.Action("Index","GRNInspection", new { Area = "InventoryManagement" })" class="list-group-item" id="GRNInspection" data-parent="#SubMenu5"><span>GRN Inspection</span></a>            
+            <a href="@Url.Action("Index","MaterialIssueReturns", new { Area = "InventoryManagement" })" class="list-group-item" id="MaterialssueReturns" data-parent="#SubMenu5"><span>Materia lssue/Returns</span></a>
+           
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

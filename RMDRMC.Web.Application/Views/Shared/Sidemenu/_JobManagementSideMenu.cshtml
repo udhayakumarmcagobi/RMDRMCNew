@@ -1,0 +1,39 @@
+﻿@if (UserProfile.UserAccessibleScreens != null)
+{
+    var sideMenuAccessScreens = UserProfile.UserAccessibleScreens.Where(x => x.ScreenName.Equals(ViewBag.sideMenuName));
+    if (sideMenuAccessScreens != null && sideMenuAccessScreens.Any())
+    {
+        <div id="MainMenu" class="">
+            <input type="hidden" id="hidSideMenuName" value="@ViewBag.sideMenuName" />
+
+            <div class="list-group panel">
+                <a href="#Menus" class="list-group-item list-group-item-success strong text-left active" data-toggle="collapse" data-parent="#MainMenu">
+                    <label style="color:#fff">@ViewBag.sideMenuName</label>
+                </a>
+
+                <div class="list-group-submenu" id="Menus">
+                    @foreach (var sideMenuScreen in sideMenuAccessScreens)
+                    {
+                        <a href="@Url.Action("Index", sideMenuScreen.ScreenName.Replace(" ","") , new { Area = ViewBag.sideMenuName })" 
+                           class="list-group-item" id=@sideMenuScreen.ScreenName.Replace(" ","") ><span>@sideMenuScreen.ScreenName</span></a>
+                    }
+                    
+                </div>
+            </div>
+        </div>
+    }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

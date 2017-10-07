@@ -55,7 +55,10 @@ namespace RMDRMC.Web.Infrastructure.Security
             Identity = identity;
 
             var membershipService = new MembershipService();
-            userDetails = membershipService.GetUserByLoginID(identity.Name);            
+            if (identity != null)
+            {
+                userDetails = membershipService.GetUserByLoginID(identity.Name);
+            }      
 
         }
 

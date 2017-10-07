@@ -12,6 +12,25 @@ $(document).ready(function () {
         MaxCheckBoxFlips(this, 2);
     });
 
+    $(document).on("click", "input", function () {
+       
+        var currentCheckBoxID = $(this).attr("id");
+        if (this.checked && currentCheckBoxID.indexOf("Modifier") != -1) {
+            var viewerCheckBoxID = currentCheckBoxID.replace("Modifier", "Viewer");
+            $(document).find("#" + viewerCheckBoxID).each(function () {
+                this.checked = true;
+            });
+        }
+
+        if (!this.checked && currentCheckBoxID.indexOf("Viewer") != -1) {
+            var modifierCheckBoxID = currentCheckBoxID.replace("Viewer", "Modifier");
+            $(document).find("#" + modifierCheckBoxID).each(function () {
+                this.checked = false;
+            });
+        }
+        
+    });
+
     $(document).on("change", "#drpRoleDetails", function () {
         LoadScreenAccessDetailsOfRole($(this).val());
 

@@ -198,14 +198,14 @@ warning 6002: The table/view 'RMDRMCNew.dbo.RoleDetails' does not have a primary
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LoginID" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="20" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="20" />
+          <Property Name="LoginID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
           <Property Name="Address" Type="nvarchar(max)" />
           <Property Name="Phone" Type="nvarchar" MaxLength="15" />
           <Property Name="Mobile" Type="nvarchar" MaxLength="10" />
-          <Property Name="Email" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Comments" Type="nvarchar(max)" />
           <Property Name="RoleID" Type="bigint" Nullable="false" />
           <Property Name="Activate" Type="bit" />
@@ -593,15 +593,37 @@ warning 6002: The table/view 'RMDRMCNew.dbo.VendorContactMapping' does not have 
           <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CustomerContactMapping" EntityType="Self.CustomerContactMapping" store:Type="Tables" Schema="dbo">
+          <EntitySet Name="CustomerContactMapping" EntityType="Self.CustomerContactMapping" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CustomerContactMapping].[CustomerID] AS [CustomerID], 
+    [CustomerContactMapping].[ContactID] AS [ContactID]
+    FROM [dbo].[CustomerContactMapping] AS [CustomerContactMapping]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="ManufacturerContactMapping" EntityType="Self.ManufacturerContactMapping" store:Type="Tables" Schema="dbo">    
+          <EntitySet Name="ManufacturerContactMapping" EntityType="Self.ManufacturerContactMapping" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ManufacturerContactMapping].[ManufacturerID] AS [ManufacturerID], 
+    [ManufacturerContactMapping].[ContactID] AS [ContactID]
+    FROM [dbo].[ManufacturerContactMapping] AS [ManufacturerContactMapping]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="ManufacturerVendorMapping" EntityType="Self.ManufacturerVendorMapping" store:Type="Tables" Schema="dbo">
+          <EntitySet Name="ManufacturerVendorMapping" EntityType="Self.ManufacturerVendorMapping" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ManufacturerVendorMapping].[ManufacturerID] AS [ManufacturerID], 
+    [ManufacturerVendorMapping].[VendorID] AS [VendorID]
+    FROM [dbo].[ManufacturerVendorMapping] AS [ManufacturerVendorMapping]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="RoleDetails" EntityType="Self.RoleDetails" store:Type="Tables" Schema="dbo">            
+          <EntitySet Name="RoleDetails" EntityType="Self.RoleDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RoleDetails].[RoleID] AS [RoleID], 
+    [RoleDetails].[ScreenID] AS [ScreenID], 
+    [RoleDetails].[AccessID] AS [AccessID], 
+    [RoleDetails].[Activate] AS [Activate]
+    FROM [dbo].[RoleDetails] AS [RoleDetails]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="VendorContactMapping" EntityType="Self.VendorContactMapping" store:Type="Tables" Schema="dbo">            
+          <EntitySet Name="VendorContactMapping" EntityType="Self.VendorContactMapping" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VendorContactMapping].[VendorID] AS [VendorID], 
+    [VendorContactMapping].[ContactID] AS [ContactID]
+    FROM [dbo].[VendorContactMapping] AS [VendorContactMapping]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_Address_Country" Association="Self.FK_Address_Country">
             <End Role="Country" EntitySet="Country" />
@@ -946,14 +968,14 @@ warning 6002: The table/view 'RMDRMCNew.dbo.VendorContactMapping' does not have 
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LoginID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LoginID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Mobile" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="RoleID" Type="Int64" Nullable="false" />
           <Property Name="Activate" Type="Boolean" />

@@ -152,6 +152,9 @@ var CreateRoleFailure = function (response) {
 var CreateUserSuccess = function (response) {
     if (response.result) {
         alertify.alert("New user '" + response.data.LoginID + "' has been created successfully");
+        if (!response.IsAdditionalFlag) {
+            window.location.href = hostPath + "/Account/Login";
+        }
     }
     else {
         alertify.alert("New user " + response.data.LoginID + "creation failed");

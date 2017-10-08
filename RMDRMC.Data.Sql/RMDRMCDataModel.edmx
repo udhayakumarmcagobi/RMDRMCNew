@@ -611,13 +611,7 @@ warning 6002: The table/view 'RMDRMCNew.dbo.VendorContactMapping' does not have 
     [ManufacturerVendorMapping].[VendorID] AS [VendorID]
     FROM [dbo].[ManufacturerVendorMapping] AS [ManufacturerVendorMapping]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="RoleDetails" EntityType="Self.RoleDetails" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [RoleDetails].[RoleID] AS [RoleID], 
-    [RoleDetails].[ScreenID] AS [ScreenID], 
-    [RoleDetails].[AccessID] AS [AccessID], 
-    [RoleDetails].[Activate] AS [Activate]
-    FROM [dbo].[RoleDetails] AS [RoleDetails]</DefiningQuery>
+          <EntitySet Name="RoleDetails" EntityType="Self.RoleDetails" store:Type="Tables" Schema="dbo">
           </EntitySet>
           <EntitySet Name="VendorContactMapping" EntityType="Self.VendorContactMapping" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 

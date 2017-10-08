@@ -30,10 +30,11 @@ namespace RMDRMC.Web.Application
             }
             else
             {
-                if(!HttpContext.Current.Request.Url.AbsolutePath.Contains("UserManagement/ManageUser"))
+                if(!(HttpContext.Current.Request.Url.AbsolutePath.Contains("UserManagement/ManageUser") || 
+                    HttpContext.Current.Request.Url.AbsolutePath.Contains("UserManagement/ManageRole")))
                 {
                     HttpContext.Current.RewritePath("/Account/Login");
-                }                
+                }           
             }
 
         }

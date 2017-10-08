@@ -1,11 +1,15 @@
 ﻿<div class="container-fluid divUserNameRolefixed" style="">
     <div class="row">
         <div class="userNameWrapper">
-            <label class="lblUserName">
-                <span class="glyphicon glyphicon-user" style="display:inline-block; margin-right:10px; color:white;"></span>
-                @UserProfile.LoginID -                 @UserProfile.RoleName
-                 <a style="color:#fff;text-decoration:none;font-weight:bold;"  href="@Url.Action("Logout", "Account", new { Area = "" })" data-form-method="post"> - Logout <img style="width:15px;height:11px;" src="~/App_Themes/LogoutImage.png" /></a>
-            </label>
+            @if (UserProfile.IsAuthenticated)
+            {
+                <label class="lblUserName">
+                    <span class="glyphicon glyphicon-user" style="display:inline-block; margin-right:10px; color:white;"></span>
+                    @UserProfile.LoginID - @UserProfile.RoleName
+                    <a style="color:#fff;text-decoration:none;font-weight:bold;" href="@Url.Action("Logout", "Account", new { Area = "" })" data-form-method="post"> - Logout <img style="width:15px;height:11px;" src="~/App_Themes/LogoutImage.png" /></a>
+                </label>
+            }
         </div>
     </div>
 </div>
+

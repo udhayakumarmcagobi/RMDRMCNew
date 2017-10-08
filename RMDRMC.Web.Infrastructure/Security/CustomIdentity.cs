@@ -34,7 +34,9 @@ namespace RMDRMC.Web.Infrastructure.Security
         {
             get
             {
-                return Identity.IsAuthenticated;
+                if(Identity != null) { return Identity.IsAuthenticated; }
+
+                return false;
             }
         }
 

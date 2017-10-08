@@ -20,5 +20,19 @@ namespace RMDRMC.Web.Application.Helpers
 
             };
         }
+
+        public static JsonResult GetJsonResult(object result, object data, object IsAdditionalFlag)
+        {
+            return new JsonResult
+            {
+                Data = new
+                {
+                    result = result,
+                    data = data,
+                    IsAdditionalFlag = IsAdditionalFlag
+                }
+
+            };
+        }
     }
 }

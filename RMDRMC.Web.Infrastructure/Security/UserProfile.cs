@@ -76,6 +76,19 @@ namespace RMDRMC.Web.Infrastructure.Security
             }
         }
 
+        public static bool IsAuthenticated
+        {
+            get
+            {
+                if (CustomPrinciple.CustomIdentity != null)
+                {
+                    return CustomPrinciple.CustomIdentity.IsAuthenticated;
+                }
+
+                return false;
+            }
+        }
+
         public static List<ScreenVM> UserAccessibleScreens
         {
             get

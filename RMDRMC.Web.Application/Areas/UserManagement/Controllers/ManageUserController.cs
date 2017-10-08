@@ -1,6 +1,7 @@
 ﻿using RMDRMC.Web.Application.Helpers;
 using RMDRMC.Web.Core.ClientServices;
 using RMDRMC.Web.Core.Interfaces;
+using RMDRMC.Web.Infrastructure.Security;
 using RMDRMCWeb.ViewModels.Domain;
 using System;
 using System.Collections.Generic;
@@ -79,10 +80,11 @@ namespace RMDRMC.Web.Application.Areas.UserManagement.Controllers
             if (ModelState.IsValid)
             {
                 usersVM = userClientService.CreateNewUser(usersVM);
-                return UtilityHelpers.GetJsonResult(true, usersVM);
+
+                return UtilityHelpers.GetJsonResult(true, usersVM, UserProfile.IsAuthenticated);
             }
 
-            return UtilityHelpers.GetJsonResult(false, usersVM);
+            return UtilityHelpers.GetJsonResult(false, usersVM, false);
         }
 
         // POST: UserManagement/ManageUser/Update

@@ -32,3 +32,5 @@
 /RMDRMC.Data.Sql/bin
 /RMDRMC.Web.Core/bin/Debug
 /RMDRMC.Web.Core/obj/Debug
+/RMDRMC.Web.Infrastructure/bin/Debug
+/RMDRMC.Web.Infrastructure/obj/Debug
